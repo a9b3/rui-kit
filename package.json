@@ -34,5 +34,8 @@
     "presets": [
       "./node_modules/jbs-fe/configs/babel-preset-jbs-fe.js"
     ]
+  },
+  "dependencies": {
+    "tinycolor2": "^1.4.1"
   }
 }
