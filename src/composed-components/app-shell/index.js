@@ -83,17 +83,17 @@ export default class AppShell extends React.Component {
             >
               {
                 to
-                ? <Link
-                  className={styles.link}
-                  to={to}
-                >
-                  {display}
-                </Link>
-                : <a href={href}
-                  className={styles.link}
-                >
-                  {display}
-                </a>
+                  ? <Link
+                    className={styles.link}
+                    to={to}
+                  >
+                    {display}
+                  </Link>
+                  : <a href={href}
+                    className={styles.link}
+                  >
+                    {display}
+                  </a>
               }
             </FillParent>
           })}
