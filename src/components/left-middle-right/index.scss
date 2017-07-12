@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+._item {
+  overflow: hidden;
+  flex: 0 0 33.33%;
+  height: 100%;
+}
+
+.left {
+  composes: _item;
+}
+
+.middle {
+  composes: _item;
+}
+
+.right {
+  composes: _item;
+}

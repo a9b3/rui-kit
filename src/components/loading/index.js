@@ -1,9 +1,13 @@
+import styles     from './index.scss'
 import React      from 'react'
 import CSSModules from 'react-css-modules'
 import PropTypes  from 'prop-types'
-import styles     from './index.scss'
 import tinycolor  from 'tinycolor2'
 
+/*
+ * This component is sized using em values so to resize simply set font size in
+ * the parent element.
+ */
 @CSSModules(styles)
 export default class Loading extends React.Component {
   static propTypes = {
@@ -11,6 +15,7 @@ export default class Loading extends React.Component {
     color: PropTypes.string,
     // whether to show the component or return null
     show: PropTypes.bool,
+    style: PropTypes.object,
   }
 
   render() {
