@@ -28,16 +28,22 @@ export default class AppShell extends React.Component {
         to: PropTypes.string,
       })),
     })),
+    rightNodeLinks: PropTypes.arrayOf(PropTypes.shape({
+      display: PropTypes.string,
+      to: PropTypes.string,
+    })),
   }
 
   static defaultProps = {
     links: [],
+    rightNodeLinks: [],
   }
 
   render() {
     const {
       links,
       header,
+      rightNodeLinks,
     } = this.props
 
     return <div styleName='index'>
@@ -68,13 +74,27 @@ export default class AppShell extends React.Component {
         />}
         right={<Row
           align='right'
-          items={[
-            <FillParent
-              key={0}
+          items={rightNodeLinks.map(({ display, to, href }, i) => {
+            return <FillParent
+              className={styles.dropchild}
+              key={i}
             >
-              <b>ABOUT</b>
-            </FillParent>,
-          ]}
+              {
+                to
+                ? <Link
+                  className={styles.link}
+                  to={to}
+                >
+                  {display}
+                </Link>
+                : <a href={href}
+                  className={styles.link}
+                >
+                  {display}
+                </a>
+              }
+            </FillParent>
+          })}
         />}
       />
 

@@ -20,10 +20,22 @@ const links = [
   },
 ]
 
+const rightNodeLinks = [
+  {
+    display: 'one',
+    href: 'https://github.com/paypal/glamorous',
+  },
+  {
+    display: 'two',
+    to: '/comp',
+  },
+]
+
 export default (
   <AppShell
     header={'UI-KIT'}
     links={links}
+    rightNodeLinks={rightNodeLinks}
   >
     <Route path='/' exact component={Index} />
     <Route path='/comp' component={Comp} />
