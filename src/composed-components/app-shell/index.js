@@ -1,37 +1,25 @@
-import styles         from './index.scss'
-import React          from 'react'
-import CSSModules     from 'react-css-modules'
-import PropTypes      from 'prop-types'
-import { Link }       from 'react-router-dom'
+import styles      from './index.scss'
+import React       from 'react'
+import CSSModules  from 'react-css-modules'
+import PropTypes   from 'prop-types'
+import {
+  Link,
+  withRouter,
+}                  from 'react-router-dom'
 import {
   LeftMiddleRight,
   Row,
   FillParent,
   Sidebar,
   Dropdown,
-}                     from '../../index.js'
-import { withRouter } from 'react-router-dom'
-
-const links = [
-  {
-    header: 'Components',
-    items: [
-      {
-        display: 'one',
-        to: '/',
-      },
-      {
-        display: 'two',
-        to: '/comp',
-      },
-    ],
-  },
-]
+}                  from '../../index.js'
 
 @withRouter
 @CSSModules(styles)
 export default class AppShell extends React.Component {
   static propTypes = {
+    location: PropTypes.object,
+    children: PropTypes.node,
     header: PropTypes.node,
     links: PropTypes.arrayOf(PropTypes.shape({
       header: PropTypes.string,
@@ -58,7 +46,9 @@ export default class AppShell extends React.Component {
         left={<Row
           align='left'
           items={[
-            <FillParent>
+            <FillParent
+              key={0}
+            >
               <h2>
                 {header}
               </h2>
@@ -67,7 +57,9 @@ export default class AppShell extends React.Component {
         />}
         middle={<Row
           items={[
-            <FillParent>
+            <FillParent
+              key={0}
+            >
               <h1 key={this.props.location.key} className={styles.h1}>
                 {this.props.location.pathname.replace('/', '')}
               </h1>
@@ -77,7 +69,9 @@ export default class AppShell extends React.Component {
         right={<Row
           align='right'
           items={[
-            <FillParent>
+            <FillParent
+              key={0}
+            >
               <b>ABOUT</b>
             </FillParent>,
           ]}

@@ -8,6 +8,7 @@ export default class Dropdown extends React.Component {
   static propTypes = {
     header: PropTypes.node,
     initialOpen: PropTypes.bool,
+    children: PropTypes.node,
   }
 
   state = {

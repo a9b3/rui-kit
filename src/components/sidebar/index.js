@@ -8,6 +8,7 @@ export default class Sidebar extends React.Component {
   static propTypes = {
     header: PropTypes.node,
     footer: PropTypes.node,
+    children: PropTypes.node,
   }
 
   render() {
