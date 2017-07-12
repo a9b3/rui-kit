@@ -17,43 +17,37 @@ export default class Index extends React.Component {
         left={<Row
           align='left'
           items={[
-            {
-              node: <FillParent>
-                <h1>
-                  Hi
-                </h1>
-              </FillParent>,
-              width: 80,
-            },
+            <FillParent>
+              <h2>
+                Cool
+              </h2>
+            </FillParent>,
           ]}
         />}
         middle={<Row
           items={[
-            {
-              node: <FillParent>
-                <h1>
-                  Meme
-                </h1>
-              </FillParent>,
-              width: 200,
-            },
+            <FillParent>
+              <h1>
+                UI-KIT
+              </h1>
+            </FillParent>,
           ]}
         />}
         right={<Row
           align='right'
           items={[
-            {
-              node: <FillParent>Cars</FillParent>,
-              width: 80,
-            },
-            {
-              node: <FillParent>About</FillParent>,
-              width: 80,
-            },
-            {
-              node: <FillParent>Instructions</FillParent>,
-              width: 100,
-            },
+            <FillParent>
+              Cars
+            </FillParent>,
+            <FillParent>
+              About
+            </FillParent>,
+            <FillParent>
+              Instructions
+            </FillParent>,
+            <FillParent>
+              Instructions
+            </FillParent>,
           ]}
         />}
       />

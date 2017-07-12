@@ -10,6 +10,8 @@
 .header {
   composes: flex-row;
   height: 80px;
+  background: lighten($gray5, 8);
+  box-shadow: 0 5px 15px rgba(black, .1);
 }
 
 .left {

@@ -11,10 +11,7 @@ export default class Row extends React.Component {
   static propTypes = {
     align: PropTypes.oneOf(['left', 'right', 'center']),
     attrItem: PropTypes.object,
-    items: PropTypes.arrayOf(PropTypes.shape({
-      node: PropTypes.node,
-      width: PropTypes.number,
-    })),
+    items: PropTypes.node,
   }
 
   static defaultProps = {
@@ -28,14 +25,11 @@ export default class Row extends React.Component {
       attrItem,
     } = this.props
 
-    return items.map(({ node, width }, i) => {
+    return items.map((node, i) => {
       return <div
         key={i}
         styleName='container__item'
         {...attrItem}
-        style={ Object.assign({}, attrItem.style, {
-          width,
-        })}
       >
         {node}
       </div>
