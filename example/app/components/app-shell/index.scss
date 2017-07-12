@@ -1,5 +1,14 @@
 @import '~styles/shared';
 
+@keyframes :global(fadeIn) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .index {
   width: 100%;
   height: 100%;
@@ -17,6 +26,8 @@
 
 .h1 {
   color: $slate;
+  text-transform: uppercase;
+  animation: fadeIn .2s;
 }
 
 .row {
@@ -39,6 +50,7 @@
 .content {
   width: 100%;
   height: 100%;
+  overflow: auto;
 }
 
 .left {
@@ -53,6 +65,8 @@
 }
 
 .dropchild {
+  display: flex;
+  color: inherit;
   padding: 1rem;
   cursor: pointer;
 }
