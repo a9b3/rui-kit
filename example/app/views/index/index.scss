@@ -9,9 +9,35 @@
 
 .header {
   composes: flex-row;
-  height: 80px;
-  background: lighten($gray5, 8);
+  height: 70px;
+  background: $gray4;
   box-shadow: 0 5px 15px rgba(black, .1);
+}
+
+.h1 {
+  color: $slate;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.sidebar-wrapper {
+  height: 100%;
+  width: 20rem;
+}
+
+.sidebar {
+  background: $slate;
+  box-shadow: 5px 0 15px rgba(black, .1);
+  color: white;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
 }
 
 .left {
@@ -19,6 +45,13 @@
   align-items: center;
 }
 
-.one {
-  background: black;
+.dropheader {
+  padding: 1rem;
+  cursor: pointer;
+  background: darken($slate, 5);
+}
+
+.dropchild {
+  padding: 1rem;
+  cursor: pointer;
 }
