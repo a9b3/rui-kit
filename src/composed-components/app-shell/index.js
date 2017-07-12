@@ -4,13 +4,12 @@ import CSSModules     from 'react-css-modules'
 import PropTypes      from 'prop-types'
 import { Link }       from 'react-router-dom'
 import {
-  Loading,
   LeftMiddleRight,
   Row,
   FillParent,
   Sidebar,
   Dropdown,
-}                     from '../../../../src'
+}                     from '../../index.js'
 import { withRouter } from 'react-router-dom'
 
 const links = [
@@ -32,7 +31,27 @@ const links = [
 @withRouter
 @CSSModules(styles)
 export default class AppShell extends React.Component {
+  static propTypes = {
+    header: PropTypes.node,
+    links: PropTypes.arrayOf(PropTypes.shape({
+      header: PropTypes.string,
+      items: PropTypes.arrayOf(PropTypes.shape({
+        display: PropTypes.string,
+        to: PropTypes.string,
+      })),
+    })),
+  }
+
+  static defaultProps = {
+    links: [],
+  }
+
   render() {
+    const {
+      links,
+      header,
+    } = this.props
+
     return <div styleName='index'>
       <LeftMiddleRight
         styleName='header'
@@ -41,7 +60,7 @@ export default class AppShell extends React.Component {
           items={[
             <FillParent>
               <h2>
-                UI-KIT
+                {header}
               </h2>
             </FillParent>,
           ]}
@@ -66,35 +85,36 @@ export default class AppShell extends React.Component {
       />
 
       <div styleName='row'>
-        <div styleName='sidebar-wrapper'>
-          <Sidebar styleName='sidebar'>
-            {
-              links.map((link, i) => {
-                return <Dropdown
-                  key={i}
-                  header={
-                    <div className={styles.dropheader}>
-                      {link.header}
-                    </div>
-                  }
-                >
-                  {
-                    link.items.map((item, j) => {
-                      return <Link
-                        key={j}
-                        to={item.to}
-                        className={styles.dropchild}
-                      >
-                        {item.display}
-                      </Link>
-                    })
-                  }
-                </Dropdown>
-              })
-            }
-          </Sidebar>
-        </div>
-
+        {
+          links.length !== 0 && <div styleName='sidebar-wrapper'>
+            <Sidebar styleName='sidebar'>
+              {
+                links.map((link, i) => {
+                  return <Dropdown
+                    key={i}
+                    header={
+                      <div className={styles.dropheader}>
+                        {link.header}
+                      </div>
+                    }
+                  >
+                    {
+                      link.items.map((item, j) => {
+                        return <Link
+                          key={j}
+                          to={item.to}
+                          className={styles.dropchild}
+                        >
+                          {item.display}
+                        </Link>
+                      })
+                    }
+                  </Dropdown>
+                })
+              }
+            </Sidebar>
+          </div>
+        }
         <div styleName='content'>
           {this.props.children}
         </div>
