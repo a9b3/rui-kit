@@ -13,6 +13,22 @@ import {
 }                     from '../../../../src'
 import { withRouter } from 'react-router-dom'
 
+const links = [
+  {
+    header: 'Components',
+    items: [
+      {
+        display: 'one',
+        to: '/',
+      },
+      {
+        display: 'two',
+        to: '/comp',
+      },
+    ],
+  },
+]
+
 @withRouter
 @CSSModules(styles)
 export default class AppShell extends React.Component {
@@ -52,26 +68,30 @@ export default class AppShell extends React.Component {
       <div styleName='row'>
         <div styleName='sidebar-wrapper'>
           <Sidebar styleName='sidebar'>
-            <Dropdown
-              header={
-                <div className={styles.dropheader}>
-                  Header
-                </div>
-              }
-            >
-              <Link
-                to='/'
-                className={styles.dropchild}
-              >
-                one
-              </Link>
-              <Link
-                to='/comp'
-                className={styles.dropchild}
-              >
-                two
-              </Link>
-            </Dropdown>
+            {
+              links.map((link, i) => {
+                return <Dropdown
+                  key={i}
+                  header={
+                    <div className={styles.dropheader}>
+                      {link.header}
+                    </div>
+                  }
+                >
+                  {
+                    link.items.map((item, j) => {
+                      return <Link
+                        key={j}
+                        to={item.to}
+                        className={styles.dropchild}
+                      >
+                        {item.display}
+                      </Link>
+                    })
+                  }
+                </Dropdown>
+              })
+            }
           </Sidebar>
         </div>
 
