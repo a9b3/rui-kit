@@ -36,6 +36,7 @@ export default (
     header={'UI-KIT'}
     links={links}
     rightNodeLinks={rightNodeLinks}
+    contentWidth={'1200px'}
   >
     <Route path='/' exact component={Index} />
     <Route path='/comp' component={Comp} />

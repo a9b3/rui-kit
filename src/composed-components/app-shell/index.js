@@ -32,6 +32,7 @@ export default class AppShell extends React.Component {
       display: PropTypes.string,
       to: PropTypes.string,
     })),
+    contentWidth: PropTypes.number,
   }
 
   static defaultProps = {
@@ -44,6 +45,7 @@ export default class AppShell extends React.Component {
       links,
       header,
       rightNodeLinks,
+      contentWidth,
     } = this.props
 
     return <div styleName='index'>
@@ -129,7 +131,12 @@ export default class AppShell extends React.Component {
             </Sidebar>
           </div>
         }
-        <div styleName='content'>
+        <div styleName='content'
+          style={{
+            width: '100%',
+            maxWidth: contentWidth,
+          }}
+        >
           {this.props.children}
         </div>
       </div>
