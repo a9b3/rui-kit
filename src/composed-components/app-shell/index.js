@@ -32,7 +32,9 @@ export default class AppShell extends React.Component {
       display: PropTypes.string,
       to: PropTypes.string,
     })),
-    contentWidth: PropTypes.number,
+    contentWidth: PropTypes.any,
+    className: PropTypes.string,
+    style: PropTypes.object,
   }
 
   static defaultProps = {
@@ -46,9 +48,14 @@ export default class AppShell extends React.Component {
       header,
       rightNodeLinks,
       contentWidth,
+      style,
+      className,
     } = this.props
 
-    return <div styleName='index'>
+    return <div styleName='index'
+      style={style}
+      className={className}
+    >
       <LeftMiddleRight
         styleName='header'
         left={<Row
