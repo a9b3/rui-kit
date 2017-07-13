@@ -1,0 +1,13 @@
+.container {
+  font-size: 1em;
+  padding: .5rem 1.4rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  opacity: 1;
+  transition: opacity .3s;
+
+  &:hover {
+    opacity: .8;
+    transition: opacity .3s;
+  }
+}

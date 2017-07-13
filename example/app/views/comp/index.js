@@ -3,7 +3,8 @@ import React      from 'react'
 import CSSModules from 'react-css-modules'
 import {
   Code,
-} from '../../../../src'
+  Button,
+}                 from '../../../../src'
 
 @CSSModules(styles)
 export default class Comp extends React.Component {
@@ -28,6 +29,40 @@ export default class Comp extends React.Component {
           ].join('\n')
         }
       </Code>
+
+      <h2>
+        Button
+      </h2>
+
+      <p>
+        Generic button.
+      </p>
+
+      <p>
+        <Button
+          color={'#ff0000'}
+        >
+          Hello my name is
+        </Button>
+      </p>
+
+      <p>
+        <Button
+          type='outline'
+          color={'#ff0000'}
+        >
+          Hello my name is
+        </Button>
+      </p>
+
+      <p>
+        <Button
+          href='#'
+          color={'#ff0000'}
+        >
+          Hello my name is
+        </Button>
+      </p>
 
     </div>
   }
