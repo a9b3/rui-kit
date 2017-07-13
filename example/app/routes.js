@@ -9,11 +9,7 @@ const links = [
     header: 'Components',
     items: [
       {
-        display: 'one',
-        to: '/',
-      },
-      {
-        display: 'two',
+        display: 'Components',
         to: '/comp',
       },
     ],
@@ -22,12 +18,8 @@ const links = [
 
 const rightNodeLinks = [
   {
-    display: 'one',
-    href: 'https://github.com/paypal/glamorous',
-  },
-  {
-    display: 'two',
-    to: '/comp',
+    display: 'Github',
+    href: 'https://github.com/esayemm/rui-kit',
   },
 ]
 
