@@ -21,7 +21,7 @@ export default class Code extends React.Component {
   _codeEl = undefined
 
   static propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     // classname for highlight.js to use to do syntax highlighting
     // http://highlightjs.readthedocs.io/en/latest/css-classes-reference.html
     type: PropTypes.string,
