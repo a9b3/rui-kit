@@ -4319,9 +4319,9 @@ jbs-base-babel@^0.0.2:
     babel-preset-react "^6.24.1"
     babel-preset-stage-0 "^6.24.1"
 
-jbs-fe@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.npmjs.org/jbs-fe/-/jbs-fe-0.0.12.tgz#3bd9ad6befb6513b7ff9741c4e6b91d1232f72c1"
+jbs-fe@^0.0.14:
+  version "0.0.14"
+  resolved "https://registry.npmjs.org/jbs-fe/-/jbs-fe-0.0.14.tgz#a0cb44848674167e63112eacfda98d217ee69946"
   dependencies:
     autoprefixer "^7.1.1"
     babel-loader "^7.0.0"
