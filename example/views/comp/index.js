@@ -4,7 +4,7 @@ import CSSModules from 'react-css-modules'
 import {
   Code,
   Button,
-}                 from '../../../../src'
+}                 from '../../../src'
 
 @CSSModules(styles)
 export default class Comp extends React.Component {

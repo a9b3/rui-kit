@@ -2,7 +2,7 @@ import React        from 'react'
 import { Route }    from 'react-router'
 import Index        from './views/index'
 import Comp         from './views/comp'
-import { AppShell } from '../../src'
+import { AppShell } from '../src'
 
 const links = [
   {
