@@ -1,5 +1,7 @@
 @import '~esayemm-styles/global';
 
 :global {
-
+  body {
+    background: lighten($gray5, 10);
+  }
 }

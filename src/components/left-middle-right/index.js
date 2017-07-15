@@ -21,30 +21,30 @@ export default class LeftMiddleRight extends React.Component {
       ...rest,
     } = this.props
 
-    return <div
+    return <header
       styleName='container'
       {...rest}
       style={Object.assign({}, style)}
     >
 
-      <div
+      <section
         styleName='left'
       >
         {left}
-      </div>
+      </section>
 
-      <div
+      <section
         styleName='middle'
       >
         {middle}
-      </div>
+      </section>
 
-      <div
+      <section
         styleName='right'
       >
         {right}
-      </div>
+      </section>
 
-    </div>
+    </header>
   }
 }

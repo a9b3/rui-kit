@@ -4,51 +4,86 @@ import CSSModules from 'react-css-modules'
 import PropTypes  from 'prop-types'
 import {
   Loading,
+  LoadingOverlay,
   Code,
 } from '../../../src'
 import * as textFormat from 'services/text-format'
 
 @CSSModules(styles)
 export default class LoadingView extends React.Component {
-  static propTypes = {
-
-  }
-
-  static defaultProps = {
-
-  }
-
-  state = {
-
-  }
-
   render() {
     const {
       ...rest,
     } = this.props
 
-    return <div
+    return <article
       styleName='container'
     >
+      <article>
+        <section>
+          <h2>Component</h2>
+          <div style={{ fontSize: '40px' }}>
+            <Loading
+              show
+              color='#000000'
+            />
+          </div>
+        </section>
 
-      <div style={{ fontSize: '40px' }}>
-        <Loading
-          show
-          color='#000000'
-        />
-      </div>
+        <section>
+          <h2>Example</h2>
+          <Code type='html'>
+            {
+              textFormat.alignText(`
+                <Loading
+                  show
+                  color='#000000'
+                />
+              `)
+            }
+          </Code>
+        </section>
 
-      <Code type='html'>
-        {textFormat.alignText(`
-          <Loading
-            show
-            color='#000000'
-          />
-        `)}
-      </Code>
+        <p>
+          hi
+          okok
+          Hello World!
+        </p>
+      </article>
 
-    okok
-      Hello World!
-    </div>
+      <article>
+        <section>
+          <h2>Component</h2>
+          <div style={{
+            border: '1px solid black',
+            height: 300,
+            fontSize: '40px',
+            position: 'relative',
+          }}>
+            <LoadingOverlay show />
+          </div>
+        </section>
+
+        <section>
+          <h2>Example</h2>
+          <Code type='html'>
+            {
+              textFormat.alignText(`
+                <Loading
+                  show
+                  color='#ff0000'
+                />
+              `)
+            }
+          </Code>
+        </section>
+
+        <p>
+          hi
+          okok
+          Hello World!
+        </p>
+      </article>
+    </article>
   }
 }

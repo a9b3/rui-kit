@@ -8,10 +8,8 @@ import {
 @CSSModules(styles)
 export default class Index extends React.Component {
   render() {
-    return <div styleName='index'>
-      <h2>
-        Install
-      </h2>
+    return <article>
+      <h2>Install</h2>
 
       <Code>
         {`yarn add rui-kit --save`}
@@ -24,7 +22,6 @@ export default class Index extends React.Component {
         velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
         volutpat sit amet.
       </p>
-
-    </div>
+    </article>
   }
 }

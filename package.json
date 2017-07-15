@@ -13,7 +13,7 @@
     "history": "^4.6.3",
     "html": "^1.0.0",
     "invariant": "^2.2.2",
-    "jbs-fe": "^0.0.17",
+    "jbs-fe": "^0.0.20",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-addons-test-utils": "^15.6.0",
@@ -28,8 +28,8 @@
     "lint": "./node_modules/eslint/bin/eslint.js . --fix",
     "build": "BABEL_REACT=true NODE_PATH=./src ./node_modules/jbs-fe/bin.js build:package --input src --output build --es-input-file src/index.js --es-output-file build/index.es.js",
     "start": "BABEL_REACT=true NODE_PATH=./example:./src ./node_modules/jbs-fe/bin.js dev --app-index ./example/index.js --html-index ./example/index.html --context ./example --favicon-path ./example/assets/images/cat.jpg",
-    "test": "BABEL_REACT=true NODE_ENV=test ./node_modules/jbs-fe/bin.js test --single-run",
-    "test:watch": "BABEL_REACT=true NODE_ENV=test ./node_modules/jbs-fe/bin.js test",
+    "test": "BABEL_REACT=true ./node_modules/jbs-fe/bin.js test --single-run",
+    "test:watch": "BABEL_REACT=true ./node_modules/jbs-fe/bin.js test",
     "prepublish": "npm run build",
     "preversion": "npm run lint && npm run test",
     "version": "npm publish",
@@ -54,9 +54,12 @@
   "dependencies": {
     "highlight.js": "^9.12.0",
     "tinycolor2": "^1.4.1",
-    "webpack": "^3.2.0"
+    "webpack": "2.7.0"
   },
   "files": [
     "build"
-  ]
+  ],
+  "peerDependencies": {
+    "sass-loader": "^6.0.6"
+  }
 }

@@ -42,6 +42,10 @@ export default class AppShell extends React.Component {
     rightNodeLinks: [],
   }
 
+  renderSidebarItems = () => {
+
+  }
+
   render() {
     const {
       links,
@@ -64,9 +68,9 @@ export default class AppShell extends React.Component {
             <FillParent
               key={0}
             >
-              <h2>
+              <h3>
                 {header}
-              </h2>
+              </h3>
             </FillParent>,
           ]}
         />}
@@ -75,9 +79,9 @@ export default class AppShell extends React.Component {
             <FillParent
               key={0}
             >
-              <h1 key={this.props.location.key} className={styles.h1}>
+              <h3 key={this.props.location.key} className={styles['middle-title']}>
                 {this.props.location.pathname.replace('/', '')}
-              </h1>
+              </h3>
             </FillParent>,
           ]}
         />}
@@ -85,22 +89,19 @@ export default class AppShell extends React.Component {
           align='right'
           items={rightNodeLinks.map(({ display, to, href }, i) => {
             return <FillParent
-              className={styles.dropchild}
               key={i}
+              className={styles.item}
             >
               {
                 to
-                  ? <Link
-                    className={styles.link}
-                    to={to}
-                  >
-                    {display}
-                  </Link>
-                  : <a href={href}
-                    className={styles.link}
-                  >
-                    {display}
-                  </a>
+                ? <Link className={styles.link} to={to}>
+                  {display}
+                </Link>
+                : <a href={href}
+                  className={styles.link}
+                >
+                  {display}
+                </a>
               }
             </FillParent>
           })}
@@ -138,13 +139,15 @@ export default class AppShell extends React.Component {
             </Sidebar>
           </div>
         }
-        <div styleName='content'
-          style={{
+
+        <div styleName='content'>
+          <div style={{
             width: '100%',
             maxWidth: contentWidth,
-          }}
-        >
-          {this.props.children}
+            margin: '0 auto',
+          }}>
+            {this.props.children}
+          </div>
         </div>
       </div>
     </div>

@@ -50,14 +50,14 @@ export default class Dropdown extends React.Component {
       styleName='container'
       {...rest}
     >
-      <div
+      <header
         onClick={this.handleClick}
       >
         {header}
-      </div>
+      </header>
 
       {
-        isOpened && <div>
+        isOpened && <div styleName='content'>
           {children}
         </div>
       }
