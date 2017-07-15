@@ -15,6 +15,7 @@ export default class Sidebar extends React.Component {
     const {
       header,
       footer,
+      children,
       ...rest,
     } = this.props
 
@@ -22,9 +23,13 @@ export default class Sidebar extends React.Component {
       styleName='container'
       {...rest}
     >
-      {header}
+      <div>
+        {header}
+      </div>
 
-      {this.props.children}
+      <div styleName='content'>
+        {children}
+      </div>
 
       {
         footer && <footer styleName='footer'>

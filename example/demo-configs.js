@@ -4,6 +4,10 @@ import {
   Loading,
   LoadingOverlay,
   LeftMiddleRight,
+  Row,
+  FillParent,
+  Sidebar,
+  Dropdown,
 } from '../src'
 
 export default [
@@ -170,6 +174,148 @@ export default [
                 </div>
               }
             />
+          `,
+        },
+      },
+      {
+        display: 'Row',
+        to: '/row',
+        demoComponentAttr: {
+          header: `<Row />`,
+          description: 'A component that is basically just a flex row.',
+          demos: [
+            <Row
+              align='left'
+              items={['one', 'two', 'three']}
+            />,
+            <Row
+              align='center'
+              items={['one', 'two', 'three']}
+            />,
+            <Row
+              align='right'
+              items={['one', 'two', 'three']}
+            />,
+          ],
+          codeSnippetType: 'html',
+          codeSnippet: `
+            <Row
+              align='left'
+              items={['one', 'two', 'three']}
+            />,
+            <Row
+              align='center'
+              items={['one', 'two', 'three']}
+            />,
+            <Row
+              align='right'
+              items={['one', 'two', 'three']}
+            />,
+          `,
+        },
+      },
+      {
+        display: 'FillParent',
+        to: '/fill-parent',
+        demoComponentAttr: {
+          header: `<FillParent />`,
+          description: 'A simple component that just fills parent.',
+          demos: [
+            <div style={{ height: 100, width: 300, border: '1px solid black' }}>
+              <FillParent>
+                Hello
+              </FillParent>
+            </div>,
+            <div style={{ height: 100, width: 300, border: '1px solid black' }}>
+              <FillParent style={{ background: 'yellow' }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend
+                velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
+                volutpat sit amet.
+              </FillParent>
+            </div>,
+          ],
+          codeSnippetType: 'html',
+          codeSnippet: `
+            <div style={{ height: 100, width: 300, border: '1px solid black' }}>
+              <FillParent>
+                Hello
+              </FillParent>
+            </div>,
+            <div style={{ height: 100, width: 300, border: '1px solid black' }}>
+              <FillParent style={{ background: 'yellow' }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend
+                velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
+                volutpat sit amet.
+              </FillParent>
+            </div>,
+          `,
+        },
+      },
+      {
+        display: 'Sidebar',
+        to: '/sidebar',
+        demoComponentAttr: {
+          header: `<Sidebar />`,
+          description: 'A simple sidebar. With sticky footer.',
+          demos: [
+            <div
+              style={{ height: 300, width: 300, border: '1px solid black' }}
+            >
+              <Sidebar
+                header={'Header'}
+                footer={'Footer'}
+              >
+                Content of sidebar.
+              </Sidebar>
+            </div>,
+          ],
+          codeSnippetType: 'html',
+          codeSnippet: `
+            <Sidebar
+              header={'Header'}
+              footer={'Footer'}
+            >
+              Content of sidebar.
+            </Sidebar>,
+          `,
+        },
+      },
+      {
+        display: 'Dropdown',
+        to: '/dropdown',
+        demoComponentAttr: {
+          header: `<Dropdown />`,
+          description: 'Dropdown component.',
+          demos: [
+            <Dropdown
+              header={'Click to Close'}
+            >
+              <div>
+                Child
+              </div>
+              <div>
+                Child2
+              </div>
+              <div>
+                Child3
+              </div>
+            </Dropdown>,
+          ],
+          codeSnippetType: 'html',
+          codeSnippet: `
+            <Dropdown
+              header={'Click to Close'}
+            >
+              <div>
+                Child
+              </div>
+              <div>
+                Child2
+              </div>
+              <div>
+                Child3
+              </div>
+            </Dropdown>
           `,
         },
       },
