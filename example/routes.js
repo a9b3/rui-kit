@@ -1,31 +1,30 @@
-import React        from 'react'
-import { Route }    from 'react-router'
-import Index        from './views/index'
-import CodeView     from './views/code'
-import ButtonView   from './views/button'
-import LoadingView  from './views/loading'
-import { AppShell } from '../src'
-import { Link }     from 'react-router-dom'
+import React         from 'react'
+import { Route }     from 'react-router'
+import { Link }      from 'react-router-dom'
+import { AppShell }  from '../src'
+import Index         from './views/index'
+import demoLinks     from './services/demo-configs.js'
+import DemoComponent from './components/demo-component'
 
-const links = [
-  {
-    header: 'Components',
-    items: [
-      {
-        display: 'Code',
-        to: '/code',
-      },
-      {
-        display: 'Button',
-        to: '/button',
-      },
-      {
-        display: 'Loading',
-        to: '/loading',
-      },
-    ],
-  },
-]
+/**
+ * @param {array.<node>} links
+ * @returns {array.<Route>}
+ */
+function linksToRoute(links) {
+  const items = links.reduce((arr, val) => {
+    return arr.concat(val.items)
+  }, [])
+
+  return items.map((item, key) => {
+    return <Route
+      key={key}
+      path={item.to}
+      component={() => <DemoComponent
+        {...item.demoComponentAttr}
+      />}
+    />
+  })
+}
 
 const rightNodeLinks = [
   {
@@ -37,13 +36,11 @@ const rightNodeLinks = [
 export default (
   <AppShell
     header={<Link to='/'>UI-KIT</Link>}
-    links={links}
+    links={demoLinks}
     rightNodeLinks={rightNodeLinks}
     contentWidth={'920px'}
   >
     <Route path='/' exact component={Index} />
-    <Route path='/code' component={CodeView} />
-    <Route path='/button' component={ButtonView} />
-    <Route path='/loading' component={LoadingView} />
+    {linksToRoute(demoLinks)}
   </AppShell>
 )

@@ -3,7 +3,7 @@ import React       from 'react'
 import CSSModules  from 'react-css-modules'
 import PropTypes   from 'prop-types'
 import {
-  Link,
+  NavLink,
   withRouter,
 }                  from 'react-router-dom'
 import {
@@ -90,11 +90,12 @@ export default class AppShell extends React.Component {
             >
               {
                 to
-                  ? <Link className={styles.link} to={to}>
+                  ? <NavLink className={styles.link} to={to}>
                     {display}
-                  </Link>
+                  </NavLink>
                   : <a href={href}
                     className={styles.link}
+                    target='_blank'
                   >
                     {display}
                   </a>
@@ -120,13 +121,14 @@ export default class AppShell extends React.Component {
                   >
                     {
                       link.items.map((item, j) => {
-                        return <Link
+                        return <NavLink
                           key={j}
                           to={item.to}
                           className={styles.dropchild}
+                          activeClassName={styles.active}
                         >
                           {item.display}
-                        </Link>
+                        </NavLink>
                       })
                     }
                   </Dropdown>

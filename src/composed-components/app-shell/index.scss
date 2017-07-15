@@ -61,10 +61,14 @@
   font-weight: 500;
 }
 
+$dropchild-color: $cyan2;
 .dropchild {
-  @include hoverBg($cyan1);
+  @include hoverBg(darken($dropchild-color, 20));
   composes: item;
   font-size: .85em;
+}
+.dropchild.active {
+  background: $dropchild-color;
 }
 
 .link {

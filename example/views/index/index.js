@@ -1,9 +1,7 @@
-import styles     from './index.scss'
-import React      from 'react'
-import CSSModules from 'react-css-modules'
-import {
-  Code,
-}                 from '../../../src'
+import styles      from './index.scss'
+import React       from 'react'
+import CSSModules  from 'react-css-modules'
+import * as ruiKit from '../../../src'
 
 @CSSModules(styles)
 export default class Index extends React.Component {
@@ -11,17 +9,21 @@ export default class Index extends React.Component {
     return <article>
       <h2>Install</h2>
 
-      <Code>
+      <ruiKit.Code>
         {`yarn add rui-kit --save`}
-      </Code>
+      </ruiKit.Code>
 
       <p>
-        A set of react components. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend
-        velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
-        volutpat sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend
-        velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
-        volutpat sit amet.
+        A set of react components.
       </p>
+
+      {
+        Object.keys(ruiKit).map(key => {
+          return <div key={key}>
+            <b>{key}</b>
+          </div>
+        })
+      }
     </article>
   }
 }
