@@ -1,16 +1,27 @@
 import React        from 'react'
 import { Route }    from 'react-router'
 import Index        from './views/index'
-import Comp         from './views/comp'
+import CodeView     from './views/code'
+import ButtonView   from './views/button'
+import LoadingView  from './views/loading'
 import { AppShell } from '../src'
+import { Link }     from 'react-router-dom'
 
 const links = [
   {
     header: 'Components',
     items: [
       {
-        display: 'Components',
-        to: '/comp',
+        display: 'Code',
+        to: '/code',
+      },
+      {
+        display: 'Button',
+        to: '/button',
+      },
+      {
+        display: 'Loading',
+        to: '/loading',
       },
     ],
   },
@@ -25,12 +36,14 @@ const rightNodeLinks = [
 
 export default (
   <AppShell
-    header={'UI-KIT'}
+    header={<Link to='/'>UI-KIT</Link>}
     links={links}
     rightNodeLinks={rightNodeLinks}
-    contentWidth={'1200px'}
+    contentWidth={'920px'}
   >
     <Route path='/' exact component={Index} />
-    <Route path='/comp' component={Comp} />
+    <Route path='/code' component={CodeView} />
+    <Route path='/button' component={ButtonView} />
+    <Route path='/loading' component={LoadingView} />
   </AppShell>
 )

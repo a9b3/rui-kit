@@ -20,7 +20,7 @@ export default class Loading extends React.Component {
 
   render() {
     const {
-      color = '#fff',
+      color = '#000000',
       show,
       style,
       ...rest,
