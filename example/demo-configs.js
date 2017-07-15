@@ -3,7 +3,7 @@ import {
   Button,
   Loading,
   LoadingOverlay,
-} from '../../src'
+} from '../src'
 
 export default [
   {

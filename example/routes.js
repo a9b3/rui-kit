@@ -3,7 +3,7 @@ import { Route }     from 'react-router'
 import { Link }      from 'react-router-dom'
 import { AppShell }  from '../src'
 import Index         from './views/index'
-import demoLinks     from './services/demo-configs.js'
+import demoLinks     from './demo-configs.js'
 import DemoComponent from './components/demo-component'
 
 /**
