@@ -15,6 +15,7 @@ export default class LoadingView extends React.Component {
     >
       <DemoComponent
         header={`<Loading />`}
+        description='The loading icon is sized using em values so set parent element font size to resize loading icon.'
         demos={[
           <div style={{ fontSize: '40px' }}>
             <Loading
