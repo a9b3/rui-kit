@@ -1,14 +1,31 @@
-import styles     from './index.scss'
-import React      from 'react'
-import CSSModules from 'react-css-modules'
+import styles          from './index.scss'
+import React           from 'react'
+import CSSModules      from 'react-css-modules'
+import {
+  Code,
+}                    from '../../../src'
+import DemoComponent from 'components/demo-component'
 
 @CSSModules(styles)
-export default class Code extends React.Component {
+export default class CodeView extends React.Component {
   render() {
-    return <div
+    return <article
       styleName='container'
     >
-      Hello World!
-    </div>
+      <DemoComponent
+        header={`<Code />`}
+        demos={[
+          <Code>
+            {'hi'}
+          </Code>,
+        ]}
+        codeSnippet={`
+          <Code>
+            {'hi'}
+          </Code>
+        `}
+        codeSnippetType='html'
+      />
+    </article>
   }
 }

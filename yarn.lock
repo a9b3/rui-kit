@@ -2695,9 +2695,9 @@ es6-weak-map@^2.0.1:
     es6-iterator "^2.0.1"
     es6-symbol "^3.1.1"
 
-esayemm-styles@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.npmjs.org/esayemm-styles/-/esayemm-styles-2.0.10.tgz#e9030d12409da4bdb49e4f41364c4acd00b66b1d"
+esayemm-styles@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/esayemm-styles/-/esayemm-styles-2.1.1.tgz#a6dd6dd9887d0b90675224d08fc2e218982199ee"
   dependencies:
     normalize.css "^6.0.0"
 

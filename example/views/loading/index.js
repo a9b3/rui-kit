@@ -1,12 +1,11 @@
-import styles     from './index.scss'
-import React      from 'react'
-import CSSModules from 'react-css-modules'
+import styles        from './index.scss'
+import React         from 'react'
+import CSSModules    from 'react-css-modules'
 import {
   Loading,
   LoadingOverlay,
-  Code,
-} from '../../../src'
-import * as textFormat from 'services/text-format'
+}                    from '../../../src'
+import DemoComponent from 'components/demo-component'
 
 @CSSModules(styles)
 export default class LoadingView extends React.Component {
@@ -14,41 +13,30 @@ export default class LoadingView extends React.Component {
     return <article
       styleName='container'
     >
-      <article>
-        <section>
-          <h2>Component</h2>
+      <DemoComponent
+        header={`<Loading />`}
+        demos={[
           <div style={{ fontSize: '40px' }}>
             <Loading
               show
               color='#000000'
             />
-          </div>
-        </section>
+          </div>,
+        ]}
+        codeSnippet={`
+          <div style={{ fontSize: '40px' }}>
+            <Loading
+              show
+              color='#000000'
+            />
+          </div>,
+        `}
+        codeSnippetType='html'
+      />
 
-        <section>
-          <h2>Example</h2>
-          <Code type='html'>
-            {
-              textFormat.alignText(`
-                <Loading
-                  show
-                  color='#000000'
-                />
-              `)
-            }
-          </Code>
-        </section>
-
-        <p>
-          hi
-          okok
-          Hello World!
-        </p>
-      </article>
-
-      <article>
-        <section>
-          <h2>Component</h2>
+      <DemoComponent
+        header={`<LoadingOverlay />`}
+        demos={[
           <div style={{
             border: '1px solid black',
             height: 300,
@@ -57,28 +45,21 @@ export default class LoadingView extends React.Component {
           }}>
             <LoadingOverlay show />
           </div>
-        </section>
+        ]}
+        codeSnippet={`
+          <div style={{
+            border: '1px solid black',
+            height: 300,
+            fontSize: '40px',
+            position: 'relative',
+          }}>
+            <LoadingOverlay show />
+          </div>
+        `}
+        codeSnippetType='html'
+        description='A loading overlay, this component has absolute position so be sure to put it in a parent element with relative position.'
+      />
 
-        <section>
-          <h2>Example</h2>
-          <Code type='html'>
-            {
-              textFormat.alignText(`
-                <Loading
-                  show
-                  color='#ff0000'
-                />
-              `)
-            }
-          </Code>
-        </section>
-
-        <p>
-          hi
-          okok
-          Hello World!
-        </p>
-      </article>
     </article>
   }
 }
