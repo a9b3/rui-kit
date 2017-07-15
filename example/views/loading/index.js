@@ -1,7 +1,6 @@
 import styles     from './index.scss'
 import React      from 'react'
 import CSSModules from 'react-css-modules'
-import PropTypes  from 'prop-types'
 import {
   Loading,
   LoadingOverlay,
@@ -12,10 +11,6 @@ import * as textFormat from 'services/text-format'
 @CSSModules(styles)
 export default class LoadingView extends React.Component {
   render() {
-    const {
-      ...rest,
-    } = this.props
-
     return <article
       styleName='container'
     >
