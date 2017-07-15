@@ -18,8 +18,9 @@
   height: 6rem;
   background: $cyan3;
   color: white;
-  box-shadow: 0 5px 15px rgba(black, .1);
+  box-shadow: 0 5px 10px rgba(black, .3);
   padding: 0 2rem;
+  z-index: 3;
 }
 
 .middle-title {
@@ -30,11 +31,12 @@
 .sidebar-wrapper {
   height: 100%;
   width: 20rem;
+  z-index: 2;
 
   .sidebar {
     background: $slate;
-    box-shadow: 5px 0 15px rgba(black, .1);
     color: white;
+    border-right: 1px solid darken($slate, 10);
   }
 }
 
@@ -46,7 +48,7 @@
 }
 
 .dropheader {
-  padding: 1em 2em;
+  padding: 1rem 2rem;
   cursor: pointer;
   background: darken($slate, 5);
   font-weight: 500;
@@ -62,8 +64,10 @@
 .dropchild {
   @include hoverBg($cyan1);
   composes: item;
+  font-size: .85em;
 }
 
 .link {
   text-transform: uppercase;
+  font-size: .85em;
 }

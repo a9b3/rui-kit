@@ -42,10 +42,6 @@ export default class AppShell extends React.Component {
     rightNodeLinks: [],
   }
 
-  renderSidebarItems = () => {
-
-  }
-
   render() {
     const {
       links,
