@@ -1,10 +1,12 @@
 .container {
+  overflow: hidden;
   font-size: 1em;
   padding: .5rem 1.4rem;
   cursor: pointer;
   border-radius: 2rem;
   opacity: 1;
   transition: opacity .3s;
+  position: relative;
 
   &:hover {
     opacity: .8;

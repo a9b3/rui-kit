@@ -18,6 +18,10 @@ export default class LoadingOverlay extends React.Component {
       ...rest,
     } = this.props
 
+    if (!show) {
+      return null
+    }
+
     return <div
       styleName='container'
       {...rest}

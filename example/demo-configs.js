@@ -10,6 +10,14 @@ import {
   Dropdown,
 } from '../src'
 
+function timeoutPromise() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, 1000)
+  })
+}
+
 export default [
   {
     header: 'Components',
@@ -41,6 +49,7 @@ export default [
             <Button>
               Hello I am a button.
             </Button>,
+
             <Button
               style={{
                 display: 'block',
@@ -49,6 +58,29 @@ export default [
               color='#ff0000'
             >
               Hello I am a button.
+            </Button>,
+
+            <Button
+              style={{
+                display: 'block',
+              }}
+              type='outline'
+              color='#ff0000'
+              onClick={timeoutPromise}
+            >
+              Click will run function Default Loading Overlay
+            </Button>,
+
+            <Button
+              style={{
+                display: 'block',
+              }}
+              type='outline'
+              color='#ff0000'
+              onClick={timeoutPromise}
+              loadingOverlayAttr={{ style: {backgroundColor: 'blue'},  loadingAttr: { color: 'green' } }}
+            >
+              Override Loading Overlay
             </Button>,
           ],
           codeSnippetType: 'html',
@@ -65,7 +97,19 @@ export default [
               color='#ff0000'
             >
               Hello I am a button.
-            </Button>,
+            </Button>
+
+            <Button
+              style={{
+                display: 'block',
+              }}
+              type='outline'
+              color='#ff0000'
+              onClick={timeoutPromise}
+              loadingOverlayAttr={{ style: {backgroundColor: 'blue'},  loadingAttr: { color: 'green' } }}
+            >
+              On Click is an async function
+            </Button>
           `,
         },
       },
