@@ -6,6 +6,7 @@ import {
   Code,
 }                      from '../../../src'
 import * as textFormat from 'services/text-format'
+import {Helmet}        from 'react-helmet'
 
 @CSSModules(styles)
 export default class DemoComponent extends React.Component {
@@ -29,6 +30,9 @@ export default class DemoComponent extends React.Component {
     return <article
       styleName='container'
     >
+      <Helmet>
+        <title>{`rui-kit | ${header}`}</title>
+      </Helmet>
       <h2>{header}</h2>
       {description && <p>{description}</p>}
 
