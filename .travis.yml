@@ -8,13 +8,15 @@ addons:
     packages:
       - google-chrome-stable
 
+install:
+  - yarn
+  - pip install awscli
+
 cache:
+  pip: true
   yarn: true
   directories:
     - node_modules
-
-install:
-  - yarn
 
 before_script:
   - export DISPLAY=:99.0
