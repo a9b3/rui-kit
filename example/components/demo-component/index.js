@@ -31,7 +31,7 @@ export default class DemoComponent extends React.Component {
       styleName='container'
     >
       <Helmet>
-        <title>{`rui-kit | ${header}`}</title>
+        <title>{`React UI Kit | ${header}`}</title>
       </Helmet>
       <h2>{header}</h2>
       {description && <p>{description}</p>}
