@@ -1,5 +1,7 @@
 # React UI Kit
 
+[![Build Status](https://travis-ci.org/esayemm/rui-kit.svg?branch=master)](https://travis-ci.org/esayemm/rui-kit)
+
 ```
 yarn add rui-kit --save
 ```
