@@ -4401,9 +4401,9 @@ jbs-base-babel@^0.0.2:
     babel-preset-react "^6.24.1"
     babel-preset-stage-0 "^6.24.1"
 
-jbs-fe@^0.0.27:
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/jbs-fe/-/jbs-fe-0.0.27.tgz#d847dfd4c9dc75fdd2806b383b7fa2dac60ff591"
+jbs-fe@^0.0.28:
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/jbs-fe/-/jbs-fe-0.0.28.tgz#843dc2a0640fd4fdd4a9ff7c22e744f79b17cbf9"
   dependencies:
     autoprefixer "^7.1.1"
     babel-loader "^7.0.0"
