@@ -13,7 +13,7 @@
     "history": "^4.6.3",
     "html": "^1.0.0",
     "invariant": "^2.2.2",
-    "jbs-fe": "^0.0.22",
+    "jbs-fe": "^0.0.26",
     "kontinuum-route53": "^0.1.3",
     "kontinuum-s3-deploy": "^0.1.3",
     "prop-types": "^15.5.10",
@@ -37,9 +37,9 @@
     "preversion": "npm run lint && npm run test",
     "version": "npm publish",
     "postversion": "git add . && git push && git push --tags",
-		"deploy:s3": "./node_modules/kontinuum-s3-deploy/script.sh --name rui.esayemm.com ./example-build",
-		"deploy:route53": "./node_modules/kontinuum-route53 --name rui.esayemm.com --root esayemm.com",
-		"deploy-example": "npm run build:example && npm run deploy:s3 && npm run deploy:route53"
+    "deploy:s3": "./node_modules/kontinuum-s3-deploy/script.sh --name rui.esayemm.com ./example-build",
+    "deploy:route53": "./node_modules/kontinuum-route53/script.sh --name rui.esayemm.com --root esayemm.com",
+    "deploy-example": "npm run build:example && npm run deploy:s3 && npm run deploy:route53"
   },
   "main": "./build/index.js",
   "module": "./build/index.es.js",
@@ -58,6 +58,7 @@
     ]
   },
   "dependencies": {
+    "deploy": "^1.0.3",
     "highlight.js": "^9.12.0",
     "tinycolor2": "^1.4.1"
   },

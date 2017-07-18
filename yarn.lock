@@ -2268,6 +2268,10 @@ depd@1.1.0, depd@~1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/depd/-/depd-1.1.0.tgz#e1bd82c6aab6ced965b97b88b17ed3e528ca18c3"
 
+deploy@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/deploy/-/deploy-1.0.3.tgz#ab846f5e228610054556d9b73df0b2f45af84fb0"
+
 des.js@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/des.js/-/des.js-1.0.0.tgz#c074d2e2aa6a8a9a07dbd61f9a15c2cd83ec8ecc"
@@ -4397,9 +4401,9 @@ jbs-base-babel@^0.0.2:
     babel-preset-react "^6.24.1"
     babel-preset-stage-0 "^6.24.1"
 
-jbs-fe@^0.0.22:
-  version "0.0.22"
-  resolved "https://registry.npmjs.org/jbs-fe/-/jbs-fe-0.0.22.tgz#ff03b831c6ca8624867dbc023a56fd7ff5b7dccd"
+jbs-fe@^0.0.26:
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/jbs-fe/-/jbs-fe-0.0.26.tgz#bcaa749707616097256137e2ad73ece7c66ead3e"
   dependencies:
     autoprefixer "^7.1.1"
     babel-loader "^7.0.0"
