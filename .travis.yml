@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - "8.1"
+
+sudo: required
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+install:
+  - yarn
+
+before_script:
+  - export CONTINUOUS_INTEGRATION=true
+
+script:
+  - yarn test
+
+after_success:
+  - test $TRAVIS_BRANCH = "production" && yarn run deploy-example
