@@ -8,8 +8,6 @@ addons:
     packages:
       - google-chrome-stable
 
-sudo: required
-
 cache:
   yarn: true
   directories:
