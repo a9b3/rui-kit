@@ -9,9 +9,9 @@ import {
 import {
   LeftMiddleRight,
   Row,
-  FillParent,
   Sidebar,
   Dropdown,
+  TruncateText,
 }                  from '../../index.js'
 
 @withRouter
@@ -61,46 +61,40 @@ export default class AppShell extends React.Component {
         left={<Row
           align='left'
           items={[
-            <FillParent
-              key={0}
-            >
-              <h3>
-                {header}
-              </h3>
-            </FillParent>,
+            <h3 key={0}>
+              {header}
+            </h3>
           ]}
         />}
         middle={<Row
           items={[
-            <FillParent
-              key={0}
+            <TruncateText
+              key={this.props.location.key}
+              className={styles['middle-title']}
             >
-              <h3 key={this.props.location.key} className={styles['middle-title']}>
-                {this.props.location.pathname.replace('/', '')}
-              </h3>
-            </FillParent>,
+              {this.props.location.pathname.replace('/', '')}
+            </TruncateText>
           ]}
         />}
         right={<Row
           align='right'
           items={rightNodeLinks.map(({ display, to, href }, i) => {
-            return <FillParent
-              key={i}
-              className={styles.item}
+            const attr = {
+              key: i,
+              className: `${styles.item} ${styles.link}`,
+            }
+
+            return to
+            ? <NavLink {...attr} to={to}>
+              {display}
+            </NavLink>
+            : <a
+              {...attr}
+              href={href}
+              target='_blank'
             >
-              {
-                to
-                  ? <NavLink className={styles.link} to={to}>
-                    {display}
-                  </NavLink>
-                  : <a href={href}
-                    className={styles.link}
-                    target='_blank'
-                  >
-                    {display}
-                  </a>
-              }
-            </FillParent>
+              {display}
+            </a>
           })}
         />}
       />

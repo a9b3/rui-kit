@@ -5,9 +5,10 @@ import {
   LoadingOverlay,
   LeftMiddleRight,
   Row,
-  FillParent,
   Sidebar,
   Dropdown,
+  Dropfile,
+  TruncateText,
 } from '../src'
 
 function timeoutPromise() {
@@ -265,43 +266,6 @@ export default [
         },
       },
       {
-        display: 'FillParent',
-        to: '/fill-parent',
-        demoComponentAttr: {
-          header: `<FillParent />`,
-          description: 'A simple component that just fills parent.',
-          demos: [
-            <div style={{ height: 100, width: 300, border: '1px solid black' }}>
-              <FillParent>
-                Hello
-              </FillParent>
-            </div>,
-            <div style={{ height: 100, width: 300, border: '1px solid black' }}>
-              <FillParent style={{ background: 'yellow' }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend
-                velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
-                volutpat sit amet.
-              </FillParent>
-            </div>,
-          ],
-          codeSnippetType: 'html',
-          codeSnippet: `
-            <div style={{ height: 100, width: 300, border: '1px solid black' }}>
-              <FillParent>
-                Hello
-              </FillParent>
-            </div>,
-            <div style={{ height: 100, width: 300, border: '1px solid black' }}>
-              <FillParent style={{ background: 'yellow' }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend
-                velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
-                volutpat sit amet.
-              </FillParent>
-            </div>,
-          `,
-        },
-      },
-      {
         display: 'Sidebar',
         to: '/sidebar',
         demoComponentAttr: {
@@ -366,6 +330,45 @@ export default [
                 Child3
               </div>
             </Dropdown>
+          `,
+        },
+      },
+      {
+        display: 'Dropfile',
+        to: '/dropfile',
+        demoComponentAttr: {
+          header: `<Dropfile />`,
+          description: 'Dropfile component.',
+          demos: [
+            <Dropfile>
+              hi
+            </Dropfile>,
+          ],
+          codeSnippetType: 'html',
+          codeSnippet: `
+          `,
+        },
+      },
+      {
+        display: 'TruncateText',
+        to: '/truncate-text',
+        demoComponentAttr: {
+          header: `<TruncateText />`,
+          description: 'TruncateText component.',
+          demos: [
+            <TruncateText>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend
+              velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
+              volutpat sit amet.
+            </TruncateText>,
+          ],
+          codeSnippetType: 'html',
+          codeSnippet: `
+            <TruncateText>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend
+              velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
+              volutpat sit amet.
+            </TruncateText>
           `,
         },
       },

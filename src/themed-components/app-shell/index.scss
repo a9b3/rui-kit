@@ -15,7 +15,7 @@
 
 .header {
   composes: flex-row;
-  height: 6rem;
+  height: 4.5rem;
   background: $cyan3;
   color: white;
   box-shadow: 0 5px 10px rgba(black, .3);
@@ -65,7 +65,7 @@ $dropchild-color: $cyan2;
 .dropchild {
   @include hoverBg(darken($dropchild-color, 20));
   composes: item;
-  font-size: .85em;
+  font-size: .8em;
 }
 .dropchild.active {
   background: $dropchild-color;
