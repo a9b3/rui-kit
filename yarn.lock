@@ -2268,10 +2268,6 @@ depd@1.1.0, depd@~1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/depd/-/depd-1.1.0.tgz#e1bd82c6aab6ced965b97b88b17ed3e528ca18c3"
 
-deploy@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/deploy/-/deploy-1.0.3.tgz#ab846f5e228610054556d9b73df0b2f45af84fb0"
-
 des.js@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/des.js/-/des.js-1.0.0.tgz#c074d2e2aa6a8a9a07dbd61f9a15c2cd83ec8ecc"
@@ -4474,6 +4470,10 @@ jpeg-js@^0.2.0:
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.1.9"
   resolved "https://registry.npmjs.org/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
+
+js-functions@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/js-functions/-/js-functions-0.0.4.tgz#4a006c9b642223d3e23214d5dcadbea0f7d7f074"
 
 js-tokens@^3.0.0:
   version "3.0.2"

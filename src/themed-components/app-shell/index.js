@@ -17,10 +17,10 @@ export default class AppShell extends React.Component {
   static propTypes = {
     headerNode: PropTypes.node,
     // Top left display node.
-    leftHeader: PropTypes.node,
+    leftNode: PropTypes.node,
     // Top right node.
     rightNodeLinks: PropTypes.arrayOf(PropTypes.shape({
-      display: PropTypes.string,
+      display: PropTypes.string.isRequired,
       to: PropTypes.string,
     })),
     // If present, the sidebar will display with the links.
@@ -46,7 +46,7 @@ export default class AppShell extends React.Component {
   render() {
     const {
       links,
-      leftHeader,
+      leftNode,
       rightNodeLinks,
       headerNode,
       contentWidth,
@@ -65,7 +65,7 @@ export default class AppShell extends React.Component {
           align='left'
           items={[
             <h3 key={0}>
-              {leftHeader}
+              {leftNode}
             </h3>
           ]}
         />}
@@ -76,7 +76,7 @@ export default class AppShell extends React.Component {
         />}
         right={<Row
           align='right'
-          items={rightNodeLinks.map(({ display, to, href }, i) => {
+          items={rightNodeLinks.map(({ display, to = '#', href }, i) => {
             const attr = {
               key: i,
               className: `${styles.item} ${styles.link}`,

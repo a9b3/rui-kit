@@ -390,6 +390,8 @@ export default [
                 border: '1px solid black',
                 height: '200px',
               }}
+              headerNode={<div>Header</div>}
+              leftNode={<div>Hi</div>}
               links={[
                 {
                   header: 'test',
@@ -412,6 +414,8 @@ export default [
                 border: '1px solid black',
                 height: '200px',
               }}
+              headerNode={<div>Header</div>}
+              leftNode={<div>Hi</div>}
               links={[
                 {
                   header: 'test',
@@ -425,7 +429,7 @@ export default [
               ]}
             >
               hi
-            </AppShell>,
+            </AppShell>
           `,
         },
       },

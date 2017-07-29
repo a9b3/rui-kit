@@ -49,37 +49,37 @@ export default class Hover extends React.Component {
 
     let alignStyle = {}
     switch(align) {
-      case 'top':
-        alignStyle = {
-          top: 0,
-          transform: `translateY(-100%)`,
-        }
-        break
-      case 'bottom':
-        alignStyle = {
-          bottom: 0,
-          transform: `translateY(100%)`,
-        }
-        break
+    case 'top':
+      alignStyle = {
+        top: 0,
+        transform: `translateY(-100%)`,
+      }
+      break
+    case 'bottom':
+      alignStyle = {
+        bottom: 0,
+        transform: `translateY(100%)`,
+      }
+      break
     }
 
     switch(justify) {
-      case 'center':
-        alignStyle = Object.assign({}, alignStyle, {
-          left: '50%',
-          transform: `${alignStyle.transform} translateX(-50%)`,
-        })
-        break
-      case 'left':
-        alignStyle = Object.assign({}, alignStyle, {
-          left: 0,
-        })
-        break
-      case 'right':
-        alignStyle = Object.assign({}, alignStyle, {
-          right: 0,
-        })
-        break
+    case 'center':
+      alignStyle = Object.assign({}, alignStyle, {
+        left: '50%',
+        transform: `${alignStyle.transform} translateX(-50%)`,
+      })
+      break
+    case 'left':
+      alignStyle = Object.assign({}, alignStyle, {
+        left: 0,
+      })
+      break
+    case 'right':
+      alignStyle = Object.assign({}, alignStyle, {
+        right: 0,
+      })
+      break
     }
 
     return Object.assign({}, alignStyle, overrideStyle)

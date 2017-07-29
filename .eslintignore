@@ -1,3 +1,5 @@
 build/
 lib/
 node_modules/
+build-example/
+example-build/

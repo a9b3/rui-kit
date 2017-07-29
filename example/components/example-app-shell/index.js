@@ -41,7 +41,7 @@ export default class ExampleAppShell extends React.Component {
 
     return <AppShell
       headerNode={headerNode}
-      leftHeader={<Link to='/'>UI-KIT</Link>}
+      leftNode={<Link to='/'>UI-KIT</Link>}
       links={demoLinks}
       rightNodeLinks={rightNodeLinks}
       contentWidth={'920px'}
