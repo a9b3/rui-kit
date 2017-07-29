@@ -4,34 +4,35 @@ import CSSModules  from 'react-css-modules'
 import PropTypes   from 'prop-types'
 import {
   NavLink,
-  withRouter,
 }                  from 'react-router-dom'
 import {
   LeftMiddleRight,
   Row,
   Sidebar,
   Dropdown,
-  TruncateText,
 }                  from '../../index.js'
 
-@withRouter
 @CSSModules(styles)
 export default class AppShell extends React.Component {
   static propTypes = {
-    location: PropTypes.object,
-    children: PropTypes.node,
-    header: PropTypes.node,
-    links: PropTypes.arrayOf(PropTypes.shape({
-      header: PropTypes.string,
-      items: PropTypes.arrayOf(PropTypes.shape({
-        display: PropTypes.string,
-        to: PropTypes.string,
-      })),
-    })),
+    headerNode: PropTypes.node,
+    // Top left display node.
+    leftHeader: PropTypes.node,
+    // Top right node.
     rightNodeLinks: PropTypes.arrayOf(PropTypes.shape({
       display: PropTypes.string,
       to: PropTypes.string,
     })),
+    // If present, the sidebar will display with the links.
+    links: PropTypes.arrayOf(PropTypes.shape({
+      header: PropTypes.string.isRequired,
+      items: PropTypes.arrayOf(PropTypes.shape({
+        display: PropTypes.string.isRequired,
+        to: PropTypes.string,
+      })),
+    })),
+    // Main content.
+    children: PropTypes.node,
     contentWidth: PropTypes.any,
     className: PropTypes.string,
     style: PropTypes.object,
@@ -45,11 +46,13 @@ export default class AppShell extends React.Component {
   render() {
     const {
       links,
-      header,
+      leftHeader,
       rightNodeLinks,
+      headerNode,
       contentWidth,
       style,
       className,
+      children,
     } = this.props
 
     return <div styleName='index'
@@ -62,18 +65,13 @@ export default class AppShell extends React.Component {
           align='left'
           items={[
             <h3 key={0}>
-              {header}
+              {leftHeader}
             </h3>
           ]}
         />}
         middle={<Row
           items={[
-            <TruncateText
-              key={this.props.location.key}
-              className={styles['middle-title']}
-            >
-              {this.props.location.pathname.replace('/', '')}
-            </TruncateText>
+            headerNode,
           ]}
         />}
         right={<Row
@@ -85,16 +83,16 @@ export default class AppShell extends React.Component {
             }
 
             return to
-            ? <NavLink {...attr} to={to}>
-              {display}
-            </NavLink>
-            : <a
-              {...attr}
-              href={href}
-              target='_blank'
-            >
-              {display}
-            </a>
+              ? <NavLink {...attr} to={to}>
+                {display}
+              </NavLink>
+              : <a
+                {...attr}
+                href={href}
+                target='_blank'
+              >
+                {display}
+              </a>
           })}
         />}
       />
@@ -117,7 +115,7 @@ export default class AppShell extends React.Component {
                       link.items.map((item, j) => {
                         return <NavLink
                           key={j}
-                          to={item.to}
+                          to={item.to || '#'}
                           className={styles.dropchild}
                           activeClassName={styles.active}
                         >
@@ -138,7 +136,7 @@ export default class AppShell extends React.Component {
             maxWidth: contentWidth,
             margin: '0 auto',
           }}>
-            {this.props.children}
+            {children}
           </div>
         </div>
       </div>

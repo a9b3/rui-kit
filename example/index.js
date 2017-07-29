@@ -9,12 +9,12 @@ import Root                     from './root.js'
 
 const browserHistory = createBrowserHistory()
 
-function renderRoot(Component) {
+function renderRoot(RootComponent) {
   render(
     <AppContainer>
-      <Component history={browserHistory} />
+      <RootComponent history={browserHistory} />
     </AppContainer>,
-    document.getElementById('mount')
+    document.getElementById('mount'),
   )
 }
 

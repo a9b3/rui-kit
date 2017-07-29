@@ -18,14 +18,9 @@
   height: 4rem;
   background: $cyan3;
   color: white;
-  box-shadow: 0 5px 10px rgba(black, .3);
+  box-shadow: 0 5px 10px rgba(black, .2);
   padding: 0 2rem;
   z-index: 3;
-}
-
-.middle-title {
-  text-transform: uppercase;
-  animation: fadeIn .2s;
 }
 
 .sidebar-wrapper {

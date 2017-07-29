@@ -1,10 +1,9 @@
-import React         from 'react'
-import { Route }     from 'react-router'
-import { Link }      from 'react-router-dom'
-import { AppShell }  from '../src'
-import Index         from './views/index'
-import demoLinks     from './demo-configs.js'
-import DemoComponent from './components/demo-component'
+import React           from 'react'
+import { Route }       from 'react-router'
+import Index           from './views/index'
+import demoLinks       from './demo-configs.js'
+import DemoComponent   from './components/demo-component'
+import ExampleAppShell from './components/example-app-shell'
 
 /**
  * @param {array.<node>} links
@@ -26,21 +25,9 @@ function linksToRoute(links) {
   })
 }
 
-const rightNodeLinks = [
-  {
-    display: 'Github',
-    href: 'https://github.com/esayemm/rui-kit',
-  },
-]
-
 export default (
-  <AppShell
-    header={<Link to='/'>UI-KIT</Link>}
-    links={demoLinks}
-    rightNodeLinks={rightNodeLinks}
-    contentWidth={'920px'}
-  >
+  <ExampleAppShell>
     <Route path='/' exact component={Index} />
     {linksToRoute(demoLinks)}
-  </AppShell>
+  </ExampleAppShell>
 )
