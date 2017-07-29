@@ -9,10 +9,11 @@ import {
   Dropdown,
   Dropfile,
   TruncateText,
+  AppShell,
 } from '../src'
 
 function timeoutPromise() {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve()
     }, 1000)
@@ -369,6 +370,62 @@ export default [
               velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
               volutpat sit amet.
             </TruncateText>
+          `,
+        },
+      },
+    ],
+  },
+  {
+    header: 'Composed Components',
+    items: [
+      {
+        display: 'AppShell',
+        to: '/appshell',
+        demoComponentAttr: {
+          header: `<AppShell />`,
+          description: 'A sample layout.',
+          demos: [
+            <AppShell
+              style={{
+                border: '1px solid black',
+                height: '200px',
+              }}
+              links={[
+                {
+                  header: 'test',
+                  items: [
+                    {
+                      display: 'cool',
+                      to: '#',
+                    },
+                  ],
+                },
+              ]}
+            >
+              hi
+            </AppShell>,
+          ],
+          codeSnippetType: 'html',
+          codeSnippet: `
+            <AppShell
+              style={{
+                border: '1px solid black',
+                height: '200px',
+              }}
+              links={[
+                {
+                  header: 'test',
+                  items: [
+                    {
+                      display: 'cool',
+                      to: '#',
+                    },
+                  ],
+                },
+              ]}
+            >
+              hi
+            </AppShell>,
           `,
         },
       },
