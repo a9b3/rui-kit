@@ -5,7 +5,7 @@ import PropTypes       from 'prop-types'
 import {
   Code,
 }                      from '../../../src'
-import * as textFormat from 'services/text-format'
+import { alignText }   from 'js-functions'
 import {Helmet}        from 'react-helmet'
 
 @CSSModules(styles)
@@ -51,7 +51,7 @@ export default class DemoComponent extends React.Component {
       <section>
         <h3>Code Snippet</h3>
         <Code type={codeSnippetType}>
-          {textFormat.alignText(codeSnippet)}
+          {alignText(codeSnippet)}
         </Code>
       </section>
     </article>
