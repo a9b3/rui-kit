@@ -12,13 +12,14 @@ export default [
       require('./demos/dropdown.js').default,
       require('./demos/dropfile.js').default,
       require('./demos/truncate-text.js').default,
+      require('./demos/form.js').default,
     ],
   },
   {
-    header: 'Composed Components',
+    header: 'Themed Components',
     items: [
       require('./demos/app-shell.js').default,
-      require('./demos/form.js').default,
+      require('./demos/themed-form.js').default,
     ],
   },
 ]

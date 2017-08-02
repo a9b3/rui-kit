@@ -5,12 +5,15 @@ import PropTypes      from 'prop-types'
 import LoadingOverlay from '../loading-overlay'
 
 @CSSModules(styles, { allowMultiple: true })
-export default class Button extends React.Component {
+export default class Button extends React.PureComponent {
   static propTypes = {
     children: PropTypes.node,
+    // Pick from two of the provided stylings.
     type: PropTypes.oneOf(['filled', 'outline']),
     color: PropTypes.string,
+    // Override style.
     style: PropTypes.object,
+    // Provide href to render a element instead of button element.
     href: PropTypes.string,
     onClick: PropTypes.func,
     loadingOverlayAttr: PropTypes.object,
@@ -64,13 +67,17 @@ export default class Button extends React.Component {
     }
 
     if (href) {
-      return <a {...attr} href={href}>
+      return <a
+        {...attr}
+        href={href}
+      >
         <LoadingOverlay show={loading} {...loadingOverlayAttr} />
         {children}
       </a>
     }
 
-    return <button {...attr}
+    return <button
+      {...attr}
       onClick={this.handleClick}
     >
       <LoadingOverlay show={loading} {...loadingOverlayAttr} />
@@ -79,6 +86,11 @@ export default class Button extends React.Component {
   }
 }
 
+/**
+ * Use this to generate style that is a function of the provided 'type'. This
+ * isn't defined in the stylesheet because we want to be able to take color as
+ * an argument.
+ */
 function getStyles({color}) {
   return {
     outline: {

@@ -15,7 +15,8 @@
 
 .header {
   composes: flex-row;
-  height: 4rem;
+  // has to be 4.5 or else mouse will cause scrollbar to appear
+  height: 4.5rem;
   background: $cyan3;
   color: white;
   box-shadow: 0 5px 10px rgba(black, .2);
