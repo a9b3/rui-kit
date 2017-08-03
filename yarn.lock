@@ -2718,9 +2718,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-esayemm@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.npmjs.org/eslint-config-esayemm/-/eslint-config-esayemm-2.0.4.tgz#85ad605d0e34d28bfa6d143c2744d184b46941f3"
+eslint-config-esayemm@^2.0.9:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/eslint-config-esayemm/-/eslint-config-esayemm-2.0.9.tgz#48e8930ca63262008b3efac30a8487d7b0582ebd"
 
 eslint-plugin-react@^7.1.0:
   version "7.1.0"

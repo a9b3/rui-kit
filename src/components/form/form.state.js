@@ -21,13 +21,14 @@ export default class Form {
     }
 
     this.formData.set(key, value)
-    this.validate(key)
+    this.validateAll()
   }
 
   getError(key) {
     return this.errors.get(key)
   }
 
+  // TODO not used might be able to remove
   validate(key) {
     if (!(key in this.validators)) {
       throw new Error(`'${key}' not a field in validators.`)
@@ -52,7 +53,20 @@ export default class Form {
   }
 
   validateAll() {
-    return Object.keys(this.validators)
-      .every(key => this.validate(key))
+    const keys = Object.keys(this.validators)
+
+    let hasError = false
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i]
+      try {
+        this.validators[key](this.formData.get(key), this.getAllFormDataValues())
+        this.errors.set(key, null)
+      } catch (err) {
+        this.errors.set(key, err)
+        hasError = true
+      }
+    }
+
+    return hasError
   }
 }

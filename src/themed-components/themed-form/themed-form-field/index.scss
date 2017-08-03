@@ -4,7 +4,13 @@
   margin: 1rem;
 }
 
-.form-field {
+.container__label {
+  font-weight: 500;
+  font-size: .8em;
+  text-transform: uppercase;
+}
+
+.container__form-field {
   width: 100%;
   padding: 1rem;
   display: block;
@@ -12,14 +18,20 @@
   border-bottom: 1px solid $gray3;
 
   &:focus {
-    border-bottom: 2px solid $cyan2;
-  }
-
-  &.error {
-    border-bottom: 2px solid $red;
+    border-bottom: 1px solid $cyan2;
   }
 }
 
-.form-field-error {
-  background: red;
+.container__form-field-error {
+  animation: fadeIn .1s;
+  font-size: .8em;
+}
+
+.container--error {
+  color: $red;
+  transition: color .3s;
+
+  .container__form-field {
+    border-bottom: 1px solid $red;
+  }
 }

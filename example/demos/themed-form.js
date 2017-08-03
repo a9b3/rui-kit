@@ -2,7 +2,9 @@ import {
   ThemedForm,
   FormState,
   ThemedFormField,
+  Button,
 } from '../../src'
+import variables from 'esayemm-styles/variables'
 
 class FormExample extends React.Component {
   state = {
@@ -12,7 +14,7 @@ class FormExample extends React.Component {
   componentWillMount() {
     const formState = new FormState({
       validators: {
-        email: (value) => {
+        email: (value = '') => {
           if (value.length <= 0) {
             throw new Error('Cannot be empty')
           }
@@ -40,41 +42,53 @@ class FormExample extends React.Component {
     return <ThemedForm
       formState={formState}
       style={{
-        border: '1px solid black',
-        padding: '1rem',
+        boxShadow : '0 5px 15px #090909',
+        paddingTop: '1rem',
       }}
     >
       <ThemedFormField
+        label={'email'}
+        style={{display: 'block'}}
         formState={formState}
         formFieldKey={'email'}
         placeholder={'email'}
       />
       <ThemedFormField
+        label={'Password'}
+        style={{display: 'block'}}
         formState={formState}
         formFieldKey={'password'}
         placeholder={'password'}
       />
       <ThemedFormField
+        label={'Confirm Password'}
+        style={{display: 'block'}}
         formState={formState}
         formFieldKey={'confirmPassword'}
         placeholder={'Confirm Password'}
       />
-      <button>Submit</button>
+
+      <Button
+        style={{ width: '100%', borderRadius: '0', marginTop: '1rem' }}
+        color={variables.green3}
+      >
+      Submit
+      </Button>
     </ThemedForm>
   }
 }
 
 export default {
-  display: 'ThemedForm',
-  to: '/themed-form',
+  display          : 'ThemedForm',
+  to               : '/themed-form',
   demoComponentAttr: {
-    header: `<ThemedForm />`,
+    header     : `<ThemedForm />`,
     description: 'A form with validation.',
-    demos: [
+    demos      : [
       <FormExample />,
     ],
     codeSnippetType: 'jsx',
-    codeSnippet: `
+    codeSnippet    : `
     `,
   },
 }

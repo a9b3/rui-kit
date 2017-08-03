@@ -1,21 +1,22 @@
-import styles         from './index.scss'
 import React          from 'react'
 import CSSModules     from 'react-css-modules'
 import PropTypes      from 'prop-types'
 import { observer }   from 'mobx-react'
+
+import styles         from './index.scss'
 
 @observer
 @CSSModules(styles)
 export default class FormField extends React.Component {
   static propTypes = {
     // Type of html form element to create. eg. input
-    type: PropTypes.oneOf(['input']),
-    children: PropTypes.node,
+    type        : PropTypes.oneOf(['input']),
     // Instance of FormState.
-    formState: PropTypes.object.isRequired,
+    formState   : PropTypes.object.isRequired,
     // The specific key for which this form field is for. This should be the
     // same key as one given to the validators.
     formFieldKey: PropTypes.string.isRequired,
+    children    : PropTypes.node,
   }
 
   handleChange = async (evt) => {
@@ -33,7 +34,7 @@ export default class FormField extends React.Component {
       children,
       formState, // eslint-disable-line
       formFieldKey, // eslint-disable-line
-      ...rest,
+      ...rest
     } = this.props
 
     switch(type) {
