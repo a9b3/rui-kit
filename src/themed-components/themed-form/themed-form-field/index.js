@@ -1,12 +1,14 @@
-import React          from 'react'
-import CSSModules     from 'react-css-modules'
-import PropTypes      from 'prop-types'
-import { observer }   from 'mobx-react'
-import variables      from 'esayemm-styles/variables'
+import React        from 'react'
+import CSSModules   from 'react-css-modules'
+import PropTypes    from 'prop-types'
+import { observer } from 'mobx-react'
+import variables    from 'esayemm-styles/variables'
 
-import styles         from './index.scss'
-import FormField      from '../../../components/form/form-field'
-import FormFieldError from '../../../components/form/form-field-error'
+import styles       from './index.scss'
+import {
+  FormField,
+  FormFieldError,
+}                   from '../../../index.js'
 
 function ThemedFormField({
   label,
@@ -25,15 +27,25 @@ function ThemedFormField({
     styleName={`container ${hasError ? 'container--error': ''}`}
     style={style}
   >
-    <div>
+    <div styleName='container__top'>
+      {
+        label && <label
+          styleName='container__label'
+        >
+          {label}
+        </label>
+      }
+
+      <FormFieldError
+        styleName='container__form-field-error'
+        style={{
+          color: `${variables.red}`,
+        }}
+        formState={formState}
+        formFieldKey={formFieldKey}
+        {...formFieldErrorAttr}
+      />
     </div>
-    {
-      label && <label
-        styleName='container__label'
-      >
-        {label}
-      </label>
-    }
 
     <FormField
       styleName='container__form-field'
@@ -42,15 +54,6 @@ function ThemedFormField({
       {...rest}
     />
 
-    <FormFieldError
-      styleName='container__form-field-error'
-      style={{
-        color: `${variables.red}`,
-      }}
-      formState={formState}
-      formFieldKey={formFieldKey}
-      {...formFieldErrorAttr}
-    />
   </span>
 }
 

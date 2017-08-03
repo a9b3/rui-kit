@@ -13,8 +13,8 @@ export {default as TruncateText}    from './components/truncate-text'
 // Form
 export {default as Form}            from './components/form'
 export {default as FormState}       from './components/form/form.state.js'
-export {default as FormField}       from './components/form/form-field'
-export {default as FormFieldError}  from './components/form/form-field-error'
+export {default as FormField}       from './components/form/form-field.component.js'
+export {default as FormFieldError}  from './components/form/form-field-error.component.js'
 
 // Themed Components
 export {default as AppShell}        from './themed-components/app-shell'

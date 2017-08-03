@@ -4,6 +4,11 @@
   margin: 1rem;
 }
 
+.container__top {
+  display: flex;
+  flex-direction: row;
+}
+
 .container__label {
   font-weight: 500;
   font-size: .8em;
@@ -23,6 +28,7 @@
 }
 
 .container__form-field-error {
+  margin-left: auto;
   animation: fadeIn .1s;
   font-size: .8em;
 }

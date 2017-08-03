@@ -1,9 +1,6 @@
 import React        from 'react'
-import CSSModules   from 'react-css-modules'
 import PropTypes    from 'prop-types'
 import { observer } from 'mobx-react'
-
-import styles       from './index.scss'
 
 function Form({
   formState,
@@ -21,7 +18,6 @@ function Form({
     await onSubmit()
   }
   return <form
-    styleName='container'
     {...rest}
     onSubmit={handleSubmit}
   >
@@ -41,4 +37,4 @@ Form.defaultProps = {
   onSubmit: () => {},
 }
 
-export default observer(CSSModules(Form, styles, {allowMultiple: true}))
+export default observer(Form)
