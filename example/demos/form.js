@@ -54,6 +54,7 @@ class FormExample extends React.Component {
         formFieldKey={'email'}
       />
       <FormField
+        type='password'
         formState={formState}
         formFieldKey={'password'}
         placeholder={'password'}
@@ -64,6 +65,7 @@ class FormExample extends React.Component {
         formFieldKey={'password'}
       />
       <FormField
+        type='password'
         formState={formState}
         formFieldKey={'confirmPassword'}
         placeholder={'Confirm Password'}
@@ -79,16 +81,16 @@ class FormExample extends React.Component {
 }
 
 export default {
-  display: 'Form',
-  to: '/form',
+  display          : 'Form',
+  to               : '/form',
   demoComponentAttr: {
-    header: `<Form />`,
+    header     : `<Form />`,
     description: 'A form with validation.',
-    demos: [
+    demos      : [
       <FormExample />,
     ],
     codeSnippetType: 'jsx',
-    codeSnippet: `
+    codeSnippet    : `
 class FormExample extends React.Component {
   state = {
     formState: null,

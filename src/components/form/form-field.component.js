@@ -3,13 +3,13 @@ import PropTypes      from 'prop-types'
 import { observer }   from 'mobx-react'
 
 function FormField({
-  type,
+  formType,
   children,
   formState,
   formFieldKey,
   ...rest
 }) {
-  switch(type) {
+  switch(formType) {
   default:
     return <input
       type='text'
@@ -23,7 +23,7 @@ function FormField({
 
 FormField.propTypes = {
   // Type of html form element to create. eg. input
-  type        : PropTypes.oneOf(['input']),
+  formType    : PropTypes.oneOf(['input']),
   // Instance of FormState.
   formState   : PropTypes.object.isRequired,
   // The specific key for which this form field is for. This should be the
@@ -33,7 +33,7 @@ FormField.propTypes = {
 }
 
 FormField.defaultProps = {
-
+  formType: 'input',
 }
 
 async function handleChange(evt, formState, formFieldKey) {

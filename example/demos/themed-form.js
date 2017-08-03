@@ -41,31 +41,35 @@ class FormExample extends React.Component {
 
     return <ThemedForm
       formState={formState}
-      style={{
-        boxShadow : '0 5px 15px #090909',
-        paddingTop: '1rem',
-      }}
     >
       <ThemedFormField
         label={'email'}
         style={{display: 'block'}}
         formState={formState}
         formFieldKey={'email'}
-        placeholder={'email'}
+        formFieldAttr={{
+          placeholder: 'email',
+        }}
       />
       <ThemedFormField
         label={'Password'}
         style={{display: 'block'}}
         formState={formState}
         formFieldKey={'password'}
-        placeholder={'password'}
+        formFieldAttr={{
+          placeholder: 'Password',
+          type       : 'password',
+        }}
       />
       <ThemedFormField
         label={'Confirm Password'}
         style={{display: 'block'}}
         formState={formState}
         formFieldKey={'confirmPassword'}
-        placeholder={'Confirm Password'}
+        formFieldAttr={{
+          placeholder: 'Confirm Password',
+          type       : 'password',
+        }}
       />
 
       <Button
@@ -124,10 +128,6 @@ class FormExample extends React.Component {
 
     return <ThemedForm
       formState={formState}
-      style={{
-        boxShadow : '0 5px 15px #090909',
-        paddingTop: '1rem',
-      }}
     >
       <ThemedFormField
         label={'email'}

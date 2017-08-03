@@ -4,28 +4,27 @@ import PropTypes    from 'prop-types'
 import { observer } from 'mobx-react'
 import variables    from 'esayemm-styles/variables'
 
-import styles       from './index.scss'
+import styles       from './themed-form-field.component.scss'
 import {
   FormField,
   FormFieldError,
-}                   from '../../../index.js'
+}                   from '../../index.js'
 
 function ThemedFormField({
   label,
   formState,
   formFieldKey,
   formFieldErrorAttr,
-  type, // eslint-disable-line
+  formFieldAttr,
   style,
   ...rest
 }) {
   const hasError = Boolean(formState.errors.get(formFieldKey))
 
-  // TODO Handle styling different FormField types here by looking at
-  // this.props.type
   return <span
     styleName={`container ${hasError ? 'container--error': ''}`}
     style={style}
+    {...rest}
   >
     <div styleName='container__top'>
       {
@@ -51,7 +50,7 @@ function ThemedFormField({
       styleName='container__form-field'
       formState={formState}
       formFieldKey={formFieldKey}
-      {...rest}
+      {...formFieldAttr}
     />
 
   </span>
@@ -62,11 +61,13 @@ ThemedFormField.propTypes = {
   formState         : PropTypes.object.isRequired,
   formFieldKey      : PropTypes.string.isRequired,
   formFieldErrorAttr: PropTypes.object,
+  formFieldAttr     : PropTypes.object,
   style             : PropTypes.object,
 }
 
 ThemedFormField.defaultProps = {
   formFieldErrorAttr: {},
+  formFieldAttr     : {},
   style             : {},
 }
 

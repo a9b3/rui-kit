@@ -17,6 +17,7 @@ function Form({
 
     await onSubmit()
   }
+
   return <form
     {...rest}
     onSubmit={handleSubmit}

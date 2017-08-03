@@ -18,5 +18,5 @@ export {default as FormFieldError}  from './components/form/form-field-error.com
 
 // Themed Components
 export {default as AppShell}        from './themed-components/app-shell'
-export {default as ThemedForm}      from './themed-components/themed-form'
-export {default as ThemedFormField} from './themed-components/themed-form/themed-form-field'
+export {default as ThemedForm}      from './themed-components/themed-form/themed-form.component.js'
+export {default as ThemedFormField} from './themed-components/themed-form/themed-form-field.component.js'
