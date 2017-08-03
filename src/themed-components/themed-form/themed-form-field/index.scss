@@ -23,7 +23,7 @@
   border-bottom: 1px solid $gray3;
 
   &:focus {
-    border-bottom: 1px solid $cyan2;
+    border-bottom: 2px solid $cyan2;
   }
 }
 
@@ -38,6 +38,6 @@
   transition: color .3s;
 
   .container__form-field {
-    border-bottom: 1px solid $red;
+    border-color: $red;
   }
 }
