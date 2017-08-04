@@ -107,7 +107,8 @@ class FormExample extends React.Component {
 
       <ThemedFormSubmit
         formState={formState}
-        style={{ width: '100%', borderRadius: '0', marginTop: '1rem' }}
+        type='outline'
+        style={{ width: '100%', marginTop: '1rem' }}
         color={variables.green3}
         onClick={this.handleSubmit}
       >
