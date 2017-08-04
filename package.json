@@ -35,7 +35,7 @@
     "test": "BABEL_REACT=true ./node_modules/jbs-fe/bin.js test --single-run",
     "test:watch": "BABEL_REACT=true ./node_modules/jbs-fe/bin.js test",
     "prepublish": "npm run build",
-    "preversion": "npm run lint && npm run test",
+    "preversion": "npm run test",
     "version": "npm publish",
     "postversion": "git add . && git push && git push --tags",
     "deploy:s3": "./node_modules/kontinuum-s3-deploy/script.sh --name rui.esayemm.com ./example-build",
