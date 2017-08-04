@@ -23,9 +23,9 @@ export default class Hover extends React.Component {
 
   static propTypes = {
     children: PropTypes.node.isRequired,
-    popup: PropTypes.node.isRequired,
-    align: PropTypes.oneOf(['top', 'bottom']),
-    justify: PropTypes.oneOf(['center', 'left', 'right']),
+    popup   : PropTypes.node.isRequired,
+    align   : PropTypes.oneOf(['top', 'bottom']),
+    justify : PropTypes.oneOf(['center', 'left', 'right']),
   }
 
   state = {
@@ -51,13 +51,13 @@ export default class Hover extends React.Component {
     switch(align) {
     case 'top':
       alignStyle = {
-        top: 0,
+        top      : 0,
         transform: `translateY(-100%)`,
       }
       break
     case 'bottom':
       alignStyle = {
-        bottom: 0,
+        bottom   : 0,
         transform: `translateY(100%)`,
       }
       break
@@ -66,7 +66,7 @@ export default class Hover extends React.Component {
     switch(justify) {
     case 'center':
       alignStyle = Object.assign({}, alignStyle, {
-        left: '50%',
+        left     : '50%',
         transform: `${alignStyle.transform} translateX(-50%)`,
       })
       break
@@ -100,7 +100,7 @@ export default class Hover extends React.Component {
       popup,
       align,
       justify,
-      ...otherProps,
+      ...otherProps
     } = this.props
 
     return <div
@@ -151,7 +151,7 @@ function noOverflowDomNode(domNode) {
     + right > innerWidth ? (right - innerWidth) : 0
 
   const style = {
-    width: width - minusWidth,
+    width : width - minusWidth,
     height: height - minusHeight,
   }
   return style

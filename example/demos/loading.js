@@ -1,11 +1,11 @@
 import { Loading } from '../../src'
 
 export default {
-  display: 'Loading',
-  to: '/loading',
+  display          : 'Loading',
+  to               : '/loading',
   demoComponentAttr: {
     header: `<Loading />`,
-    demos: [
+    demos : [
       <div style={{ fontSize: '40px' }}>
         <Loading
           show
@@ -14,7 +14,7 @@ export default {
       </div>,
     ],
     codeSnippetType: 'html',
-    codeSnippet: `
+    codeSnippet    : `
             <div style={{ fontSize: '40px' }}>
               <Loading
                 show

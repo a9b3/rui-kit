@@ -1,12 +1,12 @@
 import { Sidebar } from '../../src'
 
 export default {
-  display: 'Sidebar',
-  to: '/sidebar',
+  display          : 'Sidebar',
+  to               : '/sidebar',
   demoComponentAttr: {
-    header: `<Sidebar />`,
+    header     : `<Sidebar />`,
     description: 'A simple sidebar. With sticky footer.',
-    demos: [
+    demos      : [
       <div
         style={{ height: 300, width: 300, border: '1px solid black' }}
       >
@@ -19,7 +19,7 @@ export default {
       </div>,
     ],
     codeSnippetType: 'html',
-    codeSnippet: `
+    codeSnippet    : `
             <Sidebar
               header={'Header'}
               footer={'Footer'}

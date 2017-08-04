@@ -11,11 +11,11 @@ import {Helmet}        from 'react-helmet'
 @CSSModules(styles)
 export default class DemoComponent extends React.Component {
   static propTypes = {
-    header: PropTypes.string.isRequired,
-    demos: PropTypes.arrayOf(PropTypes.node).isRequired,
-    codeSnippet: PropTypes.string.isRequired,
+    header         : PropTypes.string.isRequired,
+    demos          : PropTypes.arrayOf(PropTypes.node).isRequired,
+    codeSnippet    : PropTypes.string.isRequired,
     codeSnippetType: PropTypes.string,
-    description: PropTypes.string,
+    description    : PropTypes.string,
   }
 
   render() {

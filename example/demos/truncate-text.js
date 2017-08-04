@@ -1,12 +1,12 @@
 import { TruncateText } from '../../src'
 
 export default {
-  display: 'TruncateText',
-  to: '/truncate-text',
+  display          : 'TruncateText',
+  to               : '/truncate-text',
   demoComponentAttr: {
-    header: `<TruncateText />`,
+    header     : `<TruncateText />`,
     description: 'TruncateText component.',
-    demos: [
+    demos      : [
       <TruncateText>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend
               velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
@@ -14,7 +14,7 @@ export default {
       </TruncateText>,
     ],
     codeSnippetType: 'html',
-    codeSnippet: `
+    codeSnippet    : `
             <TruncateText>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend
               velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio

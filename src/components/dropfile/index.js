@@ -8,13 +8,13 @@ export default class Dropfile extends React.Component {
   fileInputEl = null
 
   static propTypes = {
-    children: PropTypes.node,
-    validate: PropTypes.func,
+    children   : PropTypes.node,
+    validate   : PropTypes.func,
     uploadFiles: PropTypes.func.isRequired,
-    onDrop: PropTypes.func,
-    multiple: PropTypes.bool,
+    onDrop     : PropTypes.func,
+    multiple   : PropTypes.bool,
     // https://www.w3schools.com/tags/att_input_accept.asp
-    accept: React.PropTypes.string,
+    accept     : React.PropTypes.string,
   }
 
   static defaultProps = {
@@ -22,9 +22,9 @@ export default class Dropfile extends React.Component {
   }
 
   state = {
-    uploading: false,
-    error: undefined,
-    progress: undefined,
+    uploading   : false,
+    error       : undefined,
+    progress    : undefined,
     isDragActive: false,
   }
 
@@ -51,8 +51,8 @@ export default class Dropfile extends React.Component {
 
     this.setState({
       isDragActive: false,
-      uploading: true,
-      error: undefined,
+      uploading   : true,
+      error       : undefined,
     })
 
     // not a real array -__-
@@ -76,7 +76,7 @@ export default class Dropfile extends React.Component {
     }
 
     this.setState({
-      progress: undefined,
+      progress : undefined,
       uploading: false,
     })
   }
@@ -108,7 +108,7 @@ export default class Dropfile extends React.Component {
       onDrop,
       multiple,
       accept,
-      ...rest,
+      ...rest
     } = this.props
 
     return <span

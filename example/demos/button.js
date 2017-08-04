@@ -10,11 +10,11 @@ function timeoutPromise() {
 }
 
 export default {
-  display: 'Button',
-  to: '/button',
+  display          : 'Button',
+  to               : '/button',
   demoComponentAttr: {
     header: `<Button />`,
-    demos: [
+    demos : [
       <Button
         style={{ width: '100%', margin: '1rem 0' }}
         color={variables.green2}
@@ -50,7 +50,7 @@ export default {
       </Button>,
     ],
     codeSnippetType: 'html',
-    codeSnippet: `
+    codeSnippet    : `
       <Button
         style={{ width: '100%' }}
         color={variables.green2}

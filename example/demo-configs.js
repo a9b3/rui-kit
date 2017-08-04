@@ -1,7 +1,7 @@
 export default [
   {
     header: 'Components',
-    items: [
+    items : [
       require('./demos/code.js').default,
       require('./demos/button.js').default,
       require('./demos/loading.js').default,
@@ -17,7 +17,7 @@ export default [
   },
   {
     header: 'Themed Components',
-    items: [
+    items : [
       require('./demos/app-shell.js').default,
       require('./demos/themed-form.js').default,
     ],

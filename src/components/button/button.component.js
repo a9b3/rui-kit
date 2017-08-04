@@ -1,8 +1,8 @@
+import styles         from './index.scss'
 import React          from 'react'
 import PropTypes      from 'prop-types'
 import CSSModules     from 'react-css-modules'
 
-import styles         from './index.scss'
 import LoadingOverlay from '../loading-overlay'
 
 function Button({
@@ -71,7 +71,7 @@ Button.defaultProps = {
 function getStyles({color}) {
   return {
     outline: {
-      border         : `1px solid ${color}`,
+      border         : `1.5px solid ${color}`,
       backgroundColor: 'transparent',
       color,
     },

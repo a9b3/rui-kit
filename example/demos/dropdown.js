@@ -1,12 +1,12 @@
 import { Dropdown } from '../../src'
 
 export default {
-  display: 'Dropdown',
-  to: '/dropdown',
+  display          : 'Dropdown',
+  to               : '/dropdown',
   demoComponentAttr: {
-    header: `<Dropdown />`,
+    header     : `<Dropdown />`,
     description: 'Dropdown component.',
-    demos: [
+    demos      : [
       <Dropdown
         header={'Click to Close'}
       >
@@ -22,7 +22,7 @@ export default {
       </Dropdown>,
     ],
     codeSnippetType: 'html',
-    codeSnippet: `
+    codeSnippet    : `
             <Dropdown
               header={'Click to Close'}
             >

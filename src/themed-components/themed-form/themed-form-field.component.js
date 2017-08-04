@@ -3,6 +3,7 @@ import CSSModules   from 'react-css-modules'
 import PropTypes    from 'prop-types'
 import { observer } from 'mobx-react'
 import variables    from 'esayemm-styles/variables'
+import classNames   from 'classnames'
 
 import styles       from './themed-form-field.component.scss'
 import {
@@ -17,13 +18,16 @@ function ThemedFormField({
   formFieldErrorAttr,
   formFieldAttr,
   style,
+  className,
   ...rest
 }) {
+
+  console.log(rest)
   const hasError = Boolean(formState.errors.get(formFieldKey))
 
-  return <span
-    styleName={`container ${hasError ? 'container--error': ''}`}
+  return <div
     style={style}
+    className={classNames(styles.container, hasError && styles['container--error'], className)}
     {...rest}
   >
     <div styleName='container__top'>
@@ -53,7 +57,7 @@ function ThemedFormField({
       {...formFieldAttr}
     />
 
-  </span>
+  </div>
 }
 
 ThemedFormField.propTypes = {
@@ -63,6 +67,7 @@ ThemedFormField.propTypes = {
   formFieldErrorAttr: PropTypes.object,
   formFieldAttr     : PropTypes.object,
   style             : PropTypes.object,
+  className         : PropTypes.string,
 }
 
 ThemedFormField.defaultProps = {

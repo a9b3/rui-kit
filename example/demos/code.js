@@ -1,17 +1,17 @@
 import { Code } from '../../src'
 
 export default {
-  display: 'Code',
-  to: '/code',
+  display          : 'Code',
+  to               : '/code',
   demoComponentAttr: {
     header: `<Code />`,
-    demos: [
+    demos : [
       <Code>
         {'hi'}
       </Code>,
     ],
     codeSnippetType: 'html',
-    codeSnippet: `
+    codeSnippet    : `
             <Code>
               {'hi'}
             </Code>

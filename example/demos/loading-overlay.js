@@ -1,15 +1,15 @@
 import { LoadingOverlay } from '../../src'
 
 export default {
-  display: 'LoadingOverlay',
-  to: '/loading-overlay',
+  display          : 'LoadingOverlay',
+  to               : '/loading-overlay',
   demoComponentAttr: {
-    header: `<LoadingOverlay />`,
+    header     : `<LoadingOverlay />`,
     description: 'A loading overlay, this component has absolute position so be sure to put it in a parent element with relative position.',
-    demos: [
+    demos      : [
       <div style={{
-        border: '1px solid black',
-        height: 300,
+        border  : '1px solid black',
+        height  : 300,
         fontSize: '40px',
         position: 'relative',
       }}>
@@ -17,7 +17,7 @@ export default {
       </div>,
     ],
     codeSnippetType: 'html',
-    codeSnippet: `
+    codeSnippet    : `
             <div style={{
               border: '1px solid black',
               height: 300,

@@ -1,18 +1,18 @@
 import { Dropfile } from '../../src'
 
 export default {
-  display: 'Dropfile',
-  to: '/dropfile',
+  display          : 'Dropfile',
+  to               : '/dropfile',
   demoComponentAttr: {
-    header: `<Dropfile />`,
+    header     : `<Dropfile />`,
     description: 'Dropfile component.',
-    demos: [
+    demos      : [
       <Dropfile>
               hi
       </Dropfile>,
     ],
     codeSnippetType: 'html',
-    codeSnippet: `
+    codeSnippet    : `
             hi
           `,
   },

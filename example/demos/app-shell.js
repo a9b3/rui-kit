@@ -2,12 +2,12 @@ import React        from 'react'
 import { AppShell } from '../../src'
 
 export default {
-  display: 'AppShell',
-  to: '/appshell',
+  display          : 'AppShell',
+  to               : '/appshell',
   demoComponentAttr: {
-    header: `<AppShell />`,
+    header     : `<AppShell />`,
     description: 'A sample layout.',
-    demos: [
+    demos      : [
       <AppShell
         style={{
           border: '1px solid black',
@@ -18,10 +18,10 @@ export default {
         links={[
           {
             header: 'test',
-            items: [
+            items : [
               {
                 display: 'cool',
-                to: '#',
+                to     : '#',
               },
             ],
           },
@@ -31,7 +31,7 @@ export default {
       </AppShell>,
     ],
     codeSnippetType: 'html',
-    codeSnippet: `
+    codeSnippet    : `
             <AppShell
               style={{
                 border: '1px solid black',

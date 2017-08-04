@@ -4,7 +4,7 @@ import CSSModules from 'react-css-modules'
 import PropTypes  from 'prop-types'
 import {
   Link,
-  withRouter
+  withRouter,
 }                 from 'react-router-dom'
 import {
   AppShell,
@@ -15,7 +15,7 @@ import demoLinks  from '../../demo-configs.js'
 const rightNodeLinks = [
   {
     display: 'Github',
-    href: 'https://github.com/esayemm/rui-kit',
+    href   : 'https://github.com/esayemm/rui-kit',
   },
 ]
 

@@ -1,12 +1,12 @@
 import { Row } from '../../src'
 
 export default {
-  display: 'Row',
-  to: '/row',
+  display          : 'Row',
+  to               : '/row',
   demoComponentAttr: {
-    header: `<Row />`,
+    header     : `<Row />`,
     description: 'A component that is basically just a flex row.',
-    demos: [
+    demos      : [
       <Row
         style={{ border: '1px solid black', height: 100 }}
         align='left'
@@ -24,7 +24,7 @@ export default {
       />,
     ],
     codeSnippetType: 'html',
-    codeSnippet: `
+    codeSnippet    : `
             <Row
               style={{ border: '1px solid black', height: 100 }}
               align='left'

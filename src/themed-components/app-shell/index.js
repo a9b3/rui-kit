@@ -15,31 +15,31 @@ import {
 @CSSModules(styles)
 export default class AppShell extends React.Component {
   static propTypes = {
-    headerNode: PropTypes.node,
+    headerNode    : PropTypes.node,
     // Top left display node.
-    leftNode: PropTypes.node,
+    leftNode      : PropTypes.node,
     // Top right node.
     rightNodeLinks: PropTypes.arrayOf(PropTypes.shape({
       display: PropTypes.string.isRequired,
-      to: PropTypes.string,
+      to     : PropTypes.string,
     })),
     // If present, the sidebar will display with the links.
     links: PropTypes.arrayOf(PropTypes.shape({
       header: PropTypes.string.isRequired,
-      items: PropTypes.arrayOf(PropTypes.shape({
+      items : PropTypes.arrayOf(PropTypes.shape({
         display: PropTypes.string.isRequired,
-        to: PropTypes.string,
+        to     : PropTypes.string,
       })),
     })),
     // Main content.
-    children: PropTypes.node,
+    children    : PropTypes.node,
     contentWidth: PropTypes.any,
-    className: PropTypes.string,
-    style: PropTypes.object,
+    className   : PropTypes.string,
+    style       : PropTypes.object,
   }
 
   static defaultProps = {
-    links: [],
+    links         : [],
     rightNodeLinks: [],
   }
 
@@ -66,7 +66,7 @@ export default class AppShell extends React.Component {
           items={[
             <h3 key={0}>
               {leftNode}
-            </h3>
+            </h3>,
           ]}
         />}
         middle={<Row
@@ -78,7 +78,7 @@ export default class AppShell extends React.Component {
           align='right'
           items={rightNodeLinks.map(({ display, to = '#', href }, i) => {
             const attr = {
-              key: i,
+              key      : i,
               className: `${styles.item} ${styles.link}`,
             }
 
@@ -132,9 +132,9 @@ export default class AppShell extends React.Component {
 
         <div styleName='content'>
           <div style={{
-            width: '100%',
+            width   : '100%',
             maxWidth: contentWidth,
-            margin: '0 auto',
+            margin  : '0 auto',
           }}>
             {children}
           </div>

@@ -1,15 +1,15 @@
 import { LeftMiddleRight } from '../../src'
 
 export default {
-  display: 'LeftMiddleRight',
-  to: '/left-middle-right',
+  display          : 'LeftMiddleRight',
+  to               : '/left-middle-right',
   demoComponentAttr: {
-    header: `<LeftMiddleRight />`,
+    header     : `<LeftMiddleRight />`,
     description: 'A header with left, middle and right nodes.',
-    demos: [
+    demos      : [
       <LeftMiddleRight
         style={{
-          border: '1px solid black',
+          border : '1px solid black',
           padding: '1rem',
         }}
         left={
@@ -30,7 +30,7 @@ export default {
       />,
     ],
     codeSnippetType: 'html',
-    codeSnippet: `
+    codeSnippet    : `
             <LeftMiddleRight
               style={{
                 border: '1px solid black',

@@ -1,11 +1,14 @@
+import styles      from './themed-form.scss'
+import CSSModules  from 'react-css-modules'
 import {
   ThemedForm,
   FormState,
   ThemedFormField,
   Button,
-} from '../../src'
-import variables from 'esayemm-styles/variables'
+}                  from '../../src'
+import variables   from 'esayemm-styles/variables'
 
+@CSSModules(styles)
 class FormExample extends React.Component {
   state = {
     formState: null,
@@ -43,6 +46,7 @@ class FormExample extends React.Component {
       formState={formState}
     >
       <ThemedFormField
+        className={styles['themed-form__field']}
         label={'email'}
         style={{display: 'block'}}
         formState={formState}
@@ -52,6 +56,7 @@ class FormExample extends React.Component {
         }}
       />
       <ThemedFormField
+        className={styles['themed-form__field']}
         label={'Password'}
         style={{display: 'block'}}
         formState={formState}
@@ -62,6 +67,7 @@ class FormExample extends React.Component {
         }}
       />
       <ThemedFormField
+        className={styles['themed-form__field']}
         label={'Confirm Password'}
         style={{display: 'block'}}
         formState={formState}
