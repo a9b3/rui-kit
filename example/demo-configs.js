@@ -13,6 +13,7 @@ export default [
       require('./demos/dropfile.js').default,
       require('./demos/truncate-text.js').default,
       require('./demos/form.js').default,
+      require('./demos/image-carousel.js').default,
     ],
   },
   {

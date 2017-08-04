@@ -9,6 +9,7 @@ export {default as Code}            from './components/code'
 export {default as Button}          from './components/button'
 export {default as Dropfile}        from './components/dropfile'
 export {default as TruncateText}    from './components/truncate-text'
+export {default as ImageCarousel}   from './components/image-carousel'
 
 // Form
 export {default as Form}            from './components/form'
