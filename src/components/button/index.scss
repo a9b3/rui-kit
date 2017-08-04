@@ -1,4 +1,4 @@
-.container {
+.button {
   overflow: hidden;
   font-size: 1em;
   padding: .5rem 2rem;
@@ -13,5 +13,11 @@
   &:hover {
     opacity: .6;
     transition: opacity .3s;
+  }
+
+  &:disabled {
+    filter: saturate(0);
+    cursor: default;
+    opacity: 1;
   }
 }

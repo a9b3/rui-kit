@@ -1,0 +1,8 @@
+@import '~esayemm-styles/variables';
+
+.error {
+  width: 100%;
+  color: $red3;
+  padding: 1rem 2rem;
+  background: lighten($red4, 20);
+}

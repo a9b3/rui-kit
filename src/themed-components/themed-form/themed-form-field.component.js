@@ -21,8 +21,6 @@ function ThemedFormField({
   className,
   ...rest
 }) {
-
-  console.log(rest)
   const hasError = Boolean(formState.errors.get(formFieldKey))
 
   return <div

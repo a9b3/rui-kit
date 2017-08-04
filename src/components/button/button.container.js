@@ -23,7 +23,11 @@ export default class ButtonContainer extends React.PureComponent {
     if (!onClick) return
 
     this.setState({ loading: true })
-    await onClick()
+    try {
+      await onClick()
+    } catch (err) {
+      console.error(err)
+    }
     this.setState({ loading: false })
   }
 

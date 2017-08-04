@@ -19,7 +19,7 @@ function Button({
   const inlineStyles = getStyles({color})
 
   const attr = {
-    styleName: 'container',
+    styleName: 'button',
     ...rest,
     style    : Object.assign({}, inlineStyles[type], style),
   }

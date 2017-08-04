@@ -5,6 +5,10 @@ export default class Form {
   formData = observable.map()
   validators = {}
   errors = observable.map()
+  @observable
+  hasError = false
+  @observable
+  submitError = null
 
   constructor({ validators }) {
     invariant(typeof validators === 'object', `'validators' must be provided.`)
@@ -67,6 +71,7 @@ export default class Form {
       }
     }
 
+    this.hasError = hasError
     return hasError
   }
 }

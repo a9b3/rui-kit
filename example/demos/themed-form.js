@@ -4,9 +4,18 @@ import {
   ThemedForm,
   FormState,
   ThemedFormField,
-  Button,
+  ThemedFormSubmit,
+  ThemedFormError,
 }                  from '../../src'
 import variables   from 'esayemm-styles/variables'
+
+function timeoutPromise() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, 1000)
+  })
+}
 
 @CSSModules(styles)
 class FormExample extends React.Component {
@@ -37,6 +46,15 @@ class FormExample extends React.Component {
     this.setState({ formState })
   }
 
+  handleSubmit = async (evt) => {
+    const {
+      formState,
+    } = this.state
+
+    await timeoutPromise()
+    throw new Error('hi')
+  }
+
   render() {
     const {
       formState,
@@ -45,6 +63,9 @@ class FormExample extends React.Component {
     return <ThemedForm
       formState={formState}
     >
+      <ThemedFormError
+        formState={formState}
+      />
       <ThemedFormField
         className={styles['themed-form__field']}
         label={'email'}
@@ -78,12 +99,14 @@ class FormExample extends React.Component {
         }}
       />
 
-      <Button
+      <ThemedFormSubmit
+        formState={formState}
         style={{ width: '100%', borderRadius: '0', marginTop: '1rem' }}
         color={variables.green3}
+        onClick={this.handleSubmit}
       >
       Submit
-      </Button>
+      </ThemedFormSubmit>
     </ThemedForm>
   }
 }
@@ -99,6 +122,15 @@ export default {
     ],
     codeSnippetType: 'jsx',
     codeSnippet    : `
+function timeoutPromise() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, 1000)
+  })
+}
+
+@CSSModules(styles)
 class FormExample extends React.Component {
   state = {
     formState: null,
@@ -127,6 +159,15 @@ class FormExample extends React.Component {
     this.setState({ formState })
   }
 
+  handleSubmit = async (evt) => {
+    const {
+      formState,
+    } = this.state
+
+    await timeoutPromise()
+    throw new Error('hi')
+  }
+
   render() {
     const {
       formState,
@@ -135,34 +176,50 @@ class FormExample extends React.Component {
     return <ThemedForm
       formState={formState}
     >
+      <ThemedFormError
+        formState={formState}
+      />
       <ThemedFormField
+        className={styles['themed-form__field']}
         label={'email'}
         style={{display: 'block'}}
         formState={formState}
         formFieldKey={'email'}
-        placeholder={'email'}
+        formFieldAttr={{
+          placeholder: 'email',
+        }}
       />
       <ThemedFormField
+        className={styles['themed-form__field']}
         label={'Password'}
         style={{display: 'block'}}
         formState={formState}
         formFieldKey={'password'}
-        placeholder={'password'}
+        formFieldAttr={{
+          placeholder: 'Password',
+          type       : 'password',
+        }}
       />
       <ThemedFormField
+        className={styles['themed-form__field']}
         label={'Confirm Password'}
         style={{display: 'block'}}
         formState={formState}
         formFieldKey={'confirmPassword'}
-        placeholder={'Confirm Password'}
+        formFieldAttr={{
+          placeholder: 'Confirm Password',
+          type       : 'password',
+        }}
       />
 
-      <Button
+      <ThemedFormSubmit
+        formState={formState}
         style={{ width: '100%', borderRadius: '0', marginTop: '1rem' }}
         color={variables.green3}
+        onClick={this.handleSubmit}
       >
       Submit
-      </Button>
+      </ThemedFormSubmit>
     </ThemedForm>
   }
 }
