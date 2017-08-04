@@ -1,0 +1,26 @@
+@import '~esayemm-styles/variables';
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.alert {
+  animation: scaleIn .2s;
+  padding: 1rem 2rem;
+  box-shadow: 0 5px 10px rgba(black, .1);
+}
+
+.error {
+  background: lighten($red4, 20);
+  color: $red3;
+}
+
+.positive {
+  background: lighten($green4, 20);
+  color: $green3;
+}

@@ -10,7 +10,7 @@ import {
   Row,
   Sidebar,
   Dropdown,
-}                  from '../../index.js'
+}                  from '../index.js'
 
 @CSSModules(styles)
 export default class AppShell extends React.Component {

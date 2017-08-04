@@ -2,7 +2,7 @@ import React      from 'react'
 import PropTypes  from 'prop-types'
 import { observer } from 'mobx-react'
 
-import { Button } from '../../index.js'
+import { Button } from '../index.js'
 
 function ThemedFormSubmit({
   formState,
@@ -10,15 +10,8 @@ function ThemedFormSubmit({
   ...rest
 }) {
   const handleClick = async () => {
-    formState.submitError = null
-
     if (formState.validateAll()) return
-
-    try {
-      await onClick()
-    } catch (err) {
-      formState.submitError = err
-    }
+    await onClick()
   }
 
   return <Button

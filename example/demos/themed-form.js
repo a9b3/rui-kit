@@ -5,7 +5,7 @@ import {
   FormState,
   ThemedFormField,
   ThemedFormSubmit,
-  ThemedFormError,
+  Alert,
 }                  from '../../src'
 import variables   from 'esayemm-styles/variables'
 
@@ -21,6 +21,7 @@ function timeoutPromise() {
 class FormExample extends React.Component {
   state = {
     formState: null,
+    formError: null,
   }
 
   componentWillMount() {
@@ -51,21 +52,26 @@ class FormExample extends React.Component {
       formState,
     } = this.state
 
-    await timeoutPromise()
-    throw new Error('hi')
+    this.setState({ formError: null })
+
+    try {
+      await timeoutPromise()
+      throw new Error('hi')
+    } catch (err) {
+      this.setState({ formError: err })
+    }
   }
 
   render() {
     const {
       formState,
+      formError,
     } = this.state
 
     return <ThemedForm
       formState={formState}
     >
-      <ThemedFormError
-        formState={formState}
-      />
+      <Alert show={Boolean(formError)}>{formError && formError.message}</Alert>
       <ThemedFormField
         className={styles['themed-form__field']}
         label={'email'}
@@ -134,6 +140,7 @@ function timeoutPromise() {
 class FormExample extends React.Component {
   state = {
     formState: null,
+    formError: null,
   }
 
   componentWillMount() {
@@ -164,21 +171,26 @@ class FormExample extends React.Component {
       formState,
     } = this.state
 
-    await timeoutPromise()
-    throw new Error('hi')
+    this.setState({ formError: null })
+
+    try {
+      await timeoutPromise()
+      throw new Error('hi')
+    } catch (err) {
+      this.setState({ formError: err })
+    }
   }
 
   render() {
     const {
       formState,
+      formError,
     } = this.state
 
     return <ThemedForm
       formState={formState}
     >
-      <ThemedFormError
-        formState={formState}
-      />
+      <Alert show={Boolean(formError)}>{formError && formError.message}</Alert>
       <ThemedFormField
         className={styles['themed-form__field']}
         label={'email'}

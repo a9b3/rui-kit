@@ -9,7 +9,7 @@ import styles       from './themed-form-field.component.scss'
 import {
   FormField,
   FormFieldError,
-}                   from '../../index.js'
+}                   from '../index.js'
 
 function ThemedFormField({
   label,
