@@ -7,6 +7,7 @@ function AlertComponent({
   show,
   type,
   children,
+  close,
   ...rest
 }) {
   if (!show) {
@@ -15,6 +16,7 @@ function AlertComponent({
 
   return <div
     styleName={`alert ${type}`}
+    onClick={close}
     {...rest}
   >
     {children}
@@ -25,6 +27,7 @@ AlertComponent.propTypes = {
   show    : PropTypes.bool,
   children: PropTypes.node,
   type    : PropTypes.oneOf(['error', 'positive']),
+  close   : PropTypes.func,
 }
 
 AlertComponent.defaultProps = {

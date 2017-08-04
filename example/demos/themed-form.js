@@ -22,6 +22,7 @@ class FormExample extends React.Component {
   state = {
     formState: null,
     formError: null,
+    showAlert: false,
   }
 
   componentWillMount() {
@@ -47,18 +48,22 @@ class FormExample extends React.Component {
     this.setState({ formState })
   }
 
+  closeAlert = () => {
+    this.setState({ showAlert: false })
+  }
+
   handleSubmit = async (evt) => {
     const {
       formState,
     } = this.state
 
-    this.setState({ formError: null })
+    this.setState({ formError: null, showAlert: false })
 
     try {
       await timeoutPromise()
       throw new Error('hi')
     } catch (err) {
-      this.setState({ formError: err })
+      this.setState({ formError: err, showAlert: true })
     }
   }
 
@@ -66,12 +71,13 @@ class FormExample extends React.Component {
     const {
       formState,
       formError,
+      showAlert,
     } = this.state
 
     return <ThemedForm
       formState={formState}
     >
-      <Alert show={Boolean(formError)}>{formError && formError.message}</Alert>
+      <Alert show={showAlert} close={this.closeAlert}>{formError && formError.message}</Alert>
       <ThemedFormField
         className={styles['themed-form__field']}
         label={'email'}

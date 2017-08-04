@@ -30,7 +30,9 @@ function Button({
       href={href}
     >
       <LoadingOverlay show={loading} {...loadingOverlayAttr} />
-      {children}
+      <span style={{ opacity: loading ? '0' : '1'}}>
+        {children}
+      </span>
     </a>
   }
 
@@ -39,7 +41,9 @@ function Button({
     onClick={onClick}
   >
     <LoadingOverlay show={loading} {...loadingOverlayAttr} />
-    {children}
+    <span style={{ opacity: loading ? '0' : '1'}}>
+      {children}
+    </span>
   </button>
 }
 
