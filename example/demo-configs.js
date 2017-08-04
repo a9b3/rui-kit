@@ -14,6 +14,7 @@ export default [
       require('./demos/truncate-text.js').default,
       require('./demos/form.js').default,
       require('./demos/image-carousel.js').default,
+      require('./demos/modal.js').default,
     ],
   },
   {
