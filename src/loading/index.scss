@@ -30,14 +30,14 @@ $spin-duration-inner: 3s;
   border-radius: 50%;
   width: 1em;
   height: 1em;
-  border: .1em solid $off-main-color;
+  border: .15em solid $off-main-color;
   border-top-color: $main-color;
   animation: spin $spin-duration infinite linear;
 
   .before {
     content: "";
     position: absolute;
-    border: .1em solid transparent;
+    border: .15em solid transparent;
     border-bottom-color: $main-color;
     border-right-color: $main-color;
     top: .1em;
