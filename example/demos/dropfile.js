@@ -1,4 +1,17 @@
-import { Dropfile } from '../../src'
+import {
+  Dropfile,
+  Alert,
+} from '../../src'
+
+class DropfileExample extends React.Component {
+  render() {
+    return <div style={{
+      height: 400,
+    }}>
+      <Dropfile />
+    </div>
+  }
+}
 
 export default {
   display          : 'Dropfile',
@@ -7,9 +20,7 @@ export default {
     header     : `<Dropfile />`,
     description: 'Dropfile component.',
     demos      : [
-      <Dropfile>
-              hi
-      </Dropfile>,
+      <DropfileExample />,
     ],
     codeSnippetType: 'html',
     codeSnippet    : `
