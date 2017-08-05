@@ -18,9 +18,11 @@
   display: block;
   background: transparent;
   border-bottom: 1px solid $gray5;
+  margin-bottom: 1px;
 
   &:focus {
     border-bottom: 2px solid $cyan2;
+    margin-bottom: 0;
   }
 }
 .container__form-field::placeholder {
