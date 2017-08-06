@@ -1,20 +1,37 @@
 import {
   Dropfile,
-  Alert,
 } from '../../src'
 
-// function uploadFile(file) {
-//   await s3.uploadFile({
-//
-//   })
-// }
-//
+function timeoutAsync(cb) {
+  return new Promise((resolve) => {
+    const interval = setInterval(() => {
+      cb()
+    }, 500)
+    setTimeout(() => {
+      clearInterval(interval)
+      resolve()
+    }, 4000)
+  })
+}
+
+async function uploadFiles(files, setProgress) {
+  const promises = []
+  for (let i = 0; i < files.length; i++) {
+    promises.push(timeoutAsync(() => {
+      setProgress(files[i].id, Math.random() * 100)
+    }))
+  }
+  await Promise.all(promises)
+}
+
 class DropfileExample extends React.Component {
   render() {
     return <div style={{
       height: 400,
     }}>
-      <Dropfile />
+      <Dropfile
+        uploadFiles={uploadFiles}
+      />
     </div>
   }
 }
@@ -28,9 +45,41 @@ export default {
     demos      : [
       <DropfileExample />,
     ],
-    codeSnippetType: 'html',
+    codeSnippetType: 'jsx',
     codeSnippet    : `
-            hi
+function timeoutAsync(cb) {
+  return new Promise((resolve, reject) => {
+    const interval = setInterval(() => {
+      cb()
+    }, 500)
+    setTimeout(() => {
+      clearInterval(interval)
+      resolve()
+    }, 4000)
+  })
+}
+
+async function uploadFiles(files, setProgress) {
+  const promises = []
+  for (let i = 0; i < files.length; i++) {
+    promises.push(timeoutAsync(() => {
+      setProgress(files[i].id, Math.random() * 100)
+    }))
+  }
+  await Promise.all(promises)
+}
+
+class DropfileExample extends React.Component {
+  render() {
+    return <div style={{
+      height: 400,
+    }}>
+      <Dropfile
+        uploadFiles={uploadFiles}
+      />
+    </div>
+  }
+}
           `,
   },
 }

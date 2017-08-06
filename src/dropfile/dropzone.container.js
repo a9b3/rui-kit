@@ -6,38 +6,18 @@ import ErrorOverlayComponent   from './error-overlay.component.js'
 import SuccessOverlayComponent from './success-overlay.component.js'
 import UploadingComponent      from './uploading.component.js'
 
-function timeoutAsync(cb) {
-  return new Promise((resolve, reject) => {
-    const interval = setInterval(() => {
-      cb()
-    }, 500)
-    setTimeout(() => {
-      clearInterval(interval)
-      resolve()
-    }, 4000)
-  })
-}
-
 export default class DropzoneContainer extends React.Component {
   static propTypes = {
     // validate(files: Files): boolean {}
     // Files is a pseudo array.
     validate   : PropTypes.func,
-    // uploadFiles(files: Files)
+    // uploadFiles(files: Files, (id: string, percent: number): void {})
     uploadFiles: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
     validate   : () => true,
-    uploadFiles: async (files, setProgress) => {
-      const promises = []
-      for (let i = 0; i < files.length; i++) {
-        promises.push(timeoutAsync(() => {
-          setProgress(files[i].id, Math.random() * 100)
-        }))
-      }
-      await Promise.all(promises)
-    },
+    uploadFiles: () => true,
   }
 
   state = {
