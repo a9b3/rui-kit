@@ -6,6 +6,7 @@ export default [
       require('./demos/button.js').default,
       require('./demos/loading.js').default,
       require('./demos/loading-overlay.js').default,
+      require('./demos/init-wrapper.js').default,
       require('./demos/left-middle-right.js').default,
       require('./demos/row.js').default,
       require('./demos/sidebar.js').default,

@@ -8,13 +8,20 @@ export default class Form {
   @observable
   hasError = false
 
-  constructor({ validators }) {
+  constructor({
+    validators,
+    values = {},
+  }) {
     invariant(typeof validators === 'object', `'validators' must be provided.`)
     if (!Object.keys(validators).every(key => typeof validators[key] === 'function')) {
       throw new Error(`Every value of validators must be a function`)
     }
 
     this.validators = validators
+
+    Object.keys(values).forEach(key => {
+      this.formData.set(key, values[key])
+    })
   }
 
   set(key, value) {
