@@ -1,0 +1,35 @@
+@import '~styles/shared';
+
+.uploading-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem 1rem;
+  width: 100%;
+}
+
+.uploading-row__right {
+  flex-grow: 1;
+
+  .filename {
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .size {
+    font-size: .8em;
+    margin-top: .3rem;
+    font-weight: 500;
+    color: $gray3;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .end {
+    margin-left: auto;
+  }
+}

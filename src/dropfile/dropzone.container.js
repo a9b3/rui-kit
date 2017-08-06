@@ -6,9 +6,13 @@ import ErrorOverlayComponent   from './error-overlay.component.js'
 import SuccessOverlayComponent from './success-overlay.component.js'
 import UploadingComponent      from './uploading.component.js'
 
-function timeoutAsync() {
+function timeoutAsync(cb) {
   return new Promise((resolve, reject) => {
+    const interval = setInterval(() => {
+      cb()
+    }, 500)
     setTimeout(() => {
+      clearInterval(interval)
       resolve()
     }, 4000)
   })
@@ -25,8 +29,14 @@ export default class DropzoneContainer extends React.Component {
 
   static defaultProps = {
     validate   : () => true,
-    uploadFiles: async (files) => {
-      await timeoutAsync()
+    uploadFiles: async (files, setProgress) => {
+      const promises = []
+      for (let i = 0; i < files.length; i++) {
+        promises.push(timeoutAsync(() => {
+          setProgress(files[i].id, Math.random() * 100)
+        }))
+      }
+      await Promise.all(promises)
     },
   }
 
@@ -35,6 +45,7 @@ export default class DropzoneContainer extends React.Component {
     error    : false,
     success  : false,
     files    : {},
+    progress : [],
   }
 
   handleDrop = async (files) => {
@@ -48,8 +59,12 @@ export default class DropzoneContainer extends React.Component {
     try {
       await validate(files)
 
-      this.setState({uploading: true, files})
-      await uploadFiles(files)
+      this.setState({
+        uploading: true,
+        files,
+        progress : this.initProgressFromFiles(files),
+      })
+      await uploadFiles(files, this.setProgress)
       this.setState({success: true})
     } catch (error) {
       this.setState({error})
@@ -63,7 +78,35 @@ export default class DropzoneContainer extends React.Component {
       error    : false,
       uploading: false,
       files    : {},
+      progress : [],
     })
+  }
+
+  initProgressFromFiles = (files) => {
+    const progress = []
+    for (let i = 0; i < files.length; i++) {
+      progress.push({
+        percent: 0,
+        file   : files[i],
+      })
+    }
+    return progress
+  }
+
+  setProgress = (id, percent) => {
+    const {
+      progress,
+    } = this.state
+
+
+    for (let i = 0; i < progress.length; i++) {
+      if (progress[i].file.id === id) {
+        progress[i].percent = percent
+        break
+      }
+    }
+
+    this.setState({progress})
   }
 
   render() {
@@ -71,6 +114,7 @@ export default class DropzoneContainer extends React.Component {
       uploading,
       error,
       success,
+      progress,
     } = this.state
 
     if (success) {
@@ -86,13 +130,14 @@ export default class DropzoneContainer extends React.Component {
       />
     }
 
-    if (true) {
-    // if (uploading) {
+    if (uploading) {
       return <UploadingComponent
+        progress={progress}
       />
     }
 
     return <SelectFileContainer
+      multiple
       onDrop={this.handleDrop}
     >
       <PreUploadComponent />

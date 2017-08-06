@@ -1,4 +1,5 @@
-import PropTypes  from 'prop-types'
+import PropTypes from 'prop-types'
+import uuid      from 'uuid'
 
 export default class SelectFileContainer extends React.Component {
   fileInputEl = null
@@ -44,6 +45,7 @@ export default class SelectFileContainer extends React.Component {
     const files = e.dataTransfer ? e.dataTransfer.files : e.target.files
     for (let i = 0; i < files.length; i++) {
       files[i].preview = window.URL.createObjectURL(files[i])
+      files[i].id = uuid.v4()
     }
 
     if (onDrop) {

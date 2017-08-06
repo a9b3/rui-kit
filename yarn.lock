@@ -4475,9 +4475,9 @@ js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.1.9"
   resolved "https://registry.npmjs.org/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
 
-js-functions@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/js-functions/-/js-functions-0.0.4.tgz#4a006c9b642223d3e23214d5dcadbea0f7d7f074"
+js-functions@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/js-functions/-/js-functions-0.0.8.tgz#2561460a45285937dd0bcc7dce4aa7bca03f2817"
 
 js-tokens@^3.0.0:
   version "3.0.2"

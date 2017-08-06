@@ -1,43 +1,33 @@
-import styles    from './uploading.component.scss'
-import PropTypes from 'prop-types'
+import styles                from './uploading.component.scss'
+import PropTypes             from 'prop-types'
+
+import UploadingRowComponent from './uploading-row.component.js'
 
 function UploadingComponent({
   progress,
   ...rest
 }) {
-  progress.map(({
-    percent,
-  }) => {
-    return <div>
-      {percent}
-    </div>
-  })
 
   return <div
+    styleName='uploading'
     {...rest}
   >
-    hi
+    {
+      progress.map((p) => {
+        return <UploadingRowComponent
+          key={p.file.id}
+          progress={p}
+        />
+      })
+    }
   </div>
 }
 
 UploadingComponent.propTypes = {
   progress: PropTypes.arrayOf(PropTypes.shape({
-    percent: PropTypes.number,
+    percent: PropTypes.number.isRequired,
+    file   : PropTypes.any.isRequired,
   })),
-}
-
-UploadingComponent.defaultProps = {
-  progress: [
-    {
-      percent: 0,
-    },
-    {
-      percent: 10,
-    },
-    {
-      percent: 50,
-    },
-  ],
 }
 
 export default cssModule(UploadingComponent, styles, {allowMultiple: true})
