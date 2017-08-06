@@ -11,6 +11,7 @@ export {default as Dropfile}                  from './dropfile'
 export {default as TruncateText}              from './truncate-text'
 export {default as ImageCarousel}             from './image-carousel'
 export {default as Modal}                     from './modal'
+export {ProgressBar as ProgressBar}           from './progress-bar'
 
 // Form
 export {Form as Form}                         from './form'

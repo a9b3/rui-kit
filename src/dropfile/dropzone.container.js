@@ -4,6 +4,15 @@ import SelectFileContainer     from './select-file.container.js'
 import PreUploadComponent      from './preupload.component.js'
 import ErrorOverlayComponent   from './error-overlay.component.js'
 import SuccessOverlayComponent from './success-overlay.component.js'
+import UploadingComponent      from './uploading.component.js'
+
+function timeoutAsync() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, 4000)
+  })
+}
 
 export default class DropzoneContainer extends React.Component {
   static propTypes = {
@@ -16,7 +25,9 @@ export default class DropzoneContainer extends React.Component {
 
   static defaultProps = {
     validate   : () => true,
-    uploadFiles: () => true,
+    uploadFiles: async (files) => {
+      await timeoutAsync()
+    },
   }
 
   state = {
@@ -75,8 +86,10 @@ export default class DropzoneContainer extends React.Component {
       />
     }
 
-    if (uploading) {
-
+    if (true) {
+    // if (uploading) {
+      return <UploadingComponent
+      />
     }
 
     return <SelectFileContainer

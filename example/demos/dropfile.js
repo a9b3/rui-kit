@@ -3,6 +3,12 @@ import {
   Alert,
 } from '../../src'
 
+// function uploadFile(file) {
+//   await s3.uploadFile({
+//
+//   })
+// }
+//
 class DropfileExample extends React.Component {
   render() {
     return <div style={{
