@@ -42,6 +42,16 @@ export default {
       <Button
         type='outline'
         style={{ margin: '1rem 0' }}
+        color={variables.yellow3}
+        onClick={timeoutPromise}
+        disabled
+      >
+        I am disabled
+      </Button>,
+
+      <Button
+        type='outline'
+        style={{ margin: '1rem 0' }}
         color={variables.red1}
         onClick={timeoutPromise}
         loadingOverlayAttr={{ style: {backgroundColor: variables.blue3},  loadingAttr: { color: variables.pink3 } }}

@@ -10,7 +10,6 @@ export default class Form {
 
   constructor({
     validators,
-    values = {},
   }) {
     invariant(typeof validators === 'object', `'validators' must be provided.`)
     if (!Object.keys(validators).every(key => typeof validators[key] === 'function')) {
@@ -18,7 +17,9 @@ export default class Form {
     }
 
     this.validators = validators
+  }
 
+  setValues(values = {}) {
     Object.keys(values).forEach(key => {
       this.formData.set(key, values[key])
     })
