@@ -1,5 +1,5 @@
 import {
-  Dropfile,
+  Dropzone,
 } from '../../src'
 
 function timeoutAsync(cb) {
@@ -24,12 +24,12 @@ async function uploadFiles(files, setProgress) {
   await Promise.all(promises)
 }
 
-class DropfileExample extends React.Component {
+class DropzoneExample extends React.Component {
   render() {
     return <div style={{
-      height: 400,
+      height: 300,
     }}>
-      <Dropfile
+      <Dropzone
         uploadFiles={uploadFiles}
       />
     </div>
@@ -37,13 +37,13 @@ class DropfileExample extends React.Component {
 }
 
 export default {
-  display          : 'Dropfile',
-  to               : '/dropfile',
+  display          : 'Dropzone',
+  to               : '/dropzone',
   demoComponentAttr: {
-    header     : `<Dropfile />`,
-    description: 'Dropfile component.',
+    header     : `<Dropzone />`,
+    description: 'Dropzone component.',
     demos      : [
-      <DropfileExample />,
+      <DropzoneExample />,
     ],
     codeSnippetType: 'jsx',
     codeSnippet    : `
@@ -69,12 +69,12 @@ async function uploadFiles(files, setProgress) {
   await Promise.all(promises)
 }
 
-class DropfileExample extends React.Component {
+class DropzoneExample extends React.Component {
   render() {
     return <div style={{
       height: 400,
     }}>
-      <Dropfile
+      <Dropzone
         uploadFiles={uploadFiles}
       />
     </div>
