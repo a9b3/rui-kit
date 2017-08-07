@@ -16,6 +16,7 @@ export {ProgressBar as ProgressBar}           from './progress-bar'
 export {InitWrapper as InitWrapper}           from './init-wrapper'
 export {Image as Image}                       from './image'
 export {UploadImage as UploadImage}           from './upload-image'
+export {HoverDisplay as HoverDisplay}         from './hover-display'
 
 // Form
 export {Form as Form}                         from './form'

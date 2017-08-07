@@ -21,7 +21,7 @@ export default class Form {
 
   setValues(values = {}) {
     Object.keys(values).forEach(key => {
-      this.formData.set(key, values[key])
+      this.formData.set(key, values[key] || '')
     })
   }
 

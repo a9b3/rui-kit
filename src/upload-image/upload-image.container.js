@@ -58,6 +58,7 @@ export default class UploadImageContainer extends React.Component {
   render() {
     const {
       defaultImage, // eslint-disable-line
+      uploadFile, // eslint-disable-line
       ...rest
     } = this.props
     const {

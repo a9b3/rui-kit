@@ -48,10 +48,10 @@ export default class InitWrapperContainer extends React.Component {
     } = this.state
 
     return <div
+      {...rest}
       style={Object.assign({}, {
         position: 'relative',
       }, style)}
-      {...rest}
     >
       {
         loading

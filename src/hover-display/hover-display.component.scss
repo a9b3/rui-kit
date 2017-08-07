@@ -1,0 +1,19 @@
+.hover {
+  position: relative;
+}
+
+.content {
+  position: absolute;
+  display: none;
+  bottom: 0;
+  left: 0;
+  transform: translate(0, 100%);
+}
+
+.hover {
+  &:hover {
+    .content {
+      display: block;
+    }
+  }
+}

@@ -20,6 +20,7 @@ export default [
       require('./demos/form.js').default,
       require('./demos/image-carousel.js').default,
       require('./demos/modal.js').default,
+      require('./demos/hover-display.js').default,
       require('./demos/alert.js').default,
       require('./demos/app-shell.js').default,
       require('./demos/themed-form.js').default,
