@@ -14,6 +14,8 @@ export {default as ImageCarousel}             from './image-carousel'
 export {default as Modal}                     from './modal'
 export {ProgressBar as ProgressBar}           from './progress-bar'
 export {InitWrapper as InitWrapper}           from './init-wrapper'
+export {Image as Image}                       from './image'
+export {UploadImage as UploadImage}           from './upload-image'
 
 // Form
 export {Form as Form}                         from './form'

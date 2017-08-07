@@ -10,6 +10,8 @@ export default [
       require('./demos/left-middle-right.js').default,
       require('./demos/row.js').default,
       require('./demos/sidebar.js').default,
+      require('./demos/image.js').default,
+      require('./demos/upload-image.js').default,
       require('./demos/dropdown.js').default,
       require('./demos/progress-bar.js').default,
       require('./demos/dropzone.js').default,
