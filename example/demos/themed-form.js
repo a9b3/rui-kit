@@ -43,6 +43,9 @@ class FormExample extends React.Component {
           }
           return true
         },
+        bio: () => {
+          return true
+        },
       },
     })
     this.setState({ formState })
@@ -108,6 +111,21 @@ class FormExample extends React.Component {
         formFieldAttr={{
           placeholder: 'Confirm Password',
           type       : 'password',
+        }}
+      />
+      <ThemedFormField
+        className={styles['themed-form__field']}
+        label={'Bio'}
+        style={{display: 'block'}}
+        formState={formState}
+        formFieldKey={'bio'}
+        formFieldAttr={{
+          placeholder: 'Bio',
+          formType   : 'textarea',
+          style      : {
+            resize: 'none',
+            height: '100px',
+          },
         }}
       />
 

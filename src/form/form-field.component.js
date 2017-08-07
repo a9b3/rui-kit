@@ -9,13 +9,21 @@ function FormField({
   formFieldKey,
   ...rest
 }) {
+  const attr = {
+    value   : formState.formData.get(formFieldKey),
+    ...rest,
+    onChange: evt => handleChange(evt, formState, formFieldKey),
+  }
+
   switch(formType) {
+  case 'textarea':
+    return <textarea
+      {...attr}
+    />
   default:
     return <input
       type='text'
-      value={formState.formData.get(formFieldKey)}
-      {...rest}
-      onChange={evt => handleChange(evt, formState, formFieldKey)}
+      {...attr}
     >
       {children}
     </input>
@@ -24,7 +32,7 @@ function FormField({
 
 FormField.propTypes = {
   // Type of html form element to create. eg. input
-  formType    : PropTypes.oneOf(['input']),
+  formType    : PropTypes.oneOf(['input', 'textarea']),
   // Instance of FormState.
   formState   : PropTypes.object.isRequired,
   // The specific key for which this form field is for. This should be the
