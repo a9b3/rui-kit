@@ -13,6 +13,7 @@ function FormField({
   default:
     return <input
       type='text'
+      value={formState.formData.get(formFieldKey)}
       {...rest}
       onChange={evt => handleChange(evt, formState, formFieldKey)}
     >
