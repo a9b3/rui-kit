@@ -1,6 +1,7 @@
 import { Button } from '../../src'
 import variables  from 'esayemm-styles/variables'
 
+/* eslint-disable react/jsx-key */
 function timeoutPromise() {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -94,3 +95,4 @@ export default {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

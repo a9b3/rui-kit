@@ -2,6 +2,7 @@ import { InitWrapper } from '../../src'
 
 import {timeoutAsync}  from '../helpers.js'
 
+/* eslint-disable react/jsx-key */
 class InitWrapperExample extends React.Component {
   render() {
     return <InitWrapper
@@ -27,3 +28,4 @@ export default {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

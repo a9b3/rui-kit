@@ -1,6 +1,7 @@
 import { UploadImage } from '../../src'
 import {timeoutAsync}  from '../helpers.js'
 
+/* eslint-disable react/jsx-key */
 export default {
   display          : 'UploadImage',
   to               : '/upload-image',
@@ -21,3 +22,4 @@ export default {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

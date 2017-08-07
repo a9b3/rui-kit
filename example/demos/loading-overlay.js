@@ -1,5 +1,6 @@
 import { LoadingOverlay } from '../../src'
 
+/* eslint-disable react/jsx-key */
 export default {
   display          : 'LoadingOverlay',
   to               : '/loading-overlay',
@@ -29,3 +30,4 @@ export default {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

@@ -9,6 +9,7 @@ import {
 }                  from '../../src'
 import variables   from 'esayemm-styles/variables'
 
+/* eslint-disable react/jsx-key */
 function timeoutPromise() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -263,3 +264,4 @@ class FormExample extends React.Component {
     `,
   },
 }
+/* eslint-enable react/jsx-key */

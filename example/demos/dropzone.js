@@ -2,6 +2,7 @@ import {
   Dropzone,
 } from '../../src'
 
+/* eslint-disable react/jsx-key */
 function timeoutAsync(cb) {
   return new Promise((resolve) => {
     const interval = setInterval(() => {
@@ -83,3 +84,4 @@ class DropzoneExample extends React.Component {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

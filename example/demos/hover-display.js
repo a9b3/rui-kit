@@ -1,5 +1,6 @@
 import { HoverDisplay } from '../../src'
 
+/* eslint-disable react/jsx-key */
 export default {
   display          : 'HoverDisplay',
   to               : '/hover-display',
@@ -25,3 +26,4 @@ export default {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

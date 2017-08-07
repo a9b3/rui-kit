@@ -1,5 +1,6 @@
 import { ProgressBar } from '../../src'
 
+/* eslint-disable react/jsx-key */
 export default {
   display          : 'ProgressBar',
   to               : '/progress-bar',
@@ -19,3 +20,4 @@ export default {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

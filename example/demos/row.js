@@ -1,5 +1,6 @@
 import { Row } from '../../src'
 
+/* eslint-disable react/jsx-key */
 export default {
   display          : 'Row',
   to               : '/row',
@@ -43,3 +44,4 @@ export default {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

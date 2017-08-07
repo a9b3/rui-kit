@@ -1,6 +1,7 @@
 import React             from 'react'
 import { ImageCarousel } from '../../src'
 
+/* eslint-disable react/jsx-key */
 export default {
   display          : 'ImageCarousel',
   to               : '/image-carousel',
@@ -32,3 +33,4 @@ export default {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

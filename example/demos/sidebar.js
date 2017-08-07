@@ -1,5 +1,6 @@
 import { Sidebar } from '../../src'
 
+/* eslint-disable react/jsx-key */
 export default {
   display          : 'Sidebar',
   to               : '/sidebar',
@@ -29,3 +30,4 @@ export default {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

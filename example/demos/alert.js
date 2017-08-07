@@ -1,6 +1,7 @@
 import React from 'react'
 import { Alert, Button } from '../../src'
 
+/* eslint-disable react/jsx-key */
 class AlertDemo extends React.Component {
   state = {
     showAlert : true,
@@ -97,3 +98,4 @@ class AlertDemo extends React.Component {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

@@ -6,6 +6,7 @@ import {
   FormFieldError,
 } from '../../src'
 
+/* eslint-disable react/jsx-key */
 class FormExample extends React.Component {
   state = {
     formState: null,
@@ -165,3 +166,4 @@ class FormExample extends React.Component {
     `,
   },
 }
+/* eslint-enable react/jsx-key */

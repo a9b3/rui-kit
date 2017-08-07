@@ -1,6 +1,7 @@
 import React        from 'react'
 import { Modal } from '../../src'
 
+/* eslint-disable react/jsx-key */
 export default {
   display          : 'Modal',
   to               : '/modal',
@@ -42,3 +43,4 @@ export default {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

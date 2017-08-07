@@ -1,5 +1,6 @@
 import { SelectFile } from '../../src'
 
+/* eslint-disable react/jsx-key */
 class SelectFileExample extends React.Component {
   state = {
     preview: null,
@@ -66,3 +67,4 @@ class SelectFileExample extends React.Component {
           `,
   },
 }
+/* eslint-enable react/jsx-key */

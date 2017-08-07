@@ -1,5 +1,6 @@
 import { Loading } from '../../src'
 
+/* eslint-disable react/jsx-key */
 export default {
   display          : 'Loading',
   to               : '/loading',
@@ -24,3 +25,4 @@ export default {
           `,
   },
 }
+/* eslint-enable react/jsx-key */
