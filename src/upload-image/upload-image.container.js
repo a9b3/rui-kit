@@ -65,7 +65,7 @@ export default class UploadImageContainer extends React.Component {
       preview,
       uploading,
       // TODO show error screen
-      error,
+      error, // eslint-disable-line
       progress,
     } = this.state
 

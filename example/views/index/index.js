@@ -3,7 +3,6 @@ import React         from 'react'
 import CSSModules    from 'react-css-modules'
 import { Helmet }    from 'react-helmet'
 import * as ruiKit   from '../../../src'
-import { alignText } from 'js-functions'
 
 @CSSModules(styles)
 export default class Index extends React.Component {

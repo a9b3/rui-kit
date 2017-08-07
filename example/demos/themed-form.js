@@ -9,15 +9,9 @@ import {
 }                  from '../../src'
 import variables   from 'esayemm-styles/variables'
 
-/* eslint-disable react/jsx-key */
-function timeoutPromise() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve()
-    }, 1000)
-  })
-}
+import { timeoutAsync } from '../helpers.js'
 
+/* eslint-disable react/jsx-key */
 @CSSModules(styles)
 class FormExample extends React.Component {
   state = {
@@ -56,15 +50,11 @@ class FormExample extends React.Component {
     this.setState({ showAlert: false })
   }
 
-  handleSubmit = async (evt) => {
-    const {
-      formState,
-    } = this.state
-
+  handleSubmit = async () => {
     this.setState({ formError: null, showAlert: false })
 
     try {
-      await timeoutPromise()
+      await timeoutAsync()
       throw new Error('hi')
     } catch (err) {
       this.setState({ formError: err, showAlert: true })
@@ -154,7 +144,7 @@ export default {
     ],
     codeSnippetType: 'jsx',
     codeSnippet    : `
-function timeoutPromise() {
+function timeoutAsync() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve()
