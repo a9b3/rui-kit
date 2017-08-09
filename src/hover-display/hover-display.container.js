@@ -46,6 +46,7 @@ export default class HoverDisplayContainer extends React.Component {
     const {
       content,
       children,
+      align, // eslint-disable-line
       ...rest
     } = this.props
 
