@@ -6,6 +6,11 @@ export default class HoverDisplayContainer extends React.Component {
   static propTypes = {
     content : PropTypes.node.isRequired,
     children: PropTypes.node.isRequired,
+    align   : PropTypes.oneOf(['left', 'right']),
+  }
+
+  static defaultProps = {
+    align: 'left',
   }
 
   state = {
@@ -16,13 +21,17 @@ export default class HoverDisplayContainer extends React.Component {
   contentWrapper = null
 
   handleMouseOver = () => {
+    const {
+      align,
+    } = this.props
+
     const containerElPos = this.containerEl.getBoundingClientRect()
 
     const wrapperStyle = {
       top: containerElPos.bottom,
     }
 
-    if (containerElPos.left + this.contentWrapper.offsetWidth > window.innerWidth) {
+    if (align === 'right' || containerElPos.left + this.contentWrapper.offsetWidth > window.innerWidth) {
       wrapperStyle.right = window.innerWidth - containerElPos.right
     } else {
       wrapperStyle.left = containerElPos.left

@@ -52,6 +52,8 @@ export default class InitWrapperContainer extends React.Component {
       {...rest}
       style={Object.assign({}, {
         position: 'relative',
+        width   : '100%',
+        height  : '100%',
       }, style)}
     >
       {
