@@ -21,7 +21,7 @@ export default class InitWrapperContainer extends React.Component {
   }
 
   initialize = async () => {
-    this.setState({loading: true})
+    this.setState({loading: true, err: null})
 
     const {
       init,
@@ -29,10 +29,10 @@ export default class InitWrapperContainer extends React.Component {
 
     try {
       await init()
+      this.setState({err: null, loading: false})
     } catch (err) {
-      this.setState({err})
+      this.setState({err, loading: false})
     }
-    this.setState({loading: false})
   }
 
   render() {
@@ -44,6 +44,7 @@ export default class InitWrapperContainer extends React.Component {
     } = this.props
 
     const {
+      err,
       loading,
     } = this.state
 
@@ -54,15 +55,25 @@ export default class InitWrapperContainer extends React.Component {
       }, style)}
     >
       {
-        loading
-          ? <LoadingOverlay
-            show
-            loadingAttr={{
-              color: variables.green,
-            }}
-            style={{fontSize: '1.4em', backgroundColor: 'transparent'}}
-          />
-          : children
+        err && !loading && <div
+          style={{
+
+          }}
+        >
+          {err.message}
+        </div>
+      }
+      {
+        loading && !err && <LoadingOverlay
+          show
+          loadingAttr={{
+            color: variables.green,
+          }}
+          style={{fontSize: '1.4em', backgroundColor: 'transparent'}}
+        />
+      }
+      {
+        !loading && !err && children
       }
     </div>
   }

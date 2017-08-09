@@ -1,1 +1,1 @@
-export {default as HoverDisplay} from './hover-display.component.js'
+export {default as HoverDisplay} from './hover-display.container.js'
