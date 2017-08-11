@@ -51,9 +51,11 @@ export default class TableContainer extends React.Component {
     return <div style={{width: '100%', overflow: 'auto'}}
       {...rest}
     >
-      <table style={{background: 'yellow'}}>
+      <table style={{background: 'yellow', border: '0', borderSpacing: '0'}}>
         <thead>
-          <tr>
+          <tr
+            style={{borderBottom: '1px solid black'}}
+          >
             {
               tableHeaders.map((th, i) => {
                 return <th
@@ -72,8 +74,17 @@ export default class TableContainer extends React.Component {
         <tbody>
           {
             items.map((item, i) => {
-              return <tr key={i}>
-                {tableHeaders.map((key, j) => <td key={j}>{item[key]}</td>)}
+              return <tr
+                key={i}
+              >
+                {
+                  tableHeaders.map((key, j) => <td
+                    style={{borderBottom: '1px solid black'}}
+                    key={j}
+                  >
+                    {item[key]}
+                  </td>)
+                }
               </tr>
             })
           }
