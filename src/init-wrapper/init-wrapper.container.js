@@ -31,6 +31,7 @@ export default class InitWrapperContainer extends React.Component {
       await init()
       this.setState({err: null, loading: false})
     } catch (err) {
+      console.error(err)
       this.setState({err, loading: false})
     }
   }
