@@ -24,6 +24,7 @@ export default [
       require('./demos/alert.js').default,
       require('./demos/app-shell.js').default,
       require('./demos/themed-form.js').default,
+      require('./demos/table.js').default,
     ],
   },
 ]

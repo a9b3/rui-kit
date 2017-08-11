@@ -30,3 +30,5 @@ export {ThemedForm as ThemedForm}             from './themed-form'
 export {ThemedFormField as ThemedFormField}   from './themed-form'
 export {ThemedFormSubmit as ThemedFormSubmit} from './themed-form'
 export {Alert as Alert}                       from './alert'
+
+export {Table as Table}                       from './table'
