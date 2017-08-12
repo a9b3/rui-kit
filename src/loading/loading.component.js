@@ -21,12 +21,7 @@ function Loading({
     styleName='loading'
     {...rest}
     style={Object.assign({}, inlineStyles.root, style)}
-  >
-    <div
-      styleName='before'
-      style={Object.assign({}, inlineStyles.inner)}
-    />
-  </div>
+  />
 }
 
 Loading.propTypes = {
@@ -44,14 +39,12 @@ Loading.defaultProps = {
 
 function getStyles({ color }) {
 
+  const fadedColor = tinycolor(color).setAlpha(.15)
+
   const inlineStyles = {
     root: {
-      borderColor   : tinycolor(color).setAlpha(.2),
+      borderColor   : fadedColor,
       borderTopColor: color,
-    },
-    inner: {
-      borderBottomColor: color,
-      borderRightColor : color,
     },
   }
 
