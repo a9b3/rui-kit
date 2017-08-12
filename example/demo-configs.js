@@ -7,9 +7,6 @@ export default [
       require('./demos/loading.js').default,
       require('./demos/loading-overlay.js').default,
       require('./demos/init-wrapper.js').default,
-      require('./demos/left-middle-right.js').default,
-      require('./demos/row.js').default,
-      require('./demos/sidebar.js').default,
       require('./demos/image.js').default,
       require('./demos/upload-image.js').default,
       require('./demos/dropdown.js').default,
@@ -25,6 +22,14 @@ export default [
       require('./demos/app-shell.js').default,
       require('./demos/themed-form.js').default,
       require('./demos/table.js').default,
+    ],
+  },
+  {
+    header: 'Layout',
+    items : [
+      require('./demos/sidebar.js').default,
+      require('./demos/left-middle-right.js').default,
+      require('./demos/row.js').default,
     ],
   },
 ]

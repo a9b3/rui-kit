@@ -72,7 +72,7 @@ export default class InitWrapperContainer extends React.Component {
           loadingAttr={{
             color: variables.green,
           }}
-          style={{backgroundColor: 'transparent'}}
+          style={{backgroundColor: 'transparent', fontSize: '2em'}}
         />
       }
       {
