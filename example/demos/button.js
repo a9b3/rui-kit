@@ -14,8 +14,9 @@ export default {
   display          : 'Button',
   to               : '/button',
   demoComponentAttr: {
-    header: `<Button />`,
-    demos : [
+    component: Button,
+    header   : `<Button />`,
+    demos    : [
       <Button
         style={{ width: '100%', margin: '1rem 0' }}
         color={variables.green2}

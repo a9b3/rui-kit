@@ -1,6 +1,6 @@
 $main-color: rgb(255,255,255);
 $off-main-color: rgba($main-color, 0.2);
-$spin-duration: 2s;
+$spin-duration: 1.2s;
 
 @keyframes spin {
   0% {
@@ -16,7 +16,7 @@ $spin-duration: 2s;
   border-radius: 50%;
   width: 1em;
   height: 1em;
-  border: .1em solid $off-main-color;
+  border: .15em solid $off-main-color;
   border-top-color: $main-color;
   animation: spin $spin-duration infinite cubic-bezier(1,.2,.8,0);
 }

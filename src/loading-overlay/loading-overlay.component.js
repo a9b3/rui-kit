@@ -7,6 +7,7 @@ import Loading    from '../loading'
 
 function LoadingOverlay({
   show,
+  color,
   loadingAttr,
   ...rest
 }) {
@@ -19,6 +20,7 @@ function LoadingOverlay({
     {...rest}
   >
     <Loading
+      color={color}
       {...loadingAttr}
       show={show}
     />
@@ -27,6 +29,7 @@ function LoadingOverlay({
 
 LoadingOverlay.propTypes = {
   show       : PropTypes.bool,
+  color      : PropTypes.string,
   loadingAttr: PropTypes.object,
 }
 

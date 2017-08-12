@@ -5,23 +5,20 @@ export default {
   display          : 'Loading',
   to               : '/loading',
   demoComponentAttr: {
-    header: `<Loading />`,
-    demos : [
-      <div style={{ fontSize: '40px' }}>
-        <Loading
-          show
-          color='#000000'
-        />
-      </div>,
+    component: Loading,
+    header   : `<Loading />`,
+    demos    : [
+      <Loading
+        show
+        color='#000000'
+      />,
     ],
     codeSnippetType: 'html',
     codeSnippet    : `
-            <div style={{ fontSize: '40px' }}>
               <Loading
                 show
                 color='#000000'
               />
-            </div>
           `,
   },
 }

@@ -12,6 +12,7 @@ import {Helmet}        from 'react-helmet'
 @CSSModules(styles)
 export default class DemoComponent extends React.Component {
   static propTypes = {
+    component      : PropTypes.any,
     header         : PropTypes.string.isRequired,
     demos          : PropTypes.arrayOf(PropTypes.node).isRequired,
     codeSnippet    : PropTypes.string.isRequired,
@@ -21,6 +22,7 @@ export default class DemoComponent extends React.Component {
 
   render() {
     const {
+      component,
       header,
       demos,
       codeSnippet,
@@ -34,8 +36,18 @@ export default class DemoComponent extends React.Component {
       <Helmet>
         <title>{`React UI Kit | ${header}`}</title>
       </Helmet>
+
       <h2>{header}</h2>
       {description && <p>{description}</p>}
+
+      {
+        component && <section>
+          <h3>PropTypes</h3>
+          <ul>
+            {Object.keys(component.propTypes).map(key => <li key={key}>{key}</li>)}
+          </ul>
+        </section>
+      }
 
       <section>
         <h3>Example</h3>

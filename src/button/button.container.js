@@ -4,7 +4,23 @@ import ButtonComponent from './button.component.js'
 
 export default class ButtonContainer extends React.PureComponent {
   static propTypes = {
-    onClick: PropTypes.func,
+    // Pick from two of the provided stylings.
+    type              : PropTypes.oneOf(['filled', 'outline']),
+    color             : PropTypes.string,
+    // Provide href to render a element instead of button element.
+    href              : PropTypes.string,
+    onClick           : PropTypes.func,
+    // Boolean to show loading or not.
+    loading           : PropTypes.bool,
+    // Override style.
+    style             : PropTypes.object,
+    children          : PropTypes.node,
+    loadingOverlayAttr: PropTypes.object,
+  }
+
+  static defaultProps = {
+    type              : 'filled',
+    loadingOverlayAttr: {},
   }
 
   state = {
