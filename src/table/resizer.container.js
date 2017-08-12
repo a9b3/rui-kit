@@ -15,7 +15,8 @@ export default class ResizerContainer extends React.Component {
   }
 
   state = {
-    isDragging: false,
+    isDragging  : false,
+    initialEvent: null,
   }
 
   componentWillMount() {
@@ -26,27 +27,32 @@ export default class ResizerContainer extends React.Component {
   }
 
   componentWillUnmount() {
-    this._mouseTracker.stopListening()
+    this._mouseTracker._stopCapturing()
     this._mouseTracker = null
   }
 
   onMouseMove = ({
     deltaX,
     deltaY,
+    evt,
   }) => {
     const {
       onResize,
     } = this.props
-    onResize({deltaX, deltaY})
+    const {
+      initialEvent,
+    } = this.state
+    onResize({deltaX, deltaY, initialEvent})
   }
 
   handleMouseDown = (evt) => {
-    this.setState({isDragging: true})
+    evt.persist()
+    this.setState({isDragging: true, initialEvent: evt})
     this._mouseTracker.captureMovement(evt)
   }
 
   handleMouseUp = () => {
-    this.setState({isDragging: false})
+    this.setState({isDragging: false, initialEvent: null})
   }
 
   render() {

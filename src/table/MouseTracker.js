@@ -50,6 +50,7 @@ export default class MouseTracker {
     this._onMouseMove({
       deltaX: this._deltaX,
       deltaY: this._deltaY,
+      evt,
     })
   }
 

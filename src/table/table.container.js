@@ -8,11 +8,13 @@ export default class TableContainer extends React.Component {
   static propTypes = {
     tableHeaders: PropTypes.arrayOf(PropTypes.any),
     items       : PropTypes.arrayOf(PropTypes.any),
+    columnWidths: PropTypes.arrayOf(PropTypes.number),
   }
 
   static defaultProps = {
     tableHeaders: [],
     items       : [],
+    columnWidths: [],
   }
 
   state = {
@@ -22,18 +24,23 @@ export default class TableContainer extends React.Component {
   componentWillMount() {
     const {
       tableHeaders,
+      columnWidths,
     } = this.props
 
     // Initialize column widths.
-    const columnWidths = []
     for (let i = 0; i < tableHeaders.length; i++) {
-      columnWidths[i] = 100
+      if (!columnWidths[i]) {
+        columnWidths[i] = 'auto'
+      }
     }
     this.setState({columnWidths})
   }
 
-  resizeColumn = ({deltaX}, index) => {
+  resizeColumn = ({deltaX, initialEvent}, index) => {
     const {columnWidths} = this.state
+    if (typeof columnWidths[index] !== 'number') {
+      columnWidths[index] = initialEvent.target.parentNode.offsetWidth
+    }
     columnWidths[index] += deltaX
     this.setState({columnWidths})
   }
@@ -51,11 +58,9 @@ export default class TableContainer extends React.Component {
     return <div style={{width: '100%', overflow: 'auto'}}
       {...rest}
     >
-      <table style={{background: 'yellow', border: '0', borderSpacing: '0'}}>
+      <table style={{border: '0', borderSpacing: '0'}}>
         <thead>
-          <tr
-            style={{borderBottom: '1px solid black'}}
-          >
+          <tr>
             {
               tableHeaders.map((th, i) => {
                 return <th
@@ -79,9 +84,10 @@ export default class TableContainer extends React.Component {
               >
                 {
                   tableHeaders.map((key, j) => <td
-                    style={{borderBottom: '1px solid black'}}
                     key={j}
+                    style={{border: '1px solid black', position: 'relative'}}
                   >
+                    <ResizerContainer onResize={(deltas) => this.resizeColumn(deltas, j)}/>
                     {item[key]}
                   </td>)
                 }
