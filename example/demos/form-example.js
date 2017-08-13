@@ -1,18 +1,12 @@
-import FormExample from './form-example.js'
+import React from 'react'
+import {
+  Form,
+  FormState,
+  FormField,
+  FormFieldError,
+} from '../../src'
 
-/* eslint-disable react/jsx-key */
-export default {
-  display          : 'Form',
-  to               : '/form',
-  demoComponentAttr: {
-    header     : `<Form />`,
-    description: 'A form with validation.',
-    demos      : [
-      <FormExample />,
-    ],
-    codeSnippetType: 'jsx',
-    codeSnippet    : `
-class FormExample extends React.Component {
+export default class FormExample extends React.Component {
   state = {
     formState: null,
   }
@@ -60,6 +54,7 @@ class FormExample extends React.Component {
         formFieldKey={'email'}
       />
       <FormField
+        type='password'
         formState={formState}
         formFieldKey={'password'}
         placeholder={'password'}
@@ -70,6 +65,7 @@ class FormExample extends React.Component {
         formFieldKey={'password'}
       />
       <FormField
+        type='password'
         formState={formState}
         formFieldKey={'confirmPassword'}
         placeholder={'Confirm Password'}
@@ -83,7 +79,3 @@ class FormExample extends React.Component {
     </Form>
   }
 }
-    `,
-  },
-}
-/* eslint-enable react/jsx-key */

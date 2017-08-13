@@ -1,19 +1,9 @@
-import DropzoneExample from './dropzone-example.js'
+import {
+  Dropzone,
+} from '../../src'
 
-/* eslint-disable react/jsx-key */
-export default {
-  display          : 'Dropzone',
-  to               : '/dropzone',
-  demoComponentAttr: {
-    header     : `<Dropzone />`,
-    description: 'Dropzone component.',
-    demos      : [
-      <DropzoneExample />,
-    ],
-    codeSnippetType: 'jsx',
-    codeSnippet    : `
 function timeoutAsync(cb) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const interval = setInterval(() => {
       cb()
     }, 500)
@@ -34,10 +24,10 @@ async function uploadFiles(files, setProgress) {
   await Promise.all(promises)
 }
 
-class DropzoneExample extends React.Component {
+export default class DropzoneExample extends React.Component {
   render() {
     return <div style={{
-      height: 400,
+      height: 300,
     }}>
       <Dropzone
         uploadFiles={uploadFiles}
@@ -45,7 +35,3 @@ class DropzoneExample extends React.Component {
     </div>
   }
 }
-          `,
-  },
-}
-/* eslint-enable react/jsx-key */

@@ -1,33 +1,6 @@
-import { SelectFile } from '../../src'
+import SelectFileExample from './select-file-example.js'
 
 /* eslint-disable react/jsx-key */
-class SelectFileExample extends React.Component {
-  state = {
-    preview: null,
-  }
-
-  handleDrop = async (files) => {
-    this.setState({
-      preview: files[0].preview,
-    })
-  }
-
-  render() {
-    const {
-      preview,
-    } = this.state
-
-    return <SelectFile
-      onDrop={this.handleDrop}
-    >
-      {preview}
-      <div>
-        hi
-      </div>
-    </SelectFile>
-  }
-}
-
 export default {
   display          : 'SelectFile',
   to               : '/select-file',

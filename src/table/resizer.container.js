@@ -7,6 +7,7 @@ import MouseTracker from './MouseTracker.js'
 @cssModule(styles)
 export default class ResizerContainer extends React.Component {
   static propTypes = {
+    // ({deltaX: number, deltaY: number, initialEvent: Event}): void {}
     onResize: PropTypes.func,
   }
 
@@ -16,6 +17,8 @@ export default class ResizerContainer extends React.Component {
 
   state = {
     isDragging  : false,
+    // Set to the first event on mouse down so we can hold a reference to the
+    // target dom element.
     initialEvent: null,
   }
 
@@ -34,7 +37,6 @@ export default class ResizerContainer extends React.Component {
   onMouseMove = ({
     deltaX,
     deltaY,
-    evt,
   }) => {
     const {
       onResize,

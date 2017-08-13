@@ -1,30 +1,23 @@
-import FormExample from './themed-form-example.js'
+import styles      from './themed-form.scss'
+import CSSModules  from 'react-css-modules'
+import {
+  ThemedForm,
+  FormState,
+  ThemedFormField,
+  ThemedFormSubmit,
+  Alert,
+}                  from '../../src'
+import variables   from 'esayemm-styles/variables'
+
+import { timeoutAsync } from '../helpers.js'
 
 /* eslint-disable react/jsx-key */
-export default {
-  display          : 'ThemedForm',
-  to               : '/themed-form',
-  demoComponentAttr: {
-    header     : `<ThemedForm />`,
-    description: 'A form with validation.',
-    demos      : [
-      <FormExample />,
-    ],
-    codeSnippetType: 'jsx',
-    codeSnippet    : `
-function timeoutAsync() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve()
-    }, 1000)
-  })
-}
-
 @CSSModules(styles)
-class FormExample extends React.Component {
+export default class FormExample extends React.Component {
   state = {
     formState: null,
     formError: null,
+    showAlert: false,
   }
 
   componentWillMount() {
@@ -45,23 +38,26 @@ class FormExample extends React.Component {
           }
           return true
         },
+        bio: () => {
+          return true
+        },
       },
     })
     this.setState({ formState })
   }
 
-  handleSubmit = async (evt) => {
-    const {
-      formState,
-    } = this.state
+  closeAlert = () => {
+    this.setState({ showAlert: false })
+  }
 
-    this.setState({ formError: null })
+  handleSubmit = async () => {
+    this.setState({ formError: null, showAlert: false })
 
     try {
-      await timeoutPromise()
+      await timeoutAsync()
       throw new Error('hi')
     } catch (err) {
-      this.setState({ formError: err })
+      this.setState({ formError: err, showAlert: true })
     }
   }
 
@@ -69,12 +65,13 @@ class FormExample extends React.Component {
     const {
       formState,
       formError,
+      showAlert,
     } = this.state
 
     return <ThemedForm
       formState={formState}
     >
-      <Alert show={Boolean(formError)}>{formError && formError.message}</Alert>
+      <Alert show={showAlert} close={this.closeAlert}>{formError && formError.message}</Alert>
       <ThemedFormField
         className={styles['themed-form__field']}
         label={'email'}
@@ -107,10 +104,26 @@ class FormExample extends React.Component {
           type       : 'password',
         }}
       />
+      <ThemedFormField
+        className={styles['themed-form__field']}
+        label={'Bio'}
+        style={{display: 'block'}}
+        formState={formState}
+        formFieldKey={'bio'}
+        formFieldAttr={{
+          placeholder: 'Bio',
+          formType   : 'textarea',
+          style      : {
+            resize: 'none',
+            height: '100px',
+          },
+        }}
+      />
 
       <ThemedFormSubmit
         formState={formState}
-        style={{ width: '100%', borderRadius: '0', marginTop: '1rem' }}
+        type='outline'
+        style={{ width: '100%', marginTop: '1rem' }}
         color={variables.green3}
         onClick={this.handleSubmit}
       >
@@ -119,7 +132,3 @@ class FormExample extends React.Component {
     </ThemedForm>
   }
 }
-    `,
-  },
-}
-/* eslint-enable react/jsx-key */

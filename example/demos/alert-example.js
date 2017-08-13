@@ -1,17 +1,7 @@
-import AlertDemo from './alert-example.js'
+import React from 'react'
+import { Alert, Button } from '../../src'
 
-/* eslint-disable react/jsx-key */
-export default {
-  display          : 'Alert',
-  to               : '/alert',
-  demoComponentAttr: {
-    header: `<Alert />`,
-    demos : [
-      <AlertDemo />,
-    ],
-    codeSnippetType: 'jsx',
-    codeSnippet    : `
-class AlertDemo extends React.Component {
+export default class AlertDemo extends React.Component {
   state = {
     showAlert : true,
     showAlert2: true,
@@ -33,7 +23,7 @@ class AlertDemo extends React.Component {
 
   render() {
     return <div>
-      <button onClick={this.showAll}>Show</button>
+      <Button style={{fontSize: '.8em'}} onClick={this.showAll}>Show</Button>
       <Alert
         show={this.state.showAlert}
         close={() => this.toggleAlert('showAlert')}
@@ -52,7 +42,3 @@ class AlertDemo extends React.Component {
     </div>
   }
 }
-          `,
-  },
-}
-/* eslint-enable react/jsx-key */
