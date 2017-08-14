@@ -49,15 +49,19 @@ export default class TableExample extends React.Component {
             {value}
           </div>
         }}
-        columnOptions={{
-          id: {
+
+        columnOptions={[
+          {
+            key: 'id',
+            renderHeader() {
+
+            },
+            renderCell() {
+
+            },
             resizable: true,
-            minWidth : 200,
           },
-        }}
-        resizable={{
-          id: true,
-        }}
+        ]}
       >
       </Table>
     </div>

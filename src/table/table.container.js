@@ -6,32 +6,45 @@ import ResizerContainer from './resizer.container.js'
 @cssModule(styles, {handleNotFoundStyleName: 'ignore'})
 export default class TableContainer extends React.Component {
   static propTypes = {
+    columnOptions: PropTypes.shape({
+      renderHeader: PropTypes.func,
+      renderCell  : PropTypes.func,
+      resizable   : PropTypes.bool,
+    }),
+
+    // Header keys.
     tableHeaders: PropTypes.arrayOf(PropTypes.any),
     items       : PropTypes.arrayOf(PropTypes.any),
     columnWidths: PropTypes.arrayOf(PropTypes.number),
     renderHeader: PropTypes.func,
     renderCell  : PropTypes.func,
     resizable   : PropTypes.object,
+    borderStyle : PropTypes.string,
   }
 
   static defaultProps = {
     tableHeaders: [],
     items       : [],
     columnWidths: [],
-    tableWidth  : '100%',
     renderHeader: defaultRenderHeader,
     renderCell  : defaultRenderCell,
     resizable   : {},
+    borderStyle : 'thin solid',
   }
 
+  // Reference to the table headers dom elements.
   tableHeaderRefs = []
 
   state = {
-    columnWidthsState   : [],
-    calculatedTableWidth: '100%',
+    // Use this to resize column widths.
+    columnWidthsState: [],
   }
 
   componentWillMount() {
+    this.setState({columnWidthsState: this.initColumnWidths()})
+  }
+
+  initColumnWidths = () => {
     const {
       tableHeaders,
       columnWidths,
@@ -43,28 +56,16 @@ export default class TableContainer extends React.Component {
         columnWidths[i] = 'auto'
       }
     }
-    this.setState({columnWidthsState: columnWidths})
+    return columnWidths
   }
 
-  componentDidMount() {
-    console.log(this.tableHeaderRefs)
-    const sum = this.tableHeaderRefs.reduce((sum, ref) => {
-      sum += ref.offsetWidth
-      return sum
-    }, 0)
-    this.setState({
-      calculatedTableWidth: sum,
-    })
-  }
-
-  resizeColumn = ({deltaX, initialEvent}, index) => {
-    const {columnWidthsState, calculatedTableWidth} = this.state
+  onResize = ({deltaX, initialEvent}, index) => {
+    const {columnWidthsState} = this.state
     if (typeof columnWidthsState[index] !== 'number') {
       columnWidthsState[index] = initialEvent.target.parentNode.offsetWidth
     }
     columnWidthsState[index] += deltaX
-    const newCalculatedTableWidth = calculatedTableWidth + deltaX
-    this.setState({columnWidthsState, calculatedTableWidth: newCalculatedTableWidth})
+    this.setState({columnWidthsState})
   }
 
   render() {
@@ -75,12 +76,11 @@ export default class TableContainer extends React.Component {
       renderHeader,
       renderCell,
       resizable,
+      borderStyle,
       ...rest
     } = this.props
     const {
       columnWidthsState,
-      tableWidth,
-      calculatedTableWidth,
     } = this.state
 
     return <div
@@ -96,7 +96,6 @@ export default class TableContainer extends React.Component {
         style={{
           border       : '0',
           borderSpacing: '0',
-          width        : `${calculatedTableWidth}`,
         }}
       >
         <thead>
@@ -104,18 +103,20 @@ export default class TableContainer extends React.Component {
             {
               tableHeaders.map((th, i) => {
                 return <th
-                  styleName='header'
                   style={{
-                    minWidth: columnWidthsState[i],
-                    maxWidth: columnWidthsState[i],
-                    padding : 0,
+                    position    : 'relative',
+                    borderLeft  : borderStyle,
+                    borderBottom: borderStyle,
+                    minWidth    : columnWidthsState[i],
+                    maxWidth    : columnWidthsState[i],
+                    padding     : 0,
                   }}
                   key={i}
                   ref={el => this.tableHeaderRefs[i] = el}
                 >
                   {
                     resizable[th] && <ResizerContainer
-                      onResize={(deltas) => this.resizeColumn(deltas, i)}
+                      onResize={(deltas) => this.onResize(deltas, i)}
                     />
                   }
                   {renderHeader({value: th})}
@@ -135,13 +136,12 @@ export default class TableContainer extends React.Component {
                   tableHeaders.map((key, j) => <td
                     key={j}
                     style={{
-                      padding : 0,
-                      position: 'relative',
+                      borderLeft  : borderStyle,
+                      borderBottom: borderStyle,
+                      padding     : 0,
+                      position    : 'relative',
                     }}
                   >
-                    {/* <ResizerContainer */}
-                    {/*   onResize={(deltas) => this.resizeColumn(deltas, j)} */}
-                    {/* /> */}
                     {renderCell({key, value: item[key]})}
                   </td>)
                 }
