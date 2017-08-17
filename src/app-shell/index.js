@@ -1,16 +1,13 @@
-import styles      from './index.scss'
-import React       from 'react'
-import CSSModules  from 'react-css-modules'
-import PropTypes   from 'prop-types'
+import styles           from './index.scss'
+import React            from 'react'
+import CSSModules       from 'react-css-modules'
+import PropTypes        from 'prop-types'
+import { observer }     from 'mobx-react'
 
-import {
-  NavLink,
-}                  from 'react-router-dom'
-import {
-  Sidebar,
-  Dropdown,
-}                  from '../index.js'
+import HeaderComponent  from './header.component.js'
+import SidebarComponent from './sidebar.component.js'
 
+@observer
 @CSSModules(styles)
 export default class AppShell extends React.Component {
   static propTypes = {
@@ -55,71 +52,18 @@ export default class AppShell extends React.Component {
       styleName='index'
       {...rest}
     >
-      <header styleName='header'>
-        <div styleName='header__left'>
-          <h3>{leftNode}</h3>
-        </div>
-
-        <div styleName='header__middle'>
-          <h4>
-            {headerNode}
-          </h4>
-        </div>
-
-        <div styleName='header__right'>
-          {
-            rightNodeLinks.map(({ display, to, href }, i) => {
-              const attr = {
-                key      : i,
-                className: `${styles.item} ${styles.link}`,
-              }
-
-              return to
-                ? <NavLink {...attr} to={to}>
-                  {display}
-                </NavLink>
-                : <a
-                  {...attr}
-                  href={href}
-                  target='_blank'
-                >
-                  {display}
-                </a>
-            })
-          }
-        </div>
-      </header>
+      <HeaderComponent
+        leftNode={leftNode}
+        headerNode={headerNode}
+        rightNodeLinks={rightNodeLinks}
+      />
 
       <div styleName='row'>
         {
           links.length !== 0 && <div styleName='sidebar-wrapper'>
-            <Sidebar styleName='sidebar'>
-              {
-                links.map((link, i) => {
-                  return <Dropdown
-                    key={i}
-                    header={
-                      <div className={styles.dropheader}>
-                        {link.header}
-                      </div>
-                    }
-                  >
-                    {
-                      link.items.map((item, j) => {
-                        return <NavLink
-                          key={j}
-                          to={item.to || '#'}
-                          className={styles.dropchild}
-                          activeClassName={styles.active}
-                        >
-                          {item.display}
-                        </NavLink>
-                      })
-                    }
-                  </Dropdown>
-                })
-              }
-            </Sidebar>
+            <SidebarComponent
+              links={links}
+            />
           </div>
         }
 

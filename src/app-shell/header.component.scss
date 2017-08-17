@@ -1,0 +1,49 @@
+@import '~esayemm-styles';
+
+/*
+ * Header
+ */
+
+.header {
+  display: grid;
+  box-shadow: 0 5px 10px rgba(black, .1);
+  z-index: 3;
+  grid-template-areas:
+    "left middle right";
+}
+
+.__header_item {
+  padding: .3rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__left {
+  composes: __header_item;
+  grid-area: left;
+}
+.header__middle {
+  composes: __header_item;
+  justify-content: center;
+  text-align: center;
+  grid-area: middle;
+  letter-spacing: 2px;
+}
+.header__right {
+  composes: __header_item;
+  justify-content: flex-end;
+  grid-area: right;
+}
+
+.item {
+  display: flex;
+  padding: 1em 2em;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.link {
+  text-transform: uppercase;
+  font-size: .85em;
+}
