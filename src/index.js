@@ -1,8 +1,6 @@
 // Generic Components
 export {default as Loading}                   from './loading'
 export {default as LoadingOverlay}            from './loading-overlay'
-export {default as LeftMiddleRight}           from './left-middle-right'
-export {default as Row}                       from './row'
 export {default as Sidebar}                   from './sidebar'
 export {default as Dropdown}                  from './dropdown'
 export {default as Code}                      from './code'

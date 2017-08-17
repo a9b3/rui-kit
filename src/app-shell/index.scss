@@ -6,9 +6,7 @@
 
 .header {
   display: grid;
-  background: $cyan3;
-  color: white;
-  box-shadow: 0 5px 10px rgba(black, .2);
+  box-shadow: 0 5px 10px rgba(black, .1);
   z-index: 3;
   grid-template-areas:
     "left middle right";

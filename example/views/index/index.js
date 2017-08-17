@@ -19,10 +19,6 @@ export default class Index extends React.Component {
         <title>React UI Kit</title>
       </Helmet>
 
-      <p>
-        A set of unstyled react components, intended to be as generic as possible so you can style it how you want.
-      </p>
-
       <h2>Install</h2>
 
       <ruiKit.Code

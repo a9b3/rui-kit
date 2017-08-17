@@ -22,14 +22,7 @@ export default [
       require('./demos/app-shell.js').default,
       require('./demos/themed-form.js').default,
       require('./demos/table.js').default,
-    ],
-  },
-  {
-    header: 'Layout',
-    items : [
       require('./demos/sidebar.js').default,
-      require('./demos/left-middle-right.js').default,
-      require('./demos/row.js').default,
     ],
   },
 ]
