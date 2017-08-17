@@ -38,10 +38,11 @@ export default class MouseTracker {
   }
 
   _handleMouseMove = (evt) => {
-    window.requestAnimationFrame(this._handleMouseMove.bind(this, evt))
+    evt.stopPropagation()
+    window.requestAnimationFrame(this.__handleMouseMove.bind(this, evt))
   }
 
-  _handleMouseMove = (evt) => {
+  __handleMouseMove = (evt) => {
     this._deltaX = evt.clientX - this._prevX
     this._deltaY = evt.clientY - this._prevY
     this._prevX = evt.clientX

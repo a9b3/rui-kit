@@ -48,6 +48,7 @@ export default class ResizerContainer extends React.Component {
   }
 
   handleMouseDown = (evt) => {
+    evt.stopPropagation()
     evt.persist()
     this.setState({isDragging: true, initialEvent: evt})
     this._mouseTracker.captureMovement(evt)

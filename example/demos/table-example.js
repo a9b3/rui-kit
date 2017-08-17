@@ -1,6 +1,7 @@
 import uuid from 'uuid'
 import {
   Table,
+  TableV2,
 } from '../../src'
 
 function createItems(amt) {
@@ -18,6 +19,25 @@ function createItems(amt) {
 
 const items = createItems(100)
 
+function renderHeader({columnOption}) {
+  return <div
+    style={{
+      padding  : '1rem',
+      textAlign: 'left',
+    }}
+  >
+    {columnOption.key}
+  </div>
+}
+
+function renderCell({value}) {
+  return <div
+    style={{padding: '1rem'}}
+  >
+    {value}
+  </div>
+}
+
 export default class TableExample extends React.Component {
   render() {
     return <div style={{
@@ -25,41 +45,31 @@ export default class TableExample extends React.Component {
       width : '100%',
     }}>
       <Table
-        tableHeaders={[
-          'id',
-          'firstName',
-          'lastName',
-          'age',
-        ]}
         items={items}
-        renderHeader={({value}) => {
-          return <div
-            style={{
-              padding  : '1rem',
-              textAlign: 'left',
-            }}
-          >
-            {value}
-          </div>
-        }}
-        renderCell={({value}) => {
-          return <div style={{
-            padding: '1rem',
-          }}>
-            {value}
-          </div>
-        }}
-
         columnOptions={[
           {
-            key: 'id',
-            renderHeader() {
-
-            },
-            renderCell() {
-
-            },
+            key      : 'id',
             resizable: true,
+            renderHeader,
+            renderCell,
+          },
+          {
+            key      : 'firstName',
+            resizable: true,
+            renderHeader,
+            renderCell,
+          },
+          {
+            key      : 'lastName',
+            resizable: true,
+            renderHeader,
+            renderCell,
+          },
+          {
+            key      : 'age',
+            resizable: true,
+            renderHeader,
+            renderCell,
           },
         ]}
       >
