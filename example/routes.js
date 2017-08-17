@@ -1,9 +1,9 @@
-import React           from 'react'
-import { Route }       from 'react-router'
-import Index           from './views/index'
-import demoLinks       from './demo-configs.js'
-import DemoComponent   from './components/demo-component'
-import ExampleAppShell from './components/example-app-shell'
+import React             from 'react'
+import { Route }         from 'react-router'
+import Index             from './views/index'
+import demoLinks         from './demo-configs.js'
+import { DemoComponent } from '../src'
+import ExampleAppShell   from './components/example-app-shell'
 
 /**
  * @param {array.<node>} links

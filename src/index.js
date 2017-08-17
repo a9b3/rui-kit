@@ -15,6 +15,7 @@ export {InitWrapper as InitWrapper}           from './init-wrapper'
 export {Image as Image}                       from './image'
 export {UploadImage as UploadImage}           from './upload-image'
 export {HoverDisplay as HoverDisplay}         from './hover-display'
+export {default as DemoComponent}             from './demo-component'
 
 // Form
 export {Form as Form}                         from './form'
