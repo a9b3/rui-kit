@@ -1,5 +1,47 @@
 @import '~esayemm-styles';
 
+/*
+ * Header
+ */
+
+.header {
+  display: grid;
+  background: $cyan3;
+  color: white;
+  box-shadow: 0 5px 10px rgba(black, .2);
+  z-index: 3;
+  grid-template-areas:
+    "left middle right";
+}
+
+.__header_item {
+  padding: .3rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__left {
+  composes: __header_item;
+  grid-area: left;
+}
+.header__middle {
+  composes: __header_item;
+  justify-content: center;
+  text-align: center;
+  grid-area: middle;
+  letter-spacing: 2px;
+}
+.header__right {
+  composes: __header_item;
+  justify-content: flex-end;
+  grid-area: right;
+}
+
+/*
+ * Main
+ */
+
 .index {
   width: 100%;
   height: 100%;
@@ -7,21 +49,21 @@
   flex-direction: column;
 }
 
+.content {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 1rem;
+}
+
+/*
+ * Sidebar
+ */
+
 .row {
   display: flex;
   flex-direction: row;
   height: 100%;
-}
-
-.header {
-  composes: flex-row;
-  // has to be 4.5 or else mouse will cause scrollbar to appear
-  height: 4.5rem;
-  background: $cyan3;
-  color: white;
-  box-shadow: 0 5px 10px rgba(black, .2);
-  padding: 0 2rem;
-  z-index: 3;
 }
 
 .sidebar-wrapper {
@@ -34,13 +76,6 @@
     color: white;
     border-right: 1px solid darken($slate, 10);
   }
-}
-
-.content {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  padding: 1rem;
 }
 
 .dropheader {

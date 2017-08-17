@@ -2,12 +2,11 @@ import styles      from './index.scss'
 import React       from 'react'
 import CSSModules  from 'react-css-modules'
 import PropTypes   from 'prop-types'
+
 import {
   NavLink,
 }                  from 'react-router-dom'
 import {
-  LeftMiddleRight,
-  Row,
   Sidebar,
   Dropdown,
 }                  from '../index.js'
@@ -34,8 +33,6 @@ export default class AppShell extends React.Component {
     // Main content.
     children    : PropTypes.node,
     contentWidth: PropTypes.any,
-    className   : PropTypes.string,
-    style       : PropTypes.object,
   }
 
   static defaultProps = {
@@ -50,52 +47,48 @@ export default class AppShell extends React.Component {
       rightNodeLinks,
       headerNode,
       contentWidth,
-      style,
-      className,
       children,
+      ...rest
     } = this.props
 
-    return <div styleName='index'
-      style={style}
-      className={className}
+    return <div
+      styleName='index'
+      {...rest}
     >
-      <LeftMiddleRight
-        styleName='header'
-        left={<Row
-          align='left'
-          items={[
-            <h3 key={0}>
-              {leftNode}
-            </h3>,
-          ]}
-        />}
-        middle={<Row
-          items={[
-            headerNode,
-          ]}
-        />}
-        right={<Row
-          align='right'
-          items={rightNodeLinks.map(({ display, to = '#', href }, i) => {
-            const attr = {
-              key      : i,
-              className: `${styles.item} ${styles.link}`,
-            }
+      <header styleName='header'>
+        <div styleName='header__left'>
+          <h3>{leftNode}</h3>
+        </div>
 
-            return to
-              ? <NavLink {...attr} to={to}>
-                {display}
-              </NavLink>
-              : <a
-                {...attr}
-                href={href}
-                target='_blank'
-              >
-                {display}
-              </a>
-          })}
-        />}
-      />
+        <div styleName='header__middle'>
+          <h4>
+            {headerNode}
+          </h4>
+        </div>
+
+        <div styleName='header__right'>
+          {
+            rightNodeLinks.map(({ display, to = '#', href }, i) => {
+              const attr = {
+                key      : i,
+                className: `${styles.item} ${styles.link}`,
+              }
+
+              return to
+                ? <NavLink {...attr} to={to}>
+                  {display}
+                </NavLink>
+                : <a
+                  {...attr}
+                  href={href}
+                  target='_blank'
+                >
+                  {display}
+                </a>
+            })
+          }
+        </div>
+      </header>
 
       <div styleName='row'>
         {
