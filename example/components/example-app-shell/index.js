@@ -10,26 +10,21 @@ import {
   AppShell,
   TruncateText,
 }                 from '../../../src'
-import demoLinks  from '../../demo-configs.js'
-
-const rightNodeLinks = [
-  {
-    display: 'Github',
-    href   : 'https://github.com/esayemm/rui-kit',
-  },
-]
 
 @withRouter
 @CSSModules(styles)
 export default class ExampleAppShell extends React.Component {
   static propTypes = {
-    location: PropTypes.object.isRequired,
-    children: PropTypes.node.isRequired,
+    demoLinks: PropTypes.any,
+    location : PropTypes.object.isRequired,
+    children : PropTypes.node.isRequired,
   }
 
   render() {
     const {
       location,
+      demoLinks,
+      children,
     } = this.props
 
     const headerNode = <TruncateText
@@ -39,14 +34,23 @@ export default class ExampleAppShell extends React.Component {
       {location.pathname.replace('/', '') || 'React UI Kit'}
     </TruncateText>
 
+    const rightNodeLinks = [
+      {
+        display: 'Github',
+        href   : 'https://github.com/esayemm/rui-kit',
+      },
+    ]
+
+    const leftNode = <Link to='/'>RUI-KIT</Link>
+
     return <AppShell
       headerNode={headerNode}
-      leftNode={<Link to='/'>UI-KIT</Link>}
-      links={demoLinks}
+      leftNode={leftNode}
       rightNodeLinks={rightNodeLinks}
+      links={demoLinks}
       contentWidth={'920px'}
     >
-      {this.props.children}
+      {children}
     </AppShell>
   }
 }

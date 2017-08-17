@@ -26,7 +26,9 @@ function linksToRoute(links) {
 }
 
 export default (
-  <ExampleAppShell>
+  <ExampleAppShell
+    demoLinks={demoLinks}
+  >
     <Route path='/' exact component={Index} />
     {linksToRoute(demoLinks)}
   </ExampleAppShell>
