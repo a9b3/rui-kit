@@ -68,7 +68,7 @@ export default class AppShell extends React.Component {
 
         <div styleName='header__right'>
           {
-            rightNodeLinks.map(({ display, to = '#', href }, i) => {
+            rightNodeLinks.map(({ display, to, href }, i) => {
               const attr = {
                 key      : i,
                 className: `${styles.item} ${styles.link}`,
