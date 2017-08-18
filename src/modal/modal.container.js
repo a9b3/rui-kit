@@ -5,8 +5,9 @@ import ModalComponent from './modal.component.js'
 export default class ModalContainer extends React.Component {
   static propTypes = {
     // This will be the access point.
-    children    : PropTypes.node.isRequired,
-    modalContent: PropTypes.node.isRequired,
+    children       : PropTypes.node.isRequired,
+    modalContent   : PropTypes.node.isRequired,
+    backgroundColor: PropTypes.string,
   }
 
   state = {
@@ -28,12 +29,14 @@ export default class ModalContainer extends React.Component {
     const {
       modalContent,
       children,
+      backgroundColor,
       ...rest
     } = this.props
 
     return <span onClick={this.toggleModal}>
       <ModalComponent
         show={isOpen}
+        backgroundColor={backgroundColor}
         {...rest}
       >
         {modalContent}

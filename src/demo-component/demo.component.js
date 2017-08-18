@@ -17,10 +17,8 @@ function renderCodeSnippet({
     </Code>
   }
 
-  return <Code type='html'>
-    {jsxToString(instance, {
-      useFunctionCode: true,
-    })}
+  return <Code type={codeSnippetType || 'html'}>
+    {jsxToString(instance)}
   </Code>
 }
 

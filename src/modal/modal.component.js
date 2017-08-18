@@ -6,6 +6,7 @@ import CSSModules from 'react-css-modules'
 function ModalComponent({
   children,
   show,
+  backgroundColor,
   ...rest
 }) {
   if (!show) {
@@ -14,14 +15,18 @@ function ModalComponent({
   return <div
     styleName='modal'
     {...rest}
+    style={Object.assign({}, rest.styles, {
+      backgroundColor,
+    })}
   >
     {children}
   </div>
 }
 
 ModalComponent.propTypes = {
-  children: PropTypes.node,
-  show    : PropTypes.bool,
+  children       : PropTypes.node,
+  show           : PropTypes.bool,
+  backgroundColor: PropTypes.string,
 }
 
 export default CSSModules(ModalComponent, styles, {allowMultiple: true})

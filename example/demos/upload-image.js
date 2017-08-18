@@ -14,6 +14,7 @@ export default {
           style={{height: 200, width: 200, borderRadius: '50%'}}
           uploadFile={timeoutAsync}
         />,
+        codeSnippetType: 'jsx',
       },
     ],
   },

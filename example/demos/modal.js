@@ -1,4 +1,5 @@
 import { Modal } from '../../src'
+import variables from 'esayemm-styles/variables'
 
 /* eslint-disable react/jsx-key */
 export default {
@@ -23,6 +24,16 @@ export default {
           }
         >
         Click to open Modal
+        </Modal>,
+      },
+      {
+        instance: <Modal
+          backgroundColor={variables.green}
+          modalContent={
+            <div>Cool</div>
+          }
+        >
+          Click to open Modal
         </Modal>,
       },
     ],
