@@ -6,38 +6,25 @@ export default {
   to               : '/dropdown',
   demoComponentAttr: {
     header     : `<Dropdown />`,
+    component  : Dropdown,
     description: 'Dropdown component.',
     demos      : [
-      <Dropdown
-        header={'Click to Close'}
-      >
-        <div>
+      {
+        instance: <Dropdown
+          header={'Click to Close'}
+        >
+          <div>
                 Child
-        </div>
-        <div>
+          </div>
+          <div>
                 Child2
-        </div>
-        <div>
+          </div>
+          <div>
                 Child3
-        </div>
-      </Dropdown>,
+          </div>
+        </Dropdown>,
+      },
     ],
-    codeSnippetType: 'html',
-    codeSnippet    : `
-            <Dropdown
-              header={'Click to Close'}
-            >
-              <div>
-                Child
-              </div>
-              <div>
-                Child2
-              </div>
-              <div>
-                Child3
-              </div>
-            </Dropdown>
-          `,
   },
 }
 /* eslint-enable react/jsx-key */

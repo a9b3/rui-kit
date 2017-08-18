@@ -1,7 +1,6 @@
 import { Button } from '../../src'
 import variables  from 'esayemm-styles/variables'
 
-/* eslint-disable react/jsx-key */
 function timeoutPromise() {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -10,6 +9,7 @@ function timeoutPromise() {
   })
 }
 
+/* eslint-disable react/jsx-key */
 export default {
   display          : 'Button',
   to               : '/button',
@@ -17,83 +17,56 @@ export default {
     component: Button,
     header   : `<Button />`,
     demos    : [
-      <Button
-        style={{ width: '100%', margin: '1rem 0' }}
-        color={variables.green2}
-      >
+      {
+        instance: <Button
+          style={{ width: '100%', margin: '1rem 0' }}
+          color={variables.green2}
+        >
         Hello I am a button.
-      </Button>,
-
-      <Button
-        type='outline'
-        style={{ margin: '1rem 0' }}
-        color={variables.red1}
-      >
-        Hello I am a button.
-      </Button>,
-
-      <Button
-        type='outline'
-        style={{ margin: '1rem 0' }}
-        color={variables.yellow3}
-        onClick={timeoutPromise}
-      >
-        Click will run function Default Loading Overlay
-      </Button>,
-
-      <Button
-        type='outline'
-        style={{ margin: '1rem 0' }}
-        color={variables.yellow3}
-        onClick={timeoutPromise}
-        disabled
-      >
-        I am disabled
-      </Button>,
-
-      <Button
-        type='outline'
-        style={{ margin: '1rem 0' }}
-        color={variables.red1}
-        onClick={timeoutPromise}
-        loadingOverlayAttr={{ style: {backgroundColor: variables.blue3},  loadingAttr: { color: variables.pink3 } }}
-      >
+        </Button>,
+      },
+      {
+        instance: <Button
+          type='outline'
+          style={{ margin: '1rem 0' }}
+          color={variables.red1}
+        >
+          Hello I am a button.
+        </Button>,
+      },
+      {
+        instance: <Button
+          type='outline'
+          style={{ margin: '1rem 0' }}
+          color={variables.yellow3}
+          onClick={timeoutPromise}
+        >
+          Click will run function Default Loading Overlay
+        </Button>,
+      },
+      {
+        instance: <Button
+          type='outline'
+          style={{ margin: '1rem 0' }}
+          color={variables.yellow3}
+          onClick={timeoutPromise}
+          disabled
+        >
+          I am disabled
+        </Button>,
+      },
+      {
+        instance: <Button
+          type='outline'
+          style={{ margin: '1rem 0' }}
+          color={variables.red1}
+          onClick={timeoutPromise}
+          loadingOverlayAttr={{ style: {backgroundColor: variables.blue3},  loadingAttr: { color: variables.pink3 } }}
+        >
         Override Loading Overlay
-      </Button>,
+        </Button>,
+      },
     ],
-    codeSnippetType: 'html',
-    codeSnippet    : `
-      <Button
-        style={{ width: '100%' }}
-        color={variables.green2}
-      >
-        Hello I am a button.
-      </Button>,
-
-      <Button
-        type='outline'
-        color={variables.red1}
-      >
-        Hello I am a button.
-      </Button>,
-
-      <Button
-        type='outline'
-        color={variables.yellow3}
-        onClick={timeoutPromise}
-      >
-        Click will run function Default Loading Overlay
-      </Button>,
-
-      <Button
-        type='outline'
-        color={variables.red1}
-        onClick={timeoutPromise}
-        loadingOverlayAttr={{ style: {backgroundColor: variables.blue3},  loadingAttr: { color: variables.pink3 } }}
-      >
-        Override Loading Overlay
-      </Button>,
-          `,
   },
 }
 /* eslint-enable react/jsx-key */

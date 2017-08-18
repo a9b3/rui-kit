@@ -1,4 +1,5 @@
 import FormExample from './themed-form-example.js'
+import FormExampleStr from '!!raw-loader!./themed-form-example.js'
 
 /* eslint-disable react/jsx-key */
 export default {
@@ -8,118 +9,12 @@ export default {
     header     : `<ThemedForm />`,
     description: 'A form with validation.',
     demos      : [
-      <FormExample />,
-    ],
-    codeSnippetType: 'jsx',
-    codeSnippet    : `
-function timeoutAsync() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve()
-    }, 1000)
-  })
-}
-
-@CSSModules(styles)
-class FormExample extends React.Component {
-  state = {
-    formState: null,
-    formError: null,
-  }
-
-  componentWillMount() {
-    const formState = new FormState({
-      validators: {
-        email: (value = '') => {
-          if (value.length <= 0) {
-            throw new Error('Cannot be empty')
-          }
-          return true
-        },
-        password: () => {
-          return true
-        },
-        confirmPassword: (value, allValues) => {
-          if (value !== allValues.password) {
-            throw new Error('Must be the same as password')
-          }
-          return true
-        },
+      {
+        instance       : <FormExample />,
+        codeSnippet    : FormExampleStr,
+        codeSnippetType: 'jsx',
       },
-    })
-    this.setState({ formState })
-  }
-
-  handleSubmit = async (evt) => {
-    const {
-      formState,
-    } = this.state
-
-    this.setState({ formError: null })
-
-    try {
-      await timeoutPromise()
-      throw new Error('hi')
-    } catch (err) {
-      this.setState({ formError: err })
-    }
-  }
-
-  render() {
-    const {
-      formState,
-      formError,
-    } = this.state
-
-    return <ThemedForm
-      formState={formState}
-    >
-      <Alert show={Boolean(formError)}>{formError && formError.message}</Alert>
-      <ThemedFormField
-        className={styles['themed-form__field']}
-        label={'email'}
-        style={{display: 'block'}}
-        formState={formState}
-        formFieldKey={'email'}
-        formFieldAttr={{
-          placeholder: 'email',
-        }}
-      />
-      <ThemedFormField
-        className={styles['themed-form__field']}
-        label={'Password'}
-        style={{display: 'block'}}
-        formState={formState}
-        formFieldKey={'password'}
-        formFieldAttr={{
-          placeholder: 'Password',
-          type       : 'password',
-        }}
-      />
-      <ThemedFormField
-        className={styles['themed-form__field']}
-        label={'Confirm Password'}
-        style={{display: 'block'}}
-        formState={formState}
-        formFieldKey={'confirmPassword'}
-        formFieldAttr={{
-          placeholder: 'Confirm Password',
-          type       : 'password',
-        }}
-      />
-
-      <ThemedFormSubmit
-        formState={formState}
-        style={{ width: '100%', borderRadius: '0', marginTop: '1rem' }}
-        color={variables.green3}
-        onClick={this.handleSubmit}
-      >
-      Submit
-      </ThemedFormSubmit>
-    </ThemedForm>
-  }
-}
-    `,
+    ],
   },
 }
 /* eslint-enable react/jsx-key */

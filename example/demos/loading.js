@@ -5,21 +5,17 @@ export default {
   display          : 'Loading',
   to               : '/loading',
   demoComponentAttr: {
-    component: Loading,
-    header   : `<Loading />`,
-    demos    : [
-      <Loading
-        show
-        color='#000000'
-      />,
+    component  : Loading,
+    header     : `Loading`,
+    description: 'A simple loading icon.',
+    demos      : [
+      {
+        instance: <Loading
+          show
+          color='#000000'
+        />,
+      },
     ],
-    codeSnippetType: 'html',
-    codeSnippet    : `
-              <Loading
-                show
-                color='#000000'
-              />
-          `,
   },
 }
 /* eslint-enable react/jsx-key */

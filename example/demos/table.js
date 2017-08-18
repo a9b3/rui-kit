@@ -1,4 +1,5 @@
 import TableExample from './table-example.js'
+import TableExampleStr from '!!raw-loader!./table-example.js'
 
 /* eslint-disable react/jsx-key */
 export default {
@@ -7,14 +8,12 @@ export default {
   demoComponentAttr: {
     header: `<Table />`,
     demos : [
-      <TableExample />,
+      {
+        instance       : <TableExample />,
+        codeSnippet    : TableExampleStr,
+        codeSnippetType: 'jsx',
+      },
     ],
-    codeSnippetType: 'html',
-    codeSnippet    : `
-            <Table>
-              {'hi'}
-            </Table>
-          `,
   },
 }
 /* eslint-enable react/jsx-key */

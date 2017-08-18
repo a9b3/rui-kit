@@ -1,4 +1,3 @@
-import React        from 'react'
 import { Modal } from '../../src'
 
 /* eslint-disable react/jsx-key */
@@ -8,39 +7,25 @@ export default {
   demoComponentAttr: {
     header     : `<Modal />`,
     description: 'A modal component.',
+    component  : Modal,
     demos      : [
-      <Modal
-        modalContent={
-          <div
-            onClick={(evt) => { evt.stopPropagation() }}
-            style={{
-              background: 'white',
-              padding   : '3rem',
-            }}>
+      {
+        instance: <Modal
+          modalContent={
+            <div
+              onClick={(evt) => { evt.stopPropagation() }}
+              style={{
+                background: 'white',
+                padding   : '3rem',
+              }}>
             hi
-          </div>
-        }
-      >
+            </div>
+          }
+        >
         Click to open Modal
-      </Modal>,
+        </Modal>,
+      },
     ],
-    codeSnippetType: 'html',
-    codeSnippet    : `
-      <Modal
-        modalContent={
-          <div
-            onClick={(evt) => { evt.stopPropagation() }}
-            style={{
-              background: 'white',
-              padding   : '3rem',
-            }}>
-            hi
-          </div>
-        }
-      >
-        Click to open Modal
-      </Modal>,
-          `,
   },
 }
 /* eslint-enable react/jsx-key */

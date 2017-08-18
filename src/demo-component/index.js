@@ -1,67 +1,65 @@
-import styles        from './index.scss'
-import React         from 'react'
-import CSSModules    from 'react-css-modules'
-import PropTypes     from 'prop-types'
+import styles     from './index.scss'
+import React      from 'react'
+import CSSModules from 'react-css-modules'
+import PropTypes  from 'prop-types'
 
-import {
-  Code,
-}                    from '../index.js'
-import { alignText } from 'js-functions'
+import Demo       from './demo.component.js'
 
 @CSSModules(styles)
 export default class DemoComponent extends React.Component {
   static propTypes = {
-    component      : PropTypes.any,
-    header         : PropTypes.string.isRequired,
-    demos          : PropTypes.arrayOf(PropTypes.node).isRequired,
-    codeSnippet    : PropTypes.string.isRequired,
-    codeSnippetType: PropTypes.string,
-    description    : PropTypes.string,
+    // React component constructor.
+    component  : PropTypes.func,
+    header     : PropTypes.string.isRequired,
+    description: PropTypes.string,
+    demos      : PropTypes.arrayOf(PropTypes.shape({
+      instance       : PropTypes.node,
+      codeSnippet    : PropTypes.string,
+      codeSnippetType: PropTypes.string,
+    })).isRequired,
   }
 
   render() {
     const {
       component,
       header,
-      demos,
-      codeSnippet,
-      codeSnippetType,
       description,
+      demos,
     } = this.props
 
     return <article
       styleName='container'
     >
       <h2>{header}</h2>
-      {description && <p>{description}</p>}
+
+      {
+        description && <p>
+          {description}
+        </p>
+      }
 
       {
         component && <section>
           <h3>PropTypes</h3>
+
           <ul>
             {Object.keys(component.propTypes).map(key => <li key={key}>{key}</li>)}
           </ul>
         </section>
       }
 
-      <section>
-        <h3>Example</h3>
+      {
+        demos.length > 0 && <section>
+          <h3>Example</h3>
 
-        {
-          demos.map((d, key) => {
-            return <div key={key}>
-              {d}
-            </div>
-          })
-        }
-      </section>
-
-      <section>
-        <h3>Code Snippet</h3>
-        <Code type={codeSnippetType}>
-          {alignText(codeSnippet)}
-        </Code>
-      </section>
+          {
+            demos.map((d, key) => <Demo
+              key={key}
+              demo={d}
+            />)
+          }
+        </section>
+      }
     </article>
   }
 }

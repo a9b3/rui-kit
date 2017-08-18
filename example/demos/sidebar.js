@@ -6,28 +6,22 @@ export default {
   to               : '/sidebar',
   demoComponentAttr: {
     header     : `<Sidebar />`,
+    component: Sidebar,
     description: 'A simple sidebar. With sticky footer.',
     demos      : [
-      <div
-        style={{ height: 300, width: 300, border: '1px solid black' }}
-      >
-        <Sidebar
-          header={'Header'}
-          footer={'Footer'}
+      {
+        instance: <div
+          style={{ height: 300, width: 300, border: '1px solid black' }}
         >
+          <Sidebar
+            header={'Header'}
+            footer={'Footer'}
+          >
                 Content of sidebar.
-        </Sidebar>
-      </div>,
+          </Sidebar>
+        </div>,
+      },
     ],
-    codeSnippetType: 'html',
-    codeSnippet    : `
-            <Sidebar
-              header={'Header'}
-              footer={'Footer'}
-            >
-              Content of sidebar.
-            </Sidebar>,
-          `,
   },
 }
 /* eslint-enable react/jsx-key */
