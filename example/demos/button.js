@@ -28,7 +28,6 @@ export default {
       {
         instance: <Button
           type='outline'
-          style={{ margin: '1rem 0' }}
           color={variables.red1}
         >
           Hello I am a button.
@@ -37,7 +36,6 @@ export default {
       {
         instance: <Button
           type='outline'
-          style={{ margin: '1rem 0' }}
           color={variables.yellow3}
           onClick={timeoutPromise}
         >
@@ -47,7 +45,6 @@ export default {
       {
         instance: <Button
           type='outline'
-          style={{ margin: '1rem 0' }}
           color={variables.yellow3}
           onClick={timeoutPromise}
           disabled
@@ -57,11 +54,8 @@ export default {
       },
       {
         instance: <Button
-          type='outline'
-          style={{ margin: '1rem 0' }}
           color={variables.red1}
           onClick={timeoutPromise}
-          loadingOverlayAttr={{ style: {backgroundColor: variables.blue3},  loadingAttr: { color: variables.pink3 } }}
         >
         Override Loading Overlay
         </Button>,

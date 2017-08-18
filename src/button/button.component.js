@@ -40,7 +40,7 @@ function Button({
     {...attr}
     onClick={onClick}
   >
-    <LoadingOverlay show={loading} color={color} {...loadingOverlayAttr} />
+    <LoadingOverlay show={loading} color={type === 'filled' ? 'white' : color} {...loadingOverlayAttr} />
     <span style={{ opacity: loading ? '0' : '1'}}>
       {children}
     </span>
