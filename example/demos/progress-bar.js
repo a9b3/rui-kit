@@ -6,6 +6,7 @@ export default {
   to               : '/progress-bar',
   demoComponentAttr: {
     header     : `<ProgressBar />`,
+    component: ProgressBar,
     description: 'Display a progress bar.',
     demos      : [
       {

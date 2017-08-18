@@ -1,3 +1,4 @@
+import { SelectFile } from '../../src'
 import SelectFileExample from './select-file-example.js'
 import SelectFileExampleStr from '!!raw-loader!./select-file-example.js'
 
@@ -6,8 +7,9 @@ export default {
   display          : 'SelectFile',
   to               : '/select-file',
   demoComponentAttr: {
-    header: `<SelectFile />`,
-    demos : [
+    header   : `<SelectFile />`,
+    component: SelectFile,
+    demos    : [
       {
         instance       : <SelectFileExample />,
         codeSnippet    : SelectFileExampleStr,

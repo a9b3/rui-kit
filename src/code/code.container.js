@@ -1,5 +1,6 @@
 // import '!style-loader!css-loader!highlight.js/styles/monokai-sublime.css'
-import '!style-loader!css-loader!highlight.js/styles/github.css'
+import '!style-loader!css-loader!highlight.js/styles/tomorrow.css'
+// import '!style-loader!css-loader!highlight.js/styles/github.css'
 import styles     from './index.scss'
 import React      from 'react'
 import CSSModules from 'react-css-modules'

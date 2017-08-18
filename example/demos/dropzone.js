@@ -1,5 +1,8 @@
-import DropzoneExample from './dropzone-example.js'
+import DropzoneExample    from './dropzone-example.js'
 import DropzoneExampleStr from '!!raw-loader!./dropzone-example.js'
+import {
+  Dropzone,
+}                         from '../../src'
 
 /* eslint-disable react/jsx-key */
 export default {
@@ -7,6 +10,7 @@ export default {
   to               : '/dropzone',
   demoComponentAttr: {
     header     : `<Dropzone />`,
+    component  : Dropzone,
     description: 'Dropzone component.',
     demos      : [
       {
