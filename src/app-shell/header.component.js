@@ -30,7 +30,7 @@ function HeaderComponent({
       </h4>
     </div>
 
-    <div styleName='header__right'>
+    <nav styleName='header__right'>
       {
         rightNodeLinks.map(({ display, to, href }, i) => {
           const attr = {
@@ -51,7 +51,7 @@ function HeaderComponent({
             </a>
         })
       }
-    </div>
+    </nav>
   </header>
 }
 

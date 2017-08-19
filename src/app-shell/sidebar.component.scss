@@ -1,8 +1,8 @@
 @import '~esayemm-styles';
 
 $sidebarBgColor: white;
-$sidebarActiveBgColor: rgba($slate, .5);
-$sidebarActiveColor: white;
+$sidebarActiveHighlightColor: rgba($slate, .6);
+$sidebarActiveBgColor: rgba($slate, .1);
 $sidebarHoverBgColor: lighten($sidebarActiveBgColor, 30);
 
 .sidebar {
@@ -29,6 +29,16 @@ $sidebarHoverBgColor: lighten($sidebarActiveBgColor, 30);
   font-size: .8em;
 }
 .dropchild.active {
+  position: relative;
   background: $sidebarActiveBgColor;
-  color: $sidebarActiveColor;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: $sidebarActiveHighlightColor;
+  }
 }

@@ -8,9 +8,10 @@
 
 .instance {
   grid-area: instance;
-  overflow: hidden;
+  min-width: 0;
 }
 
 .codeSnippet {
   grid-area: codeSnippet;
+  min-width: 0;
 }
