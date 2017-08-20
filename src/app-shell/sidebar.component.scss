@@ -25,6 +25,7 @@ $sidebarHoverBgColor: lighten($sidebarActiveBgColor, 30);
 
 .dropchild {
   @include hoverBg($sidebarHoverBgColor);
+  transition: background .3s;
   composes: item;
   font-size: .8em;
 }
