@@ -11,7 +11,7 @@
 
 .alert {
   animation: scaleIn .2s;
-  padding: 1rem 2rem;
+  padding: $spacing4 $spacing3;
   box-shadow: 0 5px 10px rgba(black, .1);
   cursor: pointer;
 }

@@ -1,9 +1,11 @@
+@import '~esayemm-styles/variables';
+
 .button {
   overflow: hidden;
   font-size: .8em;
-  padding: .6rem 2rem;
+  padding: $spacing5 $spacing3;
   cursor: pointer;
-  border-radius: 2rem;
+  border-radius: 2em;
   opacity: 1;
   transition: opacity .3s;
   position: relative;

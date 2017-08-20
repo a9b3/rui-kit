@@ -33,9 +33,11 @@ export default class DemoComponent extends React.Component {
       <h2 styleName='main-header'>{header}</h2>
 
       {
-        description && <p>
-          {description}
-        </p>
+        description && <section>
+          <p>
+            {description}
+          </p>
+        </section>
       }
 
       {

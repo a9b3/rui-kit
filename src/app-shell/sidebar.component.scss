@@ -11,13 +11,13 @@ $sidebarHoverBgColor: lighten($sidebarActiveBgColor, 30);
 
 .item {
   display: flex;
-  padding: 1em 2em;
+  padding: $spacing4 $spacing3;
   cursor: pointer;
   font-weight: 500;
 }
 
 .dropheader {
-  padding: 1rem 2rem;
+  padding: $spacing4 $spacing3;
   cursor: pointer;
   background: darken($sidebarBgColor, 5);
   font-weight: 500;

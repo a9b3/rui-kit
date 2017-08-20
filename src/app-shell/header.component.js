@@ -21,11 +21,11 @@ function HeaderComponent({
     }}
   >
     <div styleName='header__left'>
-      <h3>{leftNode}</h3>
+      <h3 styleName='item'>{leftNode}</h3>
     </div>
 
     <div styleName='header__middle'>
-      <h4>
+      <h4 styleName='item'>
         {headerNode}
       </h4>
     </div>
