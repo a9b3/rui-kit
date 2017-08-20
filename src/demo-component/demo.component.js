@@ -8,6 +8,7 @@ import {
 
 function renderCodeSnippet({
   instance,
+  displayName,
   codeSnippet,
   codeSnippetType,
 }) {
@@ -17,8 +18,12 @@ function renderCodeSnippet({
     </Code>
   }
 
+  const opt = {}
+  if (displayName) {
+    opt.displayName = displayName
+  }
   return <Code type={codeSnippetType || 'html'}>
-    {jsxToString(instance)}
+    {jsxToString(instance, opt)}
   </Code>
 }
 
@@ -43,6 +48,7 @@ function DemoComponent({
 DemoComponent.propTypes = {
   demo: PropTypes.shape({
     instance       : PropTypes.node.isRequired,
+    displayName    : PropTypes.string,
     codeSnippet    : PropTypes.string,
     codeSnippetType: PropTypes.string,
   }).isRequired,
