@@ -6,7 +6,7 @@ export default {
   display          : 'Modal',
   to               : '/modal',
   demoComponentAttr: {
-    header     : `<Modal />`,
+    header     : `Modal`,
     description: 'A modal component.',
     component  : Modal,
     demos      : [

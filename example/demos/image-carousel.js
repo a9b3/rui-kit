@@ -5,7 +5,7 @@ export default {
   display          : 'ImageCarousel',
   to               : '/image-carousel',
   demoComponentAttr: {
-    header     : `<ImageCarousel />`,
+    header     : `ImageCarousel`,
     description: 'An image carousel. Images is an array of image urls.',
     component  : ImageCarousel,
     demos      : [

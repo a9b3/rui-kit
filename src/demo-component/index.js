@@ -30,7 +30,7 @@ export default class DemoComponent extends React.Component {
     return <article
       styleName='container'
     >
-      <h2>{header}</h2>
+      <h2 styleName='main-header'>{header}</h2>
 
       {
         description && <p>

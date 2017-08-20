@@ -6,7 +6,7 @@ export default {
   display          : 'ThemedForm',
   to               : '/themed-form',
   demoComponentAttr: {
-    header     : `<ThemedForm />`,
+    header     : `ThemedForm`,
     description: 'A form with validation.',
     demos      : [
       {

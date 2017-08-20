@@ -6,7 +6,7 @@ export default {
   display          : 'Form',
   to               : '/form',
   demoComponentAttr: {
-    header     : `<Form />`,
+    header     : `Form`,
     description: 'A form with validation.',
     demos      : [
       {

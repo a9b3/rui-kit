@@ -7,7 +7,7 @@ export default {
   display          : 'SelectFile',
   to               : '/select-file',
   demoComponentAttr: {
-    header   : `<SelectFile />`,
+    header   : `SelectFile`,
     component: SelectFile,
     demos    : [
       {

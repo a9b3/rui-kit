@@ -5,7 +5,7 @@ export default {
   display          : 'Image',
   to               : '/image',
   demoComponentAttr: {
-    header: `<Image />`,
+    header: `Image`,
     component: Image,
     demos : [
       {

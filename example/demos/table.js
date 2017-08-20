@@ -10,7 +10,7 @@ export default {
   display          : 'Table',
   to               : '/table',
   demoComponentAttr: {
-    header   : `<Table />`,
+    header   : `Table`,
     component: TableV2,
     demos    : [
       {

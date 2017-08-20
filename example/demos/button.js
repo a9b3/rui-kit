@@ -15,7 +15,7 @@ export default {
   to               : '/button',
   demoComponentAttr: {
     component: Button,
-    header   : `<Button />`,
+    header   : `Button`,
     demos    : [
       {
         instance: <Button

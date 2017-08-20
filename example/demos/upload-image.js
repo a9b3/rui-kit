@@ -6,7 +6,7 @@ export default {
   display          : 'UploadImage',
   to               : '/upload-image',
   demoComponentAttr: {
-    header   : `<UploadImage />`,
+    header   : `UploadImage`,
     component: UploadImage,
     demos    : [
       {

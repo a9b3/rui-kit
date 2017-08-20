@@ -5,7 +5,7 @@ export default {
   display          : 'LoadingOverlay',
   to               : '/loading-overlay',
   demoComponentAttr: {
-    header     : `<LoadingOverlay />`,
+    header     : `LoadingOverlay`,
     component  : LoadingOverlay,
     description: `A loading overlay, this component has absolute position so be sure to put it in a parent element with relative position.`,
     demos      : [

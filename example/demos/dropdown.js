@@ -5,7 +5,7 @@ export default {
   display          : 'Dropdown',
   to               : '/dropdown',
   demoComponentAttr: {
-    header     : `<Dropdown />`,
+    header     : `Dropdown`,
     component  : Dropdown,
     description: 'Dropdown component.',
     demos      : [

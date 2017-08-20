@@ -5,7 +5,7 @@ export default {
   display          : 'AppShell',
   to               : '/appshell',
   demoComponentAttr: {
-    header     : `<AppShell />`,
+    header     : `AppShell`,
     description: 'A sample layout.',
     component  : AppShell,
     demos      : [

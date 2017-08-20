@@ -6,7 +6,7 @@ export default {
   display          : 'InitWrapper',
   to               : '/init-wrapper',
   demoComponentAttr: {
-    header   : `<InitWrapper />`,
+    header   : `InitWrapper`,
     component: InitWrapper,
     demos    : [
       {

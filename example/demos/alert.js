@@ -7,7 +7,7 @@ export default {
   display          : 'Alert',
   to               : '/alert',
   demoComponentAttr: {
-    header   : `<Alert />`,
+    header   : `Alert`,
     component: Alert,
     demos    : [
       {

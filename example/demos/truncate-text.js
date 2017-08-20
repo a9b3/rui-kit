@@ -5,7 +5,7 @@ export default {
   display          : 'TruncateText',
   to               : '/truncate-text',
   demoComponentAttr: {
-    header     : `<TruncateText />`,
+    header     : `TruncateText`,
     component: TruncateText,
     description: 'TruncateText component.',
     demos      : [

@@ -5,7 +5,7 @@ export default {
   display          : 'Sidebar',
   to               : '/sidebar',
   demoComponentAttr: {
-    header     : `<Sidebar />`,
+    header     : `Sidebar`,
     component: Sidebar,
     description: 'A simple sidebar. With sticky footer.',
     demos      : [

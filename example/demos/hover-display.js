@@ -5,7 +5,7 @@ export default {
   display          : 'HoverDisplay',
   to               : '/hover-display',
   demoComponentAttr: {
-    header   : `<HoverDisplay />`,
+    header   : `HoverDisplay`,
     component: HoverDisplay,
     demos    : [
       {

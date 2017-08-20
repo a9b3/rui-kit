@@ -5,7 +5,7 @@ export default {
   display          : 'Code',
   to               : '/code',
   demoComponentAttr: {
-    header   : `<Code />`,
+    header   : `Code`,
     component: Code,
     demos    : [
       {

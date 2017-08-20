@@ -9,7 +9,7 @@ export default {
   display          : 'Dropzone',
   to               : '/dropzone',
   demoComponentAttr: {
-    header     : `<Dropzone />`,
+    header     : `Dropzone`,
     component  : Dropzone,
     description: 'Dropzone component.',
     demos      : [
