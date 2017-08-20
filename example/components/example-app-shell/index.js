@@ -48,7 +48,7 @@ export default class ExampleAppShell extends React.Component {
       leftNode={leftNode}
       rightNodeLinks={rightNodeLinks}
       links={demoLinks}
-      contentWidth={'80em'}
+      contentWidth={'100%'}
     >
       {children}
     </AppShell>
