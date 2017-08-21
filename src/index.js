@@ -16,6 +16,8 @@ export {Image as Image}                       from './image'
 export {UploadImage as UploadImage}           from './upload-image'
 export {HoverDisplay as HoverDisplay}         from './hover-display'
 export {default as DemoComponent}             from './demo-component'
+export {Icon as Icon}                         from './icon'
+export {svgs as svgs}                         from './icon'
 
 // Form
 export {Form as Form}                         from './form'

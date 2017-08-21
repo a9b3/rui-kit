@@ -12,6 +12,7 @@ export default [
       require('./demos/hover-display.js').default,
       require('./demos/image-carousel.js').default,
       require('./demos/image.js').default,
+      require('./demos/icon.js').default,
       require('./demos/init-wrapper.js').default,
       require('./demos/loading-overlay.js').default,
       require('./demos/loading.js').default,
