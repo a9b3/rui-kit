@@ -37,6 +37,20 @@ export default class AppShell extends React.Component {
     rightNodeLinks: [],
   }
 
+  state = {
+    showSidebar: true,
+  }
+
+  toggleSidebar = () => {
+    const {
+      showSidebar,
+    } = this.state
+
+    this.setState({
+      showSidebar: !showSidebar,
+    })
+  }
+
   render() {
     const {
       links,
@@ -47,6 +61,9 @@ export default class AppShell extends React.Component {
       children,
       ...rest
     } = this.props
+    const {
+      showSidebar,
+    } = this.state
 
     return <div
       styleName='index'
@@ -56,11 +73,14 @@ export default class AppShell extends React.Component {
         leftNode={leftNode}
         headerNode={headerNode}
         rightNodeLinks={rightNodeLinks}
+        toggleSidebar={this.toggleSidebar}
       />
 
       <div styleName='row'>
         {
-          links.length !== 0 && <div styleName='sidebar-wrapper'>
+          links.length !== 0 && <div styleName='sidebar-wrapper' style={{
+            width: showSidebar ? '20rem' : '0',
+          }}>
             <SidebarComponent
               links={links}
             />

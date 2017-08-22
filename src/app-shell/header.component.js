@@ -5,7 +5,7 @@ import {
   NavLink,
 }                 from 'react-router-dom'
 
-import {theme}    from '../index.js'
+import {theme, Icon}    from '../index.js'
 
 function HeaderComponent({
   leftNode,
@@ -21,6 +21,7 @@ function HeaderComponent({
     }}
   >
     <div styleName='header__left item'>
+      <Icon styleName='header__left__icon' type='hamburger' onClick={rest.toggleSidebar} />
       {leftNode}
     </div>
 

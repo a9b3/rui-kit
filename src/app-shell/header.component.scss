@@ -22,6 +22,10 @@
   composes: __header_item;
   grid-area: left;
   letter-spacing: 2px;
+
+  &__icon {
+    margin-right: $spacing3;
+  }
 }
 .header__middle {
   composes: __header_item;
