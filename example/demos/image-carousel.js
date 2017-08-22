@@ -1,16 +1,21 @@
 import { ImageCarousel } from '../../src'
 
 /* eslint-disable react/jsx-key */
+const displayName = 'ImageCarousel'
 export default {
-  display          : 'ImageCarousel',
+  display          : displayName,
   to               : '/image-carousel',
   demoComponentAttr: {
-    header     : `ImageCarousel`,
-    description: 'An image carousel. Images is an array of image urls.',
+    header     : displayName,
+    description: 'An image carousel. Images is an array of image urls. Hover over left or right to display the button.',
     component  : ImageCarousel,
     demos      : [
       {
-        instance: <div style={{ height: '400px', width: '100%' }}>
+        displayName,
+        instance: <div style={{
+          height: '400px',
+          width : '100%',
+        }}>
           <ImageCarousel
             images={[
               require('./images/1.jpg'),

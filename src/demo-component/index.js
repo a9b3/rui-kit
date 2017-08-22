@@ -59,8 +59,6 @@ export default class DemoComponent extends React.Component {
 
       {
         demos.length > 0 && <section styleName='demo'>
-          <h3>Example</h3>
-
           {
             demos.map((d, key) => <Demo
               key={key}

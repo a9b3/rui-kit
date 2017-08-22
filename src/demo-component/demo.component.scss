@@ -1,7 +1,6 @@
 @import '~esayemm-styles/variables';
 
 .demo {
-  margin-top: $spacing3;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "instance codeSnippet";
@@ -13,6 +12,9 @@
     grid-template-areas: "instance"
       "codeSnippet";
   }
+}
+.demo + .demo {
+  margin-top: $spacing3;
 }
 
 .instance {

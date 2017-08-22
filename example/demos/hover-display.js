@@ -1,36 +1,53 @@
-import { HoverDisplay } from '../../src'
+import { HoverDisplay, Alert } from '../../src'
+import variables        from 'esayemm-styles/variables'
+import tinycolor        from 'tinycolor2'
 
 /* eslint-disable react/jsx-key */
+const displayName = 'HoverDisplay'
 export default {
-  display          : 'HoverDisplay',
+  display          : displayName,
   to               : '/hover-display',
   demoComponentAttr: {
-    header   : `HoverDisplay`,
-    component: HoverDisplay,
-    demos    : [
+    header     : displayName,
+    component  : HoverDisplay,
+    description: 'Hover to show content.',
+    demos      : [
       {
+        displayName,
         instance: <HoverDisplay
-          style={{background: 'yellow', padding: '1rem', border: '1px solid black'}}
+          style={{
+            padding: variables.sizing.spacing3,
+            border : `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
+          }}
           content={
-            <div style={{background: 'blue', height: '200px', width: '200px'}}>
+            <div style={{
+              border    : `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
+              height    : '200px',
+              width     : '200px',
+              background: 'white',
+            }}>
             Content
             </div>
           }
         >
-        Hover over me to display content
+          Hover over me to display content
         </HoverDisplay>,
       },
       {
+        displayName,
         instance: <div style={{overflow: 'hidden'}}>
           <HoverDisplay
-            style={{background: 'yellow', padding: '1rem', border: '1px solid black'}}
+            style={{
+              padding: variables.sizing.spacing3,
+              border : `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
+            }}
             content={
-              <div style={{background: 'blue', height: '200px', width: '200px'}}>
-              Inside overflow hidden Content
-              </div>
+              <Alert show type='positive'>
+                Inside overflow hidden Content
+              </Alert>
             }
           >
-          Inside a overflow hidden
+            Show an Alert
           </HoverDisplay>
         </div>,
       },

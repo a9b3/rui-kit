@@ -3,6 +3,8 @@ import React      from 'react'
 import PropTypes  from 'prop-types'
 import CSSModules from 'react-css-modules'
 
+import {Icon}     from '../index.js'
+
 function ImageCarouselComponent({
   image,
   next,
@@ -19,13 +21,13 @@ function ImageCarouselComponent({
       styleName='prev'
       onClick={(evt) => { evt.stopPropagation(); prev() }}
     >
-      {`<`}
+      <Icon type='chevron'/>
     </div>
     <div
       styleName='next'
       onClick={(evt) => { evt.stopPropagation(); next() }}
     >
-      {`>`}
+      <Icon type='chevron' style={{transform: 'rotate(180deg)'}}/>
     </div>
   </div>
 }

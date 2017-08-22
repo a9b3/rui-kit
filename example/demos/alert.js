@@ -3,14 +3,17 @@ import AlertDemo    from './alert-example.js'
 import AlertDemoStr from '!!raw-loader!./alert-example.js'
 
 /* eslint-disable react/jsx-key */
+const displayName = 'Alert'
 export default {
-  display          : 'Alert',
+  display          : displayName,
   to               : '/alert',
   demoComponentAttr: {
-    header   : `Alert`,
-    component: Alert,
-    demos    : [
+    header     : displayName,
+    component  : Alert,
+    description: 'An alert toast.',
+    demos      : [
       {
+        displayName,
         instance       : <AlertDemo />,
         codeSnippet    : AlertDemoStr,
         codeSnippetType: 'jsx',

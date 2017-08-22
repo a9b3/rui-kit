@@ -10,42 +10,48 @@ function timeoutPromise() {
 }
 
 /* eslint-disable react/jsx-key */
+const displayName = 'Button'
 export default {
-  display          : 'Button',
+  display          : displayName,
   to               : '/button',
   demoComponentAttr: {
-    component: Button,
-    header   : `Button`,
-    demos    : [
+    component  : Button,
+    description: 'Just a regular ol button.',
+    header     : displayName,
+    demos      : [
       {
+        displayName,
         instance: <Button
-          style={{ width: '100%', margin: '1rem 0' }}
-          color={variables.green2}
-        >
-        Hello I am a button.
-        </Button>,
-      },
-      {
-        instance: <Button
-          type='outline'
-          color={variables.red1}
+          style={{ width: '100%'}}
+          color={variables.colors.success}
         >
           Hello I am a button.
         </Button>,
       },
       {
+        displayName,
         instance: <Button
           type='outline'
-          color={variables.yellow3}
+          color={variables.colors.error}
+        >
+          Hello I am a button.
+        </Button>,
+      },
+      {
+        displayName,
+        instance: <Button
+          type='outline'
+          color={variables.colors.warning}
           onClick={timeoutPromise}
         >
           Click will run function Default Loading Overlay
         </Button>,
       },
       {
+        displayName,
         instance: <Button
           type='outline'
-          color={variables.yellow3}
+          color={variables.colors.success}
           onClick={timeoutPromise}
           disabled
         >
@@ -53,11 +59,12 @@ export default {
         </Button>,
       },
       {
+        displayName,
         instance: <Button
-          color={variables.red1}
+          color={variables.colors.error}
           onClick={timeoutPromise}
         >
-        Override Loading Overlay
+          Override Loading Overlay
         </Button>,
       },
     ],

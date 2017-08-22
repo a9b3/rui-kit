@@ -1,19 +1,23 @@
 import { AppShell } from '../../src'
+import tinycolor from 'tinycolor2'
+import variables from 'esayemm-styles/variables'
 
 /* eslint-disable react/jsx-key */
+const displayName = 'AppShell'
 export default {
-  display          : 'AppShell',
+  display          : displayName,
   to               : '/appshell',
   demoComponentAttr: {
-    header     : `AppShell`,
+    header     : displayName,
     description: 'A sample layout.',
     component  : AppShell,
     demos      : [
       {
+        displayName,
         instance: <AppShell
           style={{
-            border: '1px solid black',
-            height: '200px',
+            border: `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
+            height: '300px',
           }}
           headerNode={<div>Header</div>}
           leftNode={<div>Hi</div>}
@@ -29,7 +33,7 @@ export default {
             },
           ]}
         >
-              hi
+          hi
         </AppShell>,
       },
     ],

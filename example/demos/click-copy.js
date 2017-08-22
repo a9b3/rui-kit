@@ -1,4 +1,4 @@
-import { ClickCopy } from '../../src'
+import { ClickCopy, Button } from '../../src'
 
 /* eslint-disable react/jsx-key */
 const displayName = 'ClickCopy'
@@ -8,13 +8,16 @@ export default {
   demoComponentAttr: {
     header     : displayName,
     component  : ClickCopy,
-    description: 'Click to copy.',
+    description: 'Wrapper component with click to copy functionality.',
     demos      : [
       {
+        displayName,
         instance: <ClickCopy
-          copyText='what'
+          copyText='Click this to copy.'
         >
-          Click to copy.
+          <Button>
+            Click this to copy.
+          </Button>
         </ClickCopy>,
       },
     ],
