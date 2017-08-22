@@ -2,6 +2,11 @@ import { HoverDisplay, Alert } from '../../src'
 import variables        from 'esayemm-styles/variables'
 import tinycolor        from 'tinycolor2'
 
+const hoverDisplayDefaultStyle = {
+  padding: variables.sizing.spacing3,
+  border : `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
+}
+
 /* eslint-disable react/jsx-key */
 const displayName = 'HoverDisplay'
 export default {
@@ -15,10 +20,6 @@ export default {
       {
         displayName,
         instance: <HoverDisplay
-          style={{
-            padding: variables.sizing.spacing3,
-            border : `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
-          }}
           content={
             <div style={{
               border    : `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
@@ -26,9 +27,10 @@ export default {
               width     : '200px',
               background: 'white',
             }}>
-            Content
+              Content
             </div>
           }
+          style={hoverDisplayDefaultStyle}
         >
           Hover over me to display content
         </HoverDisplay>,
@@ -37,19 +39,30 @@ export default {
         displayName,
         instance: <div style={{overflow: 'hidden'}}>
           <HoverDisplay
-            style={{
-              padding: variables.sizing.spacing3,
-              border : `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
-            }}
             content={
               <Alert show type='positive'>
                 Inside overflow hidden Content
               </Alert>
             }
+            style={hoverDisplayDefaultStyle}
           >
             Show an Alert
           </HoverDisplay>
         </div>,
+      },
+      {
+        displayName,
+        instance: <HoverDisplay
+          align='right'
+          content={
+            <Alert show type='positive'>
+              I should be on the right.
+            </Alert>
+          }
+          style={hoverDisplayDefaultStyle}
+        >
+          Align right.
+        </HoverDisplay>,
       },
     ],
   },
