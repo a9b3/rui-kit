@@ -25,6 +25,25 @@ export default {
           />
         </div>,
       },
+      {
+        displayName,
+        instance: <div style={{
+          height: '400px',
+          width : '100%',
+        }}>
+          <ImageCarousel
+            images={[
+              require('./images/1.jpg'),
+              require('./images/2.jpg'),
+              require('./images/3.jpg'),
+            ]}
+            style={{
+              backgroundColor: 'black',
+              backgroundSize : 'contain',
+            }}
+          />
+        </div>,
+      },
     ],
   },
 }

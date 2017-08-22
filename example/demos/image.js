@@ -1,14 +1,17 @@
 import { Image } from '../../src'
 
 /* eslint-disable react/jsx-key */
+const displayName = 'Image'
 export default {
-  display          : 'Image',
+  display          : displayName,
   to               : '/image',
   demoComponentAttr: {
-    header: `Image`,
+    header   : displayName,
+    description: 'Display an image.',
     component: Image,
-    demos : [
+    demos    : [
       {
+        displayName,
         instance: <Image
           style={{width: 200, height: 200}}
           src={require('./images/1.jpg')}

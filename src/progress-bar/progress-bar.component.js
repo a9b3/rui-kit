@@ -1,6 +1,7 @@
 import styles    from './progress-bar.component.scss'
 import PropTypes from 'prop-types'
 import variables from 'esayemm-styles/variables'
+import tinycolor from 'tinycolor2'
 
 function ProgressBar({
   percent,
@@ -35,8 +36,8 @@ ProgressBar.propTypes = {
 }
 
 ProgressBar.defaultProps = {
-  outerColor: variables.gray4,
-  innerColor: variables.green,
+  outerColor: tinycolor(variables.colors.secondary).setAlpha(.2),
+  innerColor: variables.colors.success,
 }
 
 export default cssModule(ProgressBar, styles, {allowMultiple: true})
