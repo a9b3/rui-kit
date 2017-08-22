@@ -6,10 +6,10 @@ export default {
   display          : displayName,
   to               : '/image',
   demoComponentAttr: {
-    header   : displayName,
+    header     : displayName,
     description: 'Display an image.',
-    component: Image,
-    demos    : [
+    component  : Image,
+    demos      : [
       {
         displayName,
         instance: <Image

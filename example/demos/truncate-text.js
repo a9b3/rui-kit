@@ -6,7 +6,7 @@ export default {
   to               : '/truncate-text',
   demoComponentAttr: {
     header     : `TruncateText`,
-    component: TruncateText,
+    component  : TruncateText,
     description: 'TruncateText component.',
     demos      : [
       {
@@ -14,8 +14,8 @@ export default {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend
               velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
               volutpat sit amet.
-      </TruncateText>,
-      }
+        </TruncateText>,
+      },
     ],
   },
 }
