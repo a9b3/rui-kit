@@ -6,6 +6,7 @@ export default [
       require('./demos/app-shell.js').default,
       require('./demos/button.js').default,
       require('./demos/code.js').default,
+      require('./demos/click-copy.js').default,
       require('./demos/dropdown.js').default,
       require('./demos/dropzone.js').default,
       require('./demos/form.js').default,

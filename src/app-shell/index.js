@@ -72,6 +72,7 @@ export default class AppShell extends React.Component {
             width   : '100%',
             maxWidth: contentWidth,
             margin  : '0 auto',
+            height  : '100%',
           }}>
             {children}
           </div>

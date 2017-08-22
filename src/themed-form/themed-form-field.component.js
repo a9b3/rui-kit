@@ -25,6 +25,7 @@ function ThemedFormField({
 
   return <div
     style={style}
+    styleName='container'
     className={classNames(styles.container, hasError && styles['container--error'], className)}
     {...rest}
   >

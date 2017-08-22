@@ -14,7 +14,7 @@ export default class Index extends React.Component {
       `} from 'rui-kit'`,
     ].join('\n')
 
-    return <article>
+    return <article styleName='container'>
       <Helmet>
         <title>React UI Kit</title>
       </Helmet>

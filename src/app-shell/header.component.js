@@ -1,11 +1,11 @@
-import styles    from './header.component.scss'
-import PropTypes from 'prop-types'
+import styles     from './header.component.scss'
+import PropTypes  from 'prop-types'
 import {observer} from 'mobx-react'
 import {
   NavLink,
-}                from 'react-router-dom'
+}                 from 'react-router-dom'
 
-import {theme}   from '../index.js'
+import {theme}    from '../index.js'
 
 function HeaderComponent({
   leftNode,
@@ -20,14 +20,12 @@ function HeaderComponent({
       color     : theme.get('primaryColor'),
     }}
   >
-    <div styleName='header__left'>
-      <h3 styleName='item'>{leftNode}</h3>
+    <div styleName='header__left item'>
+      {leftNode}
     </div>
 
-    <div styleName='header__middle'>
-      <h4 styleName='item'>
-        {headerNode}
-      </h4>
+    <div styleName='header__middle item'>
+      {headerNode}
     </div>
 
     <nav styleName='header__right'>

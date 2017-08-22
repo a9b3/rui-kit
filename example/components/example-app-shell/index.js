@@ -31,7 +31,9 @@ export default class ExampleAppShell extends React.Component {
       key={location.key}
       className={styles['middle-title']}
     >
-      {location.pathname.replace('/', '') || 'React UI Kit'}
+      <h4>
+        {location.pathname.replace('/', '') || 'React UI Kit'}
+      </h4>
     </TruncateText>
 
     const rightNodeLinks = [
@@ -41,7 +43,7 @@ export default class ExampleAppShell extends React.Component {
       },
     ]
 
-    const leftNode = <Link to='/'>RUI-KIT</Link>
+    const leftNode = <Link to='/'><h4>RUI-KIT</h4></Link>
 
     return <AppShell
       headerNode={headerNode}

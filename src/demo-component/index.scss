@@ -11,6 +11,7 @@
 
   ;
   grid-column-gap: $spacing3;
+  padding: $spacing2;
 
   h3 {
     margin-bottom: $spacing3;
@@ -28,6 +29,7 @@
 }
 
 .info {
+  min-width: 0;
   grid-area: info;
 }
 .main-header {
@@ -36,6 +38,7 @@
 }
 
 .demo {
+  min-width: 0;
   grid-area: demo;
   overflow: auto;
 }

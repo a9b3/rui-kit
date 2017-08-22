@@ -1,5 +1,9 @@
 @import '~esayemm-styles';
 
+.container + .container {
+  margin-top: $spacing3;
+}
+
 .container__top {
   display: flex;
   flex-direction: row;
@@ -14,7 +18,7 @@
 
 .container__form-field {
   width: 100%;
-  padding: 1rem;
+  padding: $spacing4;
   display: block;
   background: transparent;
   border-bottom: 1px solid $gray5;

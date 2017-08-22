@@ -1,9 +1,10 @@
-import styles     from './index.scss'
-import React      from 'react'
-import CSSModules from 'react-css-modules'
-import PropTypes  from 'prop-types'
+import styles         from './index.scss'
+import React          from 'react'
+import CSSModules     from 'react-css-modules'
+import PropTypes      from 'prop-types'
 
-import Demo       from './demo.component.js'
+import Demo           from './demo.component.js'
+import {TruncateText} from '../index.js'
 
 @CSSModules(styles)
 export default class DemoComponent extends React.Component {
@@ -31,7 +32,11 @@ export default class DemoComponent extends React.Component {
       styleName='container'
     >
       <div styleName='info'>
-        <h2 styleName='main-header'>{header}</h2>
+        <h2 styleName='main-header'>
+          <TruncateText>
+            {header}
+          </TruncateText>
+        </h2>
 
         {
           description && <section>
