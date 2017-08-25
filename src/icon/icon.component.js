@@ -2,13 +2,13 @@ import styles     from './icon.component.scss'
 import CSSModules from 'react-css-modules'
 import PropTypes  from 'prop-types'
 
-const requireContext = require.context('./svgs', false, /\.svg$/i)
-export const svgs = requireContext.keys().map(requireContext).reduce((state, icon) => {
-  return {
-    ...state,
-    [icon.default.id]: icon.default,
-  }
-}, {})
+import hamburger from './svgs/hamburger.svg'
+import chevron from './svgs/chevron.svg'
+
+export const svgs = {
+  hamburger,
+  chevron,
+}
 
 function IconComponent({
   type,
