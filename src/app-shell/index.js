@@ -79,7 +79,7 @@ export default class AppShell extends React.Component {
       <div styleName='row'>
         {
           links.length !== 0 && <div styleName='sidebar-wrapper' style={{
-            width: showSidebar ? '20rem' : '0',
+            width: showSidebar ? '18rem' : '0',
           }}>
             <SidebarComponent
               links={links}

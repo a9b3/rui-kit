@@ -6,7 +6,9 @@
 
 .header {
   display: grid;
-  box-shadow: 0 5px 10px rgba(black, .05);
+  box-shadow: 0 5px 20px rgba(black, .02);
+  border-bottom: 1px solid rgba(black, .05);
+  background: white;
   z-index: 3;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
@@ -26,6 +28,7 @@
 
   &__icon {
     margin-right: $spacing3;
+    cursor: pointer;
   }
 }
 .header__middle {
