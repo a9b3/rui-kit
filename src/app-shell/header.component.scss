@@ -8,6 +8,7 @@
   display: grid;
   box-shadow: 0 5px 10px rgba(black, .05);
   z-index: 3;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
     "left middle right";
 }

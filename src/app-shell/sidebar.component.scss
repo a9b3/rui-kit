@@ -6,7 +6,7 @@ $sidebarActiveBgColor: rgba($slate, .1);
 $sidebarHoverBgColor: lighten($sidebarActiveBgColor, 30);
 
 .sidebar {
-  border-right: 1px solid darken($sidebarBgColor, 10);
+  background: rgba($gray5, .1);
 }
 
 .item {

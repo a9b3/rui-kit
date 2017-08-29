@@ -1,5 +1,8 @@
 @import '~esayemm-styles/variables';
 
 .container {
+  width: 100%;
+  max-width: $maxWidth;
+  margin: 0 auto;
   padding: $spacing2;
 }
