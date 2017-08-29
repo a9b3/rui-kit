@@ -124,7 +124,7 @@ export default class FormExample extends React.Component {
         formState={formState}
         type='outline'
         style={{ width: '100%', marginTop: '1rem' }}
-        color={variables.green3}
+        color={variables.colors.green3}
         onClick={this.handleSubmit}
       >
       Submit

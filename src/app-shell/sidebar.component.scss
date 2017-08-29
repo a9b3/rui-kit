@@ -1,8 +1,8 @@
 @import '~esayemm-styles';
 
 $sidebarBgColor: white;
-$sidebarActiveHighlightColor: rgba($slate, .6);
-$sidebarActiveBgColor: rgba($slate, .1);
+$sidebarActiveHighlightColor: rgba($blue, .6);
+$sidebarActiveBgColor: rgba($blue, .1);
 $sidebarHoverBgColor: lighten($sidebarActiveBgColor, 30);
 
 .sidebar {
@@ -14,7 +14,6 @@ $sidebarHoverBgColor: lighten($sidebarActiveBgColor, 30);
   display: flex;
   padding: $spacing4 $spacing3;
   cursor: pointer;
-  font-weight: 500;
 }
 
 .dropheader {
@@ -38,7 +37,7 @@ $sidebarHoverBgColor: lighten($sidebarActiveBgColor, 30);
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     width: 3px;
     height: 100%;
     background: $sidebarActiveHighlightColor;
