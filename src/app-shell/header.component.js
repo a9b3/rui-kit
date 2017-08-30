@@ -62,6 +62,7 @@ HeaderComponent.propTypes = {
   rightNodeLinks: PropTypes.arrayOf(PropTypes.shape({
     display: PropTypes.string.isRequired,
     to     : PropTypes.string,
+    href   : PropTypes.string,
   })),
 }
 

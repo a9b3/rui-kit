@@ -16,12 +16,13 @@ export default class AppShell extends React.Component {
     leftNode      : PropTypes.node,
     // Top right node.
     rightNodeLinks: PropTypes.arrayOf(PropTypes.shape({
-      display: PropTypes.string.isRequired,
+      display: PropTypes.node.isRequired,
       to     : PropTypes.string,
+      href   : PropTypes.string,
     })),
     // If present, the sidebar will display with the links.
     links: PropTypes.arrayOf(PropTypes.shape({
-      header: PropTypes.string.isRequired,
+      header: PropTypes.string,
       items : PropTypes.arrayOf(PropTypes.shape({
         display: PropTypes.string.isRequired,
         to     : PropTypes.string,

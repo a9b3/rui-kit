@@ -38,7 +38,7 @@ export default class ExampleAppShell extends React.Component {
 
     const rightNodeLinks = [
       {
-        display: 'Github',
+        display: <img style={{height: '1.2em'}} src={require('./github.png')} alt='Github' />,
         href   : 'https://github.com/esayemm/rui-kit',
       },
     ]

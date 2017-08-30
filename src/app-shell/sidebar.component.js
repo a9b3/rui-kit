@@ -31,7 +31,7 @@ function SidebarComponent({
         return <Dropdown
           key={i}
           header={
-            <header className={styles.dropheader}>
+            link.header && <header className={styles.dropheader}>
               {link.header}
             </header>
           }
