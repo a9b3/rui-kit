@@ -31,34 +31,33 @@ export default class DemoComponent extends React.Component {
     return <article
       styleName='container'
     >
-      <div styleName='info'>
-        <h2 styleName='main-header'>
-          <TruncateText>
-            {header}
-          </TruncateText>
-        </h2>
+      <h2 styleName='header'>
+        <TruncateText>
+          {header}
+        </TruncateText>
+      </h2>
 
+      <section styleName='description'>
         {
-          description && <section>
-            <p>
-              {description}
-            </p>
-          </section>
+          description && <p>
+            {description}
+          </p>
         }
-
-        {
-          component && <section>
-            <h3>PropTypes</h3>
-
-            <ul>
-              {Object.keys(component.propTypes).map(key => <li key={key}>{key}</li>)}
-            </ul>
-          </section>
-        }
-      </div>
+      </section>
 
       {
-        demos.length > 0 && <section styleName='demo'>
+        component && <section styleName='props'>
+          <h4>PropTypes</h4>
+
+          <ul>
+            {Object.keys(component.propTypes).map(key => <li key={key}>{key}</li>)}
+          </ul>
+        </section>
+      }
+
+      {
+        demos.length > 0 && <section styleName='demos'>
+          <h3>Demos</h3>
           {
             demos.map((d, key) => <Demo
               key={key}

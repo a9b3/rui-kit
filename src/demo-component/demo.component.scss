@@ -2,19 +2,14 @@
 
 .demo {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "instance codeSnippet";
-  grid-column-gap: $spacing3;
-
-  @media screen and (max-width: 1200px) {
-    grid-template-columns: 1fr;
-    grid-row-gap: $spacing3;
-    grid-template-areas: "instance"
-      "codeSnippet";
-  }
+  grid-template-columns: 1fr;
+  grid-row-gap: $spacing3;
+  grid-template-areas: "instance"
+    "codeSnippet"
+  ;
 }
 .demo + .demo {
-  margin-top: $spacing3;
+  margin-top: $spacing2;
 }
 
 .instance {

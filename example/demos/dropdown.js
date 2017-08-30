@@ -14,7 +14,7 @@ export default {
           header={'Click to Close'}
         >
           <div>
-                Child
+                Child1
           </div>
           <div>
                 Child2
