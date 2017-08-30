@@ -19,7 +19,6 @@ $sidebarHoverBgColor: lighten($sidebarActiveBgColor, 30);
 .dropheader {
   padding: $spacing4 $spacing3;
   cursor: pointer;
-  background: darken($sidebarBgColor, 5);
   font-weight: 500;
 }
 
