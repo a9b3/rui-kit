@@ -16,5 +16,5 @@ build.example:
 							--app-index ./example/index.js \
 							--html-index ./example/index.html \
 							--context ./example \
-							--favicon-path ./example/assets/images/cat.jpg \
 							--output-path $(EXAMPLE_OUTPUT)
+							# --favicon-path ./example/assets/images/cat.jpg \
