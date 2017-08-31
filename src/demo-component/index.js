@@ -2,6 +2,7 @@ import styles         from './index.scss'
 import React          from 'react'
 import CSSModules     from 'react-css-modules'
 import PropTypes      from 'prop-types'
+import ReactMarkdown  from 'react-markdown'
 
 import Demo           from './demo.component.js'
 import {TruncateText} from '../index.js'
@@ -40,7 +41,9 @@ export default class DemoComponent extends React.Component {
       <section styleName='description'>
         {
           description && <p>
-            {description}
+            <ReactMarkdown
+              source={description}
+            />
           </p>
         }
       </section>

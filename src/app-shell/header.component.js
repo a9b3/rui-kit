@@ -11,6 +11,7 @@ function HeaderComponent({
   leftNode,
   headerNode,
   rightNodeLinks,
+  toggleSidebar,
   ...rest
 }) {
   return <header styleName='header'
@@ -21,7 +22,7 @@ function HeaderComponent({
     }}
   >
     <div styleName='header__left item'>
-      <Icon styleName='header__left__icon' type='hamburger' onClick={rest.toggleSidebar} />
+      <Icon styleName='header__left__icon' type='hamburger' onClick={toggleSidebar} />
       {leftNode}
     </div>
 
@@ -60,10 +61,11 @@ HeaderComponent.propTypes = {
   leftNode      : PropTypes.node,
   // Top right node.
   rightNodeLinks: PropTypes.arrayOf(PropTypes.shape({
-    display: PropTypes.string.isRequired,
+    display: PropTypes.node.isRequired,
     to     : PropTypes.string,
     href   : PropTypes.string,
   })),
+  toggleSidebar: PropTypes.func.isRequired,
 }
 
 export default observer(cssModule(HeaderComponent, styles, {allowMultiple: true}))

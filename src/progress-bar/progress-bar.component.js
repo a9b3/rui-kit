@@ -36,7 +36,7 @@ ProgressBar.propTypes = {
 }
 
 ProgressBar.defaultProps = {
-  outerColor: tinycolor(variables.colors.secondary).setAlpha(.2),
+  outerColor: tinycolor(variables.colors.secondary).setAlpha(.2).toString(),
   innerColor: variables.colors.success,
 }
 

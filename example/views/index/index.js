@@ -1,8 +1,10 @@
-import styles        from './index.scss'
-import React         from 'react'
-import CSSModules    from 'react-css-modules'
-import { Helmet }    from 'react-helmet'
-import * as ruiKit   from '../../../src'
+import styles      from './index.scss'
+import React       from 'react'
+import CSSModules  from 'react-css-modules'
+import { Helmet }  from 'react-helmet'
+
+import * as ruiKit from '../../../src'
+import packageJson from '../../../package.json'
 
 @CSSModules(styles)
 export default class Index extends React.Component {
@@ -19,13 +21,45 @@ export default class Index extends React.Component {
         <title>React UI Kit</title>
       </Helmet>
 
-      <h2>Install</h2>
+      <h2
+        style={{marginBottom: '2rem'}}
+      >
+        React UI Kit
+      </h2>
+
+      <p
+        style={{marginBottom: '2rem'}}
+      >
+        A simple React components library.
+      </p>
+
+      <h3>Version</h3>
+
+      <p
+        style={{marginBottom: '2rem'}}
+      >
+        {packageJson.version}
+      </p>
+
+      <h3>Install</h3>
+
+      <p
+        style={{marginBottom: '2rem'}}
+      >
+        Use yarn to install the package in an frontend React environment.
+      </p>
 
       <ruiKit.Code
         style={{margin: '2rem 0'}}
       >
         {`yarn add rui-kit --save`}
       </ruiKit.Code>
+
+      <h3
+        style={{marginBottom: '2rem'}}
+      >
+        Exports
+      </h3>
 
       <ruiKit.Code
         type='js'

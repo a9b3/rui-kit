@@ -4,8 +4,8 @@ import CSSModules   from 'react-css-modules'
 import PropTypes    from 'prop-types'
 import { observer } from 'mobx-react'
 import {
-  withRouter,
   NavLink,
+  withRouter,
 }                   from 'react-router-dom'
 
 import {
@@ -16,6 +16,13 @@ import {
 
 function SidebarComponent({
   links,
+  /* eslint-disable */
+  history,
+  location,
+  path,
+  staticContext,
+  match,
+  /* eslint-enable */
   ...rest
 }) {
   return <Sidebar
