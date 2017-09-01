@@ -40,11 +40,9 @@ export default class DemoComponent extends React.Component {
 
       <section styleName='description'>
         {
-          description && <p>
-            <ReactMarkdown
-              source={description}
-            />
-          </p>
+          description && <ReactMarkdown
+            source={description}
+          />
         }
       </section>
 
