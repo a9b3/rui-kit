@@ -10,7 +10,7 @@ function FormField({
   ...rest
 }) {
   const attr = {
-    value   : formState.formData.get(formFieldKey),
+    value   : formState.formData.get(formFieldKey) || '',
     ...rest,
     onChange: evt => handleChange(evt, formState, formFieldKey),
   }
