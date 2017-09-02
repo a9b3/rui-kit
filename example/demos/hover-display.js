@@ -6,7 +6,7 @@ import tinycolor               from 'tinycolor2'
 const description = `
 Hover to show content.
 
-*Note: Nested react-router Links will not work unless you [pass in a function via the component props](${window.location.pathname}#react-router-example) that returns the components.*
+*Note: Nested react-router Links will not work unless you [pass in a function via the component props](${window.location.origin}/hover-display#react-router-example) that returns the components.*
 `.trim()
 
 const hoverDisplayDefaultStyle = {
