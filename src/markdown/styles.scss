@@ -16,23 +16,24 @@
     }
   }
 
-  pre {
-    margin: 0;
-    width: 100%;
-  }
-
   code {
-    width: 100%;
-    padding: $spacing4 $spacing3;
+    display: inline;
+    padding: .5em $spacing4;
+    margin: 0 .5em;
     line-height: 1.4;
     font-size: .8em;
     font-family: monospace;
   }
 
-  p {
+  pre {
+    margin: 0;
+    width: 100%;
+
     code {
-      display: inline;
-      padding: .5em $spacing4;
+      margin: 0;
+      display: block;
+      width: 100%;
+      padding: $spacing4 $spacing3;
     }
   }
 }
