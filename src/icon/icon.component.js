@@ -2,8 +2,8 @@ import styles     from './icon.component.scss'
 import CSSModules from 'react-css-modules'
 import PropTypes  from 'prop-types'
 
-import hamburger from './svgs/hamburger.svg'
-import chevron from './svgs/chevron.svg'
+import hamburger from '!svg-sprite-loader!./svgs/hamburger.svg'
+import chevron from '!svg-sprite-loader!./svgs/chevron.svg'
 
 export const svgs = {
   hamburger,

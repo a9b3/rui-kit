@@ -2,6 +2,11 @@
 
 .container {
   // Markdown stylings
+
+  a {
+    color: $blue;
+  }
+
   ul {
     li {
       list-style-type: disc;
