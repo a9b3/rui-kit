@@ -1,12 +1,15 @@
-import { observable } from 'mobx'
-import invariant      from 'invariant'
+import {
+  observable,
+  action,
+}                from 'mobx'
+import invariant from 'invariant'
 
 export default class Form {
-  formData = observable.map()
-  validators = {}
-  errors = observable.map()
+  validators  = {}
+  formData    = observable.map()
+  errors      = observable.map()
   @observable
-  hasError = false
+  isFormValid = false
 
   constructor({
     validators,
@@ -19,12 +22,25 @@ export default class Form {
     this.validators = validators
   }
 
-  setValues(values = {}) {
+  /**
+   * setAllValues will merge given object with existing formData.
+   *
+   * @param {object} values
+   */
+  @action
+  setAllValues(values = {}) {
     Object.keys(values).forEach(key => {
-      this.formData.set(key, values[key] || '')
+      this.set(key, value)
     })
   }
 
+  /**
+   * set will set the key/value pairing in formData.
+   *
+   * @param {string} key
+   * @param {string} value
+   */
+  @action
   set(key, value) {
     if (!(key in this.validators)) {
       throw new Error(`'${key}' not a field in validators.`)
@@ -34,34 +50,13 @@ export default class Form {
     this.validateAll()
   }
 
-  getError(key) {
-    return this.errors.get(key)
-  }
-
-  // TODO not used might be able to remove
-  validate(key) {
-    if (!(key in this.validators)) {
-      throw new Error(`'${key}' not a field in validators.`)
-    }
-
-    try {
-      this.validators[key](this.formData.get(key), this.getAllFormDataValues())
-      this.errors.set(key, null)
-    } catch (err) {
-      this.errors.set(key, err)
-    }
-
-    return true
-  }
-
-  getAllFormDataValues() {
-    const keys = this.formData.keys()
-    return keys.reduce((obj, key) => {
-      obj[key] = this.formData.get(key)
-      return obj
-    }, {})
-  }
-
+  /**
+   * validateAll will run all the validators and set the instance variable
+   * isFormValid to the appropriate boolean.
+   *
+   * @returns {boolean}
+   */
+  @action
   validateAll() {
     const keys = Object.keys(this.validators)
 
@@ -77,7 +72,30 @@ export default class Form {
       }
     }
 
-    this.hasError = hasError
+    this.isFormValid = hasError
     return hasError
+  }
+
+  /**
+   * getError will return the error associated with the given key.
+   *
+   * @returns {error}
+   */
+  getError(key) {
+    return this.errors.get(key)
+  }
+
+  /**
+   * getAllFormDataValues will return key/value object with all the inputted
+   * values.
+   *
+   * @returns {object}
+   */
+  getAllFormDataValues() {
+    const keys = this.formData.keys()
+    return keys.reduce((obj, key) => {
+      obj[key] = this.formData.get(key)
+      return obj
+    }, {})
   }
 }

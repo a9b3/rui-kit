@@ -1,0 +1,38 @@
+@import '~esayemm-styles/variables';
+
+.container {
+  // Markdown stylings
+  ul {
+    li {
+      list-style-type: disc;
+      list-style-position: inside;
+    }
+  }
+
+  ol {
+    li {
+      list-style-type: decimal;
+      list-style-position: inside;
+    }
+  }
+
+  pre {
+    margin: 0;
+    width: 100%;
+  }
+
+  code {
+    width: 100%;
+    padding: $spacing4 $spacing3;
+    line-height: 1.4;
+    font-size: .8em;
+    font-family: monospace;
+  }
+
+  p {
+    code {
+      display: inline;
+      padding: .5em $spacing4;
+    }
+  }
+}

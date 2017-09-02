@@ -1,11 +1,13 @@
-import styles         from './index.scss'
-import React          from 'react'
-import CSSModules     from 'react-css-modules'
-import PropTypes      from 'prop-types'
-import ReactMarkdown  from 'react-markdown'
+import styles     from './index.scss'
+import React      from 'react'
+import CSSModules from 'react-css-modules'
+import PropTypes  from 'prop-types'
 
-import Demo           from './demo.component.js'
-import {TruncateText} from '../index.js'
+import Demo       from './demo.component.js'
+import {
+  TruncateText,
+  Markdown,
+}                 from '../index.js'
 
 @CSSModules(styles)
 export default class DemoComponent extends React.Component {
@@ -40,14 +42,14 @@ export default class DemoComponent extends React.Component {
 
       <section styleName='description'>
         {
-          description && <ReactMarkdown
+          description && <Markdown
             source={description}
           />
         }
       </section>
 
       {
-        component && <section styleName='props'>
+        component && component.propTypes && <section styleName='props'>
           <h4>PropTypes</h4>
 
           <ul>

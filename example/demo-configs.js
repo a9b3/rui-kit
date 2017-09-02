@@ -20,6 +20,7 @@ export default [
       require('./demos/modal.js').default,
       require('./demos/progress-bar.js').default,
       require('./demos/select-file.js').default,
+      require('./demos/markdown/index.js').default,
       require('./demos/sidebar.js').default,
       require('./demos/table.js').default,
       require('./demos/themed-form.js').default,

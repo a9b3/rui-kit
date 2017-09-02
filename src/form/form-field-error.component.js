@@ -26,8 +26,4 @@ FormFieldError.propTypes = {
   formFieldKey: PropTypes.string.isRequired,
 }
 
-FormFieldError.defaultProps = {
-
-}
-
 export default observer(FormFieldError)

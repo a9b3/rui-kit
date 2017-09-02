@@ -17,7 +17,7 @@ function ThemedFormSubmit({
   return <Button
     {...rest}
     onClick={handleClick}
-    disabled={formState.hasError}
+    disabled={formState.isFormValid}
   />
 }
 
