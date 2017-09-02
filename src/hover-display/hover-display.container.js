@@ -66,9 +66,7 @@ export default class HoverDisplayContainer extends React.Component {
         ref={el => this.contentWrapper = el}
         style={wrapperStyle}
       >
-        <div>
-          {content}
-        </div>
+        {content}
       </div>
     </div>
   }
