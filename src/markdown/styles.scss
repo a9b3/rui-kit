@@ -18,8 +18,7 @@
 
   code {
     display: inline;
-    padding: .5em $spacing4;
-    margin: 0 .5em;
+    padding: .3em .5em;
     line-height: 1.4;
     font-size: .8em;
     font-family: monospace;
@@ -34,6 +33,18 @@
       display: block;
       width: 100%;
       padding: $spacing4 $spacing3;
+    }
+  }
+
+  li {
+    p {
+      margin-left: $spacing5;
+      display: inline;
+    }
+    * + * {
+      margin-top: $spacing4;
+      display: block;
+      margin-left: $spacing3;
     }
   }
 }

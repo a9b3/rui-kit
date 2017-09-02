@@ -40,13 +40,13 @@ export default class DemoComponent extends React.Component {
         </TruncateText>
       </h2>
 
-      <section styleName='description'>
-        {
-          description && <Markdown
+      {
+        description && <section styleName='description'>
+          <Markdown
             source={description}
           />
-        }
-      </section>
+        </section>
+      }
 
       {
         component && component.propTypes && <section styleName='props'>
