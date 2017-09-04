@@ -3,7 +3,7 @@ import React      from 'react'
 import PropTypes  from 'prop-types'
 import CSSModules from 'react-css-modules'
 
-import {Icon}     from '../index.js'
+import {Icon}     from '../../index.js'
 
 function ImageCarouselComponent({
   image,

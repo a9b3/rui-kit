@@ -3,7 +3,7 @@ import variables      from 'esayemm-styles/variables'
 import tinycolor      from 'tinycolor2'
 
 const defaultTheme = {
-  primaryColor  : tinycolor(variables.gray1).setAlpha(.7),
+  primaryColor  : tinycolor(variables.gray).setAlpha(.7),
   primaryBgColor: variables.white,
 }
 

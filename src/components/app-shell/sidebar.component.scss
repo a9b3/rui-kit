@@ -1,12 +1,11 @@
 @import '~esayemm-styles';
 
-$sidebarBgColor: white;
 $sidebarActiveHighlightColor: rgba($slate, .6);
 $sidebarActiveBgColor: rgba($slate, .1);
 $sidebarHoverBgColor: rgba($slate, .1);
 
 .sidebar {
-  background: rgba($gray5, .3);
+  background: rgba($lightgray, .3);
 }
 
 .item {
@@ -23,9 +22,8 @@ $sidebarHoverBgColor: rgba($slate, .1);
 }
 
 .dropchild {
-  @include hoverBg($sidebarHoverBgColor);
-  transition: background .3s;
   composes: item;
+  transition: background .3s;
   font-size: .8em;
 }
 .dropchild.active {

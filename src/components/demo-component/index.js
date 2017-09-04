@@ -7,7 +7,7 @@ import Demo       from './demo.component.js'
 import {
   TruncateText,
   Markdown,
-}                 from '../index.js'
+}                 from '../../index.js'
 
 @CSSModules(styles)
 export default class DemoComponent extends React.Component {

@@ -4,7 +4,7 @@ import jsxToString   from 'jsx-to-string'
 
 import {
   Code,
-}                    from '../index.js'
+}                    from '../../index.js'
 
 function renderCodeSnippet({
   instance,

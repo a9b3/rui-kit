@@ -2,7 +2,7 @@ import styles              from './uploading-row.component.scss'
 import PropTypes           from 'prop-types'
 import {humanReadableSize} from 'js-functions'
 
-import {ProgressBar}       from '../index.js'
+import {ProgressBar}       from '../../index.js'
 
 function UploadingRowComponent({
   progress,

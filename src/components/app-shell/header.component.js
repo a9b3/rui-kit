@@ -1,24 +1,26 @@
-import styles        from './header.component.scss'
-import PropTypes     from 'prop-types'
-import {observer}    from 'mobx-react'
+import styles    from './header.component.scss'
+import PropTypes from 'prop-types'
 import {
   NavLink,
-}                    from 'react-router-dom'
+}                from 'react-router-dom'
 
-import {theme, Icon} from '../index.js'
+import {
+  Icon,
+  withTheme,
+}                from '../../index.js'
 
 function HeaderComponent({
   leftNode,
   headerNode,
   rightNodeLinks,
   toggleSidebar,
+  theme,
   ...rest
 }) {
   return <header styleName='header'
     {...rest}
     style={{
       background: theme.get('primaryBgColor'),
-      color     : theme.get('primaryColor'),
     }}
   >
     <div styleName='header__left item'>
@@ -66,6 +68,9 @@ HeaderComponent.propTypes = {
     href   : PropTypes.string,
   })),
   toggleSidebar: PropTypes.func.isRequired,
+
+  // from withTheme
+  theme: PropTypes.object,
 }
 
-export default observer(cssModule(HeaderComponent, styles, {allowMultiple: true}))
+export default withTheme(cssModule(HeaderComponent, styles, {allowMultiple: true}))

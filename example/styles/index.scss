@@ -2,7 +2,7 @@
 
 :global {
   body {
-    background: lighten($gray5, 10);
+    background: lighten($lightgray, 10);
 
     @media only screen and (max-device-width: 480px) {
       font-size: 30px;

@@ -1,18 +1,17 @@
-import styles       from './sidebar.component.scss'
-import React        from 'react'
-import CSSModules   from 'react-css-modules'
-import PropTypes    from 'prop-types'
-import { observer } from 'mobx-react'
+import styles     from './sidebar.component.scss'
+import React      from 'react'
+import CSSModules from 'react-css-modules'
+import PropTypes  from 'prop-types'
 import {
   NavLink,
   withRouter,
-}                   from 'react-router-dom'
+}                 from 'react-router-dom'
 
 import {
   Sidebar,
   Dropdown,
-  theme,
-}                 from '../index.js'
+  withTheme,
+}                 from '../../index.js'
 
 function SidebarComponent({
   links,
@@ -22,6 +21,7 @@ function SidebarComponent({
   path,
   staticContext,
   match,
+  theme,
   /* eslint-enable */
   ...rest
 }) {
@@ -72,4 +72,4 @@ SidebarComponent.propTypes = {
   })),
 }
 
-export default CSSModules(withRouter(observer(SidebarComponent)), styles, {allowMultiple: true})
+export default CSSModules(withRouter(withTheme(SidebarComponent)), styles, {allowMultiple: true})

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {
   SelectFile,
   Image,
-} from '../index.js'
+} from '../../index.js'
 
 @cssModule(style)
 export default class UploadImageContainer extends React.Component {

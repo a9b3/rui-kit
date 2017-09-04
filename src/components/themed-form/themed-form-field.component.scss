@@ -21,16 +21,16 @@
   padding: $spacing4;
   display: block;
   background: transparent;
-  border-bottom: 1px solid $gray5;
+  border-bottom: 1px solid $lightgray;
   margin-bottom: 1px;
 
   &:focus {
-    border-bottom: 2px solid $cyan2;
+    border-bottom: 2px solid $cyan;
     margin-bottom: 0;
   }
 }
 .container__form-field::placeholder {
-  color: $gray4;
+  color: $lightgray;
 }
 
 .container__form-field-error {
@@ -40,11 +40,11 @@
 }
 
 .container--error {
-  color: $red;
+  color: $error;
   transition: color .3s;
 
   .container__form-field {
-    border-color: $red;
+    border-color: $error;
   }
 }
 

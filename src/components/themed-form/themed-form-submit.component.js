@@ -2,7 +2,7 @@ import React      from 'react'
 import PropTypes  from 'prop-types'
 import { observer } from 'mobx-react'
 
-import { Button } from '../index.js'
+import { Button } from '../../index.js'
 
 function ThemedFormSubmit({
   formState,
