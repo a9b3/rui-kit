@@ -6,10 +6,8 @@ import {
 
 import {
   Icon,
+  withTheme,
 }                from '../../index.js'
-import withTheme from '../../decorators/withTheme'
-
-console.log(withTheme)
 
 function HeaderComponent({
   leftNode,

@@ -1,7 +1,10 @@
 /*
- * Decorators
+ * Themer
  */
-export {default as withTheme}                 from './decorators/withTheme'
+export {withTheme as withTheme}               from './theme'
+export {theme as theme}                       from './theme'
+export {RuiTheme as RuiTheme}                 from './theme'
+export {Interface as Interface}               from './theme'
 
 /*
  * Components
@@ -43,6 +46,3 @@ export {ThemedFormSubmit as ThemedFormSubmit} from './components/themed-form'
 export {Alert as Alert}                       from './components/alert'
 export {Table as Table}                       from './components/table'
 export {TableV2 as TableV2}                   from './components/table'
-
-// Theme
-export {default as theme}                     from './theme.js'

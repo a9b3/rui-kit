@@ -9,6 +9,7 @@ import {
 import {
   AppShell,
   TruncateText,
+  Interface,
 }                 from '../../../src'
 
 @withRouter
@@ -52,6 +53,7 @@ export default class ExampleAppShell extends React.Component {
       links={demoLinks}
       contentWidth={'100%'}
     >
+      <Interface />
       {children}
     </AppShell>
   }
