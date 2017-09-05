@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react'
-import theme      from '../theme'
+import theme      from './index.js'
 
 export default ComposedComponent => {
 

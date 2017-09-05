@@ -1,34 +1,37 @@
 // react-hot-loader/patch has to be first
 import 'react-hot-loader/patch'
 import 'styles/index.scss'
-import React             from 'react'
-import { render }        from 'react-dom'
-import { AppContainer }  from 'react-hot-loader'
-import { BrowserRouter } from 'react-router-dom'
-import routes            from './routes.js'
+
+import React            from 'react'
+import { render }       from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
+
+import MainRouter       from 'components/MainRouter'
 
 function renderRoot() {
   render(
     <AppContainer>
-      <BrowserRouter>
-        {routes}
-      </BrowserRouter>
+      <MainRouter />
     </AppContainer>,
     document.getElementById('mount'),
   )
 }
 
-renderRoot()
+function main() {
+  renderRoot()
 
-if (module.hot) {
-  module.hot.accept('./styles/index.scss', () => {
-    require('./styles/index.scss')
-  })
-  module.hot.accept(() => {
-    renderRoot()
-  })
+  if (module.hot) {
+    module.hot.accept('styles/index.scss', () => {
+      require('styles/index.scss')
+    })
+    module.hot.accept(() => {
+      renderRoot()
+    })
+  }
+
+  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+  }
 }
 
-if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-}
+main()
