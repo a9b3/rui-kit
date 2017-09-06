@@ -28,6 +28,7 @@ export {Icon as Icon}                         from './components/Icon'
 export {svgs as svgs}                         from './components/Icon'
 export {ClickCopy as ClickCopy}               from './components/ClickCopy'
 export {default as Markdown}                  from './components/Markdown'
+export {default as Transition}                from './components/Transition'
 
 // Form
 export {Form as Form}                         from './components/Form'
