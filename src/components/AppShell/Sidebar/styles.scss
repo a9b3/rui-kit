@@ -6,6 +6,8 @@ $sidebarHoverBgColor: rgba($slate, .1);
 
 .sidebar {
   background: rgba($lightgray, .3);
+  overflow: auto;
+  height: 100%;
 }
 
 .item {

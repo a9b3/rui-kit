@@ -7,7 +7,6 @@ import {
   withRouter,
 }                  from 'react-router-dom'
 
-import Sidebar     from '~/components/Sidebar'
 import Dropdown    from '~/components/Dropdown'
 import {withTheme} from '~/theme'
 
@@ -23,7 +22,7 @@ function SidebarComponent({
   /* eslint-enable */
   ...rest
 }) {
-  return <Sidebar
+  return <aside
     className={styles.sidebar}
     style={{
       background: theme.get('primaryBgColor'),
@@ -56,7 +55,7 @@ function SidebarComponent({
         </Dropdown>
       })
     }
-  </Sidebar>
+  </aside>
 }
 
 SidebarComponent.propTypes = {

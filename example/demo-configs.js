@@ -28,7 +28,6 @@ export default [
       require('./demos/loading.js').default,
       require('./demos/modal.js').default,
       require('./demos/select-file.js').default,
-      require('./demos/sidebar.js').default,
     ],
   },
 ]
