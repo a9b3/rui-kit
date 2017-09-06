@@ -1,1 +1,1 @@
-export {default as default} from './dropdown.container.js'
+export {default as default} from './container.js'

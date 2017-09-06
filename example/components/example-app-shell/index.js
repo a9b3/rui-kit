@@ -8,7 +8,6 @@ import {
 }                 from 'react-router-dom'
 import {
   AppShell,
-  TruncateText,
   RuiTheme,
 }                 from '../../../src'
 
@@ -28,14 +27,14 @@ export default class ExampleAppShell extends React.Component {
       children,
     } = this.props
 
-    const headerNode = <TruncateText
+    const headerNode = <div
       key={location.key}
       className={styles['middle-title']}
     >
       <h4>
         {location.pathname.replace('/', '') || 'React UI Kit'}
       </h4>
-    </TruncateText>
+    </div>
 
     const rightNodeLinks = [
       {
