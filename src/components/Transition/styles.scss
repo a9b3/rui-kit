@@ -1,20 +1,20 @@
 @import '~esayemm-styles/variables';
 
 :global {
-  .tran-enter {
+  .rui-fade-enter {
     opacity: 0;
   }
 
-  .tran-enter.tran-enter-active {
+  .rui-fade-enter.rui-fade-enter-active {
     opacity: 1;
     transition: opacity 500ms ease-in;
   }
 
-  .tran-leave {
+  .rui-fade-leave {
     opacity: 1;
   }
 
-  .tran-leave.tran-leave-active {
+  .rui-fade-leave.rui-fade-leave-active {
     opacity: 0;
     transition: opacity 500ms ease-in;
   }
