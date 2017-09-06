@@ -2,6 +2,8 @@ import styles         from './index.scss'
 import React          from 'react'
 import PropTypes      from 'prop-types'
 import CSSModules     from 'react-css-modules'
+import tinycolor      from 'tinycolor2'
+import cx             from 'classnames'
 
 import LoadingOverlay from '../loading-overlay'
 
@@ -14,12 +16,13 @@ function Button({
   style,
   children,
   loadingOverlayAttr,
+  className,
   ...rest
 }) {
   const inlineStyles = getStyles({color})
 
   const attr = {
-    styleName: 'button',
+    className: cx(styles.button, className),
     ...rest,
     style    : Object.assign({}, inlineStyles[type], style),
   }
@@ -60,6 +63,7 @@ Button.propTypes = {
   style             : PropTypes.object,
   children          : PropTypes.node,
   loadingOverlayAttr: PropTypes.object,
+  className         : PropTypes.string,
 }
 
 Button.defaultProps = {
@@ -75,7 +79,7 @@ Button.defaultProps = {
 function getStyles({color}) {
   return {
     outline: {
-      border         : `1.5px solid ${color}`,
+      border         : `2px solid ${tinycolor(color).lighten(15).toString()}`,
       backgroundColor: 'transparent',
       color,
     },

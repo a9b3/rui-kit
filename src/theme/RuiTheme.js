@@ -5,10 +5,12 @@ export default class RuiTheme extends React.Component {
   static propTypes = {
     type     : PropTypes.string,
     className: PropTypes.string,
+    style    : PropTypes.any,
+    children : PropTypes.node,
   }
 
   static defaultProps = {
-    type: '',
+    type: 'light',
   }
 
   componentDidMount() {
@@ -24,20 +26,24 @@ export default class RuiTheme extends React.Component {
   loadStylesheet = (type) => {
     const allowed = {dark: true, light: true}
     if (type in allowed) {
-      const x = require(`./themes/${type}.scss`)
-      console.log(x)
+      require(`./themes/${type}.scss`)
     }
   }
 
   render() {
     const {
       type,
+      style,
       className,
       ...rest
     } = this.props
 
     return <div
       className={cx('rui', type, className)}
+      style={Object.assign({}, {
+        height  : '100%',
+        overflow: 'auto',
+      }, style)}
       {...rest}
     >
       {this.props.children}

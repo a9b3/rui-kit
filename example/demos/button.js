@@ -67,6 +67,18 @@ export default {
           Override Loading Overlay
         </Button>,
       },
+      {
+        displayName,
+        instance:
+        <div style={{width: '100%'}}>
+          <Button
+            href='#'
+            color={variables.colors.lightgray}
+          >
+            A href button
+          </Button>
+        </div>,
+      },
     ],
   },
 }
