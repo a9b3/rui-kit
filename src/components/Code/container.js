@@ -1,5 +1,3 @@
-import '!style-loader!css-loader!highlight.js/styles/tomorrow-night-eighties.css'
-
 import styles     from './styles.scss'
 import React      from 'react'
 import CSSModules from 'react-css-modules'
@@ -7,6 +5,9 @@ import PropTypes  from 'prop-types'
 import highlight  from 'highlight.js'
 import variables  from 'esayemm-styles/variables'
 
+import {withTheme} from '~/theme'
+
+@withTheme
 @CSSModules(styles)
 export default class Code extends React.Component {
 
@@ -19,6 +20,7 @@ export default class Code extends React.Component {
     type    : PropTypes.string,
     // override attributes for <code />
     codeAttr: PropTypes.object,
+    theme   : PropTypes.any,
   }
 
   highlightCode = () => {
@@ -26,10 +28,19 @@ export default class Code extends React.Component {
   }
 
   componentDidMount() {
-    this.highlightCode()
+    this.loadTheme()
   }
 
-  componentDidUpdate() {
+  componentWillUpdate() {
+    this.loadTheme()
+  }
+
+  loadTheme() {
+    const {
+      theme,
+    } = this.props
+    const name = theme.get('codeTheme')
+    require(`!style-loader!css-loader!highlight.js/styles/${name}.css`)
     this.highlightCode()
   }
 

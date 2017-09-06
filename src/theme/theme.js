@@ -50,6 +50,8 @@ const defaultVariables = {
   size6: '.8em',
 
   maxWidth: '80rem',
+
+  codeTheme: 'tomorrow',
 }
 
 class Theme {

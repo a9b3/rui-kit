@@ -3,6 +3,7 @@ import PropTypes   from 'prop-types'
 import {
   NavLink,
 }                  from 'react-router-dom'
+import cx          from 'classnames'
 
 import {Icon}      from '~/components/Icon'
 import {withTheme} from '~/theme'
@@ -20,6 +21,7 @@ function HeaderComponent({
     style={{
       background: theme.get('primaryBgColor'),
     }}
+    className={cx('rui__appshell__header', rest.className)}
   >
     <div styleName='header__left item'>
       <Icon styleName='header__left__icon' type='hamburger' onClick={toggleSidebar} />

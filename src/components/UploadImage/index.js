@@ -1,7 +1,7 @@
 import style        from './styles.scss'
 import PropTypes    from 'prop-types'
 
-import {SelectFile} from '~/components/Form'
+import {SelectFile} from '~/components/Dropzone'
 import Image        from '~/components/Image'
 
 @cssModule(style)

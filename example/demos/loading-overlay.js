@@ -1,4 +1,5 @@
 import { LoadingOverlay } from '../../src'
+import variables          from 'esayemm-styles/variables'
 
 /* eslint-disable react/jsx-key */
 export default {
@@ -27,7 +28,7 @@ export default {
         }}>
           <LoadingOverlay
             show
-            style={{background: 'blue'}}
+            style={{background: variables.colors.pink}}
           />
         </div>,
       },

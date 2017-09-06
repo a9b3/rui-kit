@@ -24,10 +24,6 @@ function SidebarComponent({
 }) {
   return <aside
     className={styles.sidebar}
-    style={{
-      background: theme.get('primaryBgColor'),
-      color     : theme.get('primaryColor'),
-    }}
     {...rest}
   >
     {
