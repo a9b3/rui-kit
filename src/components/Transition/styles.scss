@@ -1,0 +1,21 @@
+@import '~esayemm-styles/variables';
+
+:global {
+  .tran-enter {
+    opacity: 0;
+  }
+
+  .tran-enter.tran-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+
+  .tran-leave {
+    opacity: 1;
+  }
+
+  .tran-leave.tran-leave-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+  }
+}
