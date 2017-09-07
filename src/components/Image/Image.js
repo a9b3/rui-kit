@@ -1,5 +1,6 @@
 import styles    from './styles.scss'
 import PropTypes from 'prop-types'
+import cx        from 'classnames'
 
 function Image({
   src,
@@ -11,9 +12,9 @@ function Image({
   }, style)
 
   return <div
-    styleName='image'
     style={overridenStyle}
     {...rest}
+    className={cx(styles.image, rest.className)}
   />
 }
 
@@ -22,4 +23,4 @@ Image.propTypes = {
   style: PropTypes.object,
 }
 
-export default cssModule(Image, styles, {allowMultiple: true})
+export default Image

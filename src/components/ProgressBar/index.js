@@ -2,6 +2,7 @@ import styles    from './styles.scss'
 import PropTypes from 'prop-types'
 import variables from 'esayemm-styles/variables'
 import tinycolor from 'tinycolor2'
+import cx        from 'classnames'
 
 function ProgressBar({
   percent,
@@ -9,18 +10,17 @@ function ProgressBar({
   innerColor,
   ...rest
 }) {
-
   const translateValue = -(100 - percent)
 
   return <div
-    styleName='progress-bar'
     style={{
       backgroundColor: outerColor,
     }}
     {...rest}
+    className={cx(styles['progress-bar'], rest.className)}
   >
     <div
-      styleName='progress-bar__inner'
+      className={cx(styles['progress-bar__inner'])}
       style={{
         backgroundColor: innerColor,
         transform      : `translateX(${translateValue}%)`,
@@ -40,4 +40,4 @@ ProgressBar.defaultProps = {
   innerColor: variables.colors.success,
 }
 
-export default cssModule(ProgressBar, styles, {allowMultiple: true})
+export default ProgressBar

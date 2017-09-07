@@ -1,9 +1,9 @@
-import styles     from './styles.scss'
-import React      from 'react'
-import PropTypes  from 'prop-types'
-import CSSModules from 'react-css-modules'
+import styles    from './styles.scss'
+import React     from 'react'
+import PropTypes from 'prop-types'
+import cx        from 'classnames'
 
-import Loading    from '~/components/Loading'
+import Loading   from '~/components/Loading'
 
 function LoadingOverlay({
   show,
@@ -16,8 +16,8 @@ function LoadingOverlay({
   }
 
   return <div
-    styleName='container'
     {...rest}
+    className={cx(styles.container, rest.className)}
   >
     <Loading
       color={color}
@@ -38,4 +38,4 @@ LoadingOverlay.defaultProps = {
   loadingAttr: {},
 }
 
-export default CSSModules(LoadingOverlay, styles, {allowMultiple: true})
+export default LoadingOverlay

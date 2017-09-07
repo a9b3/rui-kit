@@ -1,5 +1,6 @@
 import styles       from './styles.scss'
 import PropTypes    from 'prop-types'
+import cx           from 'classnames'
 
 import UploadingRow from './UploadingRow'
 
@@ -9,16 +10,14 @@ function UploadingComponent({
 }) {
 
   return <div
-    styleName='uploading'
     {...rest}
+    className={cx(styles.uploading, rest.className)}
   >
     {
-      progress.map((p) => {
-        return <UploadingRow
-          key={p.file.id}
-          progress={p}
-        />
-      })
+      progress.map((p) => <UploadingRow
+        key={p.file.id}
+        progress={p}
+      />)
     }
   </div>
 }
@@ -30,4 +29,4 @@ UploadingComponent.propTypes = {
   })),
 }
 
-export default cssModule(UploadingComponent, styles, {allowMultiple: true})
+export default UploadingComponent

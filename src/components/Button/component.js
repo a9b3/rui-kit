@@ -1,7 +1,6 @@
 import styles         from './styles.scss'
 import React          from 'react'
 import PropTypes      from 'prop-types'
-import CSSModules     from 'react-css-modules'
 import tinycolor      from 'tinycolor2'
 import cx             from 'classnames'
 
@@ -90,4 +89,4 @@ function getStyles({color}) {
   }
 }
 
-export default CSSModules(Button, styles, {allowMultiple: true})
+export default Button

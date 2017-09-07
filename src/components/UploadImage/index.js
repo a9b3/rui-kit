@@ -1,10 +1,10 @@
-import style        from './styles.scss'
+import styles       from './styles.scss'
 import PropTypes    from 'prop-types'
+import cx           from 'classnames'
 
 import {SelectFile} from '~/components/Dropzone'
 import Image        from '~/components/Image'
 
-@cssModule(style)
 export default class UploadImageContainer extends React.Component {
   static propTypes = {
     // (file: File, (progress: number): void): Promise<void>
@@ -69,15 +69,15 @@ export default class UploadImageContainer extends React.Component {
 
     if (uploading) {
       return <div
-        styleName='container'
         {...rest}
+        className={cx(styles.container, rest.className)}
       >
         <Image
           src={preview}
           style={{height: '100%', width: '100%'}}
         />
 
-        <div styleName='upload__progress'>
+        <div className={cx(styles.upload__progress)}>
           {`${progress}% uploaded...`}
         </div>
       </div>
@@ -87,8 +87,8 @@ export default class UploadImageContainer extends React.Component {
       onDrop={this.handleDrop}
     >
       <Image
-        styleName='container'
         {...rest}
+        className={cx(styles.container, rest.className)}
         src={preview}
       />
     </SelectFile>

@@ -1,5 +1,4 @@
 import styles      from './themed-form.scss'
-import CSSModules  from 'react-css-modules'
 import {
   ThemedForm,
   FormState,
@@ -12,7 +11,6 @@ import variables   from 'esayemm-styles/variables'
 import { timeoutAsync } from '../helpers.js'
 
 /* eslint-disable react/jsx-key */
-@CSSModules(styles)
 export default class FormExample extends React.Component {
   state = {
     formState: null,

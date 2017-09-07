@@ -1,7 +1,7 @@
 import styles    from './styles.scss'
 import PropTypes from 'prop-types'
+import cx        from 'classnames'
 
-@cssModule(styles)
 export default class ClickCopyContainer extends React.Component {
   static propTypes = {
     children: PropTypes.node,
@@ -34,8 +34,8 @@ export default class ClickCopyContainer extends React.Component {
     } = this.props
 
     return <div
-      styleName='container'
       {...rest}
+      className={cx(styles.container, rest.className)}
       onClick={this.handleClick}
     >
       {children}

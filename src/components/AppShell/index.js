@@ -1,14 +1,13 @@
 import styles       from './styles.scss'
 import React        from 'react'
-import CSSModules   from 'react-css-modules'
 import PropTypes    from 'prop-types'
 import { observer } from 'mobx-react'
+import cx           from 'classnames'
 
 import Header       from './Header'
 import Sidebar      from './Sidebar'
 
 @observer
-@CSSModules(styles)
 export default class AppShell extends React.Component {
   static propTypes = {
     headerNode    : PropTypes.node,
@@ -67,8 +66,8 @@ export default class AppShell extends React.Component {
     } = this.state
 
     return <div
-      styleName='index'
       {...rest}
+      className={cx(styles.index, rest.className)}
     >
       <Header
         leftNode={leftNode}
@@ -77,18 +76,20 @@ export default class AppShell extends React.Component {
         toggleSidebar={this.toggleSidebar}
       />
 
-      <div styleName='row'>
+      <div className={styles.row}>
         {
-          links.length !== 0 && <div styleName='sidebar-wrapper' style={{
-            width: showSidebar ? '18rem' : '0',
-          }}>
+          links.length !== 0 && <div
+            className={cx(styles['sidebar-wrapper'])}
+            style={{
+              width: showSidebar ? '18rem' : '0',
+            }}>
             <Sidebar
               links={links}
             />
           </div>
         }
 
-        <div styleName='content'>
+        <div className={cx(styles.content)}>
           <main style={{
             width   : '100%',
             maxWidth: contentWidth,

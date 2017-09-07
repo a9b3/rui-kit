@@ -1,12 +1,10 @@
 import styles      from './index.scss'
 import React       from 'react'
-import CSSModules  from 'react-css-modules'
 import { Helmet }  from 'react-helmet'
 
 import * as ruiKit from '../../../src'
 import packageJson from '../../../package.json'
 
-@CSSModules(styles)
 export default class Index extends React.Component {
   render() {
     const keys = Object.keys(ruiKit)
@@ -16,7 +14,9 @@ export default class Index extends React.Component {
       `} from 'rui-kit'`,
     ].join('\n')
 
-    return <article styleName='container'>
+    return <article
+      className={styles.container}
+    >
       <Helmet>
         <title>React UI Kit</title>
       </Helmet>

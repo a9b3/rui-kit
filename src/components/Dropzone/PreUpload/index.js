@@ -1,13 +1,14 @@
-import styles     from './styles.scss'
-import PropTypes  from 'prop-types'
+import styles    from './styles.scss'
+import PropTypes from 'prop-types'
+import cx        from 'classnames'
 
 function PreUploadComponent({
   copy,
   ...rest
 }) {
   return <div
-    styleName='pre-upload'
     {...rest}
+    className={cx(styles['pre-upload'], rest.className)}
   >
     {copy}
   </div>
@@ -21,4 +22,4 @@ PreUploadComponent.defaultProps = {
   copy: 'Drop files here to upload or choose files',
 }
 
-export default cssModule(PreUploadComponent, styles, {allowMultiple: true})
+export default PreUploadComponent

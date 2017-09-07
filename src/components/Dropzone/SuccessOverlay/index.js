@@ -1,14 +1,15 @@
 import styles from './styles.scss'
+import cx     from 'classnames'
 
 function SuccessOverlayComponent({
   ...rest
 }) {
   return <div
-    styleName='success'
     {...rest}
+    className={cx(styles.success, rest.className)}
   >
     Success
   </div>
 }
 
-export default cssModule(SuccessOverlayComponent, styles, {allowMultiple: true})
+export default SuccessOverlayComponent

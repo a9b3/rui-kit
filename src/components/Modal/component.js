@@ -1,7 +1,7 @@
-import styles     from './styles.scss'
-import React      from 'react'
-import PropTypes  from 'prop-types'
-import CSSModules from 'react-css-modules'
+import styles    from './styles.scss'
+import React     from 'react'
+import PropTypes from 'prop-types'
+import cx        from 'classnames'
 
 function ModalComponent({
   children,
@@ -13,8 +13,8 @@ function ModalComponent({
     return null
   }
   return <div
-    styleName='modal'
     {...rest}
+    className={cx(styles.modal, rest.className)}
     style={Object.assign({}, rest.styles, {
       backgroundColor,
     })}
@@ -29,4 +29,4 @@ ModalComponent.propTypes = {
   backgroundColor: PropTypes.string,
 }
 
-export default CSSModules(ModalComponent, styles, {allowMultiple: true})
+export default ModalComponent

@@ -1,8 +1,6 @@
 import styles      from './styles.scss'
 import PropTypes   from 'prop-types'
-import {
-  NavLink,
-}                  from 'react-router-dom'
+import {NavLink}   from 'react-router-dom'
 import cx          from 'classnames'
 
 import {Icon}      from '~/components/Icon'
@@ -16,23 +14,35 @@ function HeaderComponent({
   theme,
   ...rest
 }) {
-  return <header styleName='header'
+  return <header
     {...rest}
     style={{
       background: theme.get('primaryBgColor'),
     }}
-    className={cx('rui__appshell__header', rest.className)}
+    className={cx(
+      'rui__appshell__header',
+      styles.header,
+      rest.className,
+    )}
   >
-    <div styleName='header__left item'>
-      <Icon styleName='header__left__icon' type='hamburger' onClick={toggleSidebar} />
+    <div
+      className={cx(styles.header__left, styles.item)}
+    >
+      <Icon
+        className={styles.header__left__icon}
+        type='hamburger' onClick={toggleSidebar} />
       {leftNode}
     </div>
 
-    <div styleName='header__middle item'>
+    <div
+      className={cx(styles.header__middle, styles.icon)}
+    >
       {headerNode}
     </div>
 
-    <nav styleName='header__right'>
+    <nav
+      className={styles.header__right}
+    >
       {
         rightNodeLinks.map(({ display, to, href }, i) => {
           const attr = {
@@ -73,4 +83,4 @@ HeaderComponent.propTypes = {
   theme: PropTypes.object,
 }
 
-export default withTheme(cssModule(HeaderComponent, styles, {allowMultiple: true}))
+export default withTheme(HeaderComponent)

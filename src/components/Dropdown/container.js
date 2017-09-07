@@ -1,9 +1,8 @@
-import styles     from './styles.scss'
-import React      from 'react'
-import CSSModules from 'react-css-modules'
-import PropTypes  from 'prop-types'
+import styles    from './styles.scss'
+import React     from 'react'
+import PropTypes from 'prop-types'
+import cx        from 'classnames'
 
-@CSSModules(styles)
 export default class Dropdown extends React.Component {
   static propTypes = {
     header     : PropTypes.node,
@@ -47,8 +46,8 @@ export default class Dropdown extends React.Component {
     } = this.props
 
     return <div
-      styleName='container'
       {...rest}
+      className={cx(styles.container, rest.className)}
     >
       <header
         onClick={this.handleClick}
@@ -57,7 +56,7 @@ export default class Dropdown extends React.Component {
       </header>
 
       {
-        isOpened && <div styleName='content'>
+        isOpened && <div className={styles.content}>
           {children}
         </div>
       }

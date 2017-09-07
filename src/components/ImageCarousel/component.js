@@ -1,9 +1,9 @@
-import styles     from './styles.scss'
-import React      from 'react'
-import PropTypes  from 'prop-types'
-import CSSModules from 'react-css-modules'
+import styles    from './styles.scss'
+import React     from 'react'
+import PropTypes from 'prop-types'
+import cx        from 'classnames'
 
-import {Icon}     from '~/components/Icon'
+import {Icon}    from '~/components/Icon'
 
 function ImageCarouselComponent({
   image,
@@ -13,18 +13,18 @@ function ImageCarouselComponent({
   ...rest
 }) {
   return <div
-    styleName='image'
     style={Object.assign({}, style, {backgroundImage: `url(${image})`})}
     {...rest}
+    className={cx(styles.image, rest.className)}
   >
     <div
-      styleName='prev'
+      className={cx(styles.prev)}
       onClick={(evt) => { evt.stopPropagation(); prev() }}
     >
       <Icon type='chevron'/>
     </div>
     <div
-      styleName='next'
+      className={cx(styles.next)}
       onClick={(evt) => { evt.stopPropagation(); next() }}
     >
       <Icon type='chevron' style={{transform: 'rotate(180deg)'}}/>
@@ -39,4 +39,4 @@ ImageCarouselComponent.propTypes = {
   style: PropTypes.object,
 }
 
-export default CSSModules(ImageCarouselComponent, styles, {allowMultiple: true})
+export default ImageCarouselComponent

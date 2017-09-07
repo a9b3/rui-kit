@@ -1,6 +1,5 @@
 import styles      from './styles.scss'
 import React       from 'react'
-import CSSModules  from 'react-css-modules'
 import PropTypes   from 'prop-types'
 import {
   NavLink,
@@ -65,4 +64,4 @@ SidebarComponent.propTypes = {
   })),
 }
 
-export default CSSModules(withRouter(withTheme(SidebarComponent)), styles, {allowMultiple: true})
+export default withRouter(withTheme(SidebarComponent))

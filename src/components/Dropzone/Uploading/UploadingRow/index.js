@@ -1,6 +1,7 @@
 import styles              from './styles.scss'
 import PropTypes           from 'prop-types'
 import {humanReadableSize} from 'js-functions'
+import cx                  from 'classnames'
 
 import ProgressBar         from '~/components/ProgressBar'
 
@@ -9,11 +10,15 @@ function UploadingRowComponent({
   ...rest
 }) {
   return <div
-    styleName='uploading-row'
     {...rest}
+    className={cx(styles['uploading-row'], rest.className)}
   >
-    <div styleName='uploading-row__right'>
-      <div styleName='filename'>
+    <div
+      className={styles['uploading-row__right']}
+    >
+      <div
+        className={styles.filename}
+      >
         {progress.file.name}
       </div>
 
@@ -21,9 +26,11 @@ function UploadingRowComponent({
         percent={progress.percent}
       />
 
-      <div styleName='row size'>
+      <div
+        className={cx(styles.row, styles.size)}
+      >
         {humanReadableSize(progress.file.size)}
-        <div styleName='end'>
+        <div className={styles.end}>
           {`${progress.percent}%`}
         </div>
       </div>
@@ -38,4 +45,4 @@ UploadingRowComponent.propTypes = {
   }).isRequired,
 }
 
-export default cssModule(UploadingRowComponent, styles, {allowMultiple: true})
+export default UploadingRowComponent

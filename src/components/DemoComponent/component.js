@@ -1,6 +1,7 @@
 import styles      from './component.scss'
 import PropTypes   from 'prop-types'
 import jsxToString from 'jsx-to-string'
+import cx          from 'classnames'
 
 import Code        from '~/components/Code'
 
@@ -30,14 +31,14 @@ function DemoComponent({
   ...rest
 }) {
   return <div
-    styleName='demo'
     {...rest}
+    className={cx(styles.demo, rest.className)}
   >
-    <div styleName='instance'>
+    <div className={styles.instance}>
       {demo.instance}
     </div>
 
-    <div styleName='codeSnippet'>
+    <div className={styles.codeSnippet}>
       {renderCodeSnippet(demo)}
     </div>
   </div>
@@ -52,4 +53,4 @@ DemoComponent.propTypes = {
   }).isRequired,
 }
 
-export default cssModule(DemoComponent, styles, {allowMultiple: true})
+export default DemoComponent

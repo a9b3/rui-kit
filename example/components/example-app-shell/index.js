@@ -1,6 +1,5 @@
 import styles     from './index.scss'
 import React      from 'react'
-import CSSModules from 'react-css-modules'
 import PropTypes  from 'prop-types'
 import {
   Link,
@@ -12,7 +11,6 @@ import {
 }                 from '../../../src'
 
 @withRouter
-@CSSModules(styles)
 export default class ExampleAppShell extends React.Component {
   static propTypes = {
     demoLinks: PropTypes.any,

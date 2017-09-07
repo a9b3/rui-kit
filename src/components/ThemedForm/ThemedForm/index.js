@@ -1,16 +1,16 @@
-import styles     from './styles.scss'
-import React      from 'react'
-import CSSModules from 'react-css-modules'
+import styles   from './styles.scss'
+import React    from 'react'
+import cx       from 'classnames'
 
-import { Form }   from '~/components/Form'
+import { Form } from '~/components/Form'
 
 function ThemedForm({
   ...rest
 }) {
   return <Form
-    styleName='form'
     {...rest}
+    className={cx(styles.form, rest.className)}
   />
 }
 
-export default CSSModules(ThemedForm, styles, {allowMultiple: true})
+export default ThemedForm

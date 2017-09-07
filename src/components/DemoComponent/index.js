@@ -1,12 +1,10 @@
-import styles     from './styles.scss'
-import React      from 'react'
-import CSSModules from 'react-css-modules'
-import PropTypes  from 'prop-types'
+import styles    from './styles.scss'
+import React     from 'react'
+import PropTypes from 'prop-types'
 
-import Demo       from './component.js'
-import Markdown   from '~/components/Markdown'
+import Demo      from './component.js'
+import Markdown  from '~/components/Markdown'
 
-@CSSModules(styles)
 export default class DemoComponent extends React.Component {
   static propTypes = {
     // React component constructor.
@@ -29,14 +27,14 @@ export default class DemoComponent extends React.Component {
     } = this.props
 
     return <article
-      styleName='container'
+      className={styles.container}
     >
-      <h2 styleName='header'>
+      <h2 className={styles.header}>
         {header}
       </h2>
 
       {
-        description && <section styleName='description'>
+        description && <section className={styles.description}>
           <Markdown
             source={description}
           />
@@ -44,7 +42,7 @@ export default class DemoComponent extends React.Component {
       }
 
       {
-        component && component.propTypes && <section styleName='props'>
+        component && component.propTypes && <section className={styles.props}>
           <h4>PropTypes</h4>
 
           <ul>
@@ -54,7 +52,7 @@ export default class DemoComponent extends React.Component {
       }
 
       {
-        demos.length > 0 && <section styleName='demos'>
+        demos.length > 0 && <section className={styles.demos}>
           <h3>Demos</h3>
           {
             demos.map((d, key) => <Demo

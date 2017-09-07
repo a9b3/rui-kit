@@ -5151,7 +5151,7 @@ lodash@^3.2.0, lodash@^3.8.0:
   version "3.10.1"
   resolved "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.11.1, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.1, lodash@~4.17.4:
+lodash@^4.0.0, lodash@^4.11.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.1, lodash@~4.17.4:
   version "4.17.4"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -5775,10 +5775,6 @@ object-is@^1.0.1:
 object-keys@^1.0.10, object-keys@^1.0.8, object-keys@^1.0.9:
   version "1.0.11"
   resolved "https://registry.npmjs.org/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
-
-object-unfreeze@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/object-unfreeze/-/object-unfreeze-1.1.0.tgz#69628bea1f3c9d29f4eb0ba63b38002d70ea3ce9"
 
 object.assign@^4.0.4:
   version "4.0.4"
@@ -6710,14 +6706,6 @@ rc@^1.0.1, rc@^1.1.2, rc@^1.1.6, rc@^1.1.7:
 react-addons-test-utils@^15.6.0:
   version "15.6.0"
   resolved "https://registry.npmjs.org/react-addons-test-utils/-/react-addons-test-utils-15.6.0.tgz#062d36117fe8d18f3ba5e06eb33383b0b85ea5b9"
-
-react-css-modules@^4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/react-css-modules/-/react-css-modules-4.7.0.tgz#3933e929c8979cce0f7234e0c069c38cbc3c99c0"
-  dependencies:
-    hoist-non-react-statics "^1.2.0"
-    lodash "^4.16.6"
-    object-unfreeze "^1.1.0"
 
 react-deep-force-update@^2.0.1:
   version "2.0.1"

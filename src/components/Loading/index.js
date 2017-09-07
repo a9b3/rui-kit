@@ -1,8 +1,8 @@
-import styles     from './styles.scss'
-import React      from 'react'
-import CSSModules from 'react-css-modules'
-import PropTypes  from 'prop-types'
-import tinycolor  from 'tinycolor2'
+import styles    from './styles.scss'
+import React     from 'react'
+import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
+import cx        from 'classnames'
 
 function Loading({
   color,
@@ -17,8 +17,8 @@ function Loading({
   const inlineStyles = getStyles({ color })
 
   return <div
-    styleName='loading'
     {...rest}
+    className={cx(styles.loading, rest.className)}
     style={Object.assign({}, inlineStyles.root, style)}
   />
 }
@@ -51,4 +51,4 @@ function getStyles({ color }) {
 
 }
 
-export default CSSModules(Loading, styles, {allowMultiple: true})
+export default Loading

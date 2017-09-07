@@ -1,10 +1,9 @@
 import styles       from './styles.scss'
 import React        from 'react'
-import CSSModules   from 'react-css-modules'
 import PropTypes    from 'prop-types'
 import { observer } from 'mobx-react'
 import variables    from 'esayemm-styles/variables'
-import classNames   from 'classnames'
+import cx           from 'classnames'
 
 import {
   FormField,
@@ -25,21 +24,20 @@ function ThemedFormField({
 
   return <div
     style={style}
-    styleName='container'
-    className={classNames(styles.container, hasError && styles['container--error'], className)}
+    className={cx(styles.container, hasError && styles['container--error'], className)}
     {...rest}
   >
-    <div styleName='container__top'>
+    <div className={cx(styles.container__top)}>
       {
         label && <label
-          styleName='container__label'
+          className={cx(styles.container__label)}
         >
           {label}
         </label>
       }
 
       <FormFieldError
-        styleName='container__form-field-error'
+        className={cx(styles['container__form-field-error'])}
         style={{
           color: `${variables.red}`,
         }}
@@ -50,7 +48,7 @@ function ThemedFormField({
     </div>
 
     <FormField
-      styleName='container__form-field'
+      className={cx(styles['container__form-field'])}
       formState={formState}
       formFieldKey={formFieldKey}
       {...formFieldAttr}
@@ -75,4 +73,4 @@ ThemedFormField.defaultProps = {
   style             : {},
 }
 
-export default observer(CSSModules(ThemedFormField, styles, {allowMultiple: true}))
+export default observer(ThemedFormField)

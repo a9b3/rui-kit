@@ -1,7 +1,7 @@
 import styles    from './styles.scss'
 import PropTypes from 'prop-types'
+import cx        from 'classnames'
 
-@cssModule(styles)
 export default class HoverDisplayContainer extends React.Component {
   static propTypes = {
     content : PropTypes.node.isRequired,
@@ -55,14 +55,15 @@ export default class HoverDisplayContainer extends React.Component {
     } = this.state
 
     return <div
-      styleName='hover'
       ref={el => this.containerEl = el}
       onMouseOver={this.handleMouseOver}
       {...rest}
+      className={cx(styles.hover, rest.className)}
     >
       {children}
 
-      <div styleName='wrapper'
+      <div
+        className={styles.wrapper}
         ref={el => this.contentWrapper = el}
         style={wrapperStyle}
       >
