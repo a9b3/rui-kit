@@ -7,7 +7,6 @@ import styles        from './styles.scss'
 import ReactMarkdown from 'react-markdown'
 import highlight     from 'highlight.js'
 
-@cssModule(styles)
 export default class Markdown extends React.Component {
   componentDidMount() {
     this.highlightCode()

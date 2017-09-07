@@ -1,0 +1,22 @@
+import { UploadImage } from '../../../src'
+import {timeoutAsync}  from 'helpers'
+
+/* eslint-disable react/jsx-key */
+export default {
+  display          : 'UploadImage',
+  to               : '/upload-image',
+  demoComponentAttr: {
+    header   : `UploadImage`,
+    component: UploadImage,
+    demos    : [
+      {
+        instance: <UploadImage
+          style={{height: 200, width: 200, borderRadius: '50%'}}
+          uploadFile={timeoutAsync}
+        />,
+        codeSnippetType: 'jsx',
+      },
+    ],
+  },
+}
+/* eslint-enable react/jsx-key */

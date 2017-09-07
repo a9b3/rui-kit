@@ -4,7 +4,6 @@ import {CSSTransitionGroup} from 'react-transition-group'
 
 import transitions          from './transitions'
 
-@cssModule(styles)
 export default class Transition extends React.Component {
   static propTypes = {
     type: PropTypes.oneOf(Object.keys(transitions)),
