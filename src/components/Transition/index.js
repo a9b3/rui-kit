@@ -2,17 +2,12 @@ import styles               from './styles.scss'
 import PropTypes            from 'prop-types'
 import {CSSTransitionGroup} from 'react-transition-group'
 
-const ALLOWED_TYPES = {
-  fade: {
-    enterTimeout: 500,
-    leaveTimeout: 500,
-  },
-}
+import transitions          from './transitions'
 
 @cssModule(styles)
 export default class Transition extends React.Component {
   static propTypes = {
-    type: PropTypes.oneOf(Object.keys(ALLOWED_TYPES)),
+    type: PropTypes.oneOf(Object.keys(transitions)),
   }
 
   static defaultProps = {
@@ -25,7 +20,7 @@ export default class Transition extends React.Component {
       children,
     } = this.props
 
-    const selectedType = ALLOWED_TYPES[type]
+    const selectedType = transitions[type]
 
     return <CSSTransitionGroup
       transitionName={`rui-${type}`}
