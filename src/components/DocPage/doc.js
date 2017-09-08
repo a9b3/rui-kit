@@ -6,16 +6,16 @@ function section({
   source,
   // optional component
   demo,
+  overrideDemo,
   // optional recursive structure
   sections = [],
 }) {
-  invariant(header, `'header' should be provided.`)
-
   return {
     header,
     description,
     source,
     demo,
+    overrideDemo,
     sections: sections.map(s => section(s)),
   }
 }

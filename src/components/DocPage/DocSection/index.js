@@ -16,6 +16,7 @@ function renderCodeSnippet({
   } = {},
   /* eslint-enable */
 }) {
+  console.log(displayName)
   if (codeSnippet) {
     return <Code type={codeSnippetType}>
       {codeSnippet}
@@ -41,6 +42,7 @@ function DocSection({
     sections = [],
   },
 }) {
+  console.log(header)
   return <div
     className={cx(
       styles.wrapper,
@@ -49,7 +51,9 @@ function DocSection({
     {
       header && <article className={cx(styles.section, styles.header)}>
         <section className={styles.description}>
-          <h3 style={{marginBottom: 0}}>{header}</h3>
+          {
+            typeof header === 'string' ? <h3 style={{marginBottom: 0}}>{header}</h3> : header
+          }
         </section>
         <section className={styles.source} />
       </article>
@@ -86,7 +90,7 @@ function DocSection({
 
 DocSection.propTypes = {
   section: PropTypes.shape({
-    header      : PropTypes.string,
+    header      : PropTypes.any,
     source      : PropTypes.string,
     demo        : PropTypes.node,
     overrideDemo: PropTypes.object,
