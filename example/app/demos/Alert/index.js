@@ -12,13 +12,13 @@ export default doc({
       source     : require('!!raw-loader!./general/source.md'),
       sections   : [
         {
-          header: 'Default',
+          header: <h4>Default</h4>,
           demo  : <Alert show>
             Toast
           </Alert>,
         },
         {
-          header: 'Override Props',
+          header: <h4>Type</h4>,
           demo  : <Alert show type='positive'>
             Toast
           </Alert>,

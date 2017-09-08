@@ -13,11 +13,29 @@
 
     .description {
       width: 40%;
+      padding: $spacing2;
     }
 
     .source {
-      width: 60%;
+      width: 100%;
+      max-width: 60%;
+      padding: $spacing2;
       background: $slate;
+    }
+
+    @media screen and (min-width: 1300px) {
+      .description {
+        width: $maxWidth;
+      }
+
+      .source {
+        max-width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+      .description {visibility: hidden;}
+      .source {visibility: hidden;}
     }
   }
 }

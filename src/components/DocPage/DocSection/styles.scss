@@ -57,6 +57,25 @@
         background-color: rgba(darken($slate, 10), .5);
       }
     }
+
+    @media screen and (min-width: 1300px) {
+      .description {
+        width: $maxWidth;
+      }
+
+      .source {
+        max-width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+
+      .description {width: 100%;}
+      .source {
+        max-width: 100%;
+      }
+    }
   }
 
   // Header needs both sections so the colors for left and right is accurate.
@@ -66,6 +85,10 @@
     }
     .source {
       padding-bottom: 0;
+    }
+
+    @media screen and (max-width: 800px) {
+      .source { visibility: hidden; }
     }
   }
 }
