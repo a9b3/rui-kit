@@ -1,24 +1,28 @@
+import doc                from 'components/DocPage/doc'
 import DropzoneExample    from './dropzone-example.js'
 import DropzoneExampleStr from '!!raw-loader!./dropzone-example.js'
 import {
   Dropzone,
 }                         from '../../../src'
 
-/* eslint-disable react/jsx-key */
-export default {
-  display          : 'Dropzone',
-  to               : '/dropzone',
-  demoComponentAttr: {
-    header     : `Dropzone`,
-    component  : Dropzone,
-    description: 'Dropzone component.',
-    demos      : [
-      {
-        instance       : <DropzoneExample />,
-        codeSnippet    : DropzoneExampleStr,
-        codeSnippetType: 'jsx',
-      },
-    ],
-  },
-}
-/* eslint-enable react/jsx-key */
+export default doc({
+  component: Dropzone,
+  display  : 'Dropzone',
+  to       : '/dropzone',
+  sections : [
+    {
+      header     : 'Dropzone',
+      description: 'A dropzone component.',
+      sections   : [
+        {
+          demo        : <DropzoneExample />,
+          overrideDemo: {
+            displayName    : 'Dropzone',
+            codeSnippet    : DropzoneExampleStr,
+            codeSnippetType: 'jsx',
+          },
+        },
+      ],
+    },
+  ],
+})

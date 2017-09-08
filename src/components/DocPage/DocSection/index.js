@@ -16,7 +16,7 @@ function renderCodeSnippet({
   } = {},
   /* eslint-enable */
 }) {
-  console.log(displayName)
+  console.log(codeSnippet)
   if (codeSnippet) {
     return <Code type={codeSnippetType}>
       {codeSnippet}

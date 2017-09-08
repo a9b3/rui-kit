@@ -3,8 +3,8 @@ import {Alert} from '../../../../src'
 
 export default doc({
   component: Alert,
-  to       : '/alert-foo',
-  display  : 'AlertFoo',
+  to       : '/alert',
+  display  : 'Alert',
   sections : [
     {
       header     : 'Alert',
