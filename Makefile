@@ -12,8 +12,8 @@ deploy: build.example
 
 build.example:
 	rm -rf $(EXAMPLE_OUTPUT)
-	BABEL_REACT=true NODE_PATH=./example:./src ./node_modules/jbs-fe/bin.js build \
-							--app-index ./example/index.js \
+	BABEL_REACT=true NODE_PATH=./example:./example/app:./src ./node_modules/jbs-fe/bin.js build \
+							--app-index ./example/app/index.js \
 							--html-index ./example/index.html \
 							--context ./example \
 							--output-path $(EXAMPLE_OUTPUT)
