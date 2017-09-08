@@ -1,34 +1,40 @@
+import doc      from 'components/DocPage/doc'
 import { Code } from '../../../src'
 
-/* eslint-disable react/jsx-key */
-const displayName = 'Code'
-export default {
-  display          : displayName,
-  to               : '/code',
-  demoComponentAttr: {
-    header     : displayName,
-    description: 'Display code with syntax highlighting.',
-    component  : Code,
-    demos      : [
-      {
-        displayName,
-        instance: <Code>
-          {'hi'}
-        </Code>,
-      },
-      {
-        displayName,
-        instance: <Code type='js'>
-          {`const foo = 'foo'`}
-        </Code>,
-      },
-      {
-        displayName,
-        instance: <Code type='html'>
-          {`<html></html>`}
-        </Code>,
-      },
-    ],
-  },
-}
-/* eslint-enable react/jsx-key */
+export default doc({
+  component: Code,
+  to       : '/code',
+  display  : 'Code',
+  sections : [
+    {
+      header     : 'Code',
+      description: 'Display code with syntax highlighting.',
+      sections   : [
+        {
+          demo: <Code>
+            {'hi'}
+          </Code>,
+          overrideDemo: {
+            displayName: 'Code',
+          },
+        },
+        {
+          demo: <Code type='js'>
+            {`const foo = 'foo'`}
+          </Code>,
+          overrideDemo: {
+            displayName: 'Code',
+          },
+        },
+        {
+          demo: <Code type='html'>
+            {`<html></html>`}
+          </Code>,
+          overrideDemo: {
+            displayName: 'Code',
+          },
+        },
+      ],
+    },
+  ],
+})
