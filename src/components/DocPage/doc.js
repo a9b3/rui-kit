@@ -10,7 +10,6 @@ function section({
   sections = [],
 }) {
   invariant(header, `'header' should be provided.`)
-  invariant(description, `'description' should be provided.`)
 
   return {
     header,

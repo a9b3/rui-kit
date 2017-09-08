@@ -1,5 +1,5 @@
 build/
 lib/
 node_modules/
-build-example/
-example-build/
+build_example/
+example_build/
