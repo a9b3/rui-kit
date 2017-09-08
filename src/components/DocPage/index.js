@@ -17,6 +17,11 @@ function DocPage({
         key={i}
       />
     })}
+
+    <div className={styles.bottom}>
+      <div className={styles.description} />
+      <div className={styles.source} />
+    </div>
   </div>
 }
 

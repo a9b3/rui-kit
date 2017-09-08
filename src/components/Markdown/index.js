@@ -1,10 +1,14 @@
 /*
- * Wrapper around react-markdown to provide default markdown styling.
+ * Wrapper around remarkable to provide default markdown styling.
  */
-import styles           from './styles.scss'
-import ReactMarkdown    from 'react-markdown'
+import styles          from './styles.scss'
+import Remarkable      from 'remarkable'
 import {highlightCode} from '~/services/highlight'
-import PropTypes        from 'prop-types'
+import PropTypes       from 'prop-types'
+
+const md = new Remarkable({
+  html: true,
+})
 
 export default class Markdown extends React.Component {
   static propTypes = {
@@ -24,11 +28,13 @@ export default class Markdown extends React.Component {
   }
 
   render() {
-    return <span ref={el => this.el = el}>
-      <ReactMarkdown
-        className={styles.container}
-        {...this.props}
-      />
-    </span>
+    const {
+      source,
+    } = this.props
+
+    return <span ref={el => this.el = el}
+      className={styles.container}
+      dangerouslySetInnerHTML={{__html: md.render(source)}}
+    />
   }
 }

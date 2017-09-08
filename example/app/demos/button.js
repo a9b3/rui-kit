@@ -1,5 +1,44 @@
+import doc        from 'components/DocPage/doc'
 import { Button } from '../../../src'
 import variables  from 'esayemm-styles/variables'
+
+export default doc({
+  component: Button,
+  to       : '/button',
+  display  : 'Button',
+  sections : [
+    {
+      header     : 'Button',
+      description: 'Just a regular ol button.',
+      sections   : [
+        {
+          header: 'Default',
+          demo  : <Button
+            style={{ width: '100%'}}
+            color={variables.colors.success}
+          >
+            Hello I am a button.
+          </Button>,
+        },
+      ],
+    },
+    {
+      header     : 'Button',
+      description: 'Just a regular ol button.',
+      sections   : [
+        {
+          header: 'Default',
+          demo  : <Button
+            style={{ width: '100%'}}
+            color={variables.colors.success}
+          >
+            Hello I am a button.
+          </Button>,
+        },
+      ],
+    },
+  ],
+})
 
 function timeoutPromise() {
   return new Promise((resolve) => {
@@ -11,7 +50,7 @@ function timeoutPromise() {
 
 /* eslint-disable react/jsx-key */
 const displayName = 'Button'
-export default {
+const x = {
   display          : displayName,
   to               : '/button',
   demoComponentAttr: {

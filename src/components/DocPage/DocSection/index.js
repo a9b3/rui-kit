@@ -41,7 +41,11 @@ function DocSection({
     sections = [],
   },
 }) {
-  return <div className={styles.wrapper}>
+  return <div
+    className={cx(
+      styles.wrapper,
+    )}
+  >
     {
       header && <article className={cx(styles.section, styles.header)}>
         <section className={styles.description}>

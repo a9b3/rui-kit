@@ -7,17 +7,13 @@
 
   // Since sections are recursive only show border for the top level section.
   border-bottom: 1px solid rgba($slate, .1);
+  margin-bottom: -1px;
   .wrapper {
+    margin-bottom: 0;
     border-bottom: 0;
   }
 
-  // Content should at least always fill the height of the screen.
-  &:last-child {
-    flex-grow: 1;
-  }
-
   .section {
-    flex-grow: 1;
     display: flex;
     flex-direction: row;
 
