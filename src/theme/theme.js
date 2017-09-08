@@ -51,7 +51,7 @@ const defaultVariables = {
 
   maxWidth: '80rem',
 
-  codeTheme: 'tomorrow',
+  codeTheme: 'tomorrow-night-eighties',
 }
 
 class Theme {
