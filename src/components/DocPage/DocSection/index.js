@@ -16,7 +16,6 @@ function renderCodeSnippet({
   } = {},
   /* eslint-enable */
 }) {
-  console.log(codeSnippet)
   if (codeSnippet) {
     return <Code type={codeSnippetType}>
       {codeSnippet}
@@ -42,7 +41,6 @@ function DocSection({
     sections = [],
   },
 }) {
-  console.log(header)
   return <div
     className={cx(
       styles.wrapper,

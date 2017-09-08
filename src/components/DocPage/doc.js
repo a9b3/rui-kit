@@ -29,7 +29,6 @@ export default function doc({
   // optional
   sections = [],
 } = {}) {
-  invariant(component, `'component' must be provided.`)
   invariant(to, `'to' must be provided.`)
   invariant(display, `'display' must be provided.`)
 

@@ -1,22 +1,23 @@
+import doc             from 'components/DocPage/doc'
 import { UploadImage } from '../../../src'
 import {timeoutAsync}  from 'helpers'
 
-/* eslint-disable react/jsx-key */
-export default {
-  display          : 'UploadImage',
-  to               : '/upload-image',
-  demoComponentAttr: {
-    header   : `UploadImage`,
-    component: UploadImage,
-    demos    : [
-      {
-        instance: <UploadImage
-          style={{height: 200, width: 200, borderRadius: '50%'}}
-          uploadFile={timeoutAsync}
-        />,
-        codeSnippetType: 'jsx',
-      },
-    ],
-  },
-}
-/* eslint-enable react/jsx-key */
+export default doc({
+  display  : 'UploadImage',
+  to       : '/upload-image',
+  component: UploadImage,
+  sections : [
+    {
+      header     : 'UploadImage',
+      description: 'Upload image.',
+      sections   : [
+        {
+          demo: <UploadImage
+            style={{height: 200, width: 200, borderRadius: '50%'}}
+            uploadFile={timeoutAsync}
+          />,
+        },
+      ],
+    },
+  ],
+})

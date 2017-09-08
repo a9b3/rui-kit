@@ -1,30 +1,31 @@
+import doc          from 'components/DocPage/doc'
 import { Dropdown } from '../../../src'
 
-/* eslint-disable react/jsx-key */
-export default {
-  display          : 'Dropdown',
-  to               : '/dropdown',
-  demoComponentAttr: {
-    header     : `Dropdown`,
-    component  : Dropdown,
-    description: 'Dropdown component.',
-    demos      : [
-      {
-        instance: <Dropdown
-          header={'Click to Close'}
-        >
-          <div>
+export default doc({
+  display  : 'Dropdown',
+  to       : '/dropdown',
+  component: Dropdown,
+  sections : [
+    {
+      header     : 'Dropdown',
+      description: 'Dropdown.',
+      sections   : [
+        {
+          demo: <Dropdown
+            header={'Click to Close'}
+          >
+            <div>
                 Child1
-          </div>
-          <div>
+            </div>
+            <div>
                 Child2
-          </div>
-          <div>
+            </div>
+            <div>
                 Child3
-          </div>
-        </Dropdown>,
-      },
-    ],
-  },
-}
-/* eslint-enable react/jsx-key */
+            </div>
+          </Dropdown>,
+        },
+      ],
+    },
+  ],
+})

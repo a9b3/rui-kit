@@ -1,26 +1,32 @@
+import doc                   from 'components/DocPage/doc'
 import { ClickCopy, Button } from '../../../src'
 
-/* eslint-disable react/jsx-key */
-const displayName = 'ClickCopy'
-export default {
-  display          : displayName,
-  to               : '/click-copy',
-  demoComponentAttr: {
-    header     : displayName,
-    component  : ClickCopy,
-    description: 'Wrapper component with click to copy functionality.',
-    demos      : [
-      {
-        displayName,
-        instance: <ClickCopy
-          copyText='Click this to copy.'
-        >
-          <Button>
+export default doc({
+  display  : 'ClickCopy',
+  to       : '/click-copy',
+  component: ClickCopy,
+  sections : [
+    {
+      header     : 'ClickCopy',
+      description: 'Wrapper component with click to copy functionality.',
+      sections   : [
+        {
+          demo: <ClickCopy
+            copyText='Click this to copy.'
+          >
             Click this to copy.
-          </Button>
-        </ClickCopy>,
-      },
-    ],
-  },
-}
-/* eslint-enable react/jsx-key */
+          </ClickCopy>,
+        },
+        {
+          demo: <ClickCopy
+            copyText='Click this to copy.'
+          >
+            <Button>
+            Click this to copy.
+            </Button>
+          </ClickCopy>,
+        },
+      ],
+    },
+  ],
+})
