@@ -1,0 +1,74 @@
+@import '~esayemm-styles/variables';
+
+// Wrapper for recursively displaying sections.
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  // Since sections are recursive only show border for the top level section.
+  border-bottom: 1px solid rgba($slate, .1);
+  .wrapper {
+    border-bottom: 0;
+  }
+
+  // Content should at least always fill the height of the screen.
+  &:last-child {
+    flex-grow: 1;
+  }
+
+  .section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+
+    h1, h2, h3, h4 {
+      color: $headerColor;
+      margin-bottom: $spacing2;
+      letter-spacing: .1em;
+    }
+
+    .description {
+      width: 40%;
+      padding: $spacing2;
+      padding-bottom: $spacing1;
+
+      .demo {
+        margin-bottom: $spacing2;
+      }
+    }
+
+    // Source code
+    .source {
+      width: 100%;
+      max-width: 60%;
+      padding: $spacing2;
+      padding-bottom: $spacing1;
+      background: $slate;
+      color: rgba($white, .7);
+
+      h1, h2, h3, h4 {
+        color: rgba($white, .8);
+      }
+
+      code {
+        // Have to use important because highlight.js will override the style using
+        // javscript.
+        padding: $spacing4 $spacing3 !important;
+        line-height: 1.4;
+        font-size: .8em;
+        font-family: monospace;
+        background-color: rgba(darken($slate, 10), .5);
+      }
+    }
+  }
+
+  // Header needs both sections so the colors for left and right is accurate.
+  .header {
+    .description {
+      padding-bottom: 0;
+    }
+    .source {
+      padding-bottom: 0;
+    }
+  }
+}

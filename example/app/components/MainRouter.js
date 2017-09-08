@@ -5,7 +5,10 @@ import { BrowserRouter } from 'react-router-dom'
 import demoLinks         from 'demo-configs'
 import Index             from 'views/index'
 import ExampleAppShell   from 'components/example-app-shell'
-import { DemoComponent } from '../../../src'
+import {
+  DemoComponent,
+  DocPage,
+} from '../../../src'
 
 /**
  * @param {array.<node>} links
@@ -19,9 +22,16 @@ function linksToRoute(links) {
   const results = items.map((item, key) => <Route
     key={key}
     path={item.to}
-    component={() => <DemoComponent
-      {...item.demoComponentAttr}
-    />}
+    component={() => {
+      if (item.isDoc) {
+        return <DocPage
+          {...item}
+        />
+      }
+      return <DemoComponent
+        {...item.demoComponentAttr}
+      />
+    }}
   />)
 
   return results

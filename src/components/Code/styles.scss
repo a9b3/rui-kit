@@ -5,9 +5,10 @@
 }
 
 .code {
-  padding: $spacing4 $spacing3;
+  // Have to use important because highlight.js will override the style using
+  // javscript.
+  padding: $spacing4 $spacing3 !important;
   line-height: 1.4;
   font-size: .8em;
   font-family: monospace;
-  background: rgba(black, .03);
 }

@@ -2,6 +2,7 @@ export default [
   {
     header: 'Themed',
     items : [
+      require('./demos/Alert/index.js').default,
       require('./demos/alert.js').default,
       require('./demos/app-shell.js').default,
       require('./demos/button.js').default,

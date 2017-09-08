@@ -1,22 +1,26 @@
 /*
  * Wrapper around react-markdown to provide default markdown styling.
  */
-import '!style-loader!css-loader!highlight.js/styles/tomorrow-night-eighties.css'
-
-import styles        from './styles.scss'
-import ReactMarkdown from 'react-markdown'
-import highlight     from 'highlight.js'
+import styles           from './styles.scss'
+import ReactMarkdown    from 'react-markdown'
+import {highlightCode} from '~/services/highlight'
+import PropTypes        from 'prop-types'
 
 export default class Markdown extends React.Component {
-  componentDidMount() {
-    this.highlightCode()
+  static propTypes = {
+    theme : PropTypes.string,
+    source: PropTypes.string,
   }
 
-  highlightCode = () => {
-    const codeBlocks = this.el.getElementsByTagName('code')
-    for (let i = 0; i < codeBlocks.length; i++) {
-      highlight.highlightBlock(codeBlocks[i])
-    }
+  componentDidMount() {
+    const {
+      theme,
+    } = this.props
+    this.highlightCode(theme)
+  }
+
+  highlightCode = (name) => {
+    highlightCode(this.el, name)
   }
 
   render() {
