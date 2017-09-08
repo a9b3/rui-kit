@@ -12,27 +12,31 @@ export default doc({
     {
       header     : 'AppShell',
       description: 'A sample layout.',
-      demo       : <AppShell
-        style={{
-          border: `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
-          height: '300px',
-        }}
-        headerNode={<div>Header</div>}
-        leftNode={<div>Hi</div>}
-        links={[
-          {
-            header: 'test',
-            items : [
+      sections   : [
+        {
+          demo: <AppShell
+            style={{
+              border: `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
+              height: '300px',
+            }}
+            headerNode={<div>Header</div>}
+            leftNode={<div>Hi</div>}
+            links={[
               {
-                display: 'cool',
-                to     : '#',
+                header: 'test',
+                items : [
+                  {
+                    display: 'cool',
+                    to     : '#',
+                  },
+                ],
               },
-            ],
-          },
-        ]}
-      >
-          hi
-      </AppShell>,
+            ]}
+          >
+            hi
+          </AppShell>,
+        },
+      ],
     },
   ],
 })
