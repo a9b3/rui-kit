@@ -26,6 +26,10 @@ $sidebarHoverBgColor: rgba($slate, .1);
   composes: item;
   transition: background .3s;
   font-size: .8em;
+
+  &:hover {
+    background: $sidebarHoverBgColor;
+  }
 }
 .dropchild.active {
   position: relative;

@@ -6,7 +6,6 @@ import {
   withRouter,
 }                  from 'react-router-dom'
 
-import Dropdown    from '~/components/Dropdown'
 import {withTheme} from '~/theme'
 
 function SidebarComponent({
@@ -27,14 +26,12 @@ function SidebarComponent({
   >
     {
       links.map((link, i) => {
-        return <Dropdown
-          key={i}
-          header={
+        return <div key={i}>
+          {
             link.header && <header className={styles.dropheader}>
               {link.header}
             </header>
           }
-        >
           {
             link.items.map((item, j) => {
               return <NavLink
@@ -47,7 +44,7 @@ function SidebarComponent({
               </NavLink>
             })
           }
-        </Dropdown>
+        </div>
       })
     }
   </aside>

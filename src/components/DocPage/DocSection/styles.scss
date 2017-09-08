@@ -6,12 +6,12 @@
   flex-direction: column;
 
   // Since sections are recursive only show border for the top level section.
-  border-bottom: 1px solid rgba($slate, .1);
+  border-bottom: 1px solid $lightgray;
   margin-bottom: -1px;
-  .wrapper {
-    margin-bottom: 0;
-    border-bottom: 0;
-  }
+  // .wrapper {
+  //   margin-bottom: 0;
+  //   border-bottom: 0;
+  // }
 
   .section {
     display: flex;
@@ -55,7 +55,7 @@
         line-height: 1.4;
         font-size: .8em;
         font-family: monospace;
-        background-color: rgba(darken($slate, 10), .5);
+        background-color: rgba(darken($slate, 10), .4);
       }
     }
 
