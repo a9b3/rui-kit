@@ -23,9 +23,9 @@
 // javascript file as well.
 :global {
   .rui-fade-enter.rui-fade-enter-active {
-    animation: rui-fadeIn 500ms;
+    animation: rui-fadeIn 500ms forwards;
   }
   .rui-fade-leave.rui-fade-leave-active {
-    animation: rui-fadeOut 500ms;
+    animation: rui-fadeOut 500ms forwards;
   }
 }

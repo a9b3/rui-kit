@@ -16,7 +16,6 @@ export default class Transition extends React.Component {
   render() {
     const {
       type,
-      children,
     } = this.props
 
     const selectedType = transitions[type]
@@ -26,7 +25,7 @@ export default class Transition extends React.Component {
       transitionEnterTimeout={selectedType.enterTimeout}
       transitionLeaveTimeout={selectedType.leaveTimeout}
     >
-      {children}
+      {this.props.children}
     </CSSTransitionGroup>
   }
 }

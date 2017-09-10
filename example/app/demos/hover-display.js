@@ -27,12 +27,14 @@ export default doc({
         {
           demo: <HoverDisplay
             content={
-              <div style={{
-                border    : `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
-                height    : '200px',
-                width     : '200px',
-                background: 'white',
-              }}>
+              <div
+                key={'1'}
+                style={{
+                  border    : `1px solid ${tinycolor(variables.colors.secondary).setAlpha(.2)}`,
+                  height    : '200px',
+                  width     : '200px',
+                  background: 'white',
+                }}>
               Content
               </div>
             }
@@ -45,7 +47,9 @@ export default doc({
           demo: <div style={{overflow: 'hidden'}}>
             <HoverDisplay
               content={
-                <Alert show type='positive'>
+                <Alert show type='positive'
+                  key={'1'}
+                >
                 Inside overflow hidden Content
                 </Alert>
               }
@@ -59,7 +63,9 @@ export default doc({
           demo: <HoverDisplay
             align='right'
             content={
-              <Alert show type='positive'>
+              <Alert show type='positive'
+                key={'1'}
+              >
               I should be on the right.
               </Alert>
             }
@@ -73,6 +79,7 @@ export default doc({
             id={'react-router-example'}
             content={
               <Link
+                key={'1'}
                 to='/'
               >
               React Router Link
