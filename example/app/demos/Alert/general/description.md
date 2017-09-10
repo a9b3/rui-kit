@@ -3,6 +3,7 @@ A alert toast component. Keep track of the open/closed state of the toast in the
 <br />
 
 #### Props
+
 <br />
 
 |Props|Type|Description|

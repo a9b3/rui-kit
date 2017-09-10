@@ -8,10 +8,6 @@
   // Since sections are recursive only show border for the top level section.
   border-bottom: 1px solid $lightgray;
   margin-bottom: -1px;
-  // .wrapper {
-  //   margin-bottom: 0;
-  //   border-bottom: 0;
-  // }
 
   .section {
     display: flex;
@@ -19,7 +15,7 @@
 
     h1, h2, h3, h4 {
       color: $headerColor;
-      margin-bottom: $spacing2;
+      margin-bottom: $spacing3;
       letter-spacing: .1em;
     }
     h4 {
@@ -28,10 +24,10 @@
 
     .description {
       width: 40%;
-      padding: $spacing2;
+      padding: $spacing3 $spacing2;
 
       .demo {
-        margin-bottom: $spacing2;
+        margin-bottom: $spacing3;
       }
     }
 
@@ -39,7 +35,7 @@
     .source {
       width: 100%;
       max-width: 60%;
-      padding: $spacing2;
+      padding: $spacing3 $spacing2;
       background: $slate;
       color: rgba($white, .7);
       text-shadow: 0 2px 4px rgba(black, .2);
