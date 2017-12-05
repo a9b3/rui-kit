@@ -18,3 +18,6 @@ build.example:
 							--context ./example \
 							--output-path $(EXAMPLE_OUTPUT)
 							# --favicon-path ./example/assets/images/cat.jpg \
+
+story:
+	@NODE_PATH=./src ./node_modules/@storybook/react/bin/index.js -p 9001 -c .storybook
