@@ -1,5 +1,5 @@
 {
   "extends": [
-    "eslint-config-esayemm/lib/react"
+    "eslint-config-esayemm/react"
   ]
 }
