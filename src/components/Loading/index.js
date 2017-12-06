@@ -1,4 +1,4 @@
-import styles    from './style.css'
+import styles    from './styles.css'
 
 import cx        from 'classnames'
 import PropTypes from 'prop-types'

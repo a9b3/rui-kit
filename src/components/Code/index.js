@@ -1,11 +1,12 @@
-import styles          from './styles.scss'
-import React           from 'react'
-import PropTypes       from 'prop-types'
+import styles          from './styles.css'
+
 import cx              from 'classnames'
+import PropTypes       from 'prop-types'
+import React           from 'react'
+
 import {highlightCode} from '~/utils/highlight'
 
 export default class Code extends React.Component {
-
   _codeEl = undefined
 
   static propTypes = {
@@ -13,8 +14,13 @@ export default class Code extends React.Component {
     // classname for highlight.js to use to do syntax highlighting
     // http://highlightjs.readthedocs.io/en/latest/css-classes-reference.html
     type    : PropTypes.string,
+    theme   : PropTypes.string,
     // override attributes for <code />
     codeAttr: PropTypes.object,
+  }
+
+  static defaultProps = {
+    theme: 'tomorrow-night-eighties',
   }
 
   componentDidMount() {
@@ -26,16 +32,14 @@ export default class Code extends React.Component {
   }
 
   highlightCode() {
-    highlightCode(this._codeEl)
+    const {theme} = this.props
+    highlightCode(this._codeEl, theme)
   }
 
   render() {
     const {
       type,
-      codeAttr: {
-        className,
-        ...codeAttr
-      } = {},
+      codeAttr = {},
       children,
       ...rest
     } = this.props
@@ -47,11 +51,10 @@ export default class Code extends React.Component {
     >
       <code
         {...codeAttr}
-        className={cx(type, className, styles.code)}
+        className={cx(type, codeAttr.className, styles.code)}
       >
         {children}
       </code>
     </pre>
   }
-
 }

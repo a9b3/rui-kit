@@ -1,8 +1,10 @@
-import styles    from './styles.scss'
-import PropTypes from 'prop-types'
-import cx        from 'classnames'
+import styles    from './styles.css'
 
-export default class ClickCopyContainer extends React.Component {
+import cx        from 'classnames'
+import PropTypes from 'prop-types'
+import React     from 'react'
+
+export default class ClickCopy extends React.Component {
   static propTypes = {
     children: PropTypes.node,
     copyText: PropTypes.string.isRequired,
@@ -11,7 +13,6 @@ export default class ClickCopyContainer extends React.Component {
   copyToClipboard = (str) => {
     const textarea = document.createElement('textarea')
     textarea.innerText = str
-
     document.body.append(textarea)
     textarea.select()
     document.execCommand('copy')
@@ -19,10 +20,7 @@ export default class ClickCopyContainer extends React.Component {
   }
 
   handleClick = () => {
-    const {
-      copyText,
-    } = this.props
-
+    const {copyText} = this.props
     this.copyToClipboard(copyText)
   }
 
@@ -33,12 +31,12 @@ export default class ClickCopyContainer extends React.Component {
       ...rest
     } = this.props
 
-    return <div
+    return <span
       {...rest}
       className={cx(styles.container, rest.className)}
       onClick={this.handleClick}
     >
       {children}
-    </div>
+    </span>
   }
 }

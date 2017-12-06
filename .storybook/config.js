@@ -1,7 +1,7 @@
-import { configure } from '@storybook/react'
+import {configure} from '@storybook/react'
 
 import '../example/styles/index.scss'
-import '../src/variables.scss'
+import '../src/variables.css'
 
 function loadStories() {
   const req = require.context('../src', true, /\.stories\.js$/)
