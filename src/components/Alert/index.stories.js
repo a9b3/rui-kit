@@ -1,5 +1,5 @@
 import {storiesOf} from '@storybook/react'
-import { boolean, withKnobs } from '@storybook/addon-knobs'
+import { boolean, withKnobs, select } from '@storybook/addon-knobs'
 
 import Alert from './index.js'
 
@@ -8,6 +8,7 @@ storiesOf('Alert', module)
   .add('default', () => {
     return <Alert
       show={boolean('show', true)}
+      type={select('type', {error: 'error', positive: 'positive'})}
     >
       hi
     </Alert>
