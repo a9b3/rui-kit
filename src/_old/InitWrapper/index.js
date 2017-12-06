@@ -1,8 +1,8 @@
-import React            from 'react'
-import PropTypes        from 'prop-types'
-import variables        from 'esayemm-styles/variables'
+import variables      from 'esayemm-styles/variables'
+import PropTypes      from 'prop-types'
+import React          from 'react'
 
-import LoadingOverlay   from '~/components/LoadingOverlay'
+import LoadingOverlay from '~/components/LoadingOverlay'
 
 export default class InitWrapperContainer extends React.Component {
   static propTypes = {

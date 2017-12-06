@@ -1,63 +1,71 @@
-import React           from 'react'
-import PropTypes       from 'prop-types'
-import ButtonComponent from './component.js'
+import styles         from './styles.css'
 
-export default class ButtonContainer extends React.PureComponent {
+import cx             from 'classnames'
+import PropTypes      from 'prop-types'
+import React          from 'react'
+
+import LoadingOverlay from '~/components/LoadingOverlay'
+
+export const BUTTON_TYPES = {
+  filled : 'filled',
+  outline: 'outline',
+}
+
+export default class Button extends React.PureComponent {
   static propTypes = {
-    // Pick from two of the provided stylings.
-    styleType         : PropTypes.oneOf(['filled', 'outline']),
-    color             : PropTypes.string,
-    // Provide href to render a element instead of button element.
-    href              : PropTypes.string,
-    onClick           : PropTypes.func,
-    // Boolean to show loading or not.
-    loading           : PropTypes.bool,
-    // Override style.
-    style             : PropTypes.object,
-    children          : PropTypes.node,
-    loadingOverlayAttr: PropTypes.object,
+    type    : PropTypes.oneOf(BUTTON_TYPES),
+    rgb     : PropTypes.string,
+    href    : PropTypes.string,
+    onClick : PropTypes.func,
+    disabled: PropTypes.bool,
+    children: PropTypes.node,
   }
 
   static defaultProps = {
-    styleType         : 'filled',
-    loadingOverlayAttr: {},
+    type   : BUTTON_TYPES.filled,
+    onClick: () => {},
   }
 
-  state = {
-    loading: false,
-  }
+  state = {loading: false}
 
   handleClick = async () => {
-    const {
-      loading,
-    } = this.state
+    const {onClick} = this.props
+    const {loading} = this.state
     if (loading) return
 
-    const {
-      onClick,
-    } = this.props
-    if (!onClick) return
-
-    this.setState({ loading: true })
-    let ret
-    try {
-      ret = await onClick()
-    } catch (err) {
-      console.error(err)
-    }
-    this.setState({ loading: false })
-    return ret
+    this.setState({loading: true})
+    await onClick()
+    this.setState({loading: false})
   }
 
   render() {
-    const {
-      loading,
-    } = this.state
+    const {type, children, disabled, href, rgb, ...rest} = this.props
+    const {loading} = this.state
 
-    return <ButtonComponent
-      {...this.props}
-      onClick={this.handleClick}
-      loading={loading}
-    />
+    const attr = {
+      ...rest,
+      className: cx(styles.button, rest.className, styles[type], {
+        [styles.disabled]: loading || disabled,
+      }),
+      style: {
+        ['--button-color']: rgb,
+        ...rest.style,
+      },
+      onClick : this.handleClick,
+      href,
+      disabled: loading || disabled,
+    }
+
+    const content = <div>
+      <LoadingOverlay show={loading} rgb={type === BUTTON_TYPES.filled ? '255, 255, 255' : rgb} />
+      <span style={{opacity: loading ? '0' : '1'}}>
+        {children}
+      </span>
+    </div>
+
+    if (href) {
+      return <a {...attr}> {content} </a>
+    }
+    return <button {...attr}> {content} </button>
   }
 }
