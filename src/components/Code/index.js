@@ -23,10 +23,6 @@ export default class Code extends React.Component {
     theme: 'tomorrow-night-eighties',
   }
 
-  componentDidMount() {
-    this.highlightCode()
-  }
-
   componentWillUpdate() {
     this.highlightCode()
   }

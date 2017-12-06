@@ -1,0 +1,20 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  --loading-color: 100, 100, 100;
+
+  display: inline-block;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  border: .15em solid rgba(var(--loading-color), .2);
+  border-top-color: var(--loading-color);
+  animation: spin 1.2s infinite cubic-bezier(1,.2,.8,0);
+}
