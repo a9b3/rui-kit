@@ -1,13 +1,8 @@
 @import '~esayemm-styles/global';
 
-:root {
-  --foo: #00ffff;
-}
-
 :global {
   body {
     background: lighten($lightgray, 10);
-    background: var(--foo);
 
     @media only screen and (max-device-width: 480px) {
       font-size: 30px;
