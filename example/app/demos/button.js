@@ -27,7 +27,7 @@ export default doc({
         {
           header: <h4>Outline</h4>,
           demo  : <Button
-            type='outline'
+            styleType='outline'
             color={variables.colors.error}
           >
             Hello I am a button.
@@ -40,7 +40,7 @@ export default doc({
         {
           header: <h4>Async onClick</h4>,
           demo  : <Button
-            type='outline'
+            styleType='outline'
             color={variables.colors.warning}
             onClick={timeoutPromise}
           >
@@ -53,7 +53,7 @@ export default doc({
         {
           header: <h4>Disabled</h4>,
           demo  : <Button
-            type='outline'
+            styleType='outline'
             color={variables.colors.success}
             disabled
           >

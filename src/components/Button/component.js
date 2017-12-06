@@ -7,7 +7,7 @@ import cx             from 'classnames'
 import LoadingOverlay from '~/components/LoadingOverlay'
 
 function Button({
-  type,
+  styleType,
   color,
   href,
   onClick,
@@ -23,7 +23,7 @@ function Button({
   const attr = {
     className: cx(styles.button, className),
     ...rest,
-    style    : Object.assign({}, inlineStyles[type], style),
+    style    : Object.assign({}, inlineStyles[styleType], style),
   }
 
   if (href) {
@@ -42,7 +42,7 @@ function Button({
     {...attr}
     onClick={onClick}
   >
-    <LoadingOverlay show={loading} color={type === 'filled' ? 'white' : color} {...loadingOverlayAttr} />
+    <LoadingOverlay show={loading} color={styleType === 'filled' ? 'white' : color} {...loadingOverlayAttr} />
     <span style={{ opacity: loading ? '0' : '1'}}>
       {children}
     </span>
@@ -51,7 +51,7 @@ function Button({
 
 Button.propTypes = {
   // Pick from two of the provided stylings.
-  type              : PropTypes.oneOf(['filled', 'outline']),
+  styleType         : PropTypes.oneOf(['filled', 'outline']),
   color             : PropTypes.string,
   // Provide href to render a element instead of button element.
   href              : PropTypes.string,
@@ -66,12 +66,12 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  type              : 'filled',
+  styleType         : 'filled',
   loadingOverlayAttr: {},
 }
 
 /**
- * Use this to generate style that is a function of the provided 'type'. This
+ * Use this to generate style that is a function of the provided 'styleType'. This
  * isn't defined in the stylesheet because we want to be able to take color as
  * an argument.
  */

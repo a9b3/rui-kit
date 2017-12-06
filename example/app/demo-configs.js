@@ -29,6 +29,7 @@ export default [
       require('./demos/modal.js').default,
       require('./demos/select-file.js').default,
       require('./demos/Transition').default,
+      require('./demos/Collapse').default,
     ],
   },
 ]
