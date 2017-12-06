@@ -37,6 +37,7 @@ export default class Code extends React.Component {
       type,
       codeAttr = {},
       children,
+      theme,  // eslint-disable-line
       ...rest
     } = this.props
 
