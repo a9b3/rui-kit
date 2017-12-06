@@ -1,54 +1,27 @@
-import styles    from './styles.scss'
-import React     from 'react'
-import PropTypes from 'prop-types'
-import tinycolor from 'tinycolor2'
-import cx        from 'classnames'
+import styles    from './style.css'
 
-function Loading({
-  color,
-  show,
-  style,
-  ...rest
-}) {
+import cx        from 'classnames'
+import PropTypes from 'prop-types'
+import React     from 'react'
+
+export default function Loading({rgb, show, ...rest}) {
   if (!show) {
     return null
   }
 
-  const inlineStyles = getStyles({ color })
-
   return <div
     {...rest}
     className={cx(styles.loading, rest.className)}
-    style={Object.assign({}, inlineStyles.root, style)}
+    style={{
+      ['--loading-color']: rgb,
+      ...rest.style,
+    }}
   />
 }
-
 Loading.propTypes = {
-  // hex color value
-  color: PropTypes.string,
-  // whether to show the component or return null
-  show : PropTypes.bool,
-  style: PropTypes.object,
-
+  rgb : PropTypes.string,
+  show: PropTypes.bool,
 }
-
 Loading.defaultProps = {
-  color: '#000000',
+  show: true,
 }
-
-function getStyles({ color }) {
-
-  const fadedColor = tinycolor(color).setAlpha(.15)
-
-  const inlineStyles = {
-    root: {
-      borderColor   : fadedColor,
-      borderTopColor: color,
-    },
-  }
-
-  return inlineStyles
-
-}
-
-export default Loading
