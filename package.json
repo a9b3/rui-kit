@@ -2,7 +2,13 @@
   "name": "rui-kit",
   "version": "0.0.17",
   "license": "MIT",
+  "main": "./build/index.js",
+  "module": "./build/index.es.js",
+  "files": [
+    "build"
+  ],
   "devDependencies": {
+    "@storybook/addon-knobs": "3.2.17",
     "@storybook/react": "3.2.17",
     "babel-eslint": "^7.2.3",
     "babel-plugin-root-import": "^5.1.0",
@@ -27,6 +33,18 @@
     "react-router-dom": "^4.1.1",
     "react-test-renderer": "^15.6.1"
   },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "highlight.js": "^9.12.0",
+    "jsx-to-string": "^1.1.0",
+    "mobx": "^3.2.2",
+    "mobx-react": "^4.2.2",
+    "raw-loader": "^0.5.1",
+    "react-transition-group": "1.x",
+    "remarkable": "^1.7.1",
+    "svg-sprite-loader": "^3.2.5",
+    "tinycolor2": "^1.4.1"
+  },
   "scripts": {
     "lint": "./node_modules/eslint/bin/eslint.js . --fix",
     "build": "rm -rf ./build && BABEL_REACT=true NODE_PATH=./src ./node_modules/jbs-fe/bin.js build:package --input src --output build --es-input-file src/index.js --es-output-file build/index.es.js",
@@ -38,8 +56,6 @@
     "version": "npm publish",
     "postversion": "git add . && git push && git push --tags"
   },
-  "main": "./build/index.js",
-  "module": "./build/index.es.js",
   "babel": {
     "presets": [
       "./node_modules/jbs-fe/configs/babel-preset-jbs-fe.js"
@@ -53,20 +69,5 @@
         }
       ]
     ]
-  },
-  "dependencies": {
-    "classnames": "^2.2.5",
-    "highlight.js": "^9.12.0",
-    "jsx-to-string": "^1.1.0",
-    "mobx": "^3.2.2",
-    "mobx-react": "^4.2.2",
-    "raw-loader": "^0.5.1",
-    "react-transition-group": "1.x",
-    "remarkable": "^1.7.1",
-    "svg-sprite-loader": "^3.2.5",
-    "tinycolor2": "^1.4.1"
-  },
-  "files": [
-    "build"
-  ]
+  }
 }
