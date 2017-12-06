@@ -1,0 +1,9 @@
+.hover {
+  position: static;
+}
+
+// need this to display hover content in overflow hidden elements.
+.wrapper {
+  position: absolute;
+  z-index: 999;
+}
