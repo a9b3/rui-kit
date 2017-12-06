@@ -45,7 +45,6 @@
     "tinycolor2": "^1.4.1"
   },
   "scripts": {
-    "prepublish": "npm run build",
     "preversion": "npm run test",
     "version": "npm publish",
     "postversion": "git add . && git push && git push --tags"
