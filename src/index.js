@@ -1,13 +1,3 @@
-/*
- * Themer
- */
-export {withTheme as withTheme}               from './theme'
-export {theme as theme}                       from './theme'
-export {RuiTheme as RuiTheme}                 from './theme'
-
-/*
- * Components
- */
 // Generic Components
 export {default as Loading}                   from './components/Loading'
 export {default as LoadingOverlay}            from './components/LoadingOverlay'

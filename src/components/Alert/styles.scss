@@ -8,6 +8,7 @@
 
 .error {
   background: lighten($error, 20);
+  background: var(--rui-black) !important;
   color: $error;
 }
 

@@ -6,8 +6,6 @@ import {
   withRouter,
 }                  from 'react-router-dom'
 
-import {withTheme} from '~/theme'
-
 function SidebarComponent({
   links,
   /* eslint-disable */
@@ -16,7 +14,6 @@ function SidebarComponent({
   path,
   staticContext,
   match,
-  theme,
   /* eslint-enable */
   ...rest
 }) {
@@ -61,4 +58,4 @@ SidebarComponent.propTypes = {
   })),
 }
 
-export default withRouter(withTheme(SidebarComponent))
+export default withRouter(SidebarComponent)

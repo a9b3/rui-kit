@@ -7,7 +7,6 @@ import {
 }                 from 'react-router-dom'
 import {
   AppShell,
-  RuiTheme,
 }                 from '../../../../src'
 
 @withRouter
@@ -43,16 +42,14 @@ export default class ExampleAppShell extends React.Component {
 
     const leftNode = <Link to='/'><h4>RUI-KIT</h4></Link>
 
-    return <RuiTheme>
-      <AppShell
-        headerNode={headerNode}
-        leftNode={leftNode}
-        rightNodeLinks={rightNodeLinks}
-        links={demoLinks}
-        contentWidth={'100%'}
-      >
-        {children}
-      </AppShell>
-    </RuiTheme>
+    return <AppShell
+      headerNode={headerNode}
+      leftNode={leftNode}
+      rightNodeLinks={rightNodeLinks}
+      links={demoLinks}
+      contentWidth={'100%'}
+    >
+      {children}
+    </AppShell>
   }
 }

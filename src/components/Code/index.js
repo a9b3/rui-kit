@@ -4,9 +4,6 @@ import PropTypes       from 'prop-types'
 import cx              from 'classnames'
 import {highlightCode} from '~/services/highlight'
 
-import {withTheme}     from '~/theme'
-
-@withTheme
 export default class Code extends React.Component {
 
   _codeEl = undefined
@@ -18,7 +15,6 @@ export default class Code extends React.Component {
     type    : PropTypes.string,
     // override attributes for <code />
     codeAttr: PropTypes.object,
-    theme   : PropTypes.any,
   }
 
   componentDidMount() {
@@ -30,10 +26,7 @@ export default class Code extends React.Component {
   }
 
   highlightCode() {
-    const {
-      theme,
-    } = this.props
-    highlightCode(this._codeEl, theme.get('codeTheme'))
+    highlightCode(this._codeEl)
   }
 
   render() {

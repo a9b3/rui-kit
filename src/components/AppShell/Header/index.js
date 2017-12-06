@@ -4,21 +4,16 @@ import {NavLink}   from 'react-router-dom'
 import cx          from 'classnames'
 
 import {Icon}      from '~/components/Icon'
-import {withTheme} from '~/theme'
 
 function HeaderComponent({
   leftNode,
   headerNode,
   rightNodeLinks,
   toggleSidebar,
-  theme,
   ...rest
 }) {
   return <header
     {...rest}
-    style={{
-      background: theme.get('primaryBgColor'),
-    }}
     className={cx(
       'rui__appshell__header',
       styles.header,
@@ -78,9 +73,6 @@ HeaderComponent.propTypes = {
     href   : PropTypes.string,
   })),
   toggleSidebar: PropTypes.func.isRequired,
-
-  // from withTheme
-  theme: PropTypes.object,
 }
 
-export default withTheme(HeaderComponent)
+export default HeaderComponent
