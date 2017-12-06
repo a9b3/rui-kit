@@ -66,6 +66,24 @@ module.exports = (storybookBaseConfig, configType) => {
       "sass-loader",
     ],
   })
+  storybookBaseConfig.module.rules.push({
+    test   : /\.css$/,
+    loaders: [
+      { loader: 'style-loader' },
+      {
+        loader : "css-loader",
+        options: {
+          modules: true,
+        },
+      },
+      {
+        loader : 'postcss-loader',
+        options: {
+          ident: 'postcss',
+        },
+      },
+    ],
+  })
 
   storybookBaseConfig.resolve.modules.concat((process.env.NODE_PATH || '').split(path.delimiter).filter(Boolean))
 
