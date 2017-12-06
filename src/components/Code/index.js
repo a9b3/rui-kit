@@ -2,7 +2,7 @@ import styles          from './styles.scss'
 import React           from 'react'
 import PropTypes       from 'prop-types'
 import cx              from 'classnames'
-import {highlightCode} from '~/services/highlight'
+import {highlightCode} from '~/utils/highlight'
 
 export default class Code extends React.Component {
 

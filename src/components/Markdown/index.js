@@ -3,7 +3,7 @@
  */
 import styles          from './styles.scss'
 import Remarkable      from 'remarkable'
-import {highlightCode} from '~/services/highlight'
+import {highlightCode} from '~/utils/highlight'
 import PropTypes       from 'prop-types'
 
 const md = new Remarkable({
