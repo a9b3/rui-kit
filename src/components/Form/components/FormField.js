@@ -9,12 +9,12 @@ export default class FormField extends React.Component {
   static propTypes = {
     name     : PropTypes.string.isRequired,
     formState: PropTypes.instanceOf(FormState).isRequired,
-    component: PropTypes.func,
+    component: PropTypes.func.isRequired,
   }
 
   handleChange = (event) => {
     const {formState, name} = this.props
-    const formStateField = formState.formStateFieldsMap.get(name)
+    const formStateField = formState.getFormStateField(name)
     formStateField.setValue(event.target.value)
   }
 
@@ -23,12 +23,13 @@ export default class FormField extends React.Component {
       name,
       formState,
       component: Component,
+      ...rest
     } = this.props
 
-    const formStateField = formState.formStateFieldsMap.get(name)
+    const formStateField = formState.getFormStateField(name)
 
-    // Passing object
     return <Component
+      {...rest}
       value={formStateField.value}
       error={formStateField.error}
       modified={formStateField.modified}
