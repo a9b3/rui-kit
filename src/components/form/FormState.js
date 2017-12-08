@@ -1,32 +1,31 @@
+import invariant      from 'invariant'
 import {observable}   from 'mobx'
 
 import FormStateField from './FormStateField.js'
 
 export default class FormState {
   formStateFieldsMap = observable.map()
-  @observable
-  isFormValid = true
+  @observable isFormValid = true
+  @observable error = undefined
+  @observable loading = undefined
 
-  @observable
-  error = undefined
-  @observable
-  loading = undefined
-
-  constructor({fields = {}, initValidate}) {
+  constructor({fields = {}}) {
     this.setFields(fields)
-
-    if (initValidate) {
-      this.calculateFormValidity()
-    }
   }
 
   setFields = (fields) => {
-    Object.entries(fields).forEach(([key, value]) => {
-      this.formStateFieldsMap.set(key, new FormStateField({
-        ...value,
-        parent: this,
-      }))
-    })
+    Object.entries(fields)
+      .forEach(([key, value]) => {
+        this.formStateFieldsMap.set(
+          key,
+          new FormStateField({...value, parent: this})
+        )
+      })
+  }
+
+  getFormStateField = (name) => {
+    invariant(this.formStateFieldsMap.has(name), `'${name}' is not a field in this form`)
+    return this.formStateFieldsMap.get(name)
   }
 
   getAllValues = () => this.formStateFieldsMap.entries()
@@ -36,24 +35,21 @@ export default class FormState {
     }, {})
 
   calculateFormValidity = () => {
-    let isFormValid = true
-    this.formStateFieldsMap.forEach(formStateField => {
-      if (isFormValid) {
-        isFormValid = !formStateField.error
-      }
-    })
-    this.isFormValid = isFormValid
+    this.formStateFieldsMap.forEach(f => f.callValidate())
+    this.isFormValid = this.formStateFieldsMap
+      .values()
+      .every(formStateField => !formStateField.error)
   }
 
+  // meant to be used in Form component only
   callOnSubmit = async (onSubmit) => {
     this.loading = true
     this.error = undefined
-
     try {
       await onSubmit(this.getAllValues())
     } catch (err) {
       console.error(err)
-      this.error = err
+      this.error = err.message
     }
     this.loading = false
   }

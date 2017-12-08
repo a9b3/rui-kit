@@ -1,20 +1,24 @@
+import invariant              from 'invariant'
+import {noop}                 from 'lodash'
 import {observable, computed} from 'mobx'
 
-export default class FormStateField {
-  validate = () => {}
-  parent = undefined
-  @observable
-  error = undefined
-  initialValue = undefined
-  @observable
-  value = ''
+import FormState              from './FormState.js'
 
-  @computed
-  get modified() {
+export default class FormStateField {
+  validate          = noop
+  parent            = undefined
+  @observable error = undefined
+  initialValue      = ''
+  @observable value = ''
+
+  @computed get modified() {
     return this.initialValue !== this.value
   }
 
-  constructor({validate, parent, initialValue, initValidate}) {
+  constructor({validate = noop, parent, initialValue = '', initValidate}) {
+    invariant(typeof validate === 'function', `'validate' must be function`)
+    invariant(parent instanceof FormState, `'parent' must be instanceof FormState`)
+
     this.initialValue = initialValue
     this.validate = validate
     this.parent = parent
