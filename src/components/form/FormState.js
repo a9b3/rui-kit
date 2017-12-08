@@ -5,12 +5,19 @@ import FormStateField from './FormStateField.js'
 export default class FormState {
   formStateFieldsMap = observable.map()
   @observable
+  isFormValid = true
+
+  @observable
   error = undefined
   @observable
   loading = undefined
 
-  constructor({fields = {}}) {
+  constructor({fields = {}, initValidate}) {
     this.setFields(fields)
+
+    if (initValidate) {
+      this.calculateFormValidity()
+    }
   }
 
   setFields = (fields) => {
@@ -27,4 +34,27 @@ export default class FormState {
       obj[key] = value
       return obj
     }, {})
+
+  calculateFormValidity = () => {
+    let isFormValid = true
+    this.formStateFieldsMap.forEach(formStateField => {
+      if (isFormValid) {
+        isFormValid = !formStateField.error
+      }
+    })
+    this.isFormValid = isFormValid
+  }
+
+  callOnSubmit = async (onSubmit) => {
+    this.loading = true
+    this.error = undefined
+
+    try {
+      await onSubmit(this.getAllValues())
+    } catch (err) {
+      console.error(err)
+      this.error = err
+    }
+    this.loading = false
+  }
 }

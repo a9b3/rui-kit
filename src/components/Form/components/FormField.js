@@ -2,7 +2,7 @@ import {observer} from 'mobx-react'
 import PropTypes  from 'prop-types'
 import React      from 'react'
 
-import FormState  from './FormState.js'
+import FormState  from '../FormState.js'
 
 @observer
 export default class FormField extends React.Component {
@@ -27,9 +27,11 @@ export default class FormField extends React.Component {
 
     const formStateField = formState.formStateFieldsMap.get(name)
 
+    // Passing object
     return <Component
+      value={formStateField.value}
       error={formStateField.error}
-      value={formStateField.value || ''}
+      modified={formStateField.modified}
       onChange={this.handleChange}
     />
   }
