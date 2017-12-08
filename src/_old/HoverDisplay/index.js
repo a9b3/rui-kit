@@ -4,6 +4,9 @@ import cx        from 'classnames'
 import PropTypes from 'prop-types'
 
 export default class HoverDisplay extends React.Component {
+  containerEl = null
+  contentWrapper = null
+
   static propTypes = {
     content : PropTypes.node.isRequired,
     children: PropTypes.node.isRequired,
@@ -19,16 +22,9 @@ export default class HoverDisplay extends React.Component {
     show        : false,
   }
 
-  containerEl = null
-  contentWrapper = null
-
   handleMouseOver = () => {
-    const {
-      align,
-    } = this.props
-
+    const {align} = this.props
     const containerElPos = this.containerEl.getBoundingClientRect()
-
     const wrapperStyle = {
       top: containerElPos.bottom,
     }
@@ -39,10 +35,7 @@ export default class HoverDisplay extends React.Component {
       wrapperStyle.left = containerElPos.left
     }
 
-    this.setState({
-      show: true,
-      wrapperStyle,
-    })
+    this.setState({show: true, wrapperStyle})
   }
 
   handleMouseLeave = () => {
@@ -56,7 +49,6 @@ export default class HoverDisplay extends React.Component {
       align, // eslint-disable-line
       ...rest
     } = this.props
-
     const {
       show,
       wrapperStyle,
@@ -70,7 +62,6 @@ export default class HoverDisplay extends React.Component {
       onMouseLeave={this.handleMouseLeave}
     >
       {children}
-
       <div
         className={styles.wrapper}
         ref={el => this.contentWrapper = el}
