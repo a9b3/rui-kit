@@ -15,26 +15,25 @@ import {
 const NameField = createFormFieldComponent({
   formElementType: 'input',
   attr           : {placeholder: 'Enter text...'},
-  Layout         : ({error, modified, formElement}) => {
-    return <div>
-      {error}
-      {modified && '*'}
-      {formElement}
-    </div>
-  },
 })
 
 const PasswordField = createFormFieldComponent({
   formElementType: 'input',
   attr           : {type: 'password', placeholder: 'Enter text...'},
-  Layout         : ({error, modified, formElement}) => {
-    return <div>
-      {error}
-      {modified && '*'}
-      {formElement}
-    </div>
-  },
 })
+
+function Layout({error, modified, formElement}) {
+  return <div>
+    {error}
+    {modified && '*'}
+    {formElement}
+  </div>
+}
+Layout.propTypes = {
+  error      : PropTypes.string,
+  modified   : PropTypes.bool,
+  formElement: PropTypes.node,
+}
 
 @observer
 class ExampleForm extends React.Component {
@@ -60,16 +59,19 @@ class ExampleForm extends React.Component {
         name={'name'}
         formState={formState}
         component={NameField}
+        layout={Layout}
       />
       <FormField
         name={'password'}
         formState={formState}
         component={PasswordField}
+        layout={Layout}
       />
       <FormField
         name={'confirmPassword'}
         formState={formState}
         component={PasswordField}
+        layout={Layout}
       />
       <button disabled={loading || !isFormValid}>
         Submit

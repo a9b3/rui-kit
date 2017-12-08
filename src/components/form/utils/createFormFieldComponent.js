@@ -4,9 +4,8 @@ import React     from 'react'
 
 const ALLOWED_TYPES = ['input', 'textarea', 'select']
 
-export default function createFormFieldComponent({formElementType, attr, Layout}) {
+export default function createFormFieldComponent({formElementType, attr}) {
   invariant(ALLOWED_TYPES.includes(formElementType), `'formElementType' must be one of ${ALLOWED_TYPES}`)
-  invariant(Layout, `'Layout' component must be provided`)
 
   let formElement
   switch(formElementType) {
@@ -21,18 +20,16 @@ export default function createFormFieldComponent({formElementType, attr, Layout}
     break
   }
 
-  function FormFieldComponent({value, onChange, ...rest}) {
+  function FormFieldComponent({value, onChange, layout: Layout, ...rest}) {
     return <Layout
       {...rest}
-      formElement={React.cloneElement(formElement, {
-        value,
-        onChange,
-      })}
+      formElement={React.cloneElement(formElement, {value, onChange})}
     />
   }
   FormFieldComponent.propTypes = {
     value   : PropTypes.string,
     onChange: PropTypes.func,
+    layout  : PropTypes.func,
   }
 
   return FormFieldComponent
