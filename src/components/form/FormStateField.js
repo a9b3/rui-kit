@@ -29,6 +29,11 @@ export default class FormStateField {
     }
   }
 
+  setInitialValue = (value) => {
+    this.initialValue = value
+    this.value = value
+  }
+
   callValidate = () => {
     this.error = this.validate(this.value, this.parent.getAllValues())
   }

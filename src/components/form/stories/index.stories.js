@@ -11,12 +11,42 @@ import {
   FormFieldLayoutComponent,
   FormState,
   predicate,
+  withFormState,
 }                          from '../index.js'
 
+@withFormState({
+  fields: {
+    checked: {},
+    state  : {},
+    bio    : {},
+    name   : {
+      validate: (...args) => [
+        predicate((value) => value.length > 3, `value must be length 3`),
+        predicate((value) => value !== 'sam', `value cannot be the word 'sam'`),
+      ].map(fn => fn(...args)).filter(Boolean).join(', '),
+    },
+    password: {
+      validate: predicate((value, all) => value === all.confirmPassword, `password must match`),
+    },
+    confirmPassword: {
+      validate: predicate((value, all) => value === all.password, `password must match`),
+    },
+  },
+})
 @observer
 class ExampleForm extends React.Component {
   static propTypes = {
     formState: PropTypes.instanceOf(FormState).isRequired,
+  }
+
+  componentDidMount() {
+    const {
+      formState,
+    } = this.props
+
+    formState.setInitialValues({
+      state: 'on',
+    })
   }
 
   handleSubmit = (data) => {
@@ -92,24 +122,9 @@ class ExampleForm extends React.Component {
 storiesOf('Form', module)
   .addDecorator(withKnobs)
   .add('default', () => {
-    const formState = new FormState({
-      fields: {
-        checked: {},
-        state  : {},
-        bio    : {},
-        name   : {
-          validate: (...args) => [
-            predicate((value) => value.length > 3, `value must be length 3`),
-            predicate((value) => value !== 'sam', `value cannot be the word 'sam'`),
-          ].map(fn => fn(...args)).filter(Boolean).join(', '),
-        },
-        password: {
-          validate: predicate((value, all) => value === all.confirmPassword, `password must match`),
-        },
-        confirmPassword: {
-          validate: predicate((value, all) => value === all.password, `password must match`),
-        },
-      },
-    })
-    return <ExampleForm formState={formState}/>
+    return <ExampleForm
+      initialValues={{
+        name: 'Sam',
+      }}
+    />
   })

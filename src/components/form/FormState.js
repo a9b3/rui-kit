@@ -24,6 +24,12 @@ export default class FormState {
       })
   }
 
+  setInitialValues = (initialValues) => {
+    Object.entries(initialValues).forEach(([key, value]) => {
+      this.getFormStateField(key).setInitialValue(value)
+    })
+  }
+
   getFormStateField = (name) => {
     invariant(this.formStateFieldsMap.has(name), `'${name}' is not a field in this form, choose from one of '${this.formStateFieldsMap.keys()}'`)
     return this.formStateFieldsMap.get(name)
