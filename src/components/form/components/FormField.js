@@ -1,3 +1,5 @@
+import {noop}        from 'lodash'
+import {compose}     from 'lodash/fp'
 import PropTypes     from 'prop-types'
 import React         from 'react'
 
@@ -6,10 +8,10 @@ import withFormState from '../utils/withFormState.js'
 @withFormState
 export default class FormField extends React.Component {
   static propTypes = {
-    formState: PropTypes.object.isRequired,
     name     : PropTypes.string.isRequired,
-    layout   : PropTypes.node,
     render   : PropTypes.func,
+    // from withFormState
+    formState: PropTypes.object.isRequired,
   }
 
   handleChange = (event) => {
@@ -22,18 +24,23 @@ export default class FormField extends React.Component {
     )
   }
 
-  render() {
-    const {render, formState, name, layout} = this.props
+  getFormFieldProps = ({onChange = noop, ...props} = {}) => {
+    const {formState, name} = this.props
     const formStateField = formState.getFormStateField(name)
-
-    return React.cloneElement(layout, {
+    return {
       formFieldProps: {
+        onChange: compose(onChange, this.handleChange),
         name,
         error   : formStateField.error,
         modified: formStateField.modified,
         value   : formStateField.value,
-        onChange: this.handleChange,
       },
-    })
+      ...props,
+    }
+  }
+
+  render() {
+    const {render} = this.props
+    return render({getFormFieldProps: this.getFormFieldProps})
   }
 }

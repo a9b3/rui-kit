@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = (storybookBaseConfig, configType) => {
+  storybookBaseConfig.devtool = 'cheap-module-eval-source-map'
   storybookBaseConfig.module.rules.unshift({
     exclude: [
       /\.jsx?$/,
@@ -69,7 +70,7 @@ module.exports = (storybookBaseConfig, configType) => {
   storybookBaseConfig.module.rules.push({
     test   : /\.css$/,
     loaders: [
-      { loader: 'style-loader' },
+      {loader: 'style-loader'},
       {
         loader : "css-loader",
         options: {

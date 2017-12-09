@@ -47,47 +47,60 @@ class ExampleForm extends React.Component {
 
     return <Form
       initialValues={{
-        name: 'Hello',
+        name   : 'Hello',
+        checked: false,
       }}
       onSubmit={this.handleSubmit}
     >
       {isFormModified && 'form is modified'}
       {!isFormValid && 'form is invalid'}
       {error}
-
       <FormField
         name={'name'}
-        layout={<FormFieldLayoutComponent
-          label={'Name'}
-          field={<FormFieldComponent formElementType='input'/>}
-        />}
+        render={({getFormFieldProps}) => {
+          return <FormFieldLayoutComponent
+            {...getFormFieldProps({
+              label: 'Name',
+              field: <FormFieldComponent formElementType='input'/>,
+            })}
+          />
+        }}
       />
       <FormField
         name={'checked'}
-        layout={<FormFieldLayoutComponent
-          label={'Checked'}
-          field={<FormFieldComponent formElementType='input' type='checkbox'/>}
-        />}
+        render={({getFormFieldProps}) => {
+          return <FormFieldLayoutComponent
+            {...getFormFieldProps({
+              label: 'Checked',
+              field: <FormFieldComponent formElementType='input' type='checkbox'/>,
+            })}
+          />
+        }}
       />
       <FormField
         name={'bio'}
-        layout={<FormFieldLayoutComponent
-          label={'Bio'}
-          field={<FormFieldComponent formElementType='textarea'/>}
-        />}
+        render={({getFormFieldProps}) => {
+          return <FormFieldLayoutComponent
+            {...getFormFieldProps({
+              label: 'Bio',
+              field: <FormFieldComponent formElementType='textarea' />,
+            })}
+          />
+        }}
       />
       <FormField
         name={'state'}
-        layout={<FormFieldLayoutComponent label={'State'}
-          field={<FormFieldComponent
-            formElementType='select'
-            options={[
-              {label: 'on', value: 'on'},
-            ]}
-          />}
-        />}
+        render={({getFormFieldProps}) => {
+          return <FormFieldLayoutComponent
+            {...getFormFieldProps({
+              label: 'State',
+              field: <FormFieldComponent formElementType='select' options={[
+                {label: 'on', value: 'on'},
+              ]}/>,
+            })}
+          />
+        }}
       />
-
       <button disabled={loading || !isFormValid}>
         Submit
       </button>
