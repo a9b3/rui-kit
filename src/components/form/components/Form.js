@@ -2,9 +2,10 @@ import PropTypes     from 'prop-types'
 import React         from 'react'
 
 import FormState     from '../FormState.js'
+import withFormState from '../utils/withFormState.js'
 import FormField     from './FormField.js'
-import {CONTEXT_KEY} from './constants.js'
 
+@withFormState
 export default class Form extends React.Component {
   static FormField = FormField
 
@@ -15,17 +16,6 @@ export default class Form extends React.Component {
     initialValues: PropTypes.object,
   }
 
-  static childContextTypes = {
-    [CONTEXT_KEY]: PropTypes.object.isRequired,
-  }
-
-  getChildContext() {
-    const {formState} = this.props
-    return {[CONTEXT_KEY]: {formState}}
-  }
-
-  // This can be in a hoc but it's so small I'm just going to leave it here for
-  // now.
   componentWillMount() {
     const {formState, initialValues} = this.props
     formState.setInitialValues(initialValues)
@@ -41,6 +31,7 @@ export default class Form extends React.Component {
     const {
       onSubmit, // eslint-disable-line
       formState, // eslint-disable-line
+      initialValues, // eslint-disable-line
       children,
       ...rest
     } = this.props

@@ -1,16 +1,20 @@
-import styles    from './FormFieldLayoutComponent.css'
+import styles             from './FormFieldLayoutComponent.css'
 
-import cx        from 'classnames'
-import PropTypes from 'prop-types'
-import React     from 'react'
+import cx                 from 'classnames'
+import PropTypes          from 'prop-types'
+import React              from 'react'
+
+import FormFieldComponent from './FormFieldComponent.js'
 
 export default function FormFieldLayoutComponent({
   formFieldProps: {
     error,
     modified,
-    field,
     name,
+    value,
+    onChange,
   },
+  field,
   label,
   ...rest
 }) {
@@ -28,6 +32,8 @@ export default function FormFieldLayoutComponent({
     }
     {
       React.cloneElement(field, {
+        value,
+        onChange,
         id       : name,
         className: cx(
           field.props.className,
@@ -40,4 +46,5 @@ export default function FormFieldLayoutComponent({
 FormFieldLayoutComponent.propTypes = {
   formFieldProps: PropTypes.object,
   label         : PropTypes.string,
+  field         : PropTypes.node,
 }

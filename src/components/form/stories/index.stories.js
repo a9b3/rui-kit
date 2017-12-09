@@ -5,14 +5,15 @@ import React               from 'react'
 
 import {
   Form,
-  FormFieldComponent,
+  FormField,
   FormFieldLayoutComponent,
+  FormFieldComponent,
   FormState,
   predicate,
-  withFormState,
+  ruiForm,
 }                          from '../index.js'
 
-@withFormState({
+@ruiForm({
   fields: {
     checked: {},
     state  : {},
@@ -49,42 +50,41 @@ class ExampleForm extends React.Component {
         name: 'Hello',
       }}
       onSubmit={this.handleSubmit}
-      formState={formState}
     >
       {isFormModified && 'form is modified'}
       {!isFormValid && 'form is invalid'}
       {error}
 
-      <Form.FormField
+      <FormField
         name={'name'}
-        layout={<FormFieldLayoutComponent label={'Name'} />}
-        field={<FormFieldComponent
-          formElementType='input'
+        layout={<FormFieldLayoutComponent
+          label={'Name'}
+          field={<FormFieldComponent formElementType='input'/>}
         />}
       />
-      <Form.FormField
+      <FormField
         name={'checked'}
-        layout={<FormFieldLayoutComponent label={'Checked'} />}
-        field={<FormFieldComponent
-          formElementType='input'
-          type='checkbox'
+        layout={<FormFieldLayoutComponent
+          label={'Checked'}
+          field={<FormFieldComponent formElementType='input' type='checkbox'/>}
         />}
       />
-      <Form.FormField
+      <FormField
         name={'bio'}
-        layout={<FormFieldLayoutComponent label={'Bio'} />}
-        field={<FormFieldComponent
-          formElementType='textarea'
+        layout={<FormFieldLayoutComponent
+          label={'Bio'}
+          field={<FormFieldComponent formElementType='textarea'/>}
         />}
       />
-      <Form.FormField
+      <FormField
         name={'state'}
-        layout={<FormFieldLayoutComponent label={'State'} />}
-        field={<FormFieldComponent
-          formElementType='select'
-          options={[
-            {label: 'on', value: 'on'},
-          ]}
+        layout={<FormFieldLayoutComponent label={'State'}
+          field={<FormFieldComponent
+            formElementType='select'
+            options={[
+              {label: 'on', value: 'on'},
+            ]}
+          />}
         />}
       />
 

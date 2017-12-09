@@ -1,19 +1,24 @@
-import {observer} from 'mobx-react'
-import React      from 'react'
+import hoistNonReactStatics from 'hoist-non-react-statics'
+import {observer}           from 'mobx-react'
+import PropTypes            from 'prop-types'
+import React                from 'react'
 
-import FormState  from '../FormState.js'
+import {CONTEXT_KEY}        from '../constants.js'
 
-export default function withFormState({fields}) {
-  return WrappedComponent => {
-    @observer
-    class WithFormStateComponent extends React.Component {
-      state = {formState: new FormState({fields})}
+export default function withFormState(WrappedComponent) {
+  const ObserverWrappedComponent = observer(WrappedComponent)
 
-      render() {
-        const {formState} = this.state
-        return <WrappedComponent {...this.props} formState={formState} />
-      }
+  class Wrapper extends React.Component {
+    static displayName = `withFormState(${WrappedComponent.displayName || WrappedComponent.name})`
+
+    static contextTypes = {
+      [CONTEXT_KEY]: PropTypes.object,
     }
-    return WithFormStateComponent
+
+    render() {
+      const {formState} = this.context[CONTEXT_KEY]
+      return <ObserverWrappedComponent {...this.props} formState={formState} />
+    }
   }
+  return hoistNonReactStatics(Wrapper, ObserverWrappedComponent)
 }

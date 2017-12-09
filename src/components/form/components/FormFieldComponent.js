@@ -7,27 +7,22 @@ const ALLOWED_TYPES = ['input', 'textarea', 'select']
 
 export default function FormFieldComponent({
   formElementType,
-  formFieldProps: {
-    value,
-    onChange,
-  },
+  value,
+  onChange,
   ...rest
 }) {
-  let formElement
+  const props = {value, onChange, ...rest}
   switch(formElementType) {
   case 'input':
-    formElement = <input />
-    break
+    return <input {...props} />
   case 'textarea':
-    formElement = <textarea />
-    break
+    return <textarea {...props} />
   case 'select':
-    formElement = <SelectField />
-    break
+    return <SelectField {...props} />
   }
-  return React.cloneElement(formElement, {...rest, value, onChange})
 }
 FormFieldComponent.propTypes = {
   formElementType: PropTypes.oneOf(ALLOWED_TYPES).isRequired,
-  formFieldProps : PropTypes.object,
+  value          : PropTypes.any,
+  onChange       : PropTypes.func,
 }

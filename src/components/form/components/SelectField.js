@@ -11,7 +11,6 @@ export default class SelectField extends React.Component {
   }
   render() {
     const {
-      value: selectedValue,
       options,
       ...rest
     } = this.props
@@ -21,7 +20,6 @@ export default class SelectField extends React.Component {
     ].concat(options.map(
       ({label, value}, i) => <option
         key={i}
-        selected={value === selectedValue}
         value={value}>
         {label}
       </option>
