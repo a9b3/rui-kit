@@ -9,7 +9,7 @@ import withFormState from '../utils/withFormState.js'
 export default class FormField extends React.Component {
   static propTypes = {
     name     : PropTypes.string.isRequired,
-    render   : PropTypes.func,
+    render   : PropTypes.func.isRequired,
     // from withFormState
     formState: PropTypes.object.isRequired,
   }
