@@ -5,35 +5,13 @@ import PropTypes           from 'prop-types'
 import React               from 'react'
 
 import {
-  FormState,
-  FormField,
   Form,
-  createFormFieldComponent,
+  FormField,
+  FormFieldComponent,
+  FormFieldLayoutComponent,
+  FormState,
   predicate,
 }                          from '../index.js'
-
-const NameField = createFormFieldComponent({
-  formElementType: 'input',
-  attr           : {placeholder: 'Enter text...'},
-})
-
-const PasswordField = createFormFieldComponent({
-  formElementType: 'input',
-  attr           : {type: 'password', placeholder: 'Enter text...'},
-})
-
-function Layout({error, modified, formElement}) {
-  return <div>
-    {error}
-    {modified && '*'}
-    {formElement}
-  </div>
-}
-Layout.propTypes = {
-  error      : PropTypes.string,
-  modified   : PropTypes.bool,
-  formElement: PropTypes.node,
-}
 
 @observer
 class ExampleForm extends React.Component {
@@ -47,31 +25,51 @@ class ExampleForm extends React.Component {
 
   render() {
     const {formState} = this.props
-    const {isFormValid, error, loading} = formState
+    const {isFormModified, isFormValid, error, loading} = formState
 
     return <Form
       onSubmit={this.handleSubmit}
       formState={formState}
+      style={{width: '200px'}}
     >
+      {isFormModified && 'form is modified'}
       {!isFormValid && 'form is invalid'}
       {error}
       <FormField
         name={'name'}
         formState={formState}
-        component={NameField}
-        layout={Layout}
+        formFieldLayoutComponentProps={{
+          label: 'Name',
+        }}
+        formFieldComponentProps={{
+          formElementType: 'input',
+          type           : 'text',
+          placeholder    : 'hi',
+        }}
       />
       <FormField
-        name={'password'}
+        name={'state'}
         formState={formState}
-        component={PasswordField}
-        layout={Layout}
+        formFieldLayoutComponentProps={{
+          label: 'State',
+        }}
+        formFieldComponentProps={{
+          formElementType: 'select',
+          options        : [
+            {label: 'On', value: 'on'},
+            {label: 'Off', value: 'off'},
+          ],
+        }}
       />
       <FormField
-        name={'confirmPassword'}
+        name={'bio'}
         formState={formState}
-        component={PasswordField}
-        layout={Layout}
+        formFieldLayoutComponentProps={{
+          label: 'Bio',
+        }}
+        formFieldComponentProps={{
+          formElementType: 'textarea',
+        }}
       />
       <button disabled={loading || !isFormValid}>
         Submit
@@ -85,7 +83,9 @@ storiesOf('Form', module)
   .add('default', () => {
     const formState = new FormState({
       fields: {
-        name: {
+        state: {},
+        bio  : {},
+        name : {
           validate: (...args) => [
             predicate((value) => value.length > 3, `value must be length 3`),
             predicate((value) => value !== 'sam', `value cannot be the word 'sam'`),

@@ -15,9 +15,9 @@
   // Semantic colors
   --rui-brand    : #D4AFB9;
   --rui-secondary: #0D0A08;
-  --rui-error    : #C67B7D;
-  --rui-warning  : #FFC937;
-  --rui-success  : #21A179;
+  --rui-error    : var(--rui-red);
+  --rui-warning  : var(--rui-yellow);
+  --rui-success  : var(--rui-green);
 
   // Spacing
   --rui-spacing1: 6rem;

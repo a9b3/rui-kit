@@ -1,15 +1,26 @@
-import {observer} from 'mobx-react'
-import PropTypes  from 'prop-types'
-import React      from 'react'
+import {observer}               from 'mobx-react'
+import PropTypes                from 'prop-types'
+import React                    from 'react'
 
-import FormState  from '../FormState.js'
+import FormState                from '../FormState.js'
+
+import FormFieldComponent       from './FormFieldComponent.js'
+import FormFieldLayoutComponent from './FormFieldLayoutComponent.js'
 
 @observer
 export default class FormField extends React.Component {
   static propTypes = {
-    name     : PropTypes.string.isRequired,
-    formState: PropTypes.instanceOf(FormState).isRequired,
-    component: PropTypes.func.isRequired,
+    name                         : PropTypes.string.isRequired,
+    formState                    : PropTypes.instanceOf(FormState).isRequired,
+    formFieldLayoutComponent     : PropTypes.func.isRequired,
+    formFieldLayoutComponentProps: PropTypes.object,
+    formFieldComponent           : PropTypes.func.isRequired,
+    formFieldComponentProps      : PropTypes.object,
+  }
+
+  static defaultProps = {
+    formFieldLayoutComponent: FormFieldLayoutComponent,
+    formFieldComponent      : FormFieldComponent,
   }
 
   handleChange = (event) => {
@@ -22,18 +33,26 @@ export default class FormField extends React.Component {
     const {
       name,
       formState,
-      component: Component,
-      ...rest
+      formFieldLayoutComponent: Layout,
+      formFieldLayoutComponentProps,
+      formFieldComponent: FieldComponent,
+      formFieldComponentProps,
     } = this.props
 
     const formStateField = formState.getFormStateField(name)
 
-    return <Component
-      {...rest}
+    const formElement = <FieldComponent
+      {...formFieldComponentProps}
       value={formStateField.value}
+      onChange={this.handleChange}
+    />
+
+    return <Layout
+      {...formFieldLayoutComponentProps}
+      name={name}
+      formElement={formElement}
       error={formStateField.error}
       modified={formStateField.modified}
-      onChange={this.handleChange}
     />
   }
 }

@@ -6,6 +6,7 @@ import FormStateField from './FormStateField.js'
 export default class FormState {
   formStateFieldsMap = observable.map()
   @observable isFormValid = true
+  @observable isFormModified = false
   @observable error = undefined
   @observable loading = undefined
 
@@ -24,7 +25,7 @@ export default class FormState {
   }
 
   getFormStateField = (name) => {
-    invariant(this.formStateFieldsMap.has(name), `'${name}' is not a field in this form`)
+    invariant(this.formStateFieldsMap.has(name), `'${name}' is not a field in this form, choose from one of '${this.formStateFieldsMap.keys()}'`)
     return this.formStateFieldsMap.get(name)
   }
 
@@ -34,11 +35,22 @@ export default class FormState {
       return obj
     }, {})
 
+  calculate = () => {
+    this.calculateFormValidity()
+    this.calculateFormModified()
+  }
+
   calculateFormValidity = () => {
     this.formStateFieldsMap.forEach(f => f.callValidate())
     this.isFormValid = this.formStateFieldsMap
       .values()
       .every(formStateField => !formStateField.error)
+  }
+
+  calculateFormModified = () => {
+    this.isFormModified = this.formStateFieldsMap
+      .values()
+      .some(formStateField => formStateField.modified)
   }
 
   // meant to be used in Form component only

@@ -37,5 +37,6 @@ export default class FormStateField {
     this.value = value
     this.callValidate()
     this.parent.calculateFormValidity()
+    this.parent.calculate()
   }
 }
