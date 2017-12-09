@@ -39,7 +39,7 @@ class ExampleForm extends React.Component {
         name={'name'}
         formState={formState}
         formFieldLayoutComponentProps={{
-          label: 'Name',
+          label    : 'Name',
         }}
         formFieldComponentProps={{
           formElementType: 'input',

@@ -1,23 +1,24 @@
 .form-field-layout {
   --form-field-layout-padding: var(--rui-spacing4) var(--rui-spacing3);
 
-  display: flex;
-  flex-direction: column;
-}
-
-.header {
-  display: flex;
+  display: grid;
+  grid-template: "label error"
+                 "form form" auto;
 }
 
 .error {
+  grid-area: error;
   color: var(--rui-error);
-  margin-left: auto;
 }
 
 .label {
-
+  grid-area: label;
 }
 
 .form-element {
+  grid-area: form;
+}
+input.form-element,
+textarea.form-element {
   padding: var(--form-field-layout-padding);
 }

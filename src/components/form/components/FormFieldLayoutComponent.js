@@ -9,10 +9,8 @@ export default function FormFieldLayoutComponent({error, modified, formElement, 
     {...rest}
     className={cx(styles['form-field-layout'], rest.className)}
   >
-    <header className={styles.header}>
-      <label className={styles.label} htmlFor={name}>{label}</label>
-      {error && <div className={styles.error}>{error}</div>}
-    </header>
+    <label className={styles.label} htmlFor={name}>{label}</label>
+    {error && <div className={styles.error}>{error}</div>}
     {React.cloneElement(formElement, {
       id       : name,
       className: cx(
