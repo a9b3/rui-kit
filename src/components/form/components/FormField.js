@@ -26,7 +26,11 @@ export default class FormField extends React.Component {
   handleChange = (event) => {
     const {formState, name} = this.props
     const formStateField = formState.getFormStateField(name)
-    formStateField.setValue(event.target.value)
+    formStateField.setValue(
+      event.target.type === 'checkbox'
+        ? event.target.checked
+        : event.target.value
+    )
   }
 
   render() {

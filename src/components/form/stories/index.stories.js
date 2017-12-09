@@ -39,7 +39,7 @@ class ExampleForm extends React.Component {
         name={'name'}
         formState={formState}
         formFieldLayoutComponentProps={{
-          label    : 'Name',
+          label: 'Name',
         }}
         formFieldComponentProps={{
           formElementType: 'input',
@@ -71,6 +71,17 @@ class ExampleForm extends React.Component {
           formElementType: 'textarea',
         }}
       />
+      <FormField
+        name={'checked'}
+        formState={formState}
+        formFieldLayoutComponentProps={{
+          label: 'Checked',
+        }}
+        formFieldComponentProps={{
+          formElementType: 'input',
+          type           : 'checkbox',
+        }}
+      />
       <button disabled={loading || !isFormValid}>
         Submit
       </button>
@@ -83,9 +94,10 @@ storiesOf('Form', module)
   .add('default', () => {
     const formState = new FormState({
       fields: {
-        state: {},
-        bio  : {},
-        name : {
+        checked: {},
+        state  : {},
+        bio    : {},
+        name   : {
           validate: (...args) => [
             predicate((value) => value.length > 3, `value must be length 3`),
             predicate((value) => value !== 'sam', `value cannot be the word 'sam'`),
