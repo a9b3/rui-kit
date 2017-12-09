@@ -1,12 +1,10 @@
 import {withKnobs, select} from '@storybook/addon-knobs'
 import {storiesOf}         from '@storybook/react'
-import {observer}          from 'mobx-react'
 import PropTypes           from 'prop-types'
 import React               from 'react'
 
 import {
   Form,
-  FormField,
   FormFieldComponent,
   FormFieldLayoutComponent,
   FormState,
@@ -33,20 +31,9 @@ import {
     },
   },
 })
-@observer
 class ExampleForm extends React.Component {
   static propTypes = {
     formState: PropTypes.instanceOf(FormState).isRequired,
-  }
-
-  componentDidMount() {
-    const {
-      formState,
-    } = this.props
-
-    formState.setInitialValues({
-      state: 'on',
-    })
   }
 
   handleSubmit = (data) => {
@@ -58,60 +45,49 @@ class ExampleForm extends React.Component {
     const {isFormModified, isFormValid, error, loading} = formState
 
     return <Form
+      initialValues={{
+        name: 'Hello',
+      }}
       onSubmit={this.handleSubmit}
       formState={formState}
-      style={{width: '200px'}}
     >
       {isFormModified && 'form is modified'}
       {!isFormValid && 'form is invalid'}
       {error}
-      <FormField
+
+      <Form.FormField
         name={'name'}
-        formState={formState}
-        formFieldLayoutComponentProps={{
-          label: 'Name',
-        }}
-        formFieldComponentProps={{
-          formElementType: 'input',
-          type           : 'text',
-          placeholder    : 'hi',
-        }}
+        layout={<FormFieldLayoutComponent label={'Name'} />}
+        field={<FormFieldComponent
+          formElementType='input'
+        />}
       />
-      <FormField
-        name={'state'}
-        formState={formState}
-        formFieldLayoutComponentProps={{
-          label: 'State',
-        }}
-        formFieldComponentProps={{
-          formElementType: 'select',
-          options        : [
-            {label: 'On', value: 'on'},
-            {label: 'Off', value: 'off'},
-          ],
-        }}
-      />
-      <FormField
-        name={'bio'}
-        formState={formState}
-        formFieldLayoutComponentProps={{
-          label: 'Bio',
-        }}
-        formFieldComponentProps={{
-          formElementType: 'textarea',
-        }}
-      />
-      <FormField
+      <Form.FormField
         name={'checked'}
-        formState={formState}
-        formFieldLayoutComponentProps={{
-          label: 'Checked',
-        }}
-        formFieldComponentProps={{
-          formElementType: 'input',
-          type           : 'checkbox',
-        }}
+        layout={<FormFieldLayoutComponent label={'Checked'} />}
+        field={<FormFieldComponent
+          formElementType='input'
+          type='checkbox'
+        />}
       />
+      <Form.FormField
+        name={'bio'}
+        layout={<FormFieldLayoutComponent label={'Bio'} />}
+        field={<FormFieldComponent
+          formElementType='textarea'
+        />}
+      />
+      <Form.FormField
+        name={'state'}
+        layout={<FormFieldLayoutComponent label={'State'} />}
+        field={<FormFieldComponent
+          formElementType='select'
+          options={[
+            {label: 'on', value: 'on'},
+          ]}
+        />}
+      />
+
       <button disabled={loading || !isFormValid}>
         Submit
       </button>
@@ -122,9 +98,5 @@ class ExampleForm extends React.Component {
 storiesOf('Form', module)
   .addDecorator(withKnobs)
   .add('default', () => {
-    return <ExampleForm
-      initialValues={{
-        name: 'Sam',
-      }}
-    />
+    return <ExampleForm />
   })

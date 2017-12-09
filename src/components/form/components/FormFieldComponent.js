@@ -5,7 +5,14 @@ import SelectField from './SelectField.js'
 
 const ALLOWED_TYPES = ['input', 'textarea', 'select']
 
-export default function FormFieldComponent({formElementType, value, onChange, ...rest}) {
+export default function FormFieldComponent({
+  formElementType,
+  formFieldProps: {
+    value,
+    onChange,
+  },
+  ...rest
+}) {
   let formElement
   switch(formElementType) {
   case 'input':
@@ -18,15 +25,9 @@ export default function FormFieldComponent({formElementType, value, onChange, ..
     formElement = <SelectField />
     break
   }
-
-  return React.cloneElement(formElement, {
-    ...rest,
-    value,
-    onChange,
-  })
+  return React.cloneElement(formElement, {...rest, value, onChange})
 }
 FormFieldComponent.propTypes = {
   formElementType: PropTypes.oneOf(ALLOWED_TYPES).isRequired,
-  value          : PropTypes.string,
-  onChange       : PropTypes.func,
+  formFieldProps : PropTypes.object,
 }
