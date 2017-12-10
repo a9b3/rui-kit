@@ -3,7 +3,7 @@ import {observer}           from 'mobx-react'
 import PropTypes            from 'prop-types'
 import React                from 'react'
 
-import {CONTEXT_KEY}        from '../constants.js'
+import {CONTEXT_KEY}        from '~/components/form/constants'
 
 export default function withFormState(WrappedComponent) {
   const ObserverWrappedComponent = observer(WrappedComponent)

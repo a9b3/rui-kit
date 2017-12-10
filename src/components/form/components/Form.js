@@ -1,9 +1,9 @@
 import PropTypes     from 'prop-types'
 import React         from 'react'
 
-import FormState     from '../FormState.js'
-import withFormState from '../utils/withFormState.js'
-import FormField     from './FormField.js'
+import FormState     from '~/components/form/FormState'
+import FormField     from '~/components/form/components/FormField'
+import withFormState from '~/components/form/utils/withFormState'
 
 @withFormState
 export default class Form extends React.Component {

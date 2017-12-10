@@ -1,7 +1,7 @@
 import invariant            from 'invariant'
 import {observable, action} from 'mobx'
 
-import FormStateField       from './FormStateField.js'
+import FormStateField       from '~/components/form/FormStateField'
 
 export default class FormState {
   formStateFieldsMap = observable.map()
@@ -12,6 +12,11 @@ export default class FormState {
 
   constructor({fields = {}}) {
     this.setFields(fields)
+  }
+
+  getFormStateField = (name) => {
+    invariant(this.formStateFieldsMap.has(name), `'${name}' is not a field in this form, choose from one of '${this.formStateFieldsMap.keys()}'`)
+    return this.formStateFieldsMap.get(name)
   }
 
   setField = (key, value) => {
@@ -32,11 +37,6 @@ export default class FormState {
     Object.entries(initialValues).forEach(([key, value]) => {
       this.getFormStateField(key).setInitialValue(value)
     })
-  }
-
-  getFormStateField = (name) => {
-    invariant(this.formStateFieldsMap.has(name), `'${name}' is not a field in this form, choose from one of '${this.formStateFieldsMap.keys()}'`)
-    return this.formStateFieldsMap.get(name)
   }
 
   getAllValues = () => this.formStateFieldsMap.entries()

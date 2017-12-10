@@ -6,7 +6,7 @@ import {
 import {storiesOf} from '@storybook/react'
 import React       from 'react'
 
-import RadioGroup  from './RadioGroup.js'
+import RadioGroup from '~/components/form/components/RadioGroup'
 
 function Foo(props) {
   return <div {...props}/>

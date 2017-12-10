@@ -1,7 +1,7 @@
 import PropTypes   from 'prop-types'
 import React       from 'react'
 
-import SelectField from './SelectField.js'
+import SelectField from '~/components/form/components/SelectField'
 
 const ALLOWED_TYPES = ['input', 'textarea', 'select']
 

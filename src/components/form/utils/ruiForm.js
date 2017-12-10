@@ -3,8 +3,8 @@ import {observer}           from 'mobx-react'
 import PropTypes            from 'prop-types'
 import React                from 'react'
 
-import FormState            from '../FormState.js'
-import {CONTEXT_KEY}        from '../constants.js'
+import FormState            from '~/components/form/FormState'
+import {CONTEXT_KEY}        from '~/components/form/constants'
 
 export default function ruiForm({fields}) {
   return WrappedComponent => {

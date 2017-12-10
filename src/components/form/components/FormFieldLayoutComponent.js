@@ -4,7 +4,7 @@ import cx                 from 'classnames'
 import PropTypes          from 'prop-types'
 import React              from 'react'
 
-import FormFieldComponent from './FormFieldComponent.js'
+import FormFieldComponent from '~/components/form/components/FormFieldComponent'
 
 export default function FormFieldLayoutComponent({
   formFieldProps: {

@@ -3,7 +3,7 @@ import {compose}     from 'lodash/fp'
 import PropTypes     from 'prop-types'
 import React         from 'react'
 
-import withFormState from '../utils/withFormState.js'
+import withFormState from '~/components/form/utils/withFormState'
 
 @withFormState
 export default class FormField extends React.Component {

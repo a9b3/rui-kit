@@ -2,7 +2,7 @@ import invariant              from 'invariant'
 import {noop}                 from 'lodash'
 import {observable, computed} from 'mobx'
 
-import FormState              from './FormState.js'
+import FormState              from '~/components/form/FormState'
 
 export default class FormStateField {
   validate          = noop
