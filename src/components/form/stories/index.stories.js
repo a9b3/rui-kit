@@ -8,7 +8,6 @@ import {
   FormField,
   FormFieldLayoutComponent,
   FormFieldComponent,
-  FormState,
   predicate,
   ruiForm,
 }                          from '../index.js'
@@ -34,7 +33,7 @@ import {
 })
 class ExampleForm extends React.Component {
   static propTypes = {
-    formState: PropTypes.instanceOf(FormState).isRequired,
+    formState: PropTypes.object.isRequired,
   }
 
   handleSubmit = (data) => {

@@ -1,7 +1,7 @@
-import invariant      from 'invariant'
-import {observable}   from 'mobx'
+import invariant            from 'invariant'
+import {observable, action} from 'mobx'
 
-import FormStateField from './FormStateField.js'
+import FormStateField       from './FormStateField.js'
 
 export default class FormState {
   formStateFieldsMap = observable.map()
@@ -14,13 +14,17 @@ export default class FormState {
     this.setFields(fields)
   }
 
+  setField = (key, value) => {
+    this.formStateFieldsMap.set(
+      key,
+      new FormStateField({...value, parent: this})
+    )
+  }
+
   setFields = (fields) => {
     Object.entries(fields)
       .forEach(([key, value]) => {
-        this.formStateFieldsMap.set(
-          key,
-          new FormStateField({...value, parent: this})
-        )
+        this.setField(key, value)
       })
   }
 
@@ -41,11 +45,18 @@ export default class FormState {
       return obj
     }, {})
 
+  /*
+   * State methods
+   * sets instance variables
+   */
+
+  @action
   calculate = () => {
     this.calculateFormValidity()
     this.calculateFormModified()
   }
 
+  @action
   calculateFormValidity = () => {
     this.formStateFieldsMap.forEach(f => f.callValidate())
     this.isFormValid = this.formStateFieldsMap
@@ -53,6 +64,7 @@ export default class FormState {
       .every(formStateField => !formStateField.error)
   }
 
+  @action
   calculateFormModified = () => {
     this.isFormModified = this.formStateFieldsMap
       .values()
@@ -60,6 +72,7 @@ export default class FormState {
   }
 
   // meant to be used in Form component only
+  @action
   callOnSubmit = async (onSubmit) => {
     this.loading = true
     this.error = undefined
