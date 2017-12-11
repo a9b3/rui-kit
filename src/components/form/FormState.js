@@ -1,21 +1,32 @@
 import invariant            from 'invariant'
+import {get}                from 'lodash'
 import {observable, action} from 'mobx'
 
 import FormStateField       from '~/components/form/FormStateField'
 
 export default class FormState {
-  formStateFieldsMap = observable.map()
-  @observable isFormValid = true
+  formStateFieldsMap         = observable.map()
+  @observable isFormValid    = true
   @observable isFormModified = false
-  @observable error = undefined
-  @observable loading = undefined
+  @observable submitError    = undefined
+  @observable isSubmitting   = undefined
 
-  constructor({fields = {}}) {
-    this.setFields(fields)
+  get = (path, cursor = this.formStateFieldsMap) => {
+    const tokens = path.split('.')
+    const node = cursor.get(tokens[0])
+    if (!node) {
+      return
+    }
+    if (!tokens.length === 0) {
+      return cursor
+    }
+    return this.get(tokens.slice(1), node)
   }
 
   getFormStateField = (name) => {
-    invariant(this.formStateFieldsMap.has(name), `'${name}' is not a field in this form, choose from one of '${this.formStateFieldsMap.keys()}'`)
+    if (!this.formStateFieldsMap.has(name)) {
+      this.setField(name, undefined)
+    }
     return this.formStateFieldsMap.get(name)
   }
 
@@ -24,19 +35,6 @@ export default class FormState {
       key,
       new FormStateField({...value, parent: this})
     )
-  }
-
-  setFields = (fields) => {
-    Object.entries(fields)
-      .forEach(([key, value]) => {
-        this.setField(key, value)
-      })
-  }
-
-  setInitialValues = (initialValues) => {
-    Object.entries(initialValues).forEach(([key, value]) => {
-      this.getFormStateField(key).setInitialValue(value)
-    })
   }
 
   getAllValues = () => this.formStateFieldsMap.entries()
@@ -74,14 +72,14 @@ export default class FormState {
   // meant to be used in Form component only
   @action
   callOnSubmit = async (onSubmit) => {
-    this.loading = true
-    this.error = undefined
+    this.isSubmitting = true
+    this.submitError = undefined
     try {
       await onSubmit(this.getAllValues())
     } catch (err) {
       console.error(err)
-      this.error = err.message
+      this.submitError = err.message
     }
-    this.loading = false
+    this.isSubmitting = false
   }
 }

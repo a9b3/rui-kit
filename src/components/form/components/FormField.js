@@ -14,6 +14,10 @@ export default class FormField extends React.Component {
     formState: PropTypes.object.isRequired,
   }
 
+  componentWillMount() {
+    const {name, formState} = this.props
+  }
+
   handleChange = (event) => {
     const {name, formState} = this.props
     const formStateField = formState.getFormStateField(name)
