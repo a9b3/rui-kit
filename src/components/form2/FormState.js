@@ -1,3 +1,4 @@
+import {noop}               from 'lodash'
 import {observable, action} from 'mobx'
 
 import types                from './types.js'
@@ -7,9 +8,19 @@ class FormNode {
   parent = undefined
   children = undefined
   _pathDelimiter = '.'
+  validate = noop
+  @observable error = undefined
 
-  constructor({parent} = {}) {
+  constructor({parent, validate = noop} = {}) {
     this.parent = parent
+    this.validate = validate
+  }
+
+  getRoot(cursor = this) {
+    if (!cursor.parent) {
+      return cursor
+    }
+    return this.getRoot(cursor.parent)
   }
 }
 
@@ -23,13 +34,20 @@ class FormValue extends FormNode {
     this.initialValue = initialValue
   }
 
+  @action
+  setValue(value) {
+    this.value = value
+    this.callValidate()
+    this.getRoot().callValidate()
+  }
+
   toJS() {
     return this.value
   }
 
   @action
-  setValue(value) {
-    this.value = value
+  callValidate() {
+    this.error = this.validate(this.value)
   }
 }
 
@@ -43,6 +61,14 @@ class FormMap extends FormNode {
     })
     return obj
   }
+
+  @action
+  callValidate() {
+    this.error = this.validate(this.toJS())
+    this.children.forEach((value) => {
+      value.callValidate()
+    })
+  }
 }
 
 class FormArray extends FormNode {
@@ -50,6 +76,15 @@ class FormArray extends FormNode {
 
   toJS() {
     return this.children.map(child => child.toJS())
+  }
+
+
+  @action
+  callValidate() {
+    this.error = this.validate(this.toJS())
+    this.children.forEach((value) => {
+      value.callValidate()
+    })
   }
 }
 

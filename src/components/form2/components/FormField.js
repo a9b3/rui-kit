@@ -1,4 +1,3 @@
-import cx            from 'classnames'
 import {noop}        from 'lodash'
 import {compose}     from 'lodash/fp'
 import PropTypes     from 'prop-types'
@@ -28,7 +27,10 @@ export default class FormField extends React.Component {
   componentWillMount() {
     const {formState, path, type, fieldArgs} = this.props
     this.formStateField = formState.get(path) || formState.create(path, type, fieldArgs)
-    console.log(formState.toJS())
+  }
+
+  componentWillUpdate() {
+
   }
 
   onChange = (event) => {

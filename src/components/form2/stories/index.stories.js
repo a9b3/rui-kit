@@ -4,6 +4,10 @@ import React                    from 'react'
 
 import {Form, FormField, types} from '../index.js'
 
+const NameFormFieldRender = createFormFieldRender({
+  label: 'Name',
+})
+
 class ExampleForm extends React.Component {
   handleSubmit = (data) => {
     alert(JSON.stringify(data, '  '))
@@ -16,33 +20,24 @@ class ExampleForm extends React.Component {
           path='name'
           type={types.VALUE}
           fieldArgs={{
-            value: 'hi',
+            initialValue: 'hi',
+            validate    : (value, all) => {
+              if (value.length < 4) {
+                return 'length must be more than 4'
+              }
+            },
           }}
           render={
-            ({getInputProps}) => {
-              return <input {...getInputProps()} />
+            ({getInputProps, formStateField}) => {
+              return <div>
+                {formStateField.error}
+                <label>Name</label>
+                <input {...getInputProps()} />
+              </div>
             }
           }
         />
-        <FormField
-          path='bar'
-          type={types.ARRAY}
-          render={
-            ({formStateField}) => {
-              return <FormField
-                path='bar.0'
-                type={types.VALUE}
-                fieldArgs={{
-                  value: 'bye',
-                }}
-                render={
-                  ({getInputProps}) => <input {...getInputProps()} />
-                }
-              />
-            }
-          }
-        />
-        <button>Submit</button>
+        <button type='submit'>Submit</button>
       </Form>
     )
   }
