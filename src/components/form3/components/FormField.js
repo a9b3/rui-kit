@@ -38,6 +38,7 @@ const withFormField = (WrappedComponent) => {
           parent,
           value: initialValue,
           initialValue,
+          path,
         })
       }
     }

@@ -43,7 +43,7 @@ describe('FormNode', () => {
       arr: ['ok'],
     }
     const root = new FormNode({type: FormNode.types.MAP})
-    root.value.foo = root.createChildNodeFromJS(testcase)
+    root.value.foo = root.createChildNodeFromJS(testcase, 'foo')
     const expected = {foo: testcase}
 
     expect(root.toJS()).toEqual(expected)
@@ -56,14 +56,14 @@ describe('FormNode', () => {
       arr: ['ok'],
     }
     const root = new FormNode({type: FormNode.types.MAP})
-    root.value.foo = root.createChildNodeFromJS(testcase)
-    const expected = {foo: {
-      bar: undefined,
-      zed: {
-        x: undefined,
+    root.value.foo = root.createChildNodeFromJS(testcase, 'foo')
+    const expected = {
+      foo: {
+        bar: undefined,
+        zed: {x: undefined},
+        arr: [undefined],
       },
-      arr: [undefined],
-    }}
+    }
 
     root.reset()
     expect(root.toJS()).toEqual(expected)
@@ -76,7 +76,7 @@ describe('FormNode', () => {
       arr: ['ok'],
     }
     const root = new FormNode({type: FormNode.types.MAP})
-    root.value.foo = root.createChildNodeFromJS(testcase)
+    root.value.foo = root.createChildNodeFromJS(testcase, 'foo')
 
     expect(root.find('foo.arr.0').toJS()).toBe('ok')
   })

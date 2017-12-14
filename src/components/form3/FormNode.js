@@ -93,21 +93,30 @@ export default class FormNode {
     })
   }
 
-  createChildNodeFromJS = (value, parent = this) => {
+  createChildNodeFromJS = (value, path, parent = this) => {
     let createdNode
     if (!value.constructor) {
-      createdNode = new FormNode({type: FormNode.types.VALUE, parent, value, initialValue: value})
+      createdNode = new FormNode({type: FormNode.types.VALUE, parent, value, initialValue: value, path})
     } else if (value.constructor === Array) {
-      createdNode = new FormNode({type: FormNode.types.ARRAY, parent})
-      createdNode.value = value.map(val => this.createChildNodeFromJS(val, createdNode))
+      createdNode = new FormNode({type: FormNode.types.ARRAY, parent, path})
+      createdNode.value = value.map((val, i) => this.createChildNodeFromJS(
+        val,
+        [path, i].filter(a => a !== undefined).join('.'),
+        createdNode
+      ))
     } else if (value.constructor === Object) {
-      createdNode = new FormNode({type: FormNode.types.MAP, parent})
+      createdNode = new FormNode({type: FormNode.types.MAP, parent, path})
       createdNode.value = Object.keys(value).reduce((map, key) => {
-        map[key] = this.createChildNodeFromJS(value[key], createdNode)
+        console.log(key, value[key], path)
+        map[key] = this.createChildNodeFromJS(
+          value[key],
+          [path, key].filter(a => a !== undefined).join('.'),
+          createdNode,
+        )
         return map
       }, {})
     } else {
-      createdNode = new FormNode({type: FormNode.types.VALUE, parent, value, initialValue: value})
+      createdNode = new FormNode({type: FormNode.types.VALUE, parent, value, initialValue: value, path})
     }
     return createdNode
   }
