@@ -1,27 +1,30 @@
-import invariant                      from 'invariant'
-import {noop}                         from 'lodash'
 import {computed, observable, action} from 'mobx'
 
 import FormNode                       from './FormNode.js'
 
 export default class FormState extends FormNode {
-  constructor(args) {
-    super({...args, type: FormNode.types.MAP, parent: undefined})
+  @observable submitting  = false
+  @observable submitError = undefined
+
+  constructor({...args}) {
+    super({...args, type: FormNode.types.MAP})
   }
 
-  get(path = '', cursor = this) {
+  @action
+  callOnSubmit = async (onSubmit) => {
+    this.submitting = true
+    this.submitError = undefined
+    try {
+      await onSubmit(this.toJS())
+    } catch (err) {
+      console.error(err)
+      this.submitError = err.message
+    }
+    this.submitting = false
+  }
+
+  getParentPath = (path) => {
     const tokens = path.split('.')
-    if (tokens.length === 0) {
-      return cursor
-    }
-    const nextNode = cursor.value[tokens[0]]
-    if (!nextNode) {
-      return undefined
-    }
-    return this.get(tokens.slice(1), nextNode)
-  }
-
-  create(path) {
-
+    return tokens.slice(0, tokens.length - 1).join('.')
   }
 }

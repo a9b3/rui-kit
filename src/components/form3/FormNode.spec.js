@@ -68,4 +68,16 @@ describe('FormNode', () => {
     root.reset()
     expect(root.toJS()).toEqual(expected)
   })
+
+  it('find()', async () => {
+    const testcase = {
+      bar: 'bar',
+      zed: {x: 'x'},
+      arr: ['ok'],
+    }
+    const root = new FormNode({type: FormNode.types.MAP})
+    root.value.foo = root.createChildNodeFromJS(testcase)
+
+    expect(root.find('foo.arr.0').toJS()).toBe('ok')
+  })
 })

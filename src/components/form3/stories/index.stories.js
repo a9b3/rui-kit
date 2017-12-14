@@ -1,80 +1,21 @@
-import {storiesOf} from '@storybook/react'
-import React       from 'react'
+import {storiesOf}                             from '@storybook/react'
+import React                                   from 'react'
 
-@withFormState
-export default class FormField extends React.Component {
-  formNode = undefined
+import {Form, FormField, FormState, predicate} from '../index.js'
 
-  static propTypes = {
-    type             : PropTypes.string,
-    validate         : PropTypes.func,
-    calculateModified: PropTypes.func,
-    path             : PropTypes.string,
-    formState        : PropTypes.object,
-  }
-
-  componentWillMount() {
-    const {formState, path, type, validate, calculateModified} = this.props
-    this.formNode = formState.create({path, constructorArgs: {type, validate, calculateModified}})
-  }
-
-  componentWillUnmount() {
-    const {formState, path} = this.props
-    formState.remove({path})
-  }
-
-  componentWillUpdate(nextProps) {
-    this.formNode.setInstanceVariables({
-      validate         : nextProps.validate,
-      calculateModified: nextProps.calculateModified,
-    })
-  }
-
-  handleChange = (event) => {
-    this.formNode.setValue(
-      event.target.type === 'checkbox'
-        ? event.target.checked
-        : event.target.value
-    )
-  }
-
-  getInputProps = ({onChange, ...props}) => {
-    return {
-      onChange: compose(onChange, this.handleChange),
-      ...props,
-    }
-  }
-
-  render() {
-    const {render} = this.props
-    return render({
-      getInputProps: this.getInputProps,
-    })
-  }
-}
-
-@ruiForm({
-  schema: {
-    bar: {
-      initialValue: 'hi',
-      validate    : () => {
-
-      },
-    },
-  },
-})
 class ExampleForm extends React.Component {
   handleSubmit = (data) => {
-
+    alert(JSON.stringify(data))
   }
 
   render() {
     return <Form
+      onSubmit={this.handleSubmit}
       initialState={{
-        name: 'sam',
+        name   : 'sam',
         hobbies: [
           {
-            name: 'basketball',
+            name : 'basketball',
             years: 5,
           },
         ],
@@ -87,56 +28,43 @@ class ExampleForm extends React.Component {
         path={'name'}
         type={FormState.types.VALUE}
         formFieldArgs={{
-          validate: (value) => {
-            return 'hi'
-          },
-          calculateModified: (value) => value === 'something',
+          validate: value => predicate(value.length > 4, 'length must be higher than 4'),
         }}
-        render={({getInputProps}) => {
-          return <input {...getInputProps()} />
+        render={({getInputProps, formField}) => {
+          return <div>
+            {formField.validationError}
+            {formField.modified && '*'}
+            <label>Name</label>
+            <input {...getInputProps()} placeholder='hi' />
+
+            <button type='button' onClick={() => formField.reset()}>
+              Reset
+            </button>
+          </div>
         }}
       />
+
       <FormField
-        path={'arr'}
+        path={'hobbies'}
         type={FormState.types.ARRAY}
+        formFieldArgs={{
+          validate: value => { console.log('validate array', value) },
+        }}
         render={({formField}) => {
+          console.log('formfield arr', formField)
           return <div>
-            {
-              formField.value.map(child => {
-                return <div>
-                  <FormField
-                    name={`arr.${i}.name`}
-                    formFieldArgs={{
-                      validate: (value) => {
+            {formField.modified && 'array modified'}
 
-                      },
-                    }}
-                    render={({getInputProps}) => {
-                      return <input {...getInputProps()}/>
-                    }}
-                  />
-                </div>
-              })
-            }
-
-            <button onClick={() => {
-              formField.value.push(formState.createNode({
-                name: 'sam',
-                age : 15,
-              }))
-            }}>Add</button>
-
-            <FormField
-              path={'_temp'}
-              type={FormState.types.MAP}
-              render={() => {
-                return <div>
-                  <FormField
-                    path={'_temp.test'}
-                  />
-                </div>
-              }}
-            />
+            {formField.value.map((f, i) => {
+              return <FormField
+                path={`${f.path}.${i}`}
+                type={FormState.types.MAP}
+                render={({formField}) => {
+                  return <div>
+                  </div>
+                }}
+              />
+            })}
           </div>
         }}
       />
