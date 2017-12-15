@@ -1,7 +1,7 @@
-import {storiesOf}                             from '@storybook/react'
-import React                                   from 'react'
+import {storiesOf}                                      from '@storybook/react'
+import React                                            from 'react'
 
-import {Form, FormField, FormState, predicate} from '../index.js'
+import {ruiForm, Form, FormField, FormState, predicate} from '../index.js'
 
 function Input({getInputProps, formField}) {
   return <div>
@@ -16,27 +16,21 @@ function Input({getInputProps, formField}) {
   </div>
 }
 
+@ruiForm
 class ExampleForm extends React.Component {
   handleSubmit = (data) => {
     alert(JSON.stringify(data))
   }
 
   render() {
+    const {formState} = this.props
+
     return <Form
       onSubmit={this.handleSubmit}
-      initialState={{
-        name   : 'sam',
-        hobbies: [
-          {
-            name : 'basketball',
-            years: 5,
-          },
-        ],
-        info: {
-          age: 10,
-        },
-      }}
     >
+      {JSON.stringify(formState.validationError)}
+      {formState.modified && 'form is modified'}
+
       <FormField
         path={'name'}
         type={FormState.types.VALUE}
@@ -97,12 +91,26 @@ class ExampleForm extends React.Component {
         }}
       />
 
-      <button>hi</button>
+      <button type='button' onClick={() => formState.reset()}>reset</button>
+      <button type='submit'>submit</button>
     </Form>
   }
 }
 
 storiesOf('Form3', module)
   .add('default', () => (
-    <ExampleForm />
+    <ExampleForm
+      initialState={{
+        name   : 'sam',
+        hobbies: [
+          {
+            name : 'basketball',
+            years: 5,
+          },
+        ],
+        info: {
+          age: 10,
+        },
+      }}
+    />
   ))

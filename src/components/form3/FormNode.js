@@ -19,6 +19,9 @@ export default class FormNode {
 
   @computed
   get validationError() {
+    if (this.validate) {
+      return this.validate(this.toJS())
+    }
     return {
       [FormNode.types.ARRAY]: node => node.value.some(n => Boolean(n.validationError)),
       [FormNode.types.MAP]  : node => Object.keys(node.value).some(key => Boolean(node.value[key].validationError)),
