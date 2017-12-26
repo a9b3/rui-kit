@@ -6,8 +6,14 @@ import withFormField from './withFormField.js'
 @withFormField
 export default class FormField extends React.Component {
   static propTypes = {
-    render   : PropTypes.func.isRequired,
-    formField: PropTypes.object.isRequired,
+    render     : PropTypes.func.isRequired,
+    renderProps: PropTypes.object,
+    // props from @withFormField
+    formField  : PropTypes.object.isRequired,
+  }
+
+  static defaultProps = {
+    renderProps: {},
   }
 
   handleChange = (event) => {
@@ -29,7 +35,11 @@ export default class FormField extends React.Component {
   }
 
   render() {
-    const {render, formField} = this.props
-    return render({getInputProps: this.getInputProps, formField})
+    const {render, formField, renderProps} = this.props
+    return render({
+      ...renderProps,
+      getInputProps: this.getInputProps,
+      formField,
+    })
   }
 }

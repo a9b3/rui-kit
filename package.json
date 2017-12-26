@@ -23,6 +23,7 @@
     "jbs-fe": "^0.0.40",
     "js-functions": "^0.0.8",
     "kontinuum-push": "0.2.2",
+    "mobx-react-devtools": "4.2.15",
     "prop-types": "^15.5.10",
     "react": "^16.2.0",
     "react-addons-test-utils": "^15.6.0",

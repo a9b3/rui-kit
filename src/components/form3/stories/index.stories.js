@@ -1,23 +1,23 @@
-import {storiesOf}                                      from '@storybook/react'
-import React                                            from 'react'
+import {storiesOf}              from '@storybook/react'
+import DevTools                 from 'mobx-react-devtools'
+import PropTypes                from 'prop-types'
+import React                    from 'react'
 
-import {ruiForm, Form, FormField, FormState, predicate} from '../index.js'
-
-function Input({getInputProps, formField}) {
-  return <div>
-    {formField.validationError}
-    {formField.modified && '*'}
-    <label>Name</label>
-    <input {...getInputProps()} placeholder='hi' />
-
-    <button type='button' onClick={() => formField.reset()}>
-      Reset
-    </button>
-  </div>
-}
+import FormFieldLayoutComponent from '../components/FormFieldComponent/FormFieldLayoutComponent.js'
+import {
+  ruiForm,
+  Form,
+  FormField,
+  FormState,
+  predicate,
+}                               from '../index.js'
 
 @ruiForm
 class ExampleForm extends React.Component {
+  static propTypes = {
+    formState: PropTypes.object,
+  }
+
   handleSubmit = (data) => {
     alert(JSON.stringify(data))
   }
@@ -35,24 +35,70 @@ class ExampleForm extends React.Component {
         path={'name'}
         type={FormState.types.VALUE}
         formFieldArgs={{
-          validate: value => predicate(value.length > 4, 'length must be higher than 4'),
+          validate: (value = '') => predicate(value.length > 4, 'length must be higher than 4'),
         }}
-        render={Input}
+        renderProps={{
+          label                  : 'Name',
+          formFieldComponentProps: {
+            formElementType: 'input',
+          },
+        }}
+        render={FormFieldLayoutComponent}
+      />
+
+      <FormField
+        path={'bio'}
+        type={FormState.types.VALUE}
+        formFieldArgs={{
+          validate: (value = '') => predicate(value.length > 4, 'length must be higher than 4'),
+        }}
+        renderProps={{
+          label                  : 'Bio',
+          formFieldComponentProps: {
+            formElementType: 'textarea',
+          },
+        }}
+        render={FormFieldLayoutComponent}
+      />
+
+      <FormField
+        path={'race'}
+        type={FormState.types.VALUE}
+        formFieldArgs={{
+          validate: (value = '') => predicate(value.length > 4, 'length must be higher than 4'),
+        }}
+        renderProps={{
+          label                  : 'Race',
+          formFieldComponentProps: {
+            formElementType: 'select',
+            options        : [
+              {label: 'Mickey', value: 'mickey'},
+              {label: 'Donald', value: 'donald'},
+            ],
+          },
+        }}
+        render={FormFieldLayoutComponent}
       />
 
       <FormField
         path={'info'}
         type={FormState.types.MAP}
         render={
-          ({formField}) => {
-            return <div>
+          ({formField}) => (
+            <div>
               <FormField
                 path={`${formField.path}.age`}
                 type={FormState.types.VALUE}
-                render={Input}
+                renderProps={{
+                  label                  : 'Age',
+                  formFieldComponentProps: {
+                    formElementType: 'textarea',
+                  },
+                }}
+                render={FormFieldLayoutComponent}
               />
             </div>
-          }
+          )
         }
       />
 
@@ -60,33 +106,66 @@ class ExampleForm extends React.Component {
         path={'hobbies'}
         type={FormState.types.ARRAY}
         formFieldArgs={{
-          validate: value => { console.log('validate array', value) },
+          validate: (value = '') => { console.log('validate array', value) },
         }}
         render={({formField}) => {
           return <div>
             {formField.modified && 'array modified'}
 
-            {formField.value.map((arrItem) => {
+            {formField.value.map((arrItem, index) => {
               return <FormField
                 key={`${arrItem.path}`}
                 path={`${arrItem.path}`}
                 type={FormState.types.MAP}
+                formFieldArgs={{
+                  validate: (value = '') => {
+                    console.log(value)
+                  },
+                }}
                 render={({formField: mapFormField}) => {
                   return <div>
                     <FormField
                       path={`${mapFormField.path}.name`}
                       type={FormState.types.VALUE}
-                      render={Input}
+                      renderProps={{
+                        label                  : 'Name',
+                        formFieldComponentProps: {
+                          formElementType: 'input',
+                        },
+                      }}
+                      render={FormFieldLayoutComponent}
                     />
                     <FormField
                       path={`${mapFormField.path}.years`}
                       type={FormState.types.VALUE}
-                      render={Input}
+                      renderProps={{
+                        label                  : 'Years',
+                        formFieldComponentProps: {
+                          formElementType: 'input',
+                        },
+                      }}
+                      render={FormFieldLayoutComponent}
                     />
+                    <button type='button' onClick={() => {
+                      formField.value.splice(index, 1)
+                    }}>
+                      Remove
+                    </button>
                   </div>
                 }}
               />
             })}
+
+            <button type='button' onClick={() => {
+              formField.value.push(
+                formField.createChildNode({
+                  type: FormState.types.MAP,
+                  path: `${formField.path}.${formField.value.length}`,
+                })
+              )
+            }}>
+              Add
+            </button>
           </div>
         }}
       />
@@ -97,20 +176,23 @@ class ExampleForm extends React.Component {
   }
 }
 
+const exampleInitialState = {
+  name   : 'sam',
+  hobbies: [
+    {
+      name : 'basketball',
+      years: 5,
+    },
+  ],
+  info: {
+    age: 10,
+  },
+}
+
 storiesOf('Form3', module)
   .add('default', () => (
-    <ExampleForm
-      initialState={{
-        name   : 'sam',
-        hobbies: [
-          {
-            name : 'basketball',
-            years: 5,
-          },
-        ],
-        info: {
-          age: 10,
-        },
-      }}
-    />
+    <span>
+      <DevTools />
+      <ExampleForm/>
+    </span>
   ))
