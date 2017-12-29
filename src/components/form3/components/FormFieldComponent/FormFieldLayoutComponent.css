@@ -10,10 +10,14 @@
   grid-area: error;
   text-align: right;
   color: var(--rui-error);
+  padding: 10px;
+  font-size: .8em;
 }
 
 .label {
   grid-area: label;
+  font-weight: 500;
+  padding: 10px;
 }
 
 .form-element {

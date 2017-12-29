@@ -1,16 +1,16 @@
-import {storiesOf}              from '@storybook/react'
-import DevTools                 from 'mobx-react-devtools'
-import PropTypes                from 'prop-types'
-import React                    from 'react'
+import {storiesOf}        from '@storybook/react'
+import DevTools           from 'mobx-react-devtools'
+import PropTypes          from 'prop-types'
+import React              from 'react'
 
-import FormFieldLayoutComponent from '../components/FormFieldComponent/FormFieldLayoutComponent.js'
 import {
   ruiForm,
   Form,
   FormField,
   FormState,
+  FormFieldLayoutComponent,
   predicate,
-}                               from '../index.js'
+}                         from '../index.js'
 
 @ruiForm
 class ExampleForm extends React.Component {

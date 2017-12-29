@@ -45,8 +45,11 @@ export default function FormFieldLayoutComponent({
   </div>
 }
 FormFieldLayoutComponent.propTypes = {
-  getInputProps          : PropTypes.func.isRequired,
-  formField              : PropTypes.object.isRequired,
+  getInputProps: PropTypes.func.isRequired,
+  formField    : PropTypes.shape({
+    modified       : PropTypes.bool.isRequired,
+    validationError: PropTypes.string,
+  }).isRequired,
   label                  : PropTypes.string,
   path                   : PropTypes.string,
   formFieldComponentProps: PropTypes.object,
