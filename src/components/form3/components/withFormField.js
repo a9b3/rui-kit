@@ -43,12 +43,6 @@ export default function withFormField(WrappedComponent) {
       }
     }
 
-    componentWillUpdate(nextProps) {
-      // if (nextProps.formFieldArgs !== this.props.formFieldArgs) {
-      //   this.getFormField().setInstanceVariables(nextProps.formFieldArgs)
-      // }
-    }
-
     getFormField() {
       const {path} = this.props
       const {formState} = this.context
@@ -66,7 +60,12 @@ export default function withFormField(WrappedComponent) {
     }
 
     render() {
-      return <ObserverWrappedComponent {...this.props} formField={this.getFormField()}/>
+      return (
+        <ObserverWrappedComponent
+          {...this.props}
+          formField={this.getFormField()}
+        />
+      )
     }
   }
 }

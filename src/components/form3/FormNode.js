@@ -22,15 +22,11 @@ export default class FormNode {
       return this.validate(this.toJS())
     }
     return {
-      [FormNode.types.ARRAY]: node => {
-        return node.value.some(n => Boolean(n.validationError))
-      },
-      [FormNode.types.MAP]: node => {
-        return Object.keys(node.value).some(key => Boolean(node.value[key].validationError))
-      },
-      [FormNode.types.VALUE]: node => {
-        return node.validate(node.toJS())
-      },
+      [FormNode.types.ARRAY]: node => node.value
+        .some(n => Boolean(n.validationError)),
+      [FormNode.types.MAP]: node => Object.keys(node.value)
+        .some(key => Boolean(node.value[key].validationError)),
+      [FormNode.types.VALUE]: node => node.validate(node.toJS()),
     }[this.type](this)
   }
 
@@ -38,7 +34,8 @@ export default class FormNode {
   get modified() {
     return {
       [FormNode.types.ARRAY]: node => node.value.some(n => n.modified),
-      [FormNode.types.MAP]  : node => Object.keys(node.value).some(key => node.value[key].modified),
+      [FormNode.types.MAP]  : node => Object.keys(node.value)
+        .some(key => node.value[key].modified),
       [FormNode.types.VALUE]: node => node.toJS() !== node.initialValue,
     }[this.type](this)
   }

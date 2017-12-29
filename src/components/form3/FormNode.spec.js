@@ -6,7 +6,11 @@ import FormNode  from './FormNode.js'
 describe('FormNode', () => {
   it('tree construction', async () => {
     const root = new FormNode({type: FormNode.types.MAP})
-    root.value.foo = new FormNode({type: FormNode.types.VALUE, parent: root, value: 'testing'})
+    root.value.foo = new FormNode({
+      type  : FormNode.types.VALUE,
+      parent: root,
+      value : 'testing',
+    })
     root.value.bar = new FormNode({
       type    : FormNode.types.VALUE,
       parent  : root,
@@ -18,10 +22,21 @@ describe('FormNode', () => {
         return false
       },
     })
-    root.value.zed = new FormNode({type: FormNode.types.ARRAY, parent: root})
-    root.value.zed.value.push(new FormNode({type: FormNode.types.VALUE, parent: root.value.zed, value: 'hi'}))
+    root.value.zed = new FormNode({
+      type  : FormNode.types.ARRAY,
+      parent: root,
+    })
+    root.value.zed.value.push(new FormNode({
+      type  : FormNode.types.VALUE,
+      parent: root.value.zed,
+      value : 'hi',
+    }))
     root.value.map = new FormNode({type: FormNode.types.MAP, parent: root})
-    root.value.map.value.inner = new FormNode({type: FormNode.types.VALUE, parent: root.value.map, value: 'inner'})
+    root.value.map.value.inner = new FormNode({
+      type  : FormNode.types.VALUE,
+      parent: root.value.map,
+      value : 'inner',
+    })
     const expected = {
       foo: 'testing',
       bar: 'bar',
