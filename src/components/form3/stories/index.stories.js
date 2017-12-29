@@ -190,8 +190,7 @@ const exampleInitialState = {
 
 storiesOf('Form3', module)
   .add('default', () => (
-    <span>
-      <DevTools />
+    <div style={{width: '500px'}}>
       <ExampleForm/>
-    </span>
+    </div>
   ))
