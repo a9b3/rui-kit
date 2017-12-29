@@ -9,7 +9,7 @@ export default class FormField extends React.Component {
     render     : PropTypes.func.isRequired,
     renderProps: PropTypes.object,
     // props from @withFormField
-    formField  : PropTypes.object.isRequired,
+    formField  : PropTypes.object,
   }
 
   static defaultProps = {
@@ -36,6 +36,9 @@ export default class FormField extends React.Component {
 
   render() {
     const {render, formField, renderProps} = this.props
+    if (!formField) {
+      return null
+    }
     return render({
       ...renderProps,
       getInputProps: this.getInputProps,

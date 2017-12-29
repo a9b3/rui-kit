@@ -44,7 +44,9 @@ export default function withFormField(WrappedComponent) {
     }
 
     componentWillUpdate(nextProps) {
-      this.getFormField().setInstanceVariables(nextProps.formFieldArgs)
+      // if (nextProps.formFieldArgs !== this.props.formFieldArgs) {
+      //   this.getFormField().setInstanceVariables(nextProps.formFieldArgs)
+      // }
     }
 
     getFormField() {

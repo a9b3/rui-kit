@@ -109,13 +109,16 @@ class ExampleForm extends React.Component {
           validate: (value = '') => { console.log('validate array', value) },
         }}
         render={({formField}) => {
+          console.log(`ARR`, formField.value.length)
           return <div>
             {formField.modified && 'array modified'}
 
             {formField.value.map((arrItem, index) => {
+              console.log(`looping ${arrItem.path}`)
+              console.log(`looping ${formField.path}.${index}`)
               return <FormField
-                key={`${arrItem.path}`}
-                path={`${arrItem.path}`}
+                key={`${formField.path}.${index}`}
+                path={`${formField.path}.${index}`}
                 type={FormState.types.MAP}
                 formFieldArgs={{
                   validate: (value = '') => {
@@ -123,9 +126,13 @@ class ExampleForm extends React.Component {
                   },
                 }}
                 render={({formField: mapFormField}) => {
+                  console.log(`rendering arr item ${mapFormField.path}`)
                   return <div>
+                    <h3>
+                      {arrItem.path}
+                    </h3>
                     <FormField
-                      path={`${mapFormField.path}.name`}
+                      path={`${formField.path}.${index}.name`}
                       type={FormState.types.VALUE}
                       renderProps={{
                         label                  : 'Name',
@@ -136,7 +143,7 @@ class ExampleForm extends React.Component {
                       render={FormFieldLayoutComponent}
                     />
                     <FormField
-                      path={`${mapFormField.path}.years`}
+                      path={`${formField.path}.${index}.years`}
                       type={FormState.types.VALUE}
                       renderProps={{
                         label                  : 'Years',
