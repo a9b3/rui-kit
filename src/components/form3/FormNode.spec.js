@@ -43,7 +43,7 @@ describe('FormNode', () => {
       arr: ['ok'],
     }
     const root = new FormNode({type: FormNode.types.MAP})
-    root.value.foo = root.createChildNodeFromJS(testcase, 'foo')
+    root.value.foo = root.createChildNodeFromJS(testcase)
     const expected = {foo: testcase}
 
     expect(root.toJS()).toEqual(expected)
@@ -51,17 +51,18 @@ describe('FormNode', () => {
 
   it('reset()', async () => {
     const testcase = {
-      bar: 'bar',
-      zed: {x: 'x'},
-      arr: ['ok'],
+      bar: '',
+      zed: {x: ''},
+      arr: [''],
     }
     const root = new FormNode({type: FormNode.types.MAP})
-    root.value.foo = root.createChildNodeFromJS(testcase, 'foo')
+    root.value.foo = root.createChildNodeFromJS(testcase)
+    root.value.foo.value.bar.value = 'asd'
     const expected = {
       foo: {
-        bar: undefined,
-        zed: {x: undefined},
-        arr: [undefined],
+        bar: '',
+        zed: {x: ''},
+        arr: [''],
       },
     }
 
@@ -76,7 +77,7 @@ describe('FormNode', () => {
       arr: ['ok'],
     }
     const root = new FormNode({type: FormNode.types.MAP})
-    root.value.foo = root.createChildNodeFromJS(testcase, 'foo')
+    root.value.foo = root.createChildNodeFromJS(testcase)
 
     expect(root.find('foo.arr.0').toJS()).toBe('ok')
   })

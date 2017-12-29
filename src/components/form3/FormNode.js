@@ -9,7 +9,6 @@ export default class FormNode {
     VALUE: 'value',
   }
 
-  path                                 = undefined
   parent                               = undefined
   type                                 = undefined
   // (value: any): string || undefined
@@ -48,14 +47,13 @@ export default class FormNode {
    * Public API
    *********************/
 
-  constructor({type, path, parent, ...args} = {}) {
+  constructor({type, parent, ...args} = {}) {
     invariant(
       Object.values(FormNode.types).includes(type),
       `'type' must be one of ${Object.values(FormNode.types)}`
     )
 
     this.parent = parent
-    this.path = path
     this.type   = type
     const initializeValue = {
       [FormNode.types.ARRAY]: () => this.value = [],
@@ -71,12 +69,10 @@ export default class FormNode {
     validate     = this.validate,
     value        = this.value,
     initialValue = this.initialValue,
-    path         = this.path,
   } = {}) => {
     this.validate     = validate
     this.value        = value
     this.initialValue = initialValue
-    this.path         = path
   }
 
   @action
@@ -88,8 +84,8 @@ export default class FormNode {
 
   reset = (node = this) => {
     this._mapOverNodeValue(node, {
-      [FormNode.types.ARRAY]: n => this.reset(n),
-      [FormNode.types.MAP]  : n => this.reset(n),
+      [FormNode.types.ARRAY]: n => n.reset(n),
+      [FormNode.types.MAP]  : n => n.reset(n),
       [FormNode.types.VALUE]: n => n.setValue(n.initialValue),
     })
   }
@@ -102,32 +98,39 @@ export default class FormNode {
     })
   }
 
-  createChildNodeFromJS = (value, path, parent = this) => {
+  /**
+   * createChildNodeFromJS recursively instantiates FormNodes
+   */
+  createChildNodeFromJS = (value, parent = this) => {
+    invariant(
+      parent.type !== FormNode.types.VALUE,
+      `createChildNodeFromJS: FormNode of type VALUE cannot have child FormNodes`,
+    )
     let createdNode
-    if (!value.constructor) {
-      createdNode = new FormNode({type: FormNode.types.VALUE, parent, value, initialValue: value, path})
-    } else if (value.constructor === Array) {
-      createdNode = new FormNode({type: FormNode.types.ARRAY, parent, path})
-      createdNode.value = value.map((val, i) => this.createChildNodeFromJS(
-        val,
-        [path, i].filter(a => a !== undefined).join('.'),
-        createdNode
-      ))
+    if (value.constructor === Array) {
+      createdNode = new FormNode({parent, type: FormNode.types.ARRAY})
+      createdNode.value = value.map(
+        (val) => this.createChildNodeFromJS(val, createdNode)
+      )
     } else if (value.constructor === Object) {
-      createdNode = new FormNode({type: FormNode.types.MAP, parent, path})
-      createdNode.value = Object.keys(value).reduce((map, key) => {
-        console.log(key, value[key], path)
-        map[key] = this.createChildNodeFromJS(
-          value[key],
-          [path, key].filter(a => a !== undefined).join('.'),
-          createdNode,
-        )
-        return map
-      }, {})
+      createdNode = new FormNode({parent, type: FormNode.types.MAP})
+      createdNode.value = Object.entries(value)
+        .reduce((map, [key, val]) => Object.assign(map, {
+          [key]: this.createChildNodeFromJS(val, createdNode),
+        }), {})
     } else {
-      createdNode = new FormNode({type: FormNode.types.VALUE, parent, value, initialValue: value, path})
+      createdNode = new FormNode({
+        parent,
+        value,
+        type        : FormNode.types.VALUE,
+        initialValue: value,
+      })
     }
     return createdNode
+  }
+
+  createChildNode = (opts) => {
+    return new FormNode({...opts, parent: this})
   }
 
   find = (path = '', cursor = this) => {
@@ -142,10 +145,6 @@ export default class FormNode {
     return this.find(tokens.slice(1).join('.'), nextNode)
   }
 
-  createChildNode = (opts) => {
-    return new FormNode({...opts, parent: this})
-  }
-
   /*********************
    * Util functions
    *********************/
@@ -155,12 +154,11 @@ export default class FormNode {
     case FormNode.types.ARRAY:
       return node.value.map(obj[FormNode.types.ARRAY])
     case FormNode.types.MAP:
-      return Object.keys(node.value)
-        .reduce((map, key) => {
-          map[key] = obj[FormNode.types.MAP](node.value[key], key)
-
-          return map
-        }, {})
+      return Object.entries(node.value)
+        .reduce((map, [key, value]) => ({
+          ...map,
+          [key]: obj[FormNode.types.MAP](value, key),
+        }), {})
     case FormNode.types.VALUE:
       return obj[FormNode.types.VALUE](node)
     }

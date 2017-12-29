@@ -87,7 +87,7 @@ class ExampleForm extends React.Component {
           ({formField}) => (
             <div>
               <FormField
-                path={`${formField.path}.age`}
+                path={`info.age`}
                 type={FormState.types.VALUE}
                 renderProps={{
                   label                  : 'Age',
@@ -109,16 +109,13 @@ class ExampleForm extends React.Component {
           validate: (value = '') => { console.log('validate array', value) },
         }}
         render={({formField}) => {
-          console.log(`ARR`, formField.value.length)
           return <div>
             {formField.modified && 'array modified'}
 
             {formField.value.map((arrItem, index) => {
-              console.log(`looping ${arrItem.path}`)
-              console.log(`looping ${formField.path}.${index}`)
               return <FormField
-                key={`${formField.path}.${index}`}
-                path={`${formField.path}.${index}`}
+                key={`hobbies.${index}`}
+                path={`hobbies.${index}`}
                 type={FormState.types.MAP}
                 formFieldArgs={{
                   validate: (value = '') => {
@@ -126,13 +123,9 @@ class ExampleForm extends React.Component {
                   },
                 }}
                 render={({formField: mapFormField}) => {
-                  console.log(`rendering arr item ${mapFormField.path}`)
                   return <div>
-                    <h3>
-                      {arrItem.path}
-                    </h3>
                     <FormField
-                      path={`${formField.path}.${index}.name`}
+                      path={`hobbies.${index}.name`}
                       type={FormState.types.VALUE}
                       renderProps={{
                         label                  : 'Name',
@@ -143,7 +136,7 @@ class ExampleForm extends React.Component {
                       render={FormFieldLayoutComponent}
                     />
                     <FormField
-                      path={`${formField.path}.${index}.years`}
+                      path={`hobbies.${index}.years`}
                       type={FormState.types.VALUE}
                       renderProps={{
                         label                  : 'Years',
@@ -167,7 +160,6 @@ class ExampleForm extends React.Component {
               formField.value.push(
                 formField.createChildNode({
                   type: FormState.types.MAP,
-                  path: `${formField.path}.${formField.value.length}`,
                 })
               )
             }}>

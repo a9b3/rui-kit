@@ -60,7 +60,7 @@ export default function withFormField(WrappedComponent) {
       const {formState} = this.context
       const parent = formState.find(formState.getParentPath(path))
       if (!parent) {
-        throw new Error(`'parent doesn't exist`)
+        throw new Error(`parent doesn't exist ${formState.getParentPath(path)}`)
       }
       return parent
     }
