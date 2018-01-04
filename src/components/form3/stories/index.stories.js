@@ -127,6 +127,9 @@ class ExampleForm extends React.Component {
                     <FormField
                       path={`hobbies.${index}.name`}
                       type={FormState.types.VALUE}
+                      formFieldArgs={{
+                        initialValue: 'sam',
+                      }}
                       renderProps={{
                         label                  : 'Name',
                         formFieldComponentProps: {
@@ -157,11 +160,9 @@ class ExampleForm extends React.Component {
             })}
 
             <button type='button' onClick={() => {
-              formField.value.push(
-                formField.createChildNode({
-                  type: FormState.types.MAP,
-                })
-              )
+              formField.value.push(formField.createChildNode({
+                type: FormState.types.MAP,
+              }))
             }}>
               Add
             </button>

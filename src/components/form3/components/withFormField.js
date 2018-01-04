@@ -31,14 +31,13 @@ export default function withFormField(WrappedComponent) {
       const {formState, initialState} = this.context
       if (!formState.find(path)) {
         const parent = this.getFormFieldParent()
-        const initialValue = get(initialState, path)
+        const initialValue = get(initialState, path) || formFieldArgs.initialValue
         parent.value[path.split('.').pop()] = new FormNode({
           ...formFieldArgs,
-          type,
-          parent,
           value: initialValue,
           initialValue,
-          path,
+          parent,
+          type,
         })
       }
     }

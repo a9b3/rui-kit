@@ -130,6 +130,12 @@ export default class FormNode {
     return new FormNode({...opts, parent: this})
   }
 
+  /**
+   * find will return a descendant FormNode
+   *
+   * @param {string} path
+   * @returns {FormNode}
+   */
   find = (path = '', cursor = this) => {
     const tokens = path.split('.').filter(Boolean)
     if (tokens.length === 0) {
