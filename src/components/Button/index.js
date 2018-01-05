@@ -44,25 +44,30 @@ export default class Button extends React.PureComponent {
 
     const attr = {
       ...rest,
-      className: cx(styles.button, rest.className, styles[type], {
-        [styles.disabled]: loading || disabled,
-      }),
+      className: cx(
+        styles.button,
+        rest.className,
+        styles[type],
+        {[styles.disabled]: loading || disabled},
+      ),
       style: {
         ['--button-color']: rgb,
         ...rest.style,
       },
       onClick : this.handleClick,
-      href,
       disabled: loading || disabled,
+      href,
     }
 
     const content = <div>
-      <LoadingOverlay show={loading} rgb={type === BUTTON_TYPES.filled ? '255, 255, 255' : rgb} />
+      <LoadingOverlay
+        show={loading}
+        rgb={type === BUTTON_TYPES.filled ? '255, 255, 255' : rgb}
+      />
       <span style={{opacity: loading ? '0' : '1'}}>
         {children}
       </span>
     </div>
-
     if (href) {
       return <a {...attr}> {content} </a>
     }
