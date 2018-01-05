@@ -6,23 +6,20 @@ import React     from 'react'
 
 import Loading   from '~/components/Loading'
 
-export default function LoadingOverlay({
-  show,
-  rgb,
-  ...rest
-}) {
+export default function LoadingOverlay({show, rgb, ...props}) {
   if (!show) return null
 
   return <div
-    {...rest}
-    className={cx(styles['loading-overlay'], rest.className)}
+    {...props}
+    className={cx(styles['loading-overlay'], props.className)}
   >
     <Loading rgb={rgb} show={show} />
   </div>
 }
 LoadingOverlay.propTypes = {
-  show: PropTypes.bool,
-  rgb : PropTypes.string,
+  show     : PropTypes.bool,
+  rgb      : PropTypes.string,
+  className: PropTypes.string,
 }
 LoadingOverlay.defaultProps = {
   show: false,

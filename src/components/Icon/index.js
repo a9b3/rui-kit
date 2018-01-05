@@ -11,7 +11,7 @@ export const ICONS = {
   chevron,
 }
 
-export default function Icon({type, ...rest}) {
+export default function Icon({type, ...props}) {
   const selectedSvg = ICONS[type]
   if (!selectedSvg) {
     return null
@@ -19,8 +19,8 @@ export default function Icon({type, ...rest}) {
 
   return <svg
     viewBox={selectedSvg.viewBox}
-    {...rest}
-    className={cx(styles.svg, rest.className)}
+    {...props}
+    className={cx(styles.svg, props.className)}
   >
     <use
       xlinkHref={`#${selectedSvg.id}`}
@@ -30,5 +30,6 @@ export default function Icon({type, ...rest}) {
   </svg>
 }
 Icon.propTypes = {
-  type: PropTypes.oneOf(Object.keys(ICONS)).isRequired,
+  type     : PropTypes.oneOf(Object.keys(ICONS)).isRequired,
+  className: PropTypes.string,
 }
