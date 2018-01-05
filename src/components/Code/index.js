@@ -4,7 +4,7 @@ import cx              from 'classnames'
 import PropTypes       from 'prop-types'
 import React           from 'react'
 
-import {highlightCode} from '~/utils/highlight'
+import {highlightCode} from './utils'
 
 export default class Code extends React.Component {
   _codeEl = undefined
@@ -23,7 +23,7 @@ export default class Code extends React.Component {
     theme: 'tomorrow-night-eighties',
   }
 
-  componentWillUpdate() {
+  componentDidUpdate() {
     this.highlightCode()
   }
 
@@ -34,16 +34,16 @@ export default class Code extends React.Component {
 
   render() {
     const {
-      type,
       codeAttr = {},
       children,
       theme,  // eslint-disable-line
-      ...rest
+      type,
+      ...props
     } = this.props
 
     return <pre
-      {...rest}
-      className={cx(styles.pre, rest.className)}
+      {...props}
+      className={cx(styles.pre, props.className)}
       ref={el => this._codeEl = el}
     >
       <code

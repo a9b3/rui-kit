@@ -1,4 +1,4 @@
-import highlight from 'highlight.js'
+import hljs from 'highlight.js'
 
 export const highlightCode = (() => {
   const loaded = {}
@@ -10,7 +10,7 @@ export const highlightCode = (() => {
     }
     const codeBlocks = rootElement.getElementsByTagName('code')
     for (let i = 0; i < codeBlocks.length; i++) {
-      highlight.highlightBlock(codeBlocks[i])
+      hljs.highlightBlock(codeBlocks[i])
     }
   }
 })()
