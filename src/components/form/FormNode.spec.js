@@ -1,7 +1,6 @@
-import expect    from 'expect'
-import {isEqual} from 'lodash'
+import expect   from 'expect'
 
-import FormNode  from './FormNode.js'
+import FormNode from './FormNode.js'
 
 describe('FormNode', () => {
   it('tree construction', async () => {
@@ -15,10 +14,10 @@ describe('FormNode', () => {
       type    : FormNode.types.VALUE,
       parent  : root,
       value   : 'bar',
-      validate: (value) => {
+      validate: () => {
         return 'hi'
       },
-      calculateModified: (value) => {
+      calculateModified: () => {
         return false
       },
     })

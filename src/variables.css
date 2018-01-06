@@ -1,37 +1,37 @@
-:root {
+:global .rui {
   // Colors
-  --rui-white     : #ffffff;
-  --rui-black     : #000000;
-  --rui-gray      : #363732;
-  --rui-lightgray : #DCE1E9;
-  --rui-cyan      : #81D2C7;
-  --rui-blue      : #66C3FF;
-  --rui-yellow    : #FFC937;
-  --rui-pink      : #D4AFB9;
-  --rui-green     : #21A179;
-  --rui-red       : #C67B7D;
-  --rui-slate     : #2e3d49;
+  --white     : #ffffff;
+  --black     : #000000;
+  --gray      : #363732;
+  --lightgray : #DCE1E9;
+  --cyan      : #81D2C7;
+  --blue      : #66C3FF;
+  --yellow    : #FFC937;
+  --pink      : #D4AFB9;
+  --green     : #21A179;
+  --red       : #C67B7D;
+  --slate     : #2e3d49;
 
   // Semantic colors
-  --rui-brand    : #D4AFB9;
-  --rui-secondary: #0D0A08;
-  --rui-error    : var(--rui-red);
-  --rui-warning  : var(--rui-yellow);
-  --rui-success  : var(--rui-green);
+  --brand    : #D4AFB9;
+  --secondary: #0D0A08;
+  --error    : var(--red);
+  --warning  : var(--yellow);
+  --success  : var(--green);
 
   // Spacing
-  --rui-spacing1: 6rem;
-  --rui-spacing2: 4rem;
-  --rui-spacing3: 2rem;
-  --rui-spacing4: 1rem;
-  --rui-spacing5: .6rem;
-  --rui-spacing6: .4rem;
+  --spacing1: 6rem;
+  --spacing2: 4rem;
+  --spacing3: 2rem;
+  --spacing4: 1rem;
+  --spacing5: .6rem;
+  --spacing6: .4rem;
 
   // Font
-  --rui-size1: 3em;
-  --rui-size2: 2.25em;
-  --rui-size3: 1.75em;
-  --rui-size4: 1.125em;
-  --rui-size5: 1em;
-  --rui-size6: .8em;
+  --size1: 3em;
+  --size2: 2.25em;
+  --size3: 1.75em;
+  --size4: 1.125em;
+  --size5: 1em;
+  --size6: .8em;
 }

@@ -3,7 +3,7 @@
 }
 
 .code {
-  padding: var(--rui-spacing4) var(--rui-spacing3) !important;
+  padding: var(--spacing4) var(--spacing3) !important;
   line-height: 1.4;
   font-size: .8em;
   font-family: monospace;

@@ -1,5 +1,5 @@
 .form-field-layout {
-  --form-field-layout-padding: var(--rui-spacing4) var(--rui-spacing3);
+  --form-field-layout-padding: var(--spacing4) var(--spacing3);
 
   display: grid;
   grid-template: "label error"
@@ -9,7 +9,7 @@
 .error {
   grid-area: error;
   text-align: right;
-  color: var(--rui-error);
+  color: var(--error);
   padding: 10px;
   font-size: .8em;
 }

@@ -7,7 +7,7 @@
   box-shadow: 0 2px 4px rgba(var(--button-shadow-color), .1);
   cursor: pointer;
   opacity: 1;
-  padding: var(--rui-spacing5) var(--rui-spacing3);
+  padding: var(--spacing5) var(--spacing3);
   position: relative;
   text-align: center;
   transition: all .3s;

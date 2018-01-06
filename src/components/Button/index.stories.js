@@ -12,13 +12,15 @@ import {timeoutAsync} from '~/utils/testHelpers'
 storiesOf('Button', module)
   .addDecorator(withKnobs)
   .add('default', () => {
-    return <Button
-      type={select('type', {filled: 'filled', outline: 'outline'})}
-      rgb={text('rgb', '')}
-      href={text('href', '')}
-      onClick={() => timeoutAsync(1000)}
-      disabled={boolean('disabled', false)}
-    >
-      {text('children', 'Hello World')}
-    </Button>
+    return <div className={'rui'}>
+      <Button
+        type={select('type', {filled: 'filled', outline: 'outline'})}
+        rgb={text('rgb', '')}
+        href={text('href', '')}
+        onClick={() => timeoutAsync(1000)}
+        disabled={boolean('disabled', false)}
+      >
+        {text('children', 'Hello World')}
+      </Button>
+    </div>
   })
