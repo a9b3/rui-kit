@@ -3,11 +3,10 @@ import {
   select,
   text,
   boolean,
-}                     from '@storybook/addon-knobs'
-import {storiesOf}    from '@storybook/react'
+}                  from '@storybook/addon-knobs'
+import {storiesOf} from '@storybook/react'
 
-import Button         from './index.js'
-import {timeoutAsync} from '~/utils/testHelpers'
+import Button      from './index.js'
 
 storiesOf('Button', module)
   .addDecorator(withKnobs)
@@ -17,7 +16,7 @@ storiesOf('Button', module)
         type={select('type', {filled: 'filled', outline: 'outline'})}
         rgb={text('rgb', '')}
         href={text('href', '')}
-        onClick={() => timeoutAsync(1000)}
+        onClick={() => new Promise((resolve, reject) => setTimeout(resolve, 1000))}
         disabled={boolean('disabled', false)}
       >
         {text('children', 'Hello World')}
