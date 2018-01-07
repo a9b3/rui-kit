@@ -1,6 +1,6 @@
-import doc          from 'components/DocPage/doc'
-import { Markdown } from '../../../../src'
 import exampleMd    from '!!raw-loader!./example.md'
+import { Markdown } from '../../../../src'
+import doc          from 'components/DocPage/doc'
 
 const description = `
 Wrapper around remarkable.

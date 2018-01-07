@@ -1,9 +1,9 @@
-import doc                from 'components/DocPage/doc'
-import DropzoneExample    from './dropzone-example.js'
 import DropzoneExampleStr from '!!raw-loader!./dropzone-example.js'
 import {
   Dropzone,
 }                         from '../../../src'
+import DropzoneExample    from './dropzone-example.js'
+import doc                from 'components/DocPage/doc'
 
 export default doc({
   component: Dropzone,

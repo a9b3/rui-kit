@@ -1,5 +1,5 @@
-import styles      from './themed-form.scss'
-import variables   from 'esayemm-styles/variables'
+import styles           from './themed-form.scss'
+import variables        from 'esayemm-styles/variables'
 
 import {
   ThemedForm,
@@ -7,7 +7,7 @@ import {
   ThemedFormField,
   ThemedFormSubmit,
   Alert,
-}                  from '../../../src'
+}                       from '../../../src'
 
 import { timeoutAsync } from '../helpers.js'
 

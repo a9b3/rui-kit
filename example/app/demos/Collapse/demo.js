@@ -1,6 +1,6 @@
+import {Collapse} from '../../../../src'
 import styles     from './styles.scss'
 import cx         from 'classnames'
-import {Collapse} from '../../../../src'
 
 function CollapseDemo({
   ...rest

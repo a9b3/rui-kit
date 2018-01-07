@@ -1,8 +1,8 @@
-import doc            from 'components/DocPage/doc'
-import FormExample    from './form-example.js'
 import FormExampleStr from '!!raw-loader!./form-example.js'
 import formMd         from '!!raw-loader!./form.md'
 import formSourceMd   from '!!raw-loader!./formSource.md'
+import FormExample    from './form-example.js'
+import doc            from 'components/DocPage/doc'
 
 export default doc({
   display : 'Form',

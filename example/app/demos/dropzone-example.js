@@ -1,6 +1,6 @@
 import {
   Dropzone,
-} from '../../../src'
+}         from '../../../src'
 
 function timeoutAsync(cb) {
   return new Promise((resolve) => {

@@ -2,13 +2,13 @@ import React             from 'react'
 import { Route }         from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 
-import demoLinks         from 'demo-configs'
-import Index             from 'views/index'
-import ExampleAppShell   from 'components/example-app-shell'
 import {
   DemoComponent,
   DocPage,
-} from '../../../src'
+}                        from '../../../src'
+import ExampleAppShell   from 'components/example-app-shell'
+import demoLinks         from 'demo-configs'
+import Index             from 'views/index'
 
 /**
  * @param {array.<node>} links

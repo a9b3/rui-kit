@@ -1,5 +1,5 @@
-import doc                from 'components/DocPage/doc'
 import { LoadingOverlay } from '../../../src'
+import doc                from 'components/DocPage/doc'
 import variables          from 'esayemm-styles/variables'
 
 export default doc({

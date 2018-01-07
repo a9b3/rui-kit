@@ -1,5 +1,5 @@
-import React             from 'react'
 import { Alert, Button } from '../../../src'
+import React             from 'react'
 
 export default class AlertDemo extends React.Component {
   state = {

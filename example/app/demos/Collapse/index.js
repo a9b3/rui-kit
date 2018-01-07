@@ -1,6 +1,6 @@
-import doc             from 'components/DocPage/doc'
-import CollapseDemo    from './demo.js'
 import CollapseDemoStr from '!!raw-loader!./demo.js'
+import CollapseDemo    from './demo.js'
+import doc             from 'components/DocPage/doc'
 
 const description = `
 Collapse

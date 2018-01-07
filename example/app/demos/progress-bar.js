@@ -1,5 +1,5 @@
-import doc from 'components/DocPage/doc'
 import { ProgressBar } from '../../../src'
+import doc             from 'components/DocPage/doc'
 
 export default doc({
   display  : 'ProgressBar',

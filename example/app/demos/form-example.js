@@ -1,10 +1,10 @@
-import React from 'react'
 import {
   Form,
   FormState,
   FormField,
   FormFieldError,
-} from '../../../src'
+}               from '../../../src'
+import React    from 'react'
 
 export default class FormExample extends React.Component {
   formState = new FormState({

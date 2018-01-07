@@ -1,13 +1,13 @@
-import styles     from './index.scss'
-import React      from 'react'
-import PropTypes  from 'prop-types'
+import {
+  AppShell,
+}                from '../../../../src'
+import styles    from './index.scss'
+import PropTypes from 'prop-types'
+import React     from 'react'
 import {
   Link,
   withRouter,
-}                 from 'react-router-dom'
-import {
-  AppShell,
-}                 from '../../../../src'
+}                from 'react-router-dom'
 
 @withRouter
 export default class ExampleAppShell extends React.Component {

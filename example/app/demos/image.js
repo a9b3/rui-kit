@@ -1,5 +1,5 @@
-import doc       from 'components/DocPage/doc'
 import { Image } from '../../../src'
+import doc       from 'components/DocPage/doc'
 
 const displayName = 'Image'
 export default doc({

@@ -1,7 +1,7 @@
-import doc                  from 'components/DocPage/doc'
+import SelectFileExampleStr from '!!raw-loader!./select-file-example.js'
 import { SelectFile }       from '../../../src'
 import SelectFileExample    from './select-file-example.js'
-import SelectFileExampleStr from '!!raw-loader!./select-file-example.js'
+import doc                  from 'components/DocPage/doc'
 
 export default doc({
   display : 'SelectFile',

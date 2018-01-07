@@ -1,5 +1,5 @@
-import doc from 'components/DocPage/doc'
 import { ImageCarousel } from '../../../src'
+import doc               from 'components/DocPage/doc'
 
 const displayName = 'ImageCarousel'
 export default doc({

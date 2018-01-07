@@ -2,8 +2,8 @@ import styles      from './index.scss'
 import React       from 'react'
 import { Helmet }  from 'react-helmet'
 
-import * as ruiKit from '../../../../src'
 import packageJson from '../../../../package.json'
+import * as ruiKit from '../../../../src'
 
 export default class Index extends React.Component {
   render() {

@@ -1,5 +1,5 @@
-import uuid         from 'uuid'
 import {Transition} from '../../../../src'
+import uuid         from 'uuid'
 
 export default class TransitionDemo extends React.Component {
   state = {

@@ -1,5 +1,5 @@
-import doc      from 'components/DocPage/doc'
 import { Code } from '../../../src'
+import doc      from 'components/DocPage/doc'
 
 export default doc({
   component: Code,

@@ -1,6 +1,6 @@
-import doc            from 'components/DocPage/doc'
-import FormExample    from './themed-form-example.js'
 import FormExampleStr from '!!raw-loader!./themed-form-example.js'
+import FormExample    from './themed-form-example.js'
+import doc            from 'components/DocPage/doc'
 
 const description = `
 A form with validation.

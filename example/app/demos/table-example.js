@@ -1,8 +1,8 @@
-import uuid from 'uuid'
 import {
   Table,
   TableV2,
-} from '../../src'
+}           from '../../src'
+import uuid from 'uuid'
 
 function createItems(amt) {
   const items = []

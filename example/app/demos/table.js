@@ -1,9 +1,9 @@
-import TableExample from './table-example.js'
 import TableExampleStr from '!!raw-loader!./table-example.js'
 import {
   Table,
   TableV2,
-} from '../../src'
+}                      from '../../src'
+import TableExample    from './table-example.js'
 
 /* eslint-disable react/jsx-key */
 export default {

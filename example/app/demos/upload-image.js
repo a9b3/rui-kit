@@ -1,5 +1,5 @@
-import doc             from 'components/DocPage/doc'
 import { UploadImage } from '../../../src'
+import doc             from 'components/DocPage/doc'
 import {timeoutAsync}  from 'helpers'
 
 export default doc({

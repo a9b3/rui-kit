@@ -1,5 +1,5 @@
-import doc            from 'components/DocPage/doc'
 import { Icon, svgs } from '../../../src'
+import doc            from 'components/DocPage/doc'
 
 const displayName = 'Icon'
 export default doc({

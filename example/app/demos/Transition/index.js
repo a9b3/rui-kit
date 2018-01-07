@@ -1,7 +1,7 @@
-import doc from 'components/DocPage/doc'
+import TransitionDemoStr from '!!raw-loader!./demo.js'
 import {Transition}      from '../../../../src'
 import TransitionDemo    from './demo.js'
-import TransitionDemoStr from '!!raw-loader!./demo.js'
+import doc               from 'components/DocPage/doc'
 
 const description = `
 Transition HOC.

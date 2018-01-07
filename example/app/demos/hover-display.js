@@ -1,6 +1,6 @@
 import doc                     from 'components/DocPage/doc'
-import {Link}                  from 'react-router-dom'
 import variables               from 'esayemm-styles/variables'
+import {Link}                  from 'react-router-dom'
 import tinycolor               from 'tinycolor2'
 
 import { HoverDisplay, Alert } from '../../../src'

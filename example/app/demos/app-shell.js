@@ -1,6 +1,6 @@
 import doc          from 'components/DocPage/doc'
-import tinycolor    from 'tinycolor2'
 import variables    from 'esayemm-styles/variables'
+import tinycolor    from 'tinycolor2'
 
 import { AppShell } from '../../../src'
 
