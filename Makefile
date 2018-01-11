@@ -30,7 +30,7 @@ story: deps
 	@NODE_PATH=./src ./node_modules/@storybook/react/bin/index.js -p 9002 -c .storybook
 
 lint:
-	@./node_modules/prettier/bin/prettier.js "{src,example}/**/*.js"
+	@./node_modules/prettier/bin-prettier.js "{src,example}/**/*.js"
 	@./node_modules/eslint/bin/eslint.js . --fix
 
 test:
