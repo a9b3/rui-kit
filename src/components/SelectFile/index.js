@@ -6,10 +6,10 @@ export default class SelectFile extends React.Component {
 
   static propTypes = {
     children: PropTypes.node,
-    onDrop  : PropTypes.func.isRequired,
+    onDrop: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
     // https://www.w3schools.com/tags/att_input_accept.asp
-    accept  : PropTypes.string,
+    accept: PropTypes.string,
     multiple: PropTypes.bool,
   }
 
@@ -17,21 +17,21 @@ export default class SelectFile extends React.Component {
     isDragActive: false,
   }
 
-  handleClick = (e) => {
+  handleClick = e => {
     e.stopPropagation()
-    const {disabled} = this.props
+    const { disabled } = this.props
 
     if (!disabled) {
       this.fileInputEl.click()
     }
   }
 
-  handleDrop = async (e) => {
+  handleDrop = async e => {
     e.preventDefault()
-    const {disabled, onDrop} = this.props
+    const { disabled, onDrop } = this.props
     if (disabled) return
 
-    this.setState({isDragActive: false})
+    this.setState({ isDragActive: false })
 
     const files = e.dataTransfer ? e.dataTransfer.files : e.target.files
     for (let i = 0; i < files.length; i++) {
@@ -41,40 +41,42 @@ export default class SelectFile extends React.Component {
     await onDrop(files)
   }
 
-  handleDragEnter = (e) => {
+  handleDragEnter = e => {
     e.preventDefault()
-    this.setState({isDragActive: true})
+    this.setState({ isDragActive: true })
   }
 
-  handleDragOver = (e) => {
+  handleDragOver = e => {
     e.preventDefault()
     e.stopPropagation()
   }
 
-  handleDragLeave = (e) => {
+  handleDragLeave = e => {
     e.preventDefault()
-    this.setState({isDragActive: false})
+    this.setState({ isDragActive: false })
   }
 
   render() {
-    const {children, multiple, accept} = this.props
+    const { children, multiple, accept } = this.props
 
-    return <span
-      onClick={this.handleClick}
-      onDrop={this.handleDrop}
-      onDragEnter={this.handleDragEnter}
-      onDragOver={this.handleDragOver}
-      onDragLeave={this.handleDragLeave}
-    >
-      {children}
-      <input
-        style={{display: 'none'}}
-        accept={accept}
-        multiple={multiple}
-        type='file'
-        ref={el => this.fileInputEl = el}
-        onChange={this.handleDrop}
-      />
-    </span>
+    return (
+      <span
+        onClick={this.handleClick}
+        onDrop={this.handleDrop}
+        onDragEnter={this.handleDragEnter}
+        onDragOver={this.handleDragOver}
+        onDragLeave={this.handleDragLeave}
+      >
+        {children}
+        <input
+          style={{ display: 'none' }}
+          accept={accept}
+          multiple={multiple}
+          type="file"
+          ref={el => (this.fileInputEl = el)}
+          onChange={this.handleDrop}
+        />
+      </span>
+    )
   }
 }

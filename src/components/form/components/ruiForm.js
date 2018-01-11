@@ -1,5 +1,5 @@
 import hoistNonReactStatics from 'hoist-non-react-statics'
-import {observer}           from 'mobx-react'
+import { observer }         from 'mobx-react'
 import PropTypes            from 'prop-types'
 import React                from 'react'
 
@@ -9,7 +9,8 @@ export default function ruiForm(WrappedComponent) {
   const ObserverWrappedComponent = observer(WrappedComponent)
 
   class Wrapper extends React.Component {
-    static displayName = `ruiForm(${WrappedComponent.displayName || WrappedComponent.name})`
+    static displayName = `ruiForm(${WrappedComponent.displayName ||
+      WrappedComponent.name})`
 
     static propTypes = {
       initialState: PropTypes.object,
@@ -20,7 +21,7 @@ export default function ruiForm(WrappedComponent) {
     }
 
     static childContextTypes = {
-      formState   : PropTypes.object.isRequired,
+      formState: PropTypes.object.isRequired,
       initialState: PropTypes.object.isRequired,
     }
 
@@ -29,15 +30,15 @@ export default function ruiForm(WrappedComponent) {
     }
 
     componentWillMount() {
-      const {formState} = this.state
-      const {initialState} = this.props
+      const { formState } = this.state
+      const { initialState } = this.props
       const createdNode = formState.createChildNodeFromJS(initialState)
       formState.value = createdNode.value
     }
 
     getChildContext() {
-      const {initialState} = this.props
-      const {formState} = this.state
+      const { initialState } = this.props
+      const { formState } = this.state
       return {
         formState,
         initialState,
@@ -45,7 +46,7 @@ export default function ruiForm(WrappedComponent) {
     }
 
     render() {
-      const {formState} = this.state
+      const { formState } = this.state
       return <ObserverWrappedComponent {...this.props} formState={formState} />
     }
   }

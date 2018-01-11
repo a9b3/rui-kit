@@ -14,44 +14,32 @@ export default function FormFieldLayoutComponent({
   formFieldComponentProps,
   ...rest
 }) {
-  return <div
-    {...rest}
-    className={cx(
-      styles['form-field-layout'],
-      rest.className,
-    )}
-  >
-    <label
-      className={styles.label}
-      htmlFor={path}
-    >
-      {label}
-      {formField.modified && '*'}
-    </label>
-    {
-      formField.validationError
-      && (
-        <div className={styles.error}>
-          {formField.validationError}
-        </div>
-      )
-    }
-    <FormFieldComponent
-      id={path}
-      className={cx(styles['form-element'])}
-      formElementType={formFieldComponentProps.formElementType}
-      {...getInputProps(formFieldComponentProps)}
-    />
-  </div>
+  return (
+    <div {...rest} className={cx(styles['form-field-layout'], rest.className)}>
+      <label className={styles.label} htmlFor={path}>
+        {label}
+        {formField.modified && '*'}
+      </label>
+      {formField.validationError && (
+        <div className={styles.error}>{formField.validationError}</div>
+      )}
+      <FormFieldComponent
+        id={path}
+        className={cx(styles['form-element'])}
+        formElementType={formFieldComponentProps.formElementType}
+        {...getInputProps(formFieldComponentProps)}
+      />
+    </div>
+  )
 }
 FormFieldLayoutComponent.propTypes = {
   getInputProps: PropTypes.func.isRequired,
-  formField    : PropTypes.shape({
-    modified       : PropTypes.bool.isRequired,
+  formField: PropTypes.shape({
+    modified: PropTypes.bool.isRequired,
     validationError: PropTypes.string,
   }).isRequired,
-  label                  : PropTypes.string,
-  path                   : PropTypes.string,
+  label: PropTypes.string,
+  path: PropTypes.string,
   formFieldComponentProps: PropTypes.object,
 }
 FormFieldLayoutComponent.defaultProps = {

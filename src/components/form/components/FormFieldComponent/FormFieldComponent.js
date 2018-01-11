@@ -11,18 +11,18 @@ export default function FormFieldComponent({
   onChange,
   ...rest
 }) {
-  const props = {value, onChange, ...rest}
-  switch(formElementType) {
-  case 'input':
-    return <input {...props} />
-  case 'textarea':
-    return <textarea {...props} />
-  case 'select':
-    return <SelectField {...props} />
+  const props = { value, onChange, ...rest }
+  switch (formElementType) {
+    case 'input':
+      return <input {...props} />
+    case 'textarea':
+      return <textarea {...props} />
+    case 'select':
+      return <SelectField {...props} />
   }
 }
 FormFieldComponent.propTypes = {
   formElementType: PropTypes.oneOf(ALLOWED_TYPES).isRequired,
-  value          : PropTypes.any,
-  onChange       : PropTypes.func,
+  value: PropTypes.any,
+  onChange: PropTypes.func,
 }

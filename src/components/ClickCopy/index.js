@@ -10,7 +10,7 @@ export default class ClickCopy extends React.Component {
     copyText: PropTypes.string.isRequired,
   }
 
-  copyToClipboard = (str) => {
+  copyToClipboard = str => {
     const textarea = document.createElement('textarea')
     textarea.innerText = str
     document.body.append(textarea)
@@ -20,7 +20,7 @@ export default class ClickCopy extends React.Component {
   }
 
   handleClick = () => {
-    const {copyText} = this.props
+    const { copyText } = this.props
     this.copyToClipboard(copyText)
   }
 
@@ -31,12 +31,14 @@ export default class ClickCopy extends React.Component {
       ...rest
     } = this.props
 
-    return <span
-      {...rest}
-      className={cx(styles.container, rest.className)}
-      onClick={this.handleClick}
-    >
-      {children}
-    </span>
+    return (
+      <span
+        {...rest}
+        className={cx(styles.container, rest.className)}
+        onClick={this.handleClick}
+      >
+        {children}
+      </span>
+    )
   }
 }

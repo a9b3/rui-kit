@@ -6,36 +6,36 @@ import withFormField from './withFormField.js'
 @withFormField
 export default class FormField extends React.Component {
   static propTypes = {
-    render     : PropTypes.func.isRequired,
+    render: PropTypes.func.isRequired,
     renderProps: PropTypes.object,
     // props from @withFormField
-    formField  : PropTypes.object,
+    formField: PropTypes.object,
   }
 
   static defaultProps = {
     renderProps: {},
   }
 
-  handleChange = (event) => {
-    const {formField} = this.props
+  handleChange = event => {
+    const { formField } = this.props
     formField.setValue(
       event.target.type === 'checkbox'
         ? event.target.checked
-        : event.target.value
+        : event.target.value,
     )
   }
 
-  getInputProps = ({...props}) => {
-    const {formField} = this.props
+  getInputProps = ({ ...props }) => {
+    const { formField } = this.props
     return {
       ...props,
       onChange: this.handleChange,
-      value   : formField.value,
+      value: formField.value,
     }
   }
 
   render() {
-    const {render, formField, renderProps} = this.props
+    const { render, formField, renderProps } = this.props
     if (!formField) {
       return null
     }
