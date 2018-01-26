@@ -5,6 +5,14 @@ import { Button } from '../../../../src'
 import Example    from 'components/Example'
 
 export default function ButtonView() {
-  return <Example sample={<Button>hi</Button>} />
+  return (
+    <Example
+      sample={<Button>hi</Button>}
+      info={{
+        title: 'Button',
+        description: 'hello',
+      }}
+    />
+  )
 }
 ButtonView.propTypes = {}

@@ -6,7 +6,10 @@ import { Code }  from '../../../../src'
 
 export default class Example extends React.Component {
   static propTypes = {
-    info: PropTypes.any,
+    info: PropTypes.shape({
+      title: PropTypes.string,
+      description: PropTypes.string,
+    }),
     sample: PropTypes.any,
   }
 
@@ -17,27 +20,11 @@ export default class Example extends React.Component {
     return (
       <div className={styles.example}>
         <section className={styles.info}>
-          <h3>Button</h3>
-          <p>
-            This is a simple button. You can add stuff to it. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Vestibulum eleifend velit id
-            turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio
-            volutpat sit amet. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Vestibulum eleifend velit id turpis fringilla
-            volutpat. Nulla tristique sem ex, ac dignissim odio volutpat sit
-            amet.
-          </p>
+          <h3>{info.title}</h3>
+          <p>{info.description}</p>
         </section>
         <section className={styles.sample}>
           {sample}
-          <div
-            style={{
-              width: 100,
-              height: 100,
-              background: 'white',
-              marginBottom: '20px',
-            }}
-          />
           <Code>const hello</Code>
         </section>
       </div>
