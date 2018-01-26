@@ -14,25 +14,29 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 5px 10px rgba(0, 0, 0, .05);
-  background: rgba(0, 0, 0, .865);
-  padding: 30px;
+  background: var(--bg-color);
+  padding: var(--spacing-md);
 }
 .header h1 {
   font-size: 1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .8);
+  color: rgba(255, 255, 255, .9);
   letter-spacing: .3em;
   text-shadow: 0 1px 3px rgba(255,255,255, .1);
+  font-family: 'Montserrat', sans-serif;
 }
 
 .nav {
   grid-area: nav;
   min-width: 15em;
   overflow: auto;
-  background: rgba(0, 0, 0, .8);
+  background: var(--bg-secondary-color);
+  color: var(--color);
 }
 
 .content {
   grid-area: content;
   overflow: auto;
+  background: var(--bg-secondary-color);
+  color: var(--color);
 }

@@ -1,18 +1,27 @@
-import PropTypes  from 'prop-types'
-import React      from 'react'
+import jsxToString from 'jsx-to-string'
+import React       from 'react'
 
-import { Button } from '../../../../src'
-import Example    from 'components/Example'
+import { Button }  from '../../../../src'
+import Example     from 'components/Example'
+
+const samples = [
+  <Button>hi</Button>,
+  <Button type={'outline'}>hi</Button>,
+  <Button onClick={() => new Promise(resolve => setTimeout(resolve, 1000))}>
+    Click
+  </Button>,
+].map(demo => {
+  return { code: jsxToString(demo), demo, type: 'html' }
+})
 
 export default function ButtonView() {
   return (
     <Example
-      sample={<Button>hi</Button>}
+      samples={samples}
       info={{
         title: 'Button',
-        description: 'hello',
+        description: 'A button component that has state.',
       }}
     />
   )
 }
-ButtonView.propTypes = {}

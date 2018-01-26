@@ -1,12 +1,12 @@
-@import '~esayemm-styles/global';
+@import '~esayemm-styles';
+// variables used for rui-kit library
 @import '../../src/variables.css';
+@import './variables.css';
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 :global {
   body {
-    background: lighten($lightgray, 10);
-    font-family: 'Montserrat', sans-serif;
-
+    font-weight: 300;
     @media only screen and (max-device-width: 480px) {
       font-size: 30px;
       line-height: 1.5em;
@@ -14,7 +14,7 @@
   }
 
   h1, h2, h3, h4 {
-    color: $headerColor;
-    font-weight: 600;
+    font-weight: 400;
+    letter-spacing: .2em;
   }
 }

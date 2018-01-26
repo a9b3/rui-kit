@@ -5,11 +5,19 @@ import AppShell                 from 'components/AppShell'
 import Example                  from 'components/Example'
 
 import ButtonView               from 'views/Button'
+import CodeView                 from 'views/Code'
+import IndexView                from 'views/index'
 
 const links = [
   {
-    to: '/',
+    to: '/code',
+    display: 'Code',
+    exact: true,
+  },
+  {
+    to: '/button',
     display: 'Button',
+    exact: true,
   },
 ]
 
@@ -17,7 +25,8 @@ export default function MainRouter() {
   return (
     <BrowserRouter>
       <AppShell links={links}>
-        <Route exact path="/" component={ButtonView} />
+        <Route exact path="/code" component={CodeView} />
+        <Route exact path="/button" component={ButtonView} />
       </AppShell>
     </BrowserRouter>
   )

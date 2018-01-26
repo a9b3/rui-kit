@@ -1,15 +1,20 @@
-import styles    from './index.css'
-import cx        from 'classnames'
-import PropTypes from 'prop-types'
-import React     from 'react'
-import { Link }  from 'react-router-dom'
+import styles      from './index.css'
+import cx          from 'classnames'
+import PropTypes   from 'prop-types'
+import React       from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default function Nav({ className, links }) {
+  console.log(links)
   const lis = links.map(({ display, ...link }, i) => (
     <li key={i} className={styles.li}>
-      <Link {...link} className={styles.link} activeClassName={styles.active}>
+      <NavLink
+        {...link}
+        className={styles.link}
+        activeClassName={styles.active}
+      >
         {display}
-      </Link>
+      </NavLink>
     </li>
   ))
 

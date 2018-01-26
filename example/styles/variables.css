@@ -1,0 +1,11 @@
+:root {
+  --bg-color-raw: 27,31,37;
+  --bg-color: rgb(var(--bg-color-raw));
+  --bg-secondary-color: rgba(var(--bg-color-raw), .85);
+  --color: rgba(255, 255, 255, .6);
+
+  /* -------------- Spacing -------------- */
+  --spacing-sm: 1.6em;
+  --spacing-md: 2em;
+  --spacing-lg: 5em;
+}
