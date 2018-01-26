@@ -15,6 +15,7 @@
   align-items: center;
   box-shadow: 0 5px 10px rgba(0, 0, 0, .05);
   background: var(--bg-color);
+  background: linear-gradient(90deg, var(--bg-color) 10%, rgba(var(--bg-color-raw), .95) 100%);
   padding: var(--spacing-md);
   z-index: 2;
 }
