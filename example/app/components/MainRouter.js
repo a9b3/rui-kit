@@ -25,6 +25,7 @@ export default function MainRouter() {
   return (
     <BrowserRouter>
       <AppShell links={links}>
+        <Route exact path="/" component={IndexView} />
         <Route exact path="/code" component={CodeView} />
         <Route exact path="/button" component={ButtonView} />
       </AppShell>

@@ -1,4 +1,4 @@
-import styles      from './index.scss'
+import styles      from './index.css'
 import React       from 'react'
 import { Helmet }  from 'react-helmet'
 
@@ -20,18 +20,12 @@ export default class Index extends React.Component {
           <title>React UI Kit</title>
         </Helmet>
 
-        <h2 style={{ marginBottom: '2rem' }}>React UI Kit</h2>
+        <h2>React UI Kit</h2>
+        <p>A React components library.</p>
 
-        <p style={{ marginBottom: '2rem' }}>
-          A simple React components library.
-        </p>
-
-        <h3>Version</h3>
-
-        <p style={{ marginBottom: '2rem' }}>{packageJson.version}</p>
+        <p>{packageJson.version}</p>
 
         <h3>Install</h3>
-
         <p style={{ marginBottom: '2rem' }}>
           Use yarn to install the package in an frontend React environment.
         </p>
