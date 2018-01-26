@@ -13,7 +13,10 @@
   line-height: 1.45em;
 }
 .info h3 {
+  font-family: var(--headerFont);
+  color: var(--headerColor);
   margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
 }
 .info p {
   margin-bottom: var(--spacing-md);

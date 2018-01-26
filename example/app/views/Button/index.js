@@ -20,7 +20,8 @@ export default function ButtonView() {
       samples={samples}
       info={{
         title: 'Button',
-        description: 'A button component that has state.',
+        description:
+          'A button component that has state. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio volutpat sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend velit id turpis fringilla volutpat. Nulla tristique sem ex, ac dignissim odio volutpat sit amet.',
       }}
     />
   )
