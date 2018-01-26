@@ -3,10 +3,13 @@ import cx        from 'classnames'
 import PropTypes from 'prop-types'
 import React     from 'react'
 
+import Nav       from './Nav'
+
 export default class AppShell extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     children: PropTypes.node,
+    links: PropTypes.any,
   }
 
   static defaultProps = {
@@ -14,13 +17,13 @@ export default class AppShell extends React.Component {
   }
 
   render() {
-    const { title, children } = this.props
+    const { links, title, children } = this.props
     return (
       <div className={cx(styles['app-shell'], 'rui')}>
         <header className={styles.header}>
           <h1>{title}</h1>
         </header>
-        <nav className={styles.nav}>hi</nav>
+        <Nav className={styles.nav} links={links} />
         <section className={styles.content}>{children}</section>
       </div>
     )

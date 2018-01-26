@@ -6,10 +6,17 @@ import Example                  from 'components/Example'
 
 import ButtonView               from 'views/Button'
 
+const links = [
+  {
+    to: '/',
+    display: 'Button',
+  },
+]
+
 export default function MainRouter() {
   return (
     <BrowserRouter>
-      <AppShell>
+      <AppShell links={links}>
         <Route exact path="/" component={ButtonView} />
       </AppShell>
     </BrowserRouter>
