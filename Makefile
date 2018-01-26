@@ -1,3 +1,5 @@
+PORT ?= 5021
+
 all: help
 
 help:
@@ -17,7 +19,7 @@ deps:
 	@yarn
 
 dev: deps
-	@PORT=5021 BABEL_REACT=true NODE_PATH=./example:./example/app:./src \
+	@PORT=$(PORT) BABEL_REACT=true NODE_PATH=./example:./example/app:./src \
 		./node_modules/jbs-fe/bin.js dev \
 			--app-index ./example/app/index.js \
 			--html-index ./example/index.html \

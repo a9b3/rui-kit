@@ -1,49 +1,17 @@
-import React             from 'react'
-import { Route }         from 'react-router'
-import { BrowserRouter } from 'react-router-dom'
+import React                    from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
 
-import {
-  DemoComponent,
-  DocPage,
-}                        from '../../../src'
-import ExampleAppShell   from 'components/example-app-shell'
-import demoLinks         from 'demo-configs'
-import Index             from 'views/index'
+import AppShell                 from 'components/AppShell'
+import Example                  from 'components/Example'
 
-/**
- * @param {array.<node>} links
- * @returns {array.<Route>}
- */
-function linksToRoute(links) {
-  const items = links.reduce((arr, val) => {
-    return arr.concat(val.items)
-  }, [])
-
-  const results = items.map((item, key) => <Route
-    key={key}
-    path={item.to}
-    component={() => {
-      if (item.isDoc) {
-        return <DocPage
-          {...item}
-        />
-      }
-      return <DemoComponent
-        {...item.demoComponentAttr}
-      />
-    }}
-  />)
-
-  return results
-}
+import ButtonView               from 'views/Button'
 
 export default function MainRouter() {
-  return <BrowserRouter>
-    <ExampleAppShell
-      demoLinks={demoLinks}
-    >
-      <Route path='/' exact component={Index} />
-      {linksToRoute(demoLinks)}
-    </ExampleAppShell>
-  </BrowserRouter>
+  return (
+    <BrowserRouter>
+      <AppShell>
+        <Route exact path="/" component={ButtonView} />
+      </AppShell>
+    </BrowserRouter>
+  )
 }

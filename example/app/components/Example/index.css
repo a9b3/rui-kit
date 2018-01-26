@@ -1,0 +1,26 @@
+.example {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "info sample sample";
+}
+
+.info {
+  padding: 100px;
+  grid-area: info;
+  line-height: 1.45em;
+}
+.info h3 {
+  margin-bottom: 2em;
+}
+.info p {
+  margin-bottom: 2em;
+}
+
+.sample {
+  grid-area: sample;
+  background: rgba(0,0,0,.2);
+  padding: 100px;
+}

@@ -1,0 +1,38 @@
+.app-shell {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "header header"
+    "nav content";
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .05);
+  background: rgba(0, 0, 0, .865);
+  padding: 30px;
+}
+.header h1 {
+  font-size: 1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .8);
+  letter-spacing: .3em;
+  text-shadow: 0 1px 3px rgba(255,255,255, .1);
+}
+
+.nav {
+  grid-area: nav;
+  min-width: 15em;
+  overflow: auto;
+  background: rgba(0, 0, 0, .8);
+}
+
+.content {
+  grid-area: content;
+  overflow: auto;
+}

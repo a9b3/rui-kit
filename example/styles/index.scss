@@ -1,8 +1,11 @@
 @import '~esayemm-styles/global';
+@import '../../src/variables.css';
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 :global {
   body {
     background: lighten($lightgray, 10);
+    font-family: 'Montserrat', sans-serif;
 
     @media only screen and (max-device-width: 480px) {
       font-size: 30px;
