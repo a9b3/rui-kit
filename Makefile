@@ -5,8 +5,8 @@ all: help
 help:
 	@echo ""
 	@echo "  deps          - Installs dependencies"
-	@echo "  dev           - Runs development server"
-	@echo "  story         - Runs storybook server"
+	@echo "  dev           - Runs development server PORT ?= $(PORT)"
+	@echo "  story         - Runs storybook server PORT ?= $(PORT)"
 	@echo "  lint          - Runs linter with fix"
 	@echo "  test          - Runs tests"
 	@echo "  test.watch    - TDD"
@@ -27,7 +27,7 @@ dev: deps
 			--favicon-path ./example/assets/images/cat.jpg
 
 story: deps
-	@NODE_PATH=./src ./node_modules/@storybook/react/bin/index.js -p 9002 -c .storybook
+	@NODE_PATH=./src ./node_modules/@storybook/react/bin/index.js -p $(PORT) -c .storybook
 
 lint:
 	@./node_modules/prettier/bin-prettier.js "{src,example}/**/*.js"
