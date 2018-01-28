@@ -18,18 +18,18 @@ module.exports = (storybookBaseConfig, configType) => {
   })
   storybookBaseConfig.module.rules.push({
     test: /\.(png|jpe?g|gif|ico)$/i,
-    use : [
+    use: [
       {
-        loader : require.resolve('url-loader'),
+        loader: require.resolve('url-loader'),
         options: {
           limit: 8192,
         },
       },
       {
-        loader : require.resolve('image-webpack-loader'),
+        loader: require.resolve('image-webpack-loader'),
         options: {
           bypassOnDebug: true,
-          mozjpeg      : {
+          mozjpeg: {
             progressive: true,
           },
           gifsicle: {
@@ -40,59 +40,51 @@ module.exports = (storybookBaseConfig, configType) => {
           },
           pngquant: {
             quality: '75-90',
-            speed  : 3,
+            speed: 3,
           },
         },
       },
     ].filter(a => a),
   })
   storybookBaseConfig.module.rules.push({
-    test   : /\.scss$/,
+    test: /\.scss$/,
     loaders: [
       {
         loader: 'style-loader',
       },
       {
-        loader : "css-loader",
+        loader: 'css-loader',
         options: {
           modules: true,
         },
       },
-      {
-        loader : 'postcss-loader',
-        options: {
-          ident: 'postcss',
-        },
-      },
-      "sass-loader",
+      'sass-loader',
     ],
   })
   storybookBaseConfig.module.rules.push({
-    test   : /\.css$/,
+    test: /\.css$/,
     loaders: [
-      {loader: 'style-loader'},
+      { loader: 'style-loader' },
       {
-        loader : "css-loader",
+        loader: 'css-loader',
         options: {
           modules: true,
-        },
-      },
-      {
-        loader : 'postcss-loader',
-        options: {
-          ident: 'postcss',
         },
       },
     ],
   })
 
-  storybookBaseConfig.resolve.modules.concat((process.env.NODE_PATH || '').split(path.delimiter).filter(Boolean))
+  storybookBaseConfig.resolve.modules.concat(
+    (process.env.NODE_PATH || '').split(path.delimiter).filter(Boolean),
+  )
 
-  storybookBaseConfig.plugins.push(new webpack.ProvidePlugin({
-    '_'        : 'lodash',
-    'React'    : 'react',
-    'cssModule': 'react-css-modules',
-  }))
+  storybookBaseConfig.plugins.push(
+    new webpack.ProvidePlugin({
+      _: 'lodash',
+      React: 'react',
+      cssModule: 'react-css-modules',
+    }),
+  )
 
   return storybookBaseConfig
 }
