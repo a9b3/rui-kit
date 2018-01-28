@@ -2,6 +2,7 @@
   --button-color: 150, 150, 150;
   --button-shadow-color: 70,70,70;
 
+  display: inline-block;
   font-size: 1em;
   border-radius: .6em;
   box-shadow: 0 2px 4px rgba(var(--button-shadow-color), .1);
