@@ -1,17 +1,17 @@
-import {computed, observable, action} from 'mobx'
+import { observable, action } from 'mobx'
 
-import FormNode                       from './FormNode.js'
+import FormNode               from './FormNode.js'
 
 export default class FormState extends FormNode {
-  @observable submitting  = false
+  @observable submitting = false
   @observable submitError = undefined
 
-  constructor({...args}) {
-    super({...args, type: FormNode.types.MAP})
+  constructor({ ...args }) {
+    super({ ...args, type: FormNode.types.MAP })
   }
 
   @action
-  callOnSubmit = async (onSubmit) => {
+  callOnSubmit = async onSubmit => {
     this.submitting = true
     this.submitError = undefined
     try {
@@ -23,7 +23,7 @@ export default class FormState extends FormNode {
     this.submitting = false
   }
 
-  getParentPath = (path) => {
+  getParentPath = path => {
     const tokens = path.split('.')
     return tokens.slice(0, tokens.length - 1).join('.')
   }

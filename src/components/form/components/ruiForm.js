@@ -5,51 +5,54 @@ import React                from 'react'
 
 import FormState            from '../FormState.js'
 
-export default function ruiForm(WrappedComponent) {
-  const ObserverWrappedComponent = observer(WrappedComponent)
+export default function ruiForm(formFieldArgs = {}) {
+  return function withRuiForm(WrappedComponent) {
+    const ObserverWrappedComponent = observer(WrappedComponent)
 
-  class Wrapper extends React.Component {
-    static displayName = `ruiForm(${WrappedComponent.displayName ||
-      WrappedComponent.name})`
+    class Wrapper extends React.Component {
+      static displayName = `ruiForm(${WrappedComponent.displayName ||
+        WrappedComponent.name})`
 
-    static propTypes = {
-      initialState: PropTypes.object,
-    }
+      static propTypes = {
+        initialState: PropTypes.object,
+        formFieldArgs: PropTypes.object,
+      }
 
-    static defaultProps = {
-      initialState: {},
-    }
+      static defaultProps = {
+        initialState: {},
+        formFieldArgs: {},
+      }
 
-    static childContextTypes = {
-      formState: PropTypes.object.isRequired,
-      initialState: PropTypes.object.isRequired,
-    }
+      static childContextTypes = {
+        formState: PropTypes.object.isRequired,
+        initialState: PropTypes.object.isRequired,
+      }
 
-    state = {
-      formState: new FormState(),
-    }
+      state = {
+        formState: new FormState({ ...formFieldArgs }),
+      }
 
-    componentWillMount() {
-      const { formState } = this.state
-      const { initialState } = this.props
-      const createdNode = formState.createChildNodeFromJS(initialState)
-      formState.value = createdNode.value
-    }
+      componentWillMount() {
+        const { initialState } = this.props
+        const { formState } = this.state
+        const createdNode = formState.createChildNodeFromJS(initialState)
+        formState.value = createdNode.value
+      }
 
-    getChildContext() {
-      const { initialState } = this.props
-      const { formState } = this.state
-      return {
-        formState,
-        initialState,
+      getChildContext() {
+        const { initialState } = this.props
+        const { formState } = this.state
+        return { formState, initialState }
+      }
+
+      render() {
+        const { formState } = this.state
+        return (
+          <ObserverWrappedComponent {...this.props} formState={formState} />
+        )
       }
     }
 
-    render() {
-      const { formState } = this.state
-      return <ObserverWrappedComponent {...this.props} formState={formState} />
-    }
+    return hoistNonReactStatics(Wrapper, ObserverWrappedComponent)
   }
-
-  return hoistNonReactStatics(Wrapper, ObserverWrappedComponent)
 }

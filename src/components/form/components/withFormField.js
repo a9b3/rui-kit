@@ -5,6 +5,7 @@ import React        from 'react'
 
 import FormNode     from '../FormNode.js'
 
+// passes down the FormNode associated with the given path
 export default function withFormField(WrappedComponent) {
   const ObserverWrappedComponent = observer(WrappedComponent)
 
