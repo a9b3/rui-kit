@@ -1,32 +1,35 @@
-import hoistNonReactStatics from 'hoist-non-react-statics'
-import { compose }          from 'lodash/fp'
-import { observer }         from 'mobx-react'
-import PropTypes            from 'prop-types'
-import React                from 'react'
+import hoistNonReactStatics             from 'hoist-non-react-statics'
+import { compose }                      from 'lodash/fp'
+import { computed, observable, action } from 'mobx'
+import { observer }                     from 'mobx-react'
+import PropTypes                        from 'prop-types'
+import React                            from 'react'
 
 export class FormNode {
   validate = undefined
-  value = undefined
-  initialValue = undefined
+  @observable value = undefined
+  @observable initialValue = undefined
 
+  @computed
   get validationError() {
+    const value = this._getValue(this.value)
     if (this.validate) {
-      return this.validate(this.value)
+      return this.validate(this.toJS())
     }
-    if (typeof this.value === 'object') {
-      return Object.entries(this.value).some((key, value) =>
-        Boolean(value.validationError),
+    if (typeof value === 'object') {
+      return Object.entries(value).some(([key, val]) =>
+        Boolean(val.validationError),
       )
     }
   }
 
+  @computed
   get modified() {
-    if (typeof this.value === 'object') {
-      return Object.entries(this.value).some((key, value) =>
-        Boolean(value.modified),
-      )
+    const value = this._getValue(this.value)
+    if (typeof value === 'object') {
+      return Object.entries(value).some(([key, val]) => Boolean(val.modified))
     }
-    return this.value === this.initialValue
+    return this.value !== this.initialValue
   }
 
   constructor({ value, validate } = {}) {
@@ -35,18 +38,68 @@ export class FormNode {
     this.validate = validate
   }
 
-  reset() {}
+  @action
+  setValue = value => {
+    this.value = value
+  }
 
-  toJS() {}
+  reset = () => {
+    const value = this._getValue(this.value)
+    if (typeof value === 'object') {
+      return Object.entries(value).forEach(([key, val]) => {
+        val.reset()
+      })
+    }
+    this.setValue(this.initialValue)
+  }
+
+  toJS = () => {
+    const value = this._getValue(this.value)
+    if (typeof value === 'object') {
+      return Object.entries(value).reduce((data, [key, val]) => {
+        data[key] = val.toJS()
+        return data
+      }, value.constructor())
+    }
+    return this.value
+  }
+
+  // super hacky to make observable array work
+  _getValue(value) {
+    return value && value.slice ? value.slice() : value
+  }
 }
 
 export class FormState extends FormNode {
-  submitError = undefined
+  @observable submitError = undefined
+  @observable submitting = false
 
-  submit() {}
+  @action
+  async submit(fn) {
+    this.submitError = undefined
+    this.submitting = true
+    let result
+    try {
+      result = await fn(this.toJS())
+    } catch (err) {
+      this.submitError = err
+      return
+    }
+    this.submitting = false
+    return result
+  }
 
-  get() {}
+  // returns FormNode
+  get(path) {
+    const tokens = path.split('.')
+    let node = this
+    while (tokens.length) {
+      const token = tokens.shift()
+      node = node.value[token]
+    }
+  }
 
+  // returns FormNode
   insert() {}
 }
 
