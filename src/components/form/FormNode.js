@@ -1,5 +1,4 @@
 import invariant                        from 'invariant'
-import { noop }                         from 'lodash'
 import { computed, observable, action } from 'mobx'
 
 export default class FormNode {
@@ -9,36 +8,64 @@ export default class FormNode {
     VALUE: 'value',
   }
 
+  // createChildNodeFromJS recursively instantiates FormNodes
+  static createChildNodeFromJS = value => {
+    if (value.constructor === Array) {
+      return new FormNode({
+        type: FormNode.types.ARRAY,
+        value: value.map(val => FormNode.createChildNodeFromJS(val)),
+      })
+    } else if (value.constructor === Object) {
+      return new FormNode({
+        type: FormNode.types.MAP,
+        value: Object.entries(value).reduce((map, [key, val]) => {
+          return {
+            ...map,
+            [key]: FormNode.createChildNodeFromJS(val),
+          }
+        }, {}),
+      })
+    } else {
+      return new FormNode({
+        type: FormNode.types.VALUE,
+        initialValue: value,
+        value,
+      })
+    }
+  }
+
   type = undefined
   // (value: any): string || undefined
-  @observable validate = noop
+  @observable validate = undefined
   @observable initialValue = ''
   @observable value = undefined
 
   @computed
   get validationError() {
+    // setting validate in an ancestor node can override subtree validations
     if (this.validate) {
       return this.validate(this.toJS())
     }
-    return {
-      [FormNode.types.ARRAY]: node =>
-        node.value.some(n => Boolean(n.validationError)),
-      [FormNode.types.MAP]: node =>
-        Object.keys(node.value).some(key =>
-          Boolean(node.value[key].validationError),
-        ),
-      [FormNode.types.VALUE]: node => node.validate(node.toJS()),
-    }[this.type](this)
+    switch (this.type) {
+      case FormNode.types.ARRAY:
+        return this.value.some(n => Boolean(n.validationError))
+      case FormNode.types.MAP:
+        return Object.values(this.value).some(n => Boolean(n.validationError))
+      default:
+        return this.validate && this.validate(this.toJS())
+    }
   }
 
   @computed
   get modified() {
-    return {
-      [FormNode.types.ARRAY]: node => node.value.some(n => n.modified),
-      [FormNode.types.MAP]: node =>
-        Object.keys(node.value).some(key => node.value[key].modified),
-      [FormNode.types.VALUE]: node => node.toJS() !== node.initialValue,
-    }[this.type](this)
+    switch (this.type) {
+      case FormNode.types.ARRAY:
+        return this.value.some(n => n.modified)
+      case FormNode.types.MAP:
+        return Object.values(this.value).some(n => n.modified)
+      default:
+        return this.toJS() !== this.initialValue
+    }
   }
 
   constructor({ type, ...args } = {}) {
@@ -91,41 +118,12 @@ export default class FormNode {
     })
   }
 
-  /**
-   * createChildNodeFromJS recursively instantiates FormNodes
-   */
-  createChildNodeFromJS = value => {
-    let createdNode
-    if (value.constructor === Array) {
-      createdNode = new FormNode({ type: FormNode.types.ARRAY })
-      createdNode.value = value.map(val =>
-        this.createChildNodeFromJS(val, createdNode),
-      )
-    } else if (value.constructor === Object) {
-      createdNode = new FormNode({ type: FormNode.types.MAP })
-      createdNode.value = Object.entries(value).reduce(
-        (map, [key, val]) =>
-          Object.assign(map, {
-            [key]: this.createChildNodeFromJS(val, createdNode),
-          }),
-        {},
-      )
-    } else {
-      createdNode = new FormNode({
-        value,
-        type: FormNode.types.VALUE,
-        initialValue: value,
-      })
-    }
-    return createdNode
-  }
-
   createChildNode = opts => {
     return new FormNode({ ...opts })
   }
 
   /**
-   * find will return a descendant FormNode
+   * find will return a descendant FormNode with the given path.
    *
    * @param {string} path
    * @returns {FormNode}

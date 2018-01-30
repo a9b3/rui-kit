@@ -3,6 +3,7 @@ import { observer }         from 'mobx-react'
 import PropTypes            from 'prop-types'
 import React                from 'react'
 
+import FormNode             from '../FormNode.js'
 import FormState            from '../FormState.js'
 
 export default function ruiForm(formFieldArgs = {}) {
@@ -35,7 +36,7 @@ export default function ruiForm(formFieldArgs = {}) {
       componentWillMount() {
         const { initialState } = this.props
         const { formState } = this.state
-        const createdNode = formState.createChildNodeFromJS(initialState)
+        const createdNode = FormNode.createChildNodeFromJS(initialState)
         formState.value = createdNode.value
       }
 
