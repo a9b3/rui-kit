@@ -32,6 +32,7 @@ export default class ExampleSimpleForm extends React.Component {
         {formState.submitError && 'submit Error'}
         {formState.validationError && 'has validation error'}
         {formState.modified && 'form is modified'}
+        {formState.value.name && formState.value.name.value}
         <FormField
           path={'name'}
           formFieldArgs={{

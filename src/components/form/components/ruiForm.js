@@ -14,46 +14,25 @@ export default function ruiForm(formFieldArgs = {}) {
       static displayName = `ruiForm(${WrappedComponent.displayName ||
         WrappedComponent.name})`
 
-      static propTypes = {
-        initialState: PropTypes.object,
-        formFieldArgs: PropTypes.object,
-      }
-
-      static defaultProps = {
-        initialState: {},
-        formFieldArgs: {},
-      }
-
       static childContextTypes = {
         formState: PropTypes.object.isRequired,
-        initialState: PropTypes.object.isRequired,
       }
 
       state = {
         formState: new FormState({ ...formFieldArgs }),
       }
 
-      componentWillMount() {
-        const { initialState } = this.props
-        const { formState } = this.state
-        const createdNode = FormNode.createChildNodeFromJS(initialState)
-        formState.value = createdNode.value
-      }
-
       getChildContext() {
-        const { initialState } = this.props
         const { formState } = this.state
-        return { formState, initialState }
+        return { formState }
       }
 
       render() {
         const { formState } = this.state
-        return (
-          <ObserverWrappedComponent {...this.props} formState={formState} />
-        )
+        return <WrappedComponent {...this.props} formState={formState} />
       }
     }
 
-    return hoistNonReactStatics(Wrapper, ObserverWrappedComponent)
+    return hoistNonReactStatics(Wrapper, WrappedComponent)
   }
 }

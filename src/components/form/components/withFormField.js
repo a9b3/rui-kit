@@ -33,6 +33,7 @@ export default function withFormField(WrappedComponent) {
       const { formState } = this.context
       const formField =
         formState.find(path) || formState.insert(path, formFieldArgs)
+      console.log(`HERE`, formField)
       this.setState({ formField })
     }
 

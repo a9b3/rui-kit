@@ -1,7 +1,13 @@
-import expect   from 'expect'
-import sinon    from 'sinon'
+import expect         from 'expect'
+import sinon          from 'sinon'
 
-import FormNode from './FormNode.js'
+import FormNode       from './FormNode.js'
+
+import { observable } from 'mobx'
+
+const x = observable.map()
+x.set('hi', 'hi')
+console.log(x.values())
 
 describe('FormNode', () => {
   describe('find()', () => {

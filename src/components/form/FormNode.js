@@ -38,7 +38,7 @@ export default class FormNode {
   // (value: any): string || undefined
   @observable validate = undefined
   @observable initialValue = ''
-  @observable value = undefined
+  @observable value = ''
 
   @computed
   get validationError() {
@@ -50,7 +50,7 @@ export default class FormNode {
       case FormNode.types.ARRAY:
         return this.value.some(n => Boolean(n.validationError))
       case FormNode.types.MAP:
-        return Object.values(this.value).some(n => Boolean(n.validationError))
+        return this.value.values().some(n => Boolean(n.validationError))
       default:
         return this.validate && this.validate(this.toJS())
     }
@@ -62,7 +62,7 @@ export default class FormNode {
       case FormNode.types.ARRAY:
         return this.value.some(n => n.modified)
       case FormNode.types.MAP:
-        return Object.values(this.value).some(n => n.modified)
+        return this.value.values().some(n => n.modified)
       default:
         return this.toJS() !== this.initialValue
     }
@@ -76,8 +76,8 @@ export default class FormNode {
 
     this.type = type
     const initializeValue = {
-      [FormNode.types.ARRAY]: () => (this.value = []),
-      [FormNode.types.MAP]: () => (this.value = {}),
+      [FormNode.types.ARRAY]: () => (this.value = observable.array()),
+      [FormNode.types.MAP]: () => (this.value = observable.map()),
       [FormNode.types.VALUE]: () => (this.value = ''),
     }
     initializeValue[type]()
@@ -102,6 +102,7 @@ export default class FormNode {
     }
   }
 
+  @action
   reset = (node = this) => {
     this._mapOverNodeValue(node, {
       [FormNode.types.ARRAY]: n => n.reset(n),
@@ -113,7 +114,10 @@ export default class FormNode {
   toJS = () => {
     return this._mapOverNodeValue(this, {
       [FormNode.types.ARRAY]: node => node.toJS(),
-      [FormNode.types.MAP]: node => node.toJS(),
+      [FormNode.types.MAP]: node => {
+        console.log(node)
+        return node.toJS()
+      },
       [FormNode.types.VALUE]: node => node.value,
     })
   }
@@ -133,7 +137,13 @@ export default class FormNode {
     if (tokens.length === 0) {
       return cursor
     }
-    const nextNode = cursor.value[tokens[0]]
+    let nextNode
+    switch (cursor.type) {
+      case FormNode.types.ARRAY:
+        nextNode = cursor.value[tokens[0]]
+      case FormNode.types.MAP:
+        nextNode = cursor.value.get(tokens[0])
+    }
     if (!nextNode) {
       return undefined
     }
@@ -145,7 +155,7 @@ export default class FormNode {
       case FormNode.types.ARRAY:
         return node.value.map(obj[FormNode.types.ARRAY])
       case FormNode.types.MAP:
-        return Object.entries(node.value).reduce(
+        return node.value.entries().reduce(
           (map, [key, value]) => ({
             ...map,
             [key]: obj[FormNode.types.MAP](value, key),
