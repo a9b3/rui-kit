@@ -37,11 +37,25 @@ export default class ExampleSimpleForm extends React.Component {
           path={'name'}
           formFieldArgs={{
             type: FormState.types.VALUE,
+            initialValue: 'o',
             validate: (value = '') =>
               predicate(value.length > 2, 'value must be higher than 2'),
           }}
           renderProps={{
             label: 'Name',
+            formFieldComponentProps: { formElementType: 'input' },
+          }}
+          render={FormFieldLayoutComponent}
+        />
+        <FormField
+          path={'last'}
+          formFieldArgs={{
+            type: FormState.types.VALUE,
+            validate: (value = '') =>
+              predicate(value.length > 2, 'value must be higher than 2'),
+          }}
+          renderProps={{
+            label: 'Last',
             formFieldComponentProps: { formElementType: 'input' },
           }}
           render={FormFieldLayoutComponent}

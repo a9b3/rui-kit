@@ -1,4 +1,3 @@
-import { get }      from 'lodash'
 import { observer } from 'mobx-react'
 import PropTypes    from 'prop-types'
 import React        from 'react'
@@ -33,7 +32,6 @@ export default function withFormField(WrappedComponent) {
       const { formState } = this.context
       const formField =
         formState.find(path) || formState.insert(path, formFieldArgs)
-      console.log(`HERE`, formField)
       this.setState({ formField })
     }
 

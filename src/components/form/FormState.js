@@ -1,7 +1,7 @@
-import invariant                                from 'invariant'
-import { extendObservable, observable, action } from 'mobx'
+import invariant              from 'invariant'
+import { observable, action } from 'mobx'
 
-import FormNode                                 from './FormNode.js'
+import FormNode               from './FormNode.js'
 
 export default class FormState extends FormNode {
   @observable submitting = false
@@ -37,7 +37,6 @@ export default class FormState extends FormNode {
     invariant(parent, `'parent' does not exist for given ${path}`)
     const key = path.split('.').pop()
     const newNode = new FormNode(args)
-    console.log(key, newNode)
     if (parent.type === FormNode.types.MAP) {
       parent.value.merge({
         [key]: newNode,

@@ -8,32 +8,6 @@ export default class FormNode {
     VALUE: 'value',
   }
 
-  // createChildNodeFromJS recursively instantiates FormNodes
-  static createChildNodeFromJS = value => {
-    if (value.constructor === Array) {
-      return new FormNode({
-        type: FormNode.types.ARRAY,
-        value: value.map(val => FormNode.createChildNodeFromJS(val)),
-      })
-    } else if (value.constructor === Object) {
-      return new FormNode({
-        type: FormNode.types.MAP,
-        value: Object.entries(value).reduce((map, [key, val]) => {
-          return {
-            ...map,
-            [key]: FormNode.createChildNodeFromJS(val),
-          }
-        }, {}),
-      })
-    } else {
-      return new FormNode({
-        type: FormNode.types.VALUE,
-        initialValue: value,
-        value,
-      })
-    }
-  }
-
   type = undefined
   // (value: any): string || undefined
   @observable validate = undefined
@@ -73,14 +47,18 @@ export default class FormNode {
       Object.values(FormNode.types).includes(type),
       `'type' must be one of ${Object.values(FormNode.types)}`,
     )
-
     this.type = type
-    const initializeValue = {
-      [FormNode.types.ARRAY]: () => (this.value = observable.array()),
-      [FormNode.types.MAP]: () => (this.value = observable.map()),
-      [FormNode.types.VALUE]: () => (this.value = ''),
+    switch (this.type) {
+      case FormNode.types.ARRAY:
+        this.value = observable.array()
+        break
+      case FormNode.types.MAP:
+        this.value = observable.map()
+        break
+      default:
+        this.value = ''
+        break
     }
-    initializeValue[type]()
     this.setInstanceVariables({ ...args })
   }
 
@@ -91,7 +69,7 @@ export default class FormNode {
     initialValue = this.initialValue,
   } = {}) => {
     this.validate = validate
-    this.value = value
+    this.value = initialValue || value
     this.initialValue = initialValue
   }
 
@@ -114,10 +92,7 @@ export default class FormNode {
   toJS = () => {
     return this._mapOverNodeValue(this, {
       [FormNode.types.ARRAY]: node => node.toJS(),
-      [FormNode.types.MAP]: node => {
-        console.log(node)
-        return node.toJS()
-      },
+      [FormNode.types.MAP]: node => node.toJS(),
       [FormNode.types.VALUE]: node => node.value,
     })
   }

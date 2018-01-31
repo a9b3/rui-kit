@@ -3,7 +3,6 @@ import { observer }         from 'mobx-react'
 import PropTypes            from 'prop-types'
 import React                from 'react'
 
-import FormNode             from '../FormNode.js'
 import FormState            from '../FormState.js'
 
 export default function ruiForm(formFieldArgs = {}) {
@@ -29,10 +28,12 @@ export default function ruiForm(formFieldArgs = {}) {
 
       render() {
         const { formState } = this.state
-        return <WrappedComponent {...this.props} formState={formState} />
+        return (
+          <ObserverWrappedComponent {...this.props} formState={formState} />
+        )
       }
     }
 
-    return hoistNonReactStatics(Wrapper, WrappedComponent)
+    return hoistNonReactStatics(Wrapper, ObserverWrappedComponent)
   }
 }
