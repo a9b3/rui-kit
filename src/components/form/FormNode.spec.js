@@ -1,8 +1,7 @@
-import expect         from 'expect'
-import { observable } from 'mobx'
-import sinon          from 'sinon'
+import expect   from 'expect'
+import sinon    from 'sinon'
 
-import FormNode       from './FormNode.js'
+import FormNode from './FormNode.js'
 
 describe('FormNode', () => {
   describe('validationError', () => {
