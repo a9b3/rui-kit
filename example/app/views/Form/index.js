@@ -1,10 +1,8 @@
 import React          from 'react'
 
-import ExampleFormStr from '!raw-loader!./ExampleForm.js'
-import ExampleForm    from './ExampleForm'
+import ExampleFormStr from '!raw-loader!../../../../src/components/form/stories/ExampleSimpleForm.js'
 import Example        from 'components/Example'
-
-console.log(ExampleFormStr)
+import ExampleForm    from 'components/form/stories/ExampleSimpleForm.js'
 
 export default function FormView() {
   return (
