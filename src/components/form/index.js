@@ -5,3 +5,4 @@ export {
 } from './components/FormFieldComponent/FormFieldLayoutComponent.js'
 export { default as FormState } from './FormState.js'
 export { default as predicate } from './utils/predicate.js'
+export FormNode from './FormNode.js'

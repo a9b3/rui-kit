@@ -1,5 +1,6 @@
 import invariant                        from 'invariant'
 import { computed, observable, action } from 'mobx'
+import uuid                             from 'uuid/v4'
 
 export default class FormNode {
   static types = {
@@ -8,6 +9,7 @@ export default class FormNode {
     VALUE: 'value',
   }
 
+  id = uuid()
   type = undefined
   // (value: any): string || undefined
   @observable validate = undefined

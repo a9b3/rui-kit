@@ -45,7 +45,8 @@
     "react-transition-group": "1.x",
     "remarkable": "^1.7.1",
     "svg-sprite-loader": "^3.2.5",
-    "tinycolor2": "^1.4.1"
+    "tinycolor2": "^1.4.1",
+    "uuid": "3.2.1"
   },
   "scripts": {
     "preversion": "npm run test",
