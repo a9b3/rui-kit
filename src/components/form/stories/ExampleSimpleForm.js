@@ -2,10 +2,10 @@ import PropTypes          from 'prop-types'
 import React              from 'react'
 
 import {
+  FormFieldLayoutComponent,
   ruiForm,
   FormState,
   FormField,
-  FormFieldLayoutComponent,
   predicate,
 }                         from '../index.js'
 
@@ -32,7 +32,6 @@ export default class ExampleSimpleForm extends React.Component {
         {formState.submitError && 'submit Error'}
         {formState.validationError && 'has validation error'}
         {formState.modified && 'form is modified'}
-        {formState.value.name && formState.value.name.value}
         <FormField
           path={'name'}
           formFieldArgs={{
@@ -41,11 +40,20 @@ export default class ExampleSimpleForm extends React.Component {
             validate: (value = '') =>
               predicate(value.length > 2, 'value must be higher than 2'),
           }}
-          renderProps={{
-            label: 'Name',
-            formFieldComponentProps: { formElementType: 'input' },
+          render={({ formField, getInputProps }) => {
+            return (
+              <FormFieldLayoutComponent
+                modified={formField.modified}
+                error={formField.validationError}
+                label={'Name'}
+                path={'name'}
+                formFieldComponentProps={{
+                  ...getInputProps(),
+                  placeholder: 'Enter Name',
+                }}
+              />
+            )
           }}
-          render={FormFieldLayoutComponent}
         />
         <FormField
           path={'last'}
@@ -54,11 +62,20 @@ export default class ExampleSimpleForm extends React.Component {
             validate: (value = '') =>
               predicate(value.length > 2, 'value must be higher than 2'),
           }}
-          renderProps={{
-            label: 'Last',
-            formFieldComponentProps: { formElementType: 'input' },
+          render={({ formField, getInputProps }) => {
+            return (
+              <FormFieldLayoutComponent
+                modified={formField.modified}
+                error={formField.validationError}
+                label={'Last'}
+                path={'last'}
+                formFieldComponentProps={{
+                  ...getInputProps(),
+                  placeholder: 'Enter Last',
+                }}
+              />
+            )
           }}
-          render={FormFieldLayoutComponent}
         />
         <button type="button" onClick={() => formState.reset()}>
           reset

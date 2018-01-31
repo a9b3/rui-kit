@@ -1,14 +1,14 @@
-import styles             from './FormFieldLayoutComponent.css'
+import styles from './FormFieldLayoutComponent.css'
 
-import cx                 from 'classnames'
-import PropTypes          from 'prop-types'
-import React              from 'react'
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 import FormFieldComponent from './FormFieldComponent'
 
 export default function FormFieldLayoutComponent({
-  getInputProps,
-  formField,
+  modified,
+  error,
   label,
   path,
   formFieldComponentProps,
@@ -18,30 +18,28 @@ export default function FormFieldLayoutComponent({
     <div {...rest} className={cx(styles['form-field-layout'], rest.className)}>
       <label className={styles.label} htmlFor={path}>
         {label}
-        {formField.modified && '*'}
+        {modified && '*'}
       </label>
-      {formField.validationError && (
-        <div className={styles.error}>{formField.validationError}</div>
-      )}
+      {error && <div className={styles.error}>{error}</div>}
       <FormFieldComponent
         id={path}
-        className={cx(styles['form-element'])}
-        formElementType={formFieldComponentProps.formElementType}
-        {...getInputProps(formFieldComponentProps)}
+        className={cx(
+          styles['form-element'],
+          formFieldComponentProps.className,
+        )}
+        {...formFieldComponentProps}
       />
     </div>
   )
 }
 FormFieldLayoutComponent.propTypes = {
-  getInputProps: PropTypes.func.isRequired,
-  formField: PropTypes.shape({
-    modified: PropTypes.bool.isRequired,
-    validationError: PropTypes.string,
-  }).isRequired,
+  modified: PropTypes.bool,
+  error: PropTypes.string,
   label: PropTypes.string,
   path: PropTypes.string,
-  formFieldComponentProps: PropTypes.object,
-}
-FormFieldLayoutComponent.defaultProps = {
-  formFieldComponentProps: {},
+  formFieldComponentProps: PropTypes.shape({
+    formElementType: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.any,
+  }).isRequired,
 }
