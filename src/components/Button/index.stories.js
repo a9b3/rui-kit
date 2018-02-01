@@ -1,8 +1,8 @@
 import { withKnobs, select, text, boolean } from '@storybook/addon-knobs'
-import { storiesOf }                        from '@storybook/react'
-import React                                from 'react'
+import { storiesOf } from '@storybook/react'
+import React from 'react'
 
-import Button                               from './index.js'
+import Button from './index.js'
 
 storiesOf('Button', module)
   .addDecorator(withKnobs)
@@ -10,7 +10,10 @@ storiesOf('Button', module)
     return (
       <div className={'rui'}>
         <Button
-          type={select('type', { filled: 'filled', outline: 'outline' })}
+          buttonType={select('buttonType', {
+            filled: 'filled',
+            outline: 'outline',
+          })}
           rgb={text('rgb', '')}
           href={text('href', '')}
           onClick={() => new Promise(resolve => setTimeout(resolve, 1000))}

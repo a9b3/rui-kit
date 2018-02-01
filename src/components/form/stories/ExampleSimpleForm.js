@@ -16,10 +16,9 @@ export default class ExampleSimpleForm extends React.Component {
   }
 
   handleSubmit = data => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
-        alert(JSON.stringify(data))
-        resolve()
+        reject(new Error('ok'))
       }, 2000)
     })
   }

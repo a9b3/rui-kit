@@ -1,7 +1,7 @@
-import invariant              from 'invariant'
-import { observable, action } from 'mobx'
+import invariant                           from 'invariant'
+import { observable, action, runInAction } from 'mobx'
 
-import FormNode               from './FormNode.js'
+import FormNode                            from './FormNode.js'
 
 export default class FormState extends FormNode {
   @observable submitting = false
@@ -12,19 +12,22 @@ export default class FormState extends FormNode {
   }
 
   callOnSubmit = onSubmit => {
-    return action(async event => {
+    return action.bound(async event => {
       event.preventDefault()
       this.submitting = true
       this.submitError = undefined
       try {
         await onSubmit(this.toJS())
       } catch (err) {
-        console.error(err)
-        this.submitError = err.message
-        this.submitting = false
+        runInAction(() => {
+          this.submitError = err.message
+          this.submitting = false
+        })
         throw err
       }
-      this.submitting = false
+      runInAction(() => {
+        this.submitting = false
+      })
     })
   }
 

@@ -13,7 +13,7 @@ export const BUTTON_TYPES = {
 
 export default class Button extends React.PureComponent {
   static propTypes = {
-    type: PropTypes.oneOf(BUTTON_TYPES),
+    buttonType: PropTypes.oneOf(BUTTON_TYPES),
     rgb: PropTypes.string,
     href: PropTypes.string,
     onClick: PropTypes.func,
@@ -22,7 +22,7 @@ export default class Button extends React.PureComponent {
   }
 
   static defaultProps = {
-    type: BUTTON_TYPES.filled,
+    buttonType: BUTTON_TYPES.filled,
     onClick: () => {},
   }
 
@@ -41,12 +41,12 @@ export default class Button extends React.PureComponent {
   }
 
   render() {
-    const { type, children, disabled, href, rgb, ...rest } = this.props
+    const { buttonType, children, disabled, href, rgb, ...rest } = this.props
     const { loading } = this.state
 
     const attr = {
       ...rest,
-      className: cx(styles.button, rest.className, styles[type], {
+      className: cx(styles.button, rest.className, styles[buttonType], {
         [styles.disabled]: loading || disabled,
       }),
       style: {
@@ -61,7 +61,7 @@ export default class Button extends React.PureComponent {
       <div>
         <LoadingOverlay
           show={loading}
-          rgb={type === BUTTON_TYPES.filled ? '255, 255, 255' : rgb}
+          rgb={buttonType === BUTTON_TYPES.filled ? '255, 255, 255' : rgb}
         />
         <span style={{ opacity: loading ? '0' : '1' }}>{children}</span>
       </div>
