@@ -7,12 +7,13 @@
   grid: "label error" 1fr
         "form form"
         / auto auto;
-  grid-gap: 10px;
+  grid-gap: var(--spacing3, 10px);
 }
 
 .label {
   grid-area: label;
   font-weight: 500;
+  text-transform: uppercase;
 }
 
 .error {
@@ -24,12 +25,17 @@
 
 .form-element {
   grid-area: form;
-  background: rgba(0,0,0,.03);
 }
 select.form-element,
 input.form-element,
 textarea.form-element {
-  border-radius: 2px;
-  border: 1px solid rgba(0,0,0,.1);
+  border: none;
+  border-bottom: 1px solid var(--gray, gray);
   padding: var(--layoutPadding);
+}
+select.form-element:focus,
+input.form-element:focus,
+textarea.form-element:focus {
+  outline: none;
+  border-bottom: 1px solid var(--brand, green);
 }

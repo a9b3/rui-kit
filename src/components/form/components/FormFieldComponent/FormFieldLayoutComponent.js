@@ -1,8 +1,8 @@
-import styles from './FormFieldLayoutComponent.css'
+import styles             from './FormFieldLayoutComponent.css'
 
-import cx from 'classnames'
-import PropTypes from 'prop-types'
-import React from 'react'
+import cx                 from 'classnames'
+import PropTypes          from 'prop-types'
+import React              from 'react'
 
 import FormFieldComponent from './FormFieldComponent'
 

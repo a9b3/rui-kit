@@ -3,5 +3,6 @@ node_modules/
 build/
 example-build/
 example_build/
+exampleBuild/
 .DS_STORE
 .DS_Store

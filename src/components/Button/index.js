@@ -50,7 +50,7 @@ export default class Button extends React.PureComponent {
         [styles.disabled]: loading || disabled,
       }),
       style: {
-        ['--button-color']: rgb,
+        ['--buttonColor']: rgb,
         ...rest.style,
       },
       disabled: loading || disabled,
@@ -66,18 +66,17 @@ export default class Button extends React.PureComponent {
         <span style={{ opacity: loading ? '0' : '1' }}>{children}</span>
       </div>
     )
+
     if (href) {
       return (
         <a {...attr} onClick={this.handleClick}>
-          {' '}
-          {content}{' '}
+          {content}
         </a>
       )
     }
     return (
       <button {...attr} onClick={this.handleClick}>
-        {' '}
-        {content}{' '}
+        {content}
       </button>
     )
   }

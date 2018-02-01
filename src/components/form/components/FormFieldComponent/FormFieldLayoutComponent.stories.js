@@ -8,7 +8,7 @@ storiesOf('FormFieldLayoutComponent', module)
   .addDecorator(withKnobs)
   .add('default', () => {
     return (
-      <div style={{ width: '400px', background: 'white' }}>
+      <div className={'rui'} style={{ width: '400px', background: 'white' }}>
         <FormFieldLayoutComponent
           modified={boolean('modified', false)}
           error={text('validationError', '')}

@@ -21,6 +21,8 @@ export default class FormState extends FormNode {
       } catch (err) {
         console.error(err)
         this.submitError = err.message
+        this.submitting = false
+        throw err
       }
       this.submitting = false
     })

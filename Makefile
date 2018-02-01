@@ -1,4 +1,5 @@
 PORT ?= 5021
+EXAMPLE_OUTPUT ?= ./exampleBuild
 
 all: help
 
@@ -50,6 +51,7 @@ build:
 		--es-input-file src/index.js \
 		--es-output-file build/index.es.js
 
+.PHONY: build.example
 build.example:
 	@rm -rf $(EXAMPLE_OUTPUT)
 	@BABEL_REACT=true NODE_PATH=./example:./example/app:./src ./node_modules/jbs-fe/bin.js build \
@@ -57,7 +59,6 @@ build.example:
 		--html-index ./example/index.html \
 		--context ./example \
 		--output-path $(EXAMPLE_OUTPUT)
-	# --favicon-path ./example/assets/images/cat.jpg \
 
 push: build.example
 	@./node_modules/kontinuum-push/build/bin/index.js push \
