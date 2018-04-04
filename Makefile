@@ -28,7 +28,7 @@ dev: deps
 			--favicon-path ./example/assets/images/cat.jpg
 
 story: deps
-	@NODE_PATH=./src ./node_modules/@storybook/react/bin/index.js -p $(PORT) -c .storybook
+	@NODE_PATH=./src ./node_modules/@storybook/react/bin/index.js -p $(PORT) -c storybook
 
 lint:
 	@./node_modules/prettier/bin-prettier.js "{src,example}/**/*.js"
