@@ -1,14 +1,15 @@
 import styles         from './styles.css'
 
 import cx             from 'classnames'
+import { noop }       from 'lodash'
 import PropTypes      from 'prop-types'
 import React          from 'react'
 
 import LoadingOverlay from '~/components/LoadingOverlay'
 
 export const BUTTON_TYPES = {
-  filled: 'filled',
-  outline: 'outline',
+  FILLED: 'filled',
+  OUTLINE: 'outline',
 }
 
 export default class Button extends React.PureComponent {
@@ -22,8 +23,8 @@ export default class Button extends React.PureComponent {
   }
 
   static defaultProps = {
-    buttonType: BUTTON_TYPES.filled,
-    onClick: () => {},
+    buttonType: BUTTON_TYPES.FILLED,
+    onClick: noop,
   }
 
   state = { loading: false }
@@ -43,41 +44,33 @@ export default class Button extends React.PureComponent {
   render() {
     const { buttonType, children, disabled, href, rgb, ...rest } = this.props
     const { loading } = this.state
+    const HTMLTag = href ? 'a' : 'button'
 
-    const attr = {
-      ...rest,
-      className: cx(styles.button, rest.className, styles[buttonType], {
-        [styles.disabled]: loading || disabled,
-      }),
-      style: {
-        ['--buttonColor']: rgb,
-        ...rest.style,
-      },
-      disabled: loading || disabled,
-      href,
-    }
-
-    const content = (
-      <div>
+    return (
+      <HTMLTag
+        {...rest}
+        className={cx(
+          styles.button,
+          styles[buttonType],
+          {
+            [styles.disabled]: loading || disabled,
+          },
+          rest.className,
+        )}
+        style={{
+          ['--buttonColor']: rgb,
+          ...rest.style,
+        }}
+        disabled={loading || disabled}
+        href={href}
+        onClick={this.handleClick}
+      >
         <LoadingOverlay
           show={loading}
-          rgb={buttonType === BUTTON_TYPES.filled ? '255, 255, 255' : rgb}
+          rgb={buttonType === BUTTON_TYPES.FILLED ? '255, 255, 255' : rgb}
         />
-        <span style={{ opacity: loading ? '0' : '1' }}>{children}</span>
-      </div>
-    )
-
-    if (href) {
-      return (
-        <a {...attr} onClick={this.handleClick}>
-          {content}
-        </a>
-      )
-    }
-    return (
-      <button {...attr} onClick={this.handleClick}>
-        {content}
-      </button>
+        {children}
+      </HTMLTag>
     )
   }
 }
