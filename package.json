@@ -1,6 +1,6 @@
 {
   "name": "rui-kit",
-  "version": "0.0.17",
+  "version": "0.0.18-beta.0",
   "license": "MIT",
   "main": "./build/index.js",
   "module": "./build/index.es.js",
