@@ -13,6 +13,7 @@ help:
 	@echo "  test.watch    - TDD                             FILE ?= *"
 	@echo "  build         - Transpile source code"
 	@echo "  build.example - Transpile example site code"
+	@echo "  release       - Release on npm"
 	@echo "  push          - Push to aws"
 	@echo ""
 
@@ -60,6 +61,9 @@ build.example:
 		--html-index ./example/index.html \
 		--context ./example \
 		--output-path $(EXAMPLE_OUTPUT)
+
+release:
+	@./node_modules/release-it/bin/release-it.js
 
 push: build.example
 	@./node_modules/kontinuum-push/build/bin/index.js push \
