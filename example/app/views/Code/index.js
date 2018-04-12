@@ -1,7 +1,7 @@
-import React    from 'react'
+import React from 'react'
 
 import { Code } from '../../../../src'
-import Example  from 'components/Example'
+import Example from 'components/Example'
 
 export default function CodeView() {
   return (

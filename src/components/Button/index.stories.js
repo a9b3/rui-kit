@@ -1,8 +1,8 @@
 import { withKnobs, select, text, boolean } from '@storybook/addon-knobs'
-import { storiesOf } from '@storybook/react'
-import React from 'react'
+import { storiesOf }                        from '@storybook/react'
+import React                                from 'react'
 
-import Button from './index.js'
+import Button                               from './index.js'
 
 storiesOf('Button', module)
   .addDecorator(withKnobs)

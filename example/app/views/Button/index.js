@@ -1,8 +1,8 @@
 import jsxToString from 'jsx-to-string'
-import React       from 'react'
+import React from 'react'
 
-import { Button }  from '../../../../src'
-import Example     from 'components/Example'
+import { Button } from '../../../../src'
+import Example from 'components/Example'
 
 const samples = [
   <Button>hi</Button>,

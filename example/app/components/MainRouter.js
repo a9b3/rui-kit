@@ -1,12 +1,12 @@
-import React                    from 'react'
+import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 
-import AppShell                 from 'components/AppShell'
-import Example                  from 'components/Example'
+import AppShell from 'components/AppShell'
+import Example from 'components/Example'
 
-import ButtonView               from 'views/Button'
-import CodeView                 from 'views/Code'
-import IndexView                from 'views/index'
+import ButtonView from 'views/Button'
+import CodeView from 'views/Code'
+import IndexView from 'views/index'
 
 const links = [
   {

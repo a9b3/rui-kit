@@ -1,16 +1,20 @@
-import {withKnobs, select} from '@storybook/addon-knobs'
-import {storiesOf}         from '@storybook/react'
+import { withKnobs }   from '@storybook/addon-knobs'
+import { storiesOf }   from '@storybook/react'
+import React           from 'react'
 
-import Icon, {ICONS}       from './index.js'
+import Icon, { ICONS } from './index.js'
 
 storiesOf('Icon', module)
   .addDecorator(withKnobs)
   .add('default', () => {
-    return <Icon
-      type={select(
-        'type',
-        Object.keys(ICONS),
-        Object.keys(ICONS)[0],
-      )}
-    />
+    return (
+      <ul>
+        {Object.keys(ICONS).map(type => (
+          <li key={type}>
+            <strong style={{ width: '500px' }}>{type}</strong>
+            <Icon type={type} style={{ fill: 'blue' }} />
+          </li>
+        ))}
+      </ul>
+    )
   })

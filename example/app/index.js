@@ -2,11 +2,11 @@
 import 'react-hot-loader/patch'
 import 'styles/index.scss'
 
-import React            from 'react'
-import { render }       from 'react-dom'
+import React from 'react'
+import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 
-import MainRouter       from 'components/MainRouter'
+import MainRouter from 'components/MainRouter'
 
 function renderRoot() {
   render(

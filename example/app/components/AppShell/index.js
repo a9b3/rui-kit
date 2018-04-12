@@ -1,9 +1,9 @@
-import styles    from './index.css'
-import cx        from 'classnames'
+import styles from './index.css'
+import cx from 'classnames'
 import PropTypes from 'prop-types'
-import React     from 'react'
+import React from 'react'
 
-import Nav       from './Nav'
+import Nav from './Nav'
 
 export default class AppShell extends React.Component {
   static propTypes = {

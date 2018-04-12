@@ -31,8 +31,9 @@ story: deps
 	@NODE_PATH=./src ./node_modules/@storybook/react/bin/index.js -p $(PORT) -c storybook
 
 lint:
-	@./node_modules/prettier/bin-prettier.js "{src,example}/**/*.js"
-	@./node_modules/eslint/bin/eslint.js . --fix
+	@./node_modules/prettier/bin-prettier.js --write "{src,example}/**/*.js"
+	@./node_modules/eslint/bin/eslint.js src --fix
+	@./node_modules/eslint/bin/eslint.js example --fix
 
 test:
 	@BABEL_REACT=true NODE_PATH=./src \

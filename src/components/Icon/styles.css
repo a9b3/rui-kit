@@ -1,19 +1,7 @@
 .svg {
   height: 1em;
 
-  svg path {
-    all: inherit;
-  }
-  svg g {
-    all: inherit;
-  }
-}
-
-.use {
-  svg path {
-    all: inherit;
-  }
-  svg g {
+  path, g {
     all: inherit;
   }
 }

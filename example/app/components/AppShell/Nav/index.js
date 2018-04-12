@@ -1,7 +1,7 @@
-import styles      from './index.css'
-import cx          from 'classnames'
-import PropTypes   from 'prop-types'
-import React       from 'react'
+import styles from './index.css'
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 export default function Nav({ className, links }) {

@@ -1,6 +1,6 @@
-import styles      from './index.css'
-import React       from 'react'
-import { Helmet }  from 'react-helmet'
+import styles from './index.css'
+import React from 'react'
+import { Helmet } from 'react-helmet'
 
 import packageJson from '../../../../package.json'
 import * as ruiKit from '../../../../src'

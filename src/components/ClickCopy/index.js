@@ -4,24 +4,24 @@ import cx        from 'classnames'
 import PropTypes from 'prop-types'
 import React     from 'react'
 
+function copyToClipboard(str) {
+  const textarea = document.createElement('textarea')
+  textarea.innerText = str
+  document.body.append(textarea)
+  textarea.select()
+  document.execCommand('copy')
+  textarea.remove()
+}
+
 export default class ClickCopy extends React.Component {
   static propTypes = {
     children: PropTypes.node,
     copyText: PropTypes.string.isRequired,
   }
 
-  copyToClipboard = str => {
-    const textarea = document.createElement('textarea')
-    textarea.innerText = str
-    document.body.append(textarea)
-    textarea.select()
-    document.execCommand('copy')
-    textarea.remove()
-  }
-
   handleClick = () => {
     const { copyText } = this.props
-    this.copyToClipboard(copyText)
+    copyToClipboard(copyText)
   }
 
   render() {

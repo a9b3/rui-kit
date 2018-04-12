@@ -1,8 +1,8 @@
-import styles    from './index.css'
+import styles from './index.css'
 import PropTypes from 'prop-types'
-import React     from 'react'
+import React from 'react'
 
-import { Code }  from '../../../../src'
+import { Code } from '../../../../src'
 
 export default class Example extends React.Component {
   static propTypes = {
