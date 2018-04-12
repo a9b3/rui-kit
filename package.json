@@ -1,6 +1,6 @@
 {
   "name": "rui-kit",
-  "version": "0.0.18-beta.0",
+  "version": "0.0.18-beta.1",
   "license": "MIT",
   "main": "./build/index.js",
   "module": "./build/index.es.js",
@@ -48,6 +48,9 @@
     "svg-sprite-loader": "^3.2.5",
     "tinycolor2": "^1.4.1",
     "uuid": "3.2.1"
+  },
+  "scripts": {
+    "preversion": "make build"
   },
   "babel": {
     "presets": [
