@@ -4,7 +4,7 @@ import cx        from 'classnames'
 import PropTypes from 'prop-types'
 import React     from 'react'
 
-import Loading   from '~/components/Loading'
+import Loading   from '~/Loading'
 
 export default function LoadingOverlay({ show, rgb, ...props }) {
   if (!show) return null

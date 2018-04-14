@@ -5,7 +5,7 @@ import { noop }       from 'lodash'
 import PropTypes      from 'prop-types'
 import React          from 'react'
 
-import LoadingOverlay from '~/components/LoadingOverlay'
+import LoadingOverlay from '~/LoadingOverlay'
 
 export const BUTTON_TYPES = {
   FILLED: 'filled',
