@@ -9,12 +9,13 @@
 
 .loading {
   --loadingColor: 100, 100, 100;
+  --loadingSize: 1em;
 
   display: inline-block;
   border-radius: 50%;
-  width: 1em;
-  height: 1em;
+  width: var(--loadingSize);
+  height: var(--loadingSize);
   border: .15em solid rgba(var(--loadingColor), .2);
   border-top-color: var(--loadingColor);
-  animation: spin 1.2s infinite cubic-bezier(1,.2,.8,0);
+  animation: spin 1.2s infinite cubic-bezier(1,.5,.6,0);
 }

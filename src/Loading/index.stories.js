@@ -9,3 +9,11 @@ storiesOf('Loading', module)
   .add('default', () => {
     return <Loading show={boolean('show', true)} rgb={text('rgb', '')} />
   })
+  .add('sizing', () => {
+    return (
+      <div style={{ border: '1px solid black' }}>
+        <span>Hello</span>
+        <Loading show={boolean('show', true)} />
+      </div>
+    )
+  })
