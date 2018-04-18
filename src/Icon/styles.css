@@ -1,7 +1,5 @@
-.svg {
-  height: 1em;
+.icon {
+  --iconSize: 1em;
 
-  path, g {
-    all: inherit;
-  }
+  height: var(--iconSize);
 }
