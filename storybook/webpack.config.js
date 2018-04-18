@@ -13,6 +13,7 @@ module.exports = (storybookBaseConfig, configType) => {
       /\.json$/,
       /\.(woff|woff2|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
       /\.(png|jpe?g|gif|ico)$/i,
+      /\.ejs$/,
     ],
     loader: require.resolve('file-loader'),
   })

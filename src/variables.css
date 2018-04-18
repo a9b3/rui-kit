@@ -20,12 +20,12 @@
   --success  : var(--green);
 
   // Spacing
-  --spacing1: 6rem;
-  --spacing2: 4rem;
-  --spacing3: 2rem;
-  --spacing4: 1rem;
-  --spacing5: .6rem;
-  --spacing6: .4rem;
+  --spacing1: 6em;
+  --spacing2: 4em;
+  --spacing3: 2em;
+  --spacing4: 1em;
+  --spacing5: .6em;
+  --spacing6: .4em;
 
   // Font
   --size1: 3em;
