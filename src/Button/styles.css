@@ -3,6 +3,7 @@
   --buttonLineColor: 255, 255, 255;
   --buttonShadowColor: 70,70,70;
 
+  position: relative;
   display: inline-block;
   border-radius: .6em;
   font-weight: 300;
@@ -12,13 +13,14 @@
   padding: var(--spacing5) var(--spacing3);
   transition: all .3s;
   width: auto;
+  text-align: center;
 }
 .button:hover {
   box-shadow: 0 4px 8px rgba(var(--buttonShadowColor), .2);
   transform: translate3d(0, -1px, 0);
 }
 
-.button.disabled {
+.button:disabled {
   box-shadow: none;
   cursor: default;
   filter: saturate(0);
@@ -36,4 +38,11 @@
   border: 2px solid rgba(var(--buttonColor), .7);
   background-color: transparent;
   color: rgb(var(--buttonColor));
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate3d(50%, -50%, 0);
 }

@@ -1,11 +1,11 @@
 import styles         from './styles.css'
 
 import cx             from 'classnames'
-import { noop }       from 'lodash'
+import { noop, omit } from 'lodash'
 import PropTypes      from 'prop-types'
 import React          from 'react'
 
-import LoadingOverlay from '~/LoadingOverlay'
+import Loading        from '~/Loading'
 
 export const BUTTON_TYPES = {
   FILLED: 'filled',
@@ -15,61 +15,66 @@ export const BUTTON_TYPES = {
 export default class Button extends React.PureComponent {
   static propTypes = {
     buttonType: PropTypes.oneOf(BUTTON_TYPES),
+    // rgb value eg. "0, 0, 0" (for black, comma included)
     rgb: PropTypes.string,
+    // href link will trigger an a tag to be rendered instead the default button
     href: PropTypes.string,
     onClick: PropTypes.func,
-    disabled: PropTypes.bool,
+    loading: PropTypes.bool,
     children: PropTypes.node,
+    // to be rendered when onClick is triggered with a Promise
+    loadingComponent: PropTypes.func,
   }
 
   static defaultProps = {
     buttonType: BUTTON_TYPES.FILLED,
     onClick: noop,
+    loadingComponent: <Loading />,
   }
 
-  state = { loading: false }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.loading !== nextProps.loading) {
+      return { loading: nextProps.loading }
+    }
+    return null
+  }
+
+  state = { loading: this.props.loading || false }
 
   handleClick = async () => {
-    // https://github.com/gaearon/react-hot-loader/issues/391
-    const _ = arguments // eslint-disable-line
-    const { onClick } = this.props
-    const { loading } = this.state
-    if (loading) return
+    if (this.state.loading) return
 
     this.setState({ loading: true })
-    await onClick()
+    await this.props.onClick()
     this.setState({ loading: false })
   }
 
   render() {
-    const { buttonType, children, disabled, href, rgb, ...rest } = this.props
+    const {
+      buttonType,
+      children,
+      href,
+      rgb,
+      loadingComponent,
+      ...props
+    } = omit(this.props, ['loading'])
     const { loading } = this.state
     const HTMLTag = href ? 'a' : 'button'
 
     return (
       <HTMLTag
-        {...rest}
-        className={cx(
-          styles.button,
-          styles[buttonType],
-          {
-            [styles.disabled]: loading || disabled,
-          },
-          rest.className,
-        )}
+        {...props}
+        className={cx(styles.button, styles[buttonType], props.className)}
         style={{
           ['--buttonColor']: rgb,
-          ...rest.style,
+          ...props.style,
         }}
-        disabled={loading || disabled}
+        disabled={loading || props.disabled}
         href={href}
         onClick={this.handleClick}
       >
-        <LoadingOverlay
-          show={loading}
-          rgb={buttonType === BUTTON_TYPES.FILLED ? '255, 255, 255' : rgb}
-        />
-        {children}
+        {loading && <div className={styles.loading}>{loadingComponent}</div>}
+        <span style={{ visibility: loading ? 'hidden' : '' }}>{children}</span>
       </HTMLTag>
     )
   }

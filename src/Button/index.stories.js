@@ -16,6 +16,7 @@ storiesOf('Button', module)
           })}
           rgb={text('rgb', '')}
           href={text('href', '')}
+          loading={boolean('loading')}
           onClick={() => new Promise(resolve => setTimeout(resolve, 1000))}
           disabled={boolean('disabled', false)}
         >
