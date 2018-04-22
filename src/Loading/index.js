@@ -5,11 +5,9 @@ import PropTypes from 'prop-types'
 import React     from 'react'
 
 export default function Loading({ show, ...props }) {
-  if (!show) {
-    return null
-  }
-
-  return <i {...props} className={cx(styles.loading, props.className)} />
+  return show ? (
+    <i {...props} className={cx(styles.loading, props.className)} />
+  ) : null
 }
 Loading.propTypes = {
   show: PropTypes.bool,

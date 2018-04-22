@@ -6,7 +6,7 @@ import React             from 'react'
 
 import { highlightCode } from './utils'
 
-export default class Code extends React.Component {
+export default class Code extends React.PureComponent {
   _codeEl = undefined
 
   static propTypes = {
@@ -15,7 +15,6 @@ export default class Code extends React.Component {
     // http://highlightjs.readthedocs.io/en/latest/css-classes-reference.html
     type: PropTypes.string,
     theme: PropTypes.string,
-    // override attributes for <code />
     codeAttr: PropTypes.object,
   }
 

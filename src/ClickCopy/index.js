@@ -13,7 +13,7 @@ function copyToClipboard(str) {
   textarea.remove()
 }
 
-export default class ClickCopy extends React.Component {
+export default class ClickCopy extends React.PureComponent {
   static propTypes = {
     children: PropTypes.node,
     copyText: PropTypes.string.isRequired,

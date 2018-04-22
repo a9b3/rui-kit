@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types'
 import React     from 'react'
 
-export default class SelectFile extends React.Component {
+export default class SelectFile extends React.PureComponent {
   fileInputEl = null
 
   static propTypes = {
-    children: PropTypes.node,
     onDrop: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
     // https://www.w3schools.com/tags/att_input_accept.asp
