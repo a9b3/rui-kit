@@ -1,6 +1,5 @@
 .button {
   --buttonColor: 150, 150, 150;
-  --buttonLineColor: 255, 255, 255;
   --buttonShadowColor: 70,70,70;
 
   position: relative;
